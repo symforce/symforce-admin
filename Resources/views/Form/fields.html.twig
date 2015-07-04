@@ -160,7 +160,7 @@
 {% endspaceless %}
 {% block appimage_javascripts %}
 <script type="text/javascript">
-    new AppFormFile( $('#{{ id }}'), {
+    new SymforceFormFile( $('#{{ id }}'), {
         value: {{ value | json_encode | raw }} ,
         types: '{{ accept_file_type }}',
         max: {{ max_file_size }} ,
@@ -191,7 +191,7 @@
     {% endspaceless %}
     {% block appfile_javascripts %}
         <script type="text/javascript">
-            new AppFormFile( $('#{{ id }}'), {
+            new SymforceFormFile( $('#{{ id }}'), {
                 value: {{ value | json_encode | raw }} ,
                 types: '{{ accept_file_type }}',
                 max: {{ max_file_size }} ,

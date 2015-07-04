@@ -13,7 +13,7 @@ Klass.delay = function(fn, scope, delay){
     }
 };
 
-var FormDynamic = (function(){
+var SymforceFormDynamic = (function(){
     var debug   = (function(){
         var i   = 0 ;
         return function(max){
@@ -460,8 +460,8 @@ var FormDynamic = (function(){
 
 $(function(){
    $.each($('form.form-dynamic'), function(){
-       var form = new FormDynamic(this) ; 
-       var validator = new FormValidator(this, {
+       var form = new SymforceFormDynamic(this) ; 
+       var validator = new SymforceFormValidator(this, {
            
        }) ; 
    });
@@ -479,7 +479,7 @@ $(function(){
 
 
 
-var FormValidator   = (function(){
+var SymforceFormValidator   = (function(){
     
     var Element = new Klass({
         initialize: function(form, group, type, elements ){
@@ -725,7 +725,7 @@ var FormValidator   = (function(){
     return Class ;
 })();
 
-var AppFormFile = new Klass({
+var SymforceFormFile = new Klass({
     Binds: [ 'onImageLoad', 'onAdjustClick', 'onDeleteClick', 'onDefaultClick' ],
     options: {
         is_image: false ,
