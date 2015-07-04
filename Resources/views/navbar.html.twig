@@ -9,7 +9,7 @@
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="{{ path( app_param('sf.admin.route.brand_path') ) }}">{% block brand_text %}{{ 'sf.admin.brand'|trans({},  sf_domain ) }}{% endblock %}</a>
+                  <a class="navbar-brand" href="{{ path( sf_param('sf.admin.route.brand_path') ) }}">{% block brand_text %}{{ 'sf.admin.brand'|trans({},  sf_domain ) }}{% endblock %}</a>
               </div><!--/navbar-header -->
               
       <div class="collapse navbar-collapse navbar-responsive-collapse">
@@ -18,11 +18,11 @@
             {% if sf.user %}
                 <li class="first"><p class="navbar-text" style="padding-right: 10px;">{{ 'sf.versionprofile.welcome'|trans({'%username%': sf.user.username }, sf_domain  )|raw }}</li>
            
-                <li><a href="{{ path( app_param('sf.admin.route.logout_path') ) }}"><i class="icon-off"></i> {{ 'sf.versionprofile.logout'|trans({}, sf_domain ) }}</a></li>
+                <li><a href="{{ path( sf_param('sf.admin.route.logout_path') ) }}"><i class="icon-off"></i> {{ 'sf.versionprofile.logout'|trans({}, sf_domain ) }}</a></li>
             {% endif %}
             <li class="last">
                 <p>
-                    {% include "SymforceAdminBundle:Locale:locale.html.twig" with {'form': app_locale_form(sf.versionrequest) } %}
+                    {% include "SymforceAdminBundle:Locale:locale.html.twig" with {'form': sf_locale_form(sf.versionrequest) } %}
                 </p>
             </li>
           </ul>

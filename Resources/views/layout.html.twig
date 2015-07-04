@@ -1,5 +1,5 @@
-{% set sf_domain = app_param('sf.admin.domain') %}
-{% set app_version = app_param('sf.versionversion') %}
+{% set sf_domain = sf_param('sf.admin.domain') %}
+{% set sf_version = sf_param('sf.versionversion') %}
 {% import "SymforceAdminBundle::admin_macro.html.twig" as sf_admin_macro %}
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -36,7 +36,7 @@
             filter='lessphp'
             output='bundles/css/general_admin.css'
         %}
-            <link href="{{ asset_url }}?{{ app_version }}" rel="stylesheet" media="screen" />
+            <link href="{{ asset_url }}?{{ sf_version }}" rel="stylesheet" media="screen" />
         {% endstylesheets %}
         
         {% block header_css %}
@@ -46,7 +46,7 @@
                 filter='lessphp,?yui_css'
                 output='bundles/css/public_admin.css'
             %}
-                <link href="{{ asset_url }}?{{ app_version }}" rel="stylesheet" media="screen" />
+                <link href="{{ asset_url }}?{{ sf_version }}" rel="stylesheet" media="screen" />
             {% endstylesheets %}
         {% endblock %}
     {% endblock %}
@@ -83,7 +83,7 @@
             debug=false 
             output='bundles/js/admin_public.min.js'
     %}
-        <script type="text/javascript" src="{{ asset_url }}?{{ app_version }}"></script>
+        <script type="text/javascript" src="{{ asset_url }}?{{ sf_version }}"></script>
     {% endjavascripts %}
 {#
     <script type="text/javascript" src="{{ asset('/bundles/appadmin/tinymce/tinymce.min.js') }}"></script>
@@ -96,13 +96,13 @@
             '@SymforceAdminBundle/Resources/public/admin/js/admin.js'
             output='bundles/js/admin.js'
     %}
-        <script type="text/javascript" src="{{ asset_url }}?{{ app_version }}"></script>
+        <script type="text/javascript" src="{{ asset_url }}?{{ sf_version }}"></script>
     {% endjavascripts %}
     
 {% endblock %}
 </head>
 
-<body data-spy="scroll" data-target=".subnav" data-offset="50" {% if sf.user and sf.user.usergroup and  is_granted("ROLE_ADMIN") %}class="app_user_group_{{ sf.user.usergroup.slug }}"{% endif %}>
+<body data-spy="scroll" data-target=".subnav" data-offset="50" {% if sf.user and sf.user.usergroup and  is_granted("ROLE_ADMIN") %}class="sf_user_group_{{ sf.user.usergroup.slug }}"{% endif %}>
 {% block html_body %}
 
 {% block navbar %}
@@ -118,7 +118,7 @@
     <div class="col-xs-12">
         {% block content_breadcrumb %}
             <ol class="breadcrumb">
-                <li><a href="{{ path( app_param('sf.admin.route.dashboard_path') ) }}">{{ 'sf.admin.dashboard'|trans({}, sf_domain ) }}</a>  </li>
+                <li><a href="{{ path( sf_param('sf.admin.route.dashboard_path') ) }}">{{ 'sf.admin.dashboard'|trans({}, sf_domain ) }}</a>  </li>
 
                 {% if admin %}
                     {% if admin.routeparent %}
@@ -169,7 +169,7 @@
         '@SymforceAdminBundle/Resources/public/ie/fixie8.js'
         debug=false
         output='bundles/js/public_fixie8.js'
-    %}<script type="text/javascript" src="{{ asset_url }}?{{ app_version }}"></script>{% endjavascripts %}
+    %}<script type="text/javascript" src="{{ asset_url }}?{{ sf_version }}"></script>{% endjavascripts %}
     <link href="{{ asset('/bundles/appadmin/ie/bootstrap-pie.css') }}"  rel="stylesheet" media="screen" />
 <![endif]-->
 <!--[if IE 7]><link href="{{ asset('/bundles/appadmin/ie/bootstrap-ie7.css') }}"  rel="stylesheet" media="screen" /><![endif]-->

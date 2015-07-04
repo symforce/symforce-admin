@@ -2,5 +2,5 @@
 
 {% block content_header_more %}
     {{ parent() }}
-    <li>logged in as <strong>{{ sf.user ? sf.user.username : 'Anonymous' }}</strong> - <a href="{{ path( app_param('sf_admin.route.logout_path') ) }}">Logout</a></li>
+    <li>logged in as <strong>{{ sf.user ? sf.user.username : 'Anonymous' }}</strong> - <a href="{{ path( sf_param('sf_admin.route.logout_path') ) }}">Logout</a></li>
 {% endblock %}
