@@ -5,7 +5,7 @@
         <caption> {{ group.label | trans({}, sf_domain )  }} </caption>
         {% for entity_name, item in group.getChildren() %}
             {% if sf_auth(entity_name) %}
-                {% set admin = app_admin(entity_name) %}
+                {% set admin = sf_admin(entity_name) %}
                     <tr>
                         <td> 
                             {% if item.icon %}
@@ -42,7 +42,7 @@
         <table class="table table-bordered">
             <caption>待办任务</caption>
             {% for admin_name, steps in duty_tasks %}
-                {% set admin = app_admin(admin_name) %}
+                {% set admin = sf_admin(admin_name) %}
                 <tr>
                     <td>
                         {{ admin.label }}:
