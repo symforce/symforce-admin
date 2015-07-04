@@ -5,7 +5,7 @@ namespace Symforce\AdminBundle\Compiler\MetaType\Form ;
 use Symforce\AdminBundle\Compiler\Annotation\FormType ;
 
 /**
- * @FormType("appworkflow", orm="integer,string")
+ * @FormType("sf_workflow", orm="integer,string")
  */
 class Workflow extends Element {
     
@@ -14,7 +14,7 @@ class Workflow extends Element {
 
         $options['choices'] = $this->compilePhpCode( '$this->getWorkflowFormChoices($object)' ) ;
         
-        $options['admin_class']   = $this->admin_object->class_name ;
+        $options['sf_admin_class']   = $this->admin_object->class_name ;
         $options['expanded']    = true ;
         $options['widget_type'] = 'inline' ;
         

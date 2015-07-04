@@ -84,7 +84,7 @@ class Group extends \Symforce\AdminBundle\Compiler\MetaType\Type {
     public function compileForm($action, $parent_builder, $admin , $object, \Symforce\AdminBundle\Compiler\MetaType\PropertyContainer $property_container, \Symforce\AdminBundle\Compiler\Generator\PhpWriter $writer, $parent_property = null){
             $this_builder   = $parent_builder . '_' . $this->id ;
             $options    = array(
-                "sf_form_type"  => "appgroup" ,
+                "sf_form_type"  => "sf_group" ,
                 "label" =>  $this->label->getPhpCode() ,
             );
             

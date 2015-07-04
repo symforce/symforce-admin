@@ -43,19 +43,19 @@ final class AdminLoader {
      */
     private $cache_expired_time = 0 ;
 
-    public function __construct(ContainerInterface $app, $cache_path , $expired_file ) {
-        $this->container    = $app ;
-        $this->sf_domain   = $app->getParameter('sf.admin.domain') ;
+    public function __construct(ContainerInterface $container, $cache_path , $expired_file ) {
+        $this->container    = $container ;
+        $this->sf_domain   = $container->getParameter('sf.admin.domain') ;
         $cache_expired = $this->isCacheExpired($cache_path, $expired_file) ; 
         
-        $is_debug   = $app->getParameter('kernel.debug')  ;
+        $is_debug   = $container->getParameter('kernel.debug')  ;
         if( $cache_expired && 'cli' !== PHP_SAPI && !$is_debug ) {
             \Dev::dump($cache_expired);
             exit;
         }
         
         if( $cache_expired ) {
-            $app->get('sf.admin.generator') ;
+            $container->get('sf.admin.generator') ;
         }
         
         $cache  = include( $cache_path ) ;
@@ -171,7 +171,7 @@ final class AdminLoader {
 
     /** @return array */
     public function getAdminTree(){
-        return $this->_loader_cache['admin_tree'] ;
+        return $this->_loader_cache['sf_admin_tree'] ;
     }
 
     /** @return array */

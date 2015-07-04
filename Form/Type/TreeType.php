@@ -51,7 +51,7 @@ class TreeType extends AbstractType {
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
         $loader = $this->container->get('sf.admin.loader') ;
-        $view->vars['admin']   = $loader->getAdminByClass( $options['admin_class'] ) ;
+        $view->vars['admin']   = $loader->getAdminByClass( $options['sf_admin_class'] ) ;
         $view->vars['target_admin']   =  $loader->getAdminByClass( $options['target_class'] ) ;
         if( $options['copy_property'] && isset($view->vars['form']->parent[ $options['copy_property'] ]) ) {
             $view->vars['copy_property']   =  array( $options['copy_property'] , $view->vars['form']->parent[ $options['copy_property'] ]->vars['id'] ) ;
@@ -68,7 +68,7 @@ class TreeType extends AbstractType {
         ));
         
         $resolver->setRequired(array(
-             'admin_class' ,
+             'sf_admin_class' ,
              'admin_property' ,
              'target_class' 
         ));

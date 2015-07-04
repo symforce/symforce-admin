@@ -5,7 +5,7 @@ namespace Symforce\AdminBundle\Compiler\MetaType\Form ;
 use Symforce\AdminBundle\Compiler\Annotation\FormType ;
 
 /**
- * @FormType("apppassword", guess="password,passwd")
+ * @FormType("sf_password", guess="password,passwd")
  */
 class Password extends Text {
     

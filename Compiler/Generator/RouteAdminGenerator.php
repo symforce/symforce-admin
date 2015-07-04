@@ -196,7 +196,7 @@ class RouteAdminGenerator {
         
         $path[] = $admin_name ;
         if( $this->admin->tree ) {
-            $id = 'admin_tree_parent' ;
+            $id = 'sf_admin_tree_parent' ;
             $requirement[$id]   = '\d+' ;
             $generator->writeln(sprintf('if( !isset($options["%s"]) ) $options["%s"] = 0;', $id, $id));
             $path[] = sprintf('{%s}', $id) ;

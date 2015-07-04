@@ -228,18 +228,18 @@ abstract class ActionCache {
             if( $this->isRequestObject() ) {
                 $parent = $this->admin->getReflectionProperty( $this->admin->tree['parent'] )->getValue( $object ) ;
                 if( $parent ) {
-                    $options['admin_tree_parent']   = $this->admin->getReflectionProperty( $this->admin->getPropertyIdName() )->getValue( $parent );
+                    $options['sf_admin_tree_parent']   = $this->admin->getReflectionProperty( $this->admin->getPropertyIdName() )->getValue( $parent );
                 } else {
-                    $options['admin_tree_parent']   = 0 ;
+                    $options['sf_admin_tree_parent']   = 0 ;
                 }
                 // todo check if it match $this->admin->getTreeObjectId(
             } else {
                 if( $object ) {
-                    $options['admin_tree_parent']   = $this->admin->getReflectionProperty( $this->admin->getPropertyIdName() )->getValue( $object );
+                    $options['sf_admin_tree_parent']   = $this->admin->getReflectionProperty( $this->admin->getPropertyIdName() )->getValue( $object );
                 } else if( 0 === $object) {
-                    $options['admin_tree_parent']   = 0 ;
+                    $options['sf_admin_tree_parent']   = 0 ;
                 } else {
-                    $options['admin_tree_parent']   = $this->admin->getTreeObjectId() ;
+                    $options['sf_admin_tree_parent']   = $this->admin->getTreeObjectId() ;
                 }
             }
         }

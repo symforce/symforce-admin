@@ -5,7 +5,7 @@ namespace Symforce\AdminBundle\Compiler\MetaType\Form ;
 use Symforce\AdminBundle\Compiler\Annotation\FormType ;
 
 /**
- * @FormType("apphtml")
+ * @FormType("sf_html")
  */
 class Html extends Textarea {
     
@@ -65,7 +65,7 @@ class Html extends Textarea {
         
         $options    = parent::getFormOptions() ; 
         
-        $options['admin_class']  = $this->admin_object->class_name ;
+        $options['sf_admin_class']  = $this->admin_object->class_name ;
         $options['admin_property']  = $this->class_property ;
         $options['admin_name']  = $this->admin_object->name ;
         $options['admin_id']  = $this->admin_object->property_id_name ;

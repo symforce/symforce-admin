@@ -4,7 +4,7 @@ namespace Symforce\AdminBundle\Compiler\MetaType\Form ;
 
 use Symforce\AdminBundle\Compiler\Annotation\FormType ;
 /**
- * @FormType("apprange", orm="integer,bigint,float,decimal")
+ * @FormType("sf_range", orm="integer,bigint,float,decimal")
  */
 class Range extends Integer {
    

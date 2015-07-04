@@ -62,7 +62,7 @@ class DashboardController extends Controller
         $this->getDutyCount($tree, $duty_tasks, $loader );
        
         return array(
-            'apploader' => $loader ,
+            'sf_admin_loader' => $loader ,
             'admin' => null ,
             'action' => null ,
             'duty_tasks' => $duty_tasks ,

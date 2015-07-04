@@ -15,12 +15,12 @@ class SymforceAdminBundle extends Bundle
     /**
      * {@inheritDoc}
      */
-    public function registerCommands(Application $application)
+    public function registerCommands(Application $_application)
     {
-        $application->add(new Command\SetupCommand());
-        $application->add(new Command\DumpCommand());
-        $application->add(new Command\WorkflowCommand());
-        $application->add(new Command\FileCommand());
+        $_application->add(new Command\SetupCommand());
+        $_application->add(new Command\DumpCommand());
+        $_application->add(new Command\WorkflowCommand());
+        $_application->add(new Command\FileCommand());
     }
 
 

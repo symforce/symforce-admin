@@ -5,7 +5,7 @@ namespace Symforce\AdminBundle\Compiler\MetaType\Form ;
 use Symforce\AdminBundle\Compiler\Annotation\FormType ;
 
 /**
- * @FormType("appdatetime", orm="string,datetime,date,time", default="detetime" )
+ * @FormType("sf_datetime", orm="string,datetime,date,time", default="detetime" )
  */
 class Datetime extends Element {
     

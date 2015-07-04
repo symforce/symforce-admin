@@ -95,7 +95,7 @@ trait AdminMenu {
         $factory    = $this->getService('knp_menu.factory') ;
         $this->tree_menu = $factory->createItem('root', array(
                 "childrenAttributes"    => array(
-                    "class"    => "admin_tree_root" ,
+                    "class"    => "sf_admin_tree_root" ,
                 ) ,
             )) ;
         $object = $this->getTreeObject() ;

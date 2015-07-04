@@ -5,7 +5,7 @@ namespace Symforce\AdminBundle\Compiler\MetaType\Form ;
 use Symforce\AdminBundle\Compiler\Annotation\FormType ;
 
 /**
- * @FormType("appfile", map="Symforce\AdminBundle\Entity\File")
+ * @FormType("sf_file", map="Symforce\AdminBundle\Entity\File")
  */
 class File extends Element {
     
@@ -54,7 +54,7 @@ class File extends Element {
         
         $options    = parent::getFormOptions() ; 
         
-        $options['admin_class']  = $this->admin_object->class_name ;
+        $options['sf_admin_class']  = $this->admin_object->class_name ;
         $options['admin_property']  = $this->class_property ;
         $options['admin_name']  = $this->admin_object->name ; 
         $options['admin_id']  = $this->admin_object->property_id_name ;

@@ -79,7 +79,7 @@ class WorkflowType extends ChoiceType {
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         parent::setDefaultOptions($resolver) ;
         $resolver->setRequired( array(
-             'admin_class' ,
+             'sf_admin_class' ,
         ));
     }
 } 

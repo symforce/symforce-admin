@@ -85,7 +85,7 @@ class PageActionCache extends ActionCache  {
         }
         
         return $controller->render( $this->template , array(
-            'apploader' =>  $controller->get('sf.admin.loader') , 
+            'sf_admin_loader' =>  $controller->get('sf.admin.loader') , 
             'admin' => $this->admin ,
             'page_admin' => $page_admin ,
             'action' => $this ,

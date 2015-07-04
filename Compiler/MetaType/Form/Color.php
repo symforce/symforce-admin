@@ -5,7 +5,7 @@ namespace Symforce\AdminBundle\Compiler\MetaType\Form ;
 use Symforce\AdminBundle\Compiler\Annotation\FormType ;
 
 /**
- * @FormType("appcolor", orm="string")
+ * @FormType("sf_color", orm="string")
  */
 class Color extends Element {
     

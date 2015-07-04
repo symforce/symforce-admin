@@ -5,7 +5,7 @@ namespace Symforce\AdminBundle\Compiler\MetaType\Form ;
 use Symforce\AdminBundle\Compiler\Annotation\FormType ;
 
 /**
- * @FormType("apptree", map="*")
+ * @FormType("sf_tree", map="*")
  */
 class Tree extends Element {
     
@@ -21,7 +21,7 @@ class Tree extends Element {
         public function getFormOptions() {
         $options    = parent::getFormOptions() ;
         
-        $options['admin_class']  = $this->admin_object->class_name ;
+        $options['sf_admin_class']  = $this->admin_object->class_name ;
         $options['admin_property']  = $this->class_property ;
         $options['copy_property']  = $this->copy_property ;
         

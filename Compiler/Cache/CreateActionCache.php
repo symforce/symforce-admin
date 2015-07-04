@@ -69,7 +69,7 @@ abstract class CreateActionCache extends ActionCache {
         }
 
         return $controller->render( $this->template , array(
-            'apploader' =>  $controller->get('sf.admin.loader')  ,
+            'sf_admin_loader' =>  $controller->get('sf.admin.loader')  ,
             'admin' => $this->admin ,
             'action' => $this ,
             'form'  => $form->createView() ,

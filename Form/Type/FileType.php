@@ -54,7 +54,7 @@ class FileType extends AbstractType {
                 $data   = $data['url'] ;
             }
             
-            $admin  = $this->container->get('sf.admin.loader')->getAdminByClass( $options['admin_class'] ) ;
+            $admin  = $this->container->get('sf.admin.loader')->getAdminByClass( $options['sf_admin_class'] ) ;
             
             $oldValue = $admin->getReflectionProperty( $options['admin_property'])->getValue($object) ;
 
@@ -132,7 +132,7 @@ class FileType extends AbstractType {
         ));
         
         $resolver->setRequired(array(
-             'admin_class' ,
+             'sf_admin_class' ,
              'admin_property' ,
              'admin_name' , 
              'admin_id' , 

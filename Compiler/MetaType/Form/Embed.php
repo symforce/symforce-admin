@@ -5,7 +5,7 @@ namespace Symforce\AdminBundle\Compiler\MetaType\Form ;
 use Symforce\AdminBundle\Compiler\Annotation\FormType ;
 
 /**
- * @FormType("appembed", map="*")
+ * @FormType("sf_embed", map="*")
  */
 class Embed extends Element {
     

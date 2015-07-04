@@ -48,9 +48,9 @@ abstract class WebPageCache {
         $this->loadAppAdminRoute() ;
     }
     
-    public function setContainer(ContainerInterface $app){
-        $this->container = $app ;
-        $app->get('sf.admin.compiler')->set( \Symforce\AdminBundle\Compiler\Loader\Compiler::STAT_PASS );
+    public function setContainer(ContainerInterface $container){
+        $this->container = $container ;
+        $container->get('sf.admin.compiler')->set( \Symforce\AdminBundle\Compiler\Loader\Compiler::STAT_PASS );
     }
     
     public function getOption( $name ) {

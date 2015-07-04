@@ -24,7 +24,7 @@ class Generator {
     /**
      * @var ContainerInterface 
      */
-    protected $app ;
+    protected $container ;
 
     /** @var MetaFormFactory */
     public $form_factory ;
@@ -84,27 +84,27 @@ class Generator {
     
     private $loader_cache = array() ;
     
-    public $admin_tree_order   = array() ;
-    public $admin_tree  = array() ;
+    public $sf_admin_tree_order   = array() ;
+    public $sf_admin_tree  = array() ;
     
-    public function __construct( ContainerInterface $app, array $resources , array $menu_config , array $dashboard_config, $admin_cache_path, $admin_expired_file ){
-        $this->app  = $app ;
-        $app->get('sf.admin.compiler')->set( \Symforce\AdminBundle\Compiler\Loader\Compiler::STAT_ADMIN );
+    public function __construct( ContainerInterface $container, array $resources , array $menu_config , array $dashboard_config, $admin_cache_path, $admin_expired_file ){
+        $this->container  = $container ;
+        $container->get('sf.admin.compiler')->set( \Symforce\AdminBundle\Compiler\Loader\Compiler::STAT_ADMIN );
         
-        $this->sf_domain = $app->getParameter('sf.admin.domain') ;
-        $this->form_factory   = $app->get('sf.form.factory') ;
+        $this->sf_domain = $container->getParameter('sf.admin.domain') ;
+        $this->form_factory   = $container->get('sf.form.factory') ;
         $this->form_factory->setGenerator( $this ) ;
         
         // echo "\n",__FILE__, ":", __LINE__, "\n";  exit;
         
-        $this->trans_sf_node = $this->getTransNodeByPath( $this->sf_domain , 'app') ;
-        $this->trans_sf_node->set('admin.brand', $this->app->getParameter('sf.admin.brand') ) ;
-        if( $this->app->hasParameter('sf.admin.title') ) {
-            $this->trans_sf_node->set('admin.title', $this->app->getParameter('sf.admin.title') ) ;
+        $this->trans_sf_node = $this->getTransNodeByPath( $this->sf_domain , 'sf') ;
+        $this->trans_sf_node->set('admin.brand', $this->container->getParameter('sf.admin.brand') ) ;
+        if( $this->container->hasParameter('sf.admin.title') ) {
+            $this->trans_sf_node->set('admin.title', $this->container->getParameter('sf.admin.title') ) ;
         } 
         
-        $doctrine  = $app->get('doctrine') ;
-        $reader    = $app->get('annotation_reader') ;
+        $doctrine  = $container->get('doctrine') ;
+        $reader    = $container->get('annotation_reader') ;
         $admin_maps = array() ;
         foreach($resources as $bundle_name =>  $bundle_classes ) {
             foreach($bundle_classes as $class_name ) {
@@ -178,7 +178,7 @@ class Generator {
         // \Dev::dump($this->column_config);
         
         $this->addLoaderCache('entity_alias', $this->admin_alias) ;
-        $this->addLoaderCache('admin_tree', $this->admin_tree) ;
+        $this->addLoaderCache('sf_admin_tree', $this->sf_admin_tree) ;
         $this->addLoaderCache('admin_maps', $admin_maps) ; 
         $this->addLoaderCache('admin_unmaps', $this->admin_unmaps) ;
         
@@ -197,7 +197,7 @@ class Generator {
     
         $this->generateExpireCheckCache( $admin_expired_file ) ; 
         
-        $locale = $this->app->getParameter('locale')  ;
+        $locale = $this->container->getParameter('locale')  ;
         $tr_cache   = array() ;
         foreach($this->trans_generators as $it) {
             $it->flush( $this, $locale, $tr_cache ) ; 
@@ -208,7 +208,7 @@ class Generator {
              } 
         }, $tr_cache ); 
         
-        $app->get('sf.admin.compiler')->set( \Symforce\AdminBundle\Compiler\Loader\Compiler::STAT_OK );
+        $container->get('sf.admin.compiler')->set( \Symforce\AdminBundle\Compiler\Loader\Compiler::STAT_OK );
     }
     
     private function sortAdminTree( $parent, array & $node ,  array & $attached, $check_inversed ){
@@ -294,7 +294,7 @@ class Generator {
             $this->setAdminTreePath( $root_name, $tree[$root_name], array() ) ;
         }
         
-        $this->admin_tree   = $tree ;
+        $this->sf_admin_tree   = $tree ;
         
         foreach($this->admin_generators as  $object ) {
             if( !isset( $attached[$object->name]) ) {
@@ -316,7 +316,7 @@ class Generator {
     }
     
     private function compileHierarchyRoles() {
-        $roles  = $this->app->getParameter('security.role_hierarchy.roles');
+        $roles  = $this->container->getParameter('security.role_hierarchy.roles');
         
         $get    = null ;
         $get    = function($role, array & $visited ) use( & $roles, & $get ){
@@ -385,7 +385,7 @@ class Generator {
      * @return \Doctrine\ORM\Mapping\ClassMetadata
      */
     public function getMetadataForClass( $class_name ) {
-        $om     = $this->app->get('doctrine')->getManagerForClass( $class_name ) ;
+        $om     = $this->container->get('doctrine')->getManagerForClass( $class_name ) ;
         if( $om ) {
             return $om->getClassMetadata( $class_name ) ;
         }
@@ -420,11 +420,11 @@ class Generator {
     }
 
     public function get( $name ) {
-        return $this->app->get( $name ) ;
+        return $this->container->get( $name ) ;
     }
     
     public function getParameter( $name ) {
-        return $this->app->getParameter($name) ;
+        return $this->container->getParameter($name) ;
     }
     
     public function getAppDomain(){
@@ -435,7 +435,7 @@ class Generator {
      * @return string
      */
     public function getTemplateCacheDir() {
-        return $this->app->getParameter('kernel.root_dir') . '/../src/App/AdminBundle/Resources/views/Cache/' ;
+        return $this->container->getParameter('kernel.root_dir') . '/../src/App/AdminBundle/Resources/views/Cache/' ;
     }
     
     /**
@@ -543,10 +543,10 @@ class Generator {
     
     public function trans( $path , $options = array(), $domain = null ){
         if( !$domain ) {
-            $domain = $this->app->getParameter('sf.admin.domain') ;
+            $domain = $this->container->getParameter('sf.admin.domain') ;
         }
-        $locale =  $this->app->getParameter('locale') ;
-        $tr = $this->app->get('translator') ;
+        $locale =  $this->container->getParameter('locale') ;
+        $tr = $this->container->get('translator') ;
         return $tr->trans( $path, $options, $domain , $locale ) ;
     }
     
@@ -579,7 +579,7 @@ class Generator {
     }
     
     public function getDoctrineConfig() {
-        $om     = $this->app->get('doctrine')->getManager() ;
+        $om     = $this->container->get('doctrine')->getManager() ;
         foreach($this->doctrine_config as $class => & $config ) {
             if( !isset($config['id']) ) {
                 $meta   = $om->getClassMetadata($class) ;
@@ -649,10 +649,10 @@ class Generator {
     private $_twig_locator   = null ;
     public function loadTwigTemplatePath( $path ) {
         if( null === $this->_twig_parser ) {
-            $this->_twig_parser   = $this->app->get('templating.name_parser');
+            $this->_twig_parser   = $this->container->get('templating.name_parser');
         }
         if( null === $this->_twig_locator  ) {
-            $this->_twig_locator   = $this->app->get('templating.locator');
+            $this->_twig_locator   = $this->container->get('templating.locator');
         }
         return $this->_twig_locator->locate( $this->_twig_parser ->parse( $path ) ); 
     }
@@ -671,7 +671,7 @@ class Generator {
     
     private function generateExpireCheckCache( $expire_check_path ){
         
-        $root_dir   = dirname( $this->app->getParameter('kernel.root_dir') ) ;
+        $root_dir   = dirname( $this->container->getParameter('kernel.root_dir') ) ;
         $fs = new \Symfony\Component\Filesystem\Filesystem() ;
         
         $bundles    = array() ;
@@ -702,7 +702,7 @@ class Generator {
             }
         } 
         $default_resources = array(
-            'app/config/app/admin.yml' ,
+            'app/config/symforce/admin.yml' ,
         );
         foreach($default_resources as $file ) {
             $dirs[0][$file] = filemtime( $root_dir . '/' . $file ) ; 
