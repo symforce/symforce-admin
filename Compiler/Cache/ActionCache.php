@@ -141,7 +141,7 @@ abstract class ActionCache {
         return $this->tr_domain ;
     }
     
-    public function getAppDomain(){
+    public function getSymforceDomain(){
         return $this->sf_domain ;
     }
     

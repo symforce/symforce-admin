@@ -13,7 +13,7 @@ use Symforce\AdminBundle\Compiler\Generator;
  */
 class Owner extends EntityAware {
     
-    const OWNER_ANNOT_CLASS = 'App\\AdminBundle\\Compiler\\Annotation\\Owner' ;
+    const OWNER_ANNOT_CLASS = 'Symforce\\AdminBundle\\Compiler\\Annotation\\Owner' ;
     const USER_ENTITY_CLASS   = 'Symforce\UserBundle\Entity\User' ;
     
     public $owner_property ;

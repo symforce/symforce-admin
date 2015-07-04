@@ -492,7 +492,7 @@ class Generator {
         }
         
         $this->admin_unmaps[ $admin->_compile_class_name ] = $admin->class_name ;
-        if( 'App\\AdminBundle\\Compiler\\Cache\\AdminCache' !== $admin->parent_class_name ) {
+        if( 'Symforce\\AdminBundle\\Compiler\\Cache\\AdminCache' !== $admin->parent_class_name ) {
             if( isset($this->admin_unmaps[ $admin->parent_class_name ]) ) {
                 throw new \Exception(sprintf("%s,%s,%s", $admin->parent_class_name, $this->admin_unmaps[ $admin->parent_class_name ], $admin->class_name ));
             }
