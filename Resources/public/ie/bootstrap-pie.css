@@ -41,6 +41,6 @@ li.first_last_child,
 .sf-addon,
 .input-group-addon
 {
-    behavior:url(/bundles/appadmin/ie/css3pie/PIE.htc);
+    behavior:url(/bundles/symforceadmin/ie/css3pie/PIE.htc);
     position: relative;
 }

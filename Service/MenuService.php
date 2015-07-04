@@ -92,7 +92,7 @@ class MenuService {
 
         $id     = 'sf_menu_group_' . $group->slug ;
         
-        $writer->writeln( sprintf('<!-- app menu group( %s ) -->', $group->name ));
+        $writer->writeln( sprintf('<!-- sf  menu group( %s ) -->', $group->name ));
         if( $group->group_css ) {
             $group_css  = $group->group_css  ;
             $child_css  = $group->child_css  ;
@@ -113,7 +113,7 @@ class MenuService {
 
         $writer->writeln( sprintf('</%s>', $group->group_tag ));
         $writer->writeln( sprintf('</div>'));
-        $writer->writeln( sprintf('<!-- /app menu group( %s ) -->', $group->name ));
+        $writer->writeln( sprintf('<!-- /sf  menu group( %s ) -->', $group->name ));
 
         \Dev::write_file($path,  $writer->getContent() ) ;
     }

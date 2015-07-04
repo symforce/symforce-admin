@@ -1,10 +1,10 @@
 {% extends "SymforceAdminBundle::layout.html.twig" %}
 
-{% macro render_dashboard_admin(group_name, group, app_domain) %}
+{% macro render_dashboard_admin(group_name, group, sf_domain) %}
     <table class="table table-bordered">
-        <caption> {{ group.label | trans({}, app_domain )  }} </caption>
+        <caption> {{ group.label | trans({}, sf_domain )  }} </caption>
         {% for entity_name, item in group.getChildren() %}
-            {% if app_auth(entity_name) %}
+            {% if sf_auth(entity_name) %}
                 {% set admin = app_admin(entity_name) %}
                     <tr>
                         <td> 
@@ -33,7 +33,7 @@
     <div class="col-xs-6">
         {% for group_name, group in dashboard_groups %}
         {# if not(group.rightside) #}
-            {{ _self.render_dashboard_admin(group_name, group, app_domain)}}
+            {{ _self.render_dashboard_admin(group_name, group, sf_domain)}}
         {# endif #}
         {% endfor %}
     </div>

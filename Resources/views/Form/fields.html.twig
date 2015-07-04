@@ -50,7 +50,7 @@
 {% endspaceless %}
 {% endblock form_widget_simple %}
 
-{# app form type #}
+{# sf form type #}
         
 {% block sf_group_widget %}
     <fieldset>
@@ -219,8 +219,8 @@
                         url: '{{ path( 'sf_filemanager', { "admin_name": admin_name , "field_name": name, "entity_id": attribute(form.parent.vars.value, admin_id ) | number_format }) }}' 
                     } ,
                     external_plugins: {
-                        {# "advtextcolor": "{{ asset('/bundles/appadmin/tinymce_plugins/advtextcolor/plugin.min.js') }}", #}
-                        "filemanager": "{{ asset('/bundles/appadmin/tinymce_plugins/filemanager/plugin.min.js') }}"
+                        {# "advtextcolor": "{{ asset('/bundles/symforceadmin/tinymce_plugins/advtextcolor/plugin.min.js') }}", #}
+                        "filemanager": "{{ asset('/bundles/symforceadmin/tinymce_plugins/filemanager/plugin.min.js') }}"
                     } ,
                     language: '{{ sf.versionrequest.locale }}' ,
                     selector:'#{{ id }}' ,
@@ -245,7 +245,7 @@
                         this.getDoc().body.style.fontSize = '14px';
                     });
                 };
-                tinymce.baseURL = '{{ web_assets_dir ~ '/bundles/appadmin/tinymce' }}' ;
+                tinymce.baseURL = '{{ web_assets_dir ~ '/bundles/symforceadmin/tinymce' }}' ;
                 tinymce.suffix = '.min' ;
                 tinymce.init(options);
             })({{ html_options | json_encode | raw }});
