@@ -82,9 +82,9 @@ class AppAdminExtension extends Extension
          $route_loader   = $container->getDefinition('sf.route.loader') ;
          
          $cache_dir = $container->getParameter('kernel.cache_dir') ;
-         $admin_cache_file = $cache_dir . '/AppLoaderAdminCache.php' ;
-         $admin_expired_file = $cache_dir . '/AppLoaderExpiredCache.php' ;
-         $admin_route_file = $cache_dir . '/AppLoaderRouteCache.php' ;
+         $admin_cache_file = $cache_dir . '/SymforceLoaderAdminCache.php' ;
+         $admin_expired_file = $cache_dir . '/SymforceLoaderExpiredCache.php' ;
+         $admin_route_file = $cache_dir . '/SymforceLoaderRouteCache.php' ;
          if( isset($configs['cache']) ) {
 
               unset($configs['cache']) ;
