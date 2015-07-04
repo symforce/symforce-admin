@@ -143,7 +143,7 @@ final class AdminLoader {
         return $this->container->getParameter('sf.admin.debug') ;
     }
     
-    public function getAppDomain() {
+    public function getSymforceDomain() {
         return $this->sf_domain ;
     }
     

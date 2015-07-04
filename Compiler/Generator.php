@@ -427,7 +427,7 @@ class Generator {
         return $this->container->getParameter($name) ;
     }
     
-    public function getAppDomain(){
+    public function getSymforceDomain(){
         return $this->sf_domain ;
     }
     

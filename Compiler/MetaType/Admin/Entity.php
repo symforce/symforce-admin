@@ -220,7 +220,7 @@ class Entity extends \Symforce\AdminBundle\Compiler\MetaType\Type {
         if( null === $this->tr_domain ) {
              $this->tr_domain    = $this->bundle_name ;
         }
-        $this->sf_domain   = $gen->getAppDomain() ;
+        $this->sf_domain   = $gen->getSymforceDomain() ;
         
         if( isset($cache->class_annotations[self::ANNOT_TREE_CLASS]) ) {
             // not work for yml/xml,  because the private stof_doctrine_extensions.listener.tree service 
