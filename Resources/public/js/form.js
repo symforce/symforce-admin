@@ -170,10 +170,10 @@ var SymforceFormDynamic = (function(){
                 type1['integer'](_this, _this.dom.find('input') ) ;
             };
             var type2 = {
-                appworkflow: 'radio' ,
-                appentity:'select' ,
-                apphtml:'html' ,
-                appowner:'select' ,
+                sf_workflow: 'radio' ,
+                sf_entity:'select' ,
+                sf_html:'html' ,
+                sf_owner:'select' ,
                 appdatetime: 'text' 
             };
     

@@ -130,7 +130,7 @@
     {% endblock %}
 {% endblock %}
 
-{% block appimage_widget %}
+{% block sf_image_widget %}
 {% spaceless %}
 <div class="{{ horizontal_input_wrapper_class }}">
     <div class="sf_form_file_box sf_form_image_box sf_form_image_hidden">
@@ -158,7 +158,7 @@
 
 </div>
 {% endspaceless %}
-{% block appimage_javascripts %}
+{% block sf_image_javascripts %}
 <script type="text/javascript">
     new SymforceFormFile( $('#{{ id }}'), {
         value: {{ value | json_encode | raw }} ,
@@ -176,7 +176,7 @@
 {% endblock %}
 
         
-{% block appfile_widget %}
+{% block sf_file_widget %}
     {% spaceless %}
     <div class="{{ horizontal_input_wrapper_class }}">
         <div class="sf_form_file_box">
@@ -189,7 +189,7 @@
 
     </div>
     {% endspaceless %}
-    {% block appfile_javascripts %}
+    {% block sf_file_javascripts %}
         <script type="text/javascript">
             new SymforceFormFile( $('#{{ id }}'), {
                 value: {{ value | json_encode | raw }} ,
@@ -204,12 +204,12 @@
     {% endblock %}
 {% endblock %}
 
-{% block apphtml_widget %}
+{% block sf_html_widget %}
         
     {% set required = false %}
     {{ block('textarea_widget',  { attr:{ "required": false } } ) }}
       
-    {% block apphtml_javascripts %}
+    {% block sf_html_javascripts %}
         <script type="text/javascript">
             (function( html_options ) {
                 var options = {
@@ -255,7 +255,7 @@
 {% endblock %}
 
         
-{% block appentity_widget %}
+{% block sf_entity_widget %}
     {{ block('choice_widget') }}
 {% endblock %}
         
@@ -267,19 +267,19 @@
     {% endif %}
 {% endblock %}
 
-{% block appworkflow_widget %}
+{% block sf_workflow_widget %}
     {{ block('choice_widget') }}
 {% endblock %}
        
-{% block appowner_widget %}
+{% block sf_owner_widget %}
     {{ block('choice_widget') }}
 {% endblock %}
 
-{% block appview_widget %}
-    {% set appview_admin = sf_admin_class(_object) %}
-    {% import appview_admin.template as appview_admin_macro %}
+{% block sf_view_widget %}
+    {% set sf_view_admin = sf_admin_class(_object) %}
+    {% import sf_view_admin.template as sf_view_admin_macro %}
     <div class="app-form-view"> 
-        {{ attribute(appview_admin_macro, "macro_value_"  ~ property_name , [_object] ) }}
+        {{ attribute(sf_view_admin_macro, "macro_value_"  ~ property_name , [_object] ) }}
     </div>
 {% endblock %}
         

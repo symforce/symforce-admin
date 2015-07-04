@@ -47,7 +47,7 @@ trait AdminForm {
                     if( $_options ) {
                         $options['label'] = $_options['label']; 
                     }
-                    $builder->add( $property_name, 'appview', $options ) ;
+                    $builder->add( $property_name, 'sf_view', $options ) ;
                     return ;
                 }
                 if( ! $editable ) {
@@ -58,7 +58,7 @@ trait AdminForm {
         $options    = $admin->getFormBuilderOption( $property_name, $action, $object ) ;
         $type       = $options['sf_form_type'] ;
         if( isset($options['read_only']) && $options['read_only'] ) {
-            if( in_array($type, array('appowner', 'appentity', 'appworkflow', 'choice', 'checkbox', 'appfile', 'appimage', 'apphtml', 'money' )) ) {
+            if( in_array($type, array('sf_owner', 'sf_entity', 'sf_workflow', 'choice', 'checkbox', 'sf_file', 'sf_image', 'sf_html', 'money' )) ) {
                 $options    = array(
                     
                 ) ;
@@ -66,7 +66,7 @@ trait AdminForm {
                 if( $_options ) {
                     $options['label'] = $_options['label']; 
                 }
-                $builder->add( $property_name, 'appview', $options ) ;
+                $builder->add( $property_name, 'sf_view', $options ) ;
                 return ;
             }
         }
@@ -130,7 +130,7 @@ trait AdminForm {
         if( null === $type ) {
             $type   = $options['sf_form_type'] ;
         } else {
-            if( $type === 'appview' ) {
+            if( $type === 'sf_view' ) {
                 $options    = array(
                     'label' => $options['label'] ,
                 );

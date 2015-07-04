@@ -122,8 +122,7 @@ abstract class WebPageCache {
         return $this->router->generate( $cache['name'], $option ) ;
     }
     
-    
-    public function appPathWithObject($name, $object, array $options = array() ){
+    public function generateRoutePathWithObject($name, $object, array $options = array() ){
         if( null === $this->loader ) {
             $this->loader = $this->container->get('sf.admin.loader') ;
             $this->router = $this->container->get('router') ;
@@ -137,7 +136,7 @@ abstract class WebPageCache {
         return $this->router->generate($name, $options ) ;
     }
     
-    public function appPathWithoutObject($name, array $options = array() ){
+    public function generateRoutePathWithoutObject($name, array $options = array() ){
         if( null === $this->loader ) {
             $this->loader = $this->container->get('sf.admin.loader') ;
             $this->router = $this->container->get('router') ;

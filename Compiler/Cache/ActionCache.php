@@ -252,10 +252,10 @@ abstract class ActionCache {
         }
         
         if( $this->isRequestObject() ) {
-            return $this->admin_loader->appPathWithObject( $this->getAdminRouteName() , $object, $options ) ;
+            return $this->admin_loader->generateRoutePathWithObject( $this->getAdminRouteName() , $object, $options ) ;
         }
         
-        return $this->admin_loader->appPathWithoutObject( $this->getAdminRouteName() , $options ) ;
+        return $this->admin_loader->generateRoutePathWithoutObject( $this->getAdminRouteName() , $options ) ;
     }
     
     public function onController(Controller $controller, Request $request) {
@@ -375,7 +375,7 @@ abstract class ActionCache {
             $url    = $referer['path'] . ( isset($referer['query']) ? '?' . $referer['query'] : '' ) ;
         }
         
-        $builder->add('sf_admin_form_referer', 'appreferer', array(
+        $builder->add('sf_admin_form_referer', 'sf_referer', array(
             'referer_url_default'   => $url ,
             'referer_url_route'     => $parameters['_route'] ,
             'referer_url_request'   => $request ,
@@ -383,7 +383,7 @@ abstract class ActionCache {
             'referer_base_url'      => $baseUrl ,
         ));
         
-        $builder->add('sf_admin_form_dynamic', 'appdynamic', array(
+        $builder->add('sf_admin_form_dynamic', 'sf_dynamic', array(
             
         ));
         

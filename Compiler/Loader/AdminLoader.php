@@ -301,18 +301,18 @@ final class AdminLoader {
     
     private $sf_page_service ;
     
-    public function appPathWithObject($name, $object, array $options = array() ){
+    public function generateRoutePathWithObject($name, $object, array $options = array() ){
         if( null === $this->sf_page_service ) {
             $this->sf_page_service = $this->container->get('sf.page.service') ;
         }
-        return $this->sf_page_service->appPathWithObject($name, $object, $options ) ;
+        return $this->sf_page_service->generateRoutePathWithObject($name, $object, $options ) ;
     }
     
-    public function appPathWithoutObject($name, array $options = array() ){
+    public function generateRoutePathWithoutObject($name, array $options = array() ){
         if( null === $this->sf_page_service ) {
             $this->sf_page_service = $this->container->get('sf.page.service') ;
         }
-        return $this->sf_page_service->appPathWithoutObject($name,  $options ) ;
+        return $this->sf_page_service->generateRoutePathWithoutObject($name,  $options ) ;
     }
     
     /**
