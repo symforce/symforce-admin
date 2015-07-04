@@ -228,7 +228,7 @@ class Page extends EntityAware {
             'page_parent_entity' => $this->parent_entity ,
             
             'admin_class' => $this->admin_object->class_name ,
-            'admin_name' => $this->admin_object->name ,
+            'sf_admin_name' => $this->admin_object->name ,
             'route_path' => $this->route_path ,
             'controller' => $this->controller ,
         ) ;

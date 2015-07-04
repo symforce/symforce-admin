@@ -124,8 +124,8 @@ class HtmlType extends TextareaType {
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
-        $view->vars['admin_name']    = $options['admin_name'] ;
-        $view->vars['admin_id']     = $options['admin_id'] ;
+        $view->vars['sf_admin_name']    = $options['sf_admin_name'] ;
+        $view->vars['sf_admin_id']     = $options['sf_admin_id'] ;
         $view->vars['sf_admin_class']    = $options['sf_admin_class'] ;
         $view->vars['sf_admin_property']    = $options['sf_admin_property'] ;
         
@@ -137,8 +137,8 @@ class HtmlType extends TextareaType {
         $resolver->setRequired(array(
              'sf_admin_class' ,
              'sf_admin_property' ,
-             'admin_name' , 
-             'admin_id' , 
+             'sf_admin_name' , 
+             'sf_admin_id' , 
             
              'html_options' ,
         ));

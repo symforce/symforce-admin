@@ -156,7 +156,7 @@ trait AdminWorkflow {
         $status = $this->getObjectWorkflowStatus( $object ) ;
         $id = $this->getId( $object ) ;
         return $this->container->get('router')->generate('sf_admin_workflow_action', array(
-            'admin_name'    => $this->name ,
+            'sf_admin_name'    => $this->name ,
             'target'    => $target ,
             'id'    => $id , 
         ));

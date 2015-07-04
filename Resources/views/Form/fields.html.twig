@@ -438,7 +438,7 @@
                 name: "{{ target_admin.name }}" ,
                 title: "{{ label }}" , 
                 copy_property: {{ copy_property | json_encode | raw }},
-                url: "{{ path('sf_form_tree', {'admin_name': target_admin.name, 'parent_id': 0 , "selected_id": value.id , "deep": 0 }) }}"
+                url: "{{ path('sf_form_tree', {'sf_admin_name': target_admin.name, 'parent_id': 0 , "selected_id": value.id , "deep": 0 }) }}"
             })
         </script>
         

@@ -118,8 +118,8 @@ class FileType extends AbstractType {
     {
         parent::buildView($view, $form, $options) ;
         
-        $view->vars['admin_name']    = $options['admin_name'] ;
-        $view->vars['admin_id']    = $options['admin_id'] ;
+        $view->vars['sf_admin_name']    = $options['sf_admin_name'] ;
+        $view->vars['sf_admin_id']    = $options['sf_admin_id'] ;
         $view->vars['accept_file_type']    = $options['accept_file_type'] ;
         $view->vars['max_file_size']    = $options['max_file_size'] ;
         $view->vars['web_assets_dir'] = $this->container->getParameter('sf.web_assets_dir') ;
@@ -134,8 +134,8 @@ class FileType extends AbstractType {
         $resolver->setRequired(array(
              'sf_admin_class' ,
              'sf_admin_property' ,
-             'admin_name' , 
-             'admin_id' , 
+             'sf_admin_name' , 
+             'sf_admin_id' , 
              'accept_file_type' ,
              'max_file_size' ,
         ));

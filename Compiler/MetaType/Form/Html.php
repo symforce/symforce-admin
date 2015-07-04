@@ -67,8 +67,8 @@ class Html extends Textarea {
         
         $options['sf_admin_class']  = $this->admin_object->class_name ;
         $options['sf_admin_property']  = $this->class_property ;
-        $options['admin_name']  = $this->admin_object->name ;
-        $options['admin_id']  = $this->admin_object->property_id_name ;
+        $options['sf_admin_name']  = $this->admin_object->name ;
+        $options['sf_admin_id']  = $this->admin_object->property_id_name ;
         
         $options['html_options'] = array(
             'image' => $this->image ,

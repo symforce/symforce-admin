@@ -71,7 +71,7 @@ class FormHelperController extends Controller {
                 $id     = $admin->getId( $o ) ;
                 
                 $url =  $this->generateUrl('sf_form_tree', array(
-                    'admin_name'    => $admin->getName() ,
+                    'sf_admin_name'    => $admin->getName() ,
                     'parent_id'    => $id ,
                     'selected_id'  => $selected_id ,
                     'deep'  => $deep + 1 
