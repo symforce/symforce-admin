@@ -1,6 +1,6 @@
 
 
-app:
+sf:
     admin:
         brand: Brand
         dashboard: DashBoard
