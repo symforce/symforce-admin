@@ -1,11 +1,11 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType ;
+namespace Symforce\AdminBundle\Compiler\MetaType ;
 
 abstract class PropertyAbstract extends Type {
 
     /**
-     * @var \App\AdminBundle\Compiler\MetaType\Admin\Entity
+     * @var \Symforce\AdminBundle\Compiler\MetaType\Admin\Entity
      */
     public $admin_object ;
     
@@ -20,16 +20,16 @@ abstract class PropertyAbstract extends Type {
     public $property_container ;
     
     /**
-     * @return \App\AdminBundle\Compiler\Generator\TransGeneratorValue
+     * @return \Symforce\AdminBundle\Compiler\Generator\TransGeneratorValue
      */
     public $label ;
     
     /**
-     * @var \App\AdminBundle\Compiler\Generator\TransGeneratorNode 
+     * @var \Symforce\AdminBundle\Compiler\Generator\TransGeneratorNode 
      */
     public $tr_node ;
     
-    public function __construct(PropertyContainer $property_container, \App\AdminBundle\Compiler\MetaType\Admin\Entity $entity, $property, \App\AdminBundle\Compiler\Annotation\Annotation $annot = null ) {
+    public function __construct(PropertyContainer $property_container, \Symforce\AdminBundle\Compiler\MetaType\Admin\Entity $entity, $property, \Symforce\AdminBundle\Compiler\Annotation\Annotation $annot = null ) {
 
         $this->property_container    = $property_container ;
         $this->class_property   = $property ;
@@ -56,7 +56,7 @@ abstract class PropertyAbstract extends Type {
     
     
     /**
-     * @return \App\AdminBundle\Compiler\MetaType\DoctrineType
+     * @return \Symforce\AdminBundle\Compiler\MetaType\DoctrineType
      */
     public function isDoctrineMappped () {
         return $this->admin_object->isMappedProperty( $this->class_property  ) ;

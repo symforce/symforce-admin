@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Action\Html ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Action\Html ;
 
 /**
  * Description of AbstractTag

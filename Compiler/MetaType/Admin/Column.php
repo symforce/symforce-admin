@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\AdminBundle\Compiler\MetaType\Admin ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Admin ;
 
-use App\AdminBundle\Compiler\Annotation;
-use App\AdminBundle\Compiler\Generator;
+use Symforce\AdminBundle\Compiler\Annotation;
+use Symforce\AdminBundle\Compiler\Generator;
 
 /**
  * Description of Column

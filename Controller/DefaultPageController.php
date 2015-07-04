@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Controller;
+namespace Symforce\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
@@ -15,7 +15,7 @@ class DefaultPageController  extends Controller {
     
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request
-     * @return \App\AdminBundle\Entity\Page
+     * @return \Symforce\AdminBundle\Entity\Page
      */
     protected function getPage(Request $request) {
         $page   = $request->get('_page_object') ;

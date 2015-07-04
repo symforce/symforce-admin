@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Form\Constraints;
+namespace Symforce\AdminBundle\Form\Constraints;
 
 
 use Symfony\Component\Validator\Constraint;
@@ -17,11 +17,11 @@ class CompareValidator implements \Symfony\Component\EventDispatcher\EventSubscr
     private $options ;
     
     /**
-     * @var \App\AdminBundle\Compiler\Cache\AdminCache 
+     * @var \Symforce\AdminBundle\Compiler\Cache\AdminCache 
      */
     private $admin ;
 
-    public function __construct(array $options, \App\AdminBundle\Compiler\Cache\AdminCache $admin ) {
+    public function __construct(array $options, \Symforce\AdminBundle\Compiler\Cache\AdminCache $admin ) {
         $this->options = $options ;
         $this->admin = $admin ;
     }

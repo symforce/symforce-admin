@@ -1,11 +1,11 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Form ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Form ;
 
-class Group extends \App\AdminBundle\Compiler\MetaType\Type {
+class Group extends \Symforce\AdminBundle\Compiler\MetaType\Type {
     
     /**
-     * @var \App\AdminBundle\Compiler\Generator\TransGeneratorValue 
+     * @var \Symforce\AdminBundle\Compiler\Generator\TransGeneratorValue 
      */
     public $label ;
     
@@ -37,7 +37,7 @@ class Group extends \App\AdminBundle\Compiler\MetaType\Type {
         $this->name = $name ;
     }
     
-    public function fixLabel( \App\AdminBundle\Compiler\Generator\TransGeneratorNode $tr, $app_domain ){
+    public function fixLabel( \Symforce\AdminBundle\Compiler\Generator\TransGeneratorNode $tr, $app_domain ){
         $path   = 'group.' . strtolower( $this->id ) ;
         if( $this->name ) {
             $this->label    = $tr->createValue( $path , $this->name ) ;
@@ -81,7 +81,7 @@ class Group extends \App\AdminBundle\Compiler\MetaType\Type {
         $this->position_properties  = null ;
     }
     
-    public function compileForm($action, $parent_builder, $admin , $object, \App\AdminBundle\Compiler\MetaType\PropertyContainer $property_container, \App\AdminBundle\Compiler\Generator\PhpWriter $writer, $parent_property = null){
+    public function compileForm($action, $parent_builder, $admin , $object, \Symforce\AdminBundle\Compiler\MetaType\PropertyContainer $property_container, \Symforce\AdminBundle\Compiler\Generator\PhpWriter $writer, $parent_property = null){
             $this_builder   = $parent_builder . '_' . $this->id ;
             $options    = array(
                 "appform_type"  => "appgroup" ,

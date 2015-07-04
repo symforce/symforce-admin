@@ -1,8 +1,8 @@
 <?php
 
-namespace App\AdminBundle\Compiler\Generator ;
+namespace Symforce\AdminBundle\Compiler\Generator ;
 
-use App\AdminBundle\Compiler\CacheObject ;
+use Symforce\AdminBundle\Compiler\CacheObject ;
 
 /**
  * Description of DashboardGenerator
@@ -11,7 +11,7 @@ use App\AdminBundle\Compiler\CacheObject ;
  */
 class DashboardGenerator {
     
-    public function buildDashboardGroups( \App\AdminBundle\Compiler\Generator $gen , array & $dashboard_config ){
+    public function buildDashboardGroups( \Symforce\AdminBundle\Compiler\Generator $gen , array & $dashboard_config ){
         $default_group_name = $dashboard_config['default_group'] ;
         
         $groups   = array() ;
@@ -44,12 +44,12 @@ class DashboardGenerator {
             }
         }
          
-        foreach($gen->admin_generators as $object ) if( $object instanceof \App\AdminBundle\Compiler\MetaType\Admin\Entity) {
+        foreach($gen->admin_generators as $object ) if( $object instanceof \Symforce\AdminBundle\Compiler\MetaType\Admin\Entity) {
             $item   = $object->dashboard ;
             if( !$item ) {
                 continue ;
             }
-            if( $item instanceof \App\AdminBundle\Compiler\MetaType\Admin\Dashboard ) {
+            if( $item instanceof \Symforce\AdminBundle\Compiler\MetaType\Admin\Dashboard ) {
                 $tr     = $object->tr_node ;
                 
                 $group_name = $item->group ;
@@ -141,7 +141,7 @@ class DashboardGenerator {
         
     }
     
-    public function sort_item(\App\AdminBundle\Compiler\CacheObject\DashboardItem $a, \App\AdminBundle\Compiler\CacheObject\DashboardItem $b) {
+    public function sort_item(\Symforce\AdminBundle\Compiler\CacheObject\DashboardItem $a, \Symforce\AdminBundle\Compiler\CacheObject\DashboardItem $b) {
         return (int) $a->postion > (int) $b->postion ;
     }
     

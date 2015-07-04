@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Form\Type;
+namespace Symforce\AdminBundle\Form\Type;
 
 use Symfony\Component\Form\Extension\Core\Type\TextareaType ;
 
@@ -14,9 +14,9 @@ use Symfony\Component\Form\FormInterface;
 
 
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-//use App\AdminBundle\Form\DataTransformer\HtmlTransformer ;
+//use Symforce\AdminBundle\Form\DataTransformer\HtmlTransformer ;
 
-use App\AdminBundle\Entity\File ;
+use Symforce\AdminBundle\Entity\File ;
 
 class HtmlType extends TextareaType {
       
@@ -59,10 +59,10 @@ class HtmlType extends TextareaType {
             $oldValue = $admin->getReflectionProperty($property_name)->getValue($object) ;
             
             if( $data ) {
-                $pattern = \App\AdminBundle\Entity\File::getRichTextFilesPattern($this->container->getParameter('app.web_assets_dir') ) ;
+                $pattern = \Symforce\AdminBundle\Entity\File::getRichTextFilesPattern($this->container->getParameter('app.web_assets_dir') ) ;
                 preg_match_all( $pattern, $data, $ms, PREG_SET_ORDER );
                 
-                $repo       = $em->getRepository('App\AdminBundle\Entity\File') ;
+                $repo       = $em->getRepository('Symforce\AdminBundle\Entity\File') ;
                 $object_id  = $admin->getId( $object ) ;
                 
                 $is_debug = $this->container->getParameter('kernel.debug') ;

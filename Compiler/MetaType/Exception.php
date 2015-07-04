@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType;
+namespace Symforce\AdminBundle\Compiler\MetaType;
 
 class Exception extends \Exception {
     

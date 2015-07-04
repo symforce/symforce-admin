@@ -1,10 +1,10 @@
 <?php
 
-namespace App\AdminBundle\Entity;
+namespace Symforce\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use App\AdminBundle\Compiler\Annotation as Admin ;
+use Symforce\AdminBundle\Compiler\Annotation as Admin ;
 
 /**
  * @ORM\Entity
@@ -50,7 +50,7 @@ class Menu
     public $title ;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\AdminBundle\Entity\Page", cascade={"detach" } )
+     * @ORM\ManyToOne(targetEntity="Symforce\AdminBundle\Entity\Page", cascade={"detach" } )
      * @Admin\Form(label="页面", required=true, type="tree", show_on={"type":"page,page_route"} )
      * @Admin\Table()
      */
@@ -106,13 +106,13 @@ class Menu
     public $child_icon;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\AdminBundle\Entity\File")
+     * @ORM\OneToOne(targetEntity="Symforce\AdminBundle\Entity\File")
      * @Admin\Form(label="图片", type="image", max_size="1m", image_size="120x130", small_size="12x12", group="css", parent_on={"menu_group":{"use_image":"1"}} )
      */
     public $image ;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\AdminBundle\Entity\File")
+     * @ORM\OneToOne(targetEntity="Symforce\AdminBundle\Entity\File")
      * @Admin\Form(label="子图片", type="image", max_size="1m", image_size="120x130", small_size="12x12", group="css", parent_on={"menu_group":{"use_image":"1"}} , show_on={"has_child":0} )
      */
     public $child_image ;

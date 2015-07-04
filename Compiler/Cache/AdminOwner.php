@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Compiler\Cache ;
+namespace Symforce\AdminBundle\Compiler\Cache ;
 
 trait AdminOwner {
     
@@ -24,7 +24,7 @@ trait AdminOwner {
             throw new \Exception("big error") ;
         }
         if( null === $this->owner_admin ) {
-            $this->owner_admin   = $this->admin_loader->getAdminByClass( \App\AdminBundle\Compiler\MetaType\Admin\Owner::USER_ENTITY_CLASS ) ;
+            $this->owner_admin   = $this->admin_loader->getAdminByClass( \Symforce\AdminBundle\Compiler\MetaType\Admin\Owner::USER_ENTITY_CLASS ) ;
         }
         return $this->owner_admin ;
     }

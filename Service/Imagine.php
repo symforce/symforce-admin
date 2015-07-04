@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Service;
+namespace Symforce\AdminBundle\Service;
 
 use Imagine\Image\ImagineInterface ;
 use Imagine\Image\ImageInterface ;
@@ -38,7 +38,7 @@ class Imagine {
     }
     
     
-    public function resize(\App\AdminBundle\Entity\File $file, $_crop, array $config ){
+    public function resize(\Symforce\AdminBundle\Entity\File $file, $_crop, array $config ){
         $crop = json_decode($_crop, true) ;
        
         $imagine    = $this->getImagine() ;

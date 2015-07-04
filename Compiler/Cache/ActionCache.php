@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Compiler\Cache ;
+namespace Symforce\AdminBundle\Compiler\Cache ;
 
 use Symfony\Component\DependencyInjection\ContainerInterface ;
 
@@ -10,7 +10,7 @@ use Symfony\Component\Security\Core\SecurityContext;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use App\AdminBundle\Compiler\Loader\AdminLoader ;
+use Symforce\AdminBundle\Compiler\Loader\AdminLoader ;
 
 abstract class ActionCache {
  
@@ -375,7 +375,7 @@ abstract class ActionCache {
             $url    = $referer['path'] . ( isset($referer['query']) ? '?' . $referer['query'] : '' ) ;
         }
         
-        $builder->add('app_admin_form_referer', 'appreferer', array(
+        $builder->add('symforce_admin_form_referer', 'appreferer', array(
             'referer_url_default'   => $url ,
             'referer_url_route'     => $parameters['_route'] ,
             'referer_url_request'   => $request ,
@@ -383,12 +383,12 @@ abstract class ActionCache {
             'referer_base_url'      => $baseUrl ,
         ));
         
-        $builder->add('app_admin_form_dynamic', 'appdynamic', array(
+        $builder->add('symforce_admin_form_dynamic', 'appdynamic', array(
             
         ));
         
         if( $this->admin_loader->getContainer()->getParameter('kernel.debug') ){
-            $builder->add('app_admin_form_debug', 'choice', array(
+            $builder->add('symforce_admin_form_debug', 'choice', array(
                 'label' => 'Debug' ,
                 'mapped'   => false ,
                 'expanded'  => true ,
@@ -403,15 +403,15 @@ abstract class ActionCache {
     }
     
     public function getFormReferer(\Symfony\Component\Form\Form $form){
-        $url    = $form->get('app_admin_form_referer')->getData()  ;
+        $url    = $form->get('symforce_admin_form_referer')->getData()  ;
         return $url ;
     }
     
     public function getFormDebug(\Symfony\Component\Form\Form $form){
-        if( !$form->has('app_admin_form_debug')) {
+        if( !$form->has('symforce_admin_form_debug')) {
             return ;
         }
-        $url    = $form->get('app_admin_form_debug')->getData()  ;
+        $url    = $form->get('symforce_admin_form_debug')->getData()  ;
         return $url ;
     }
     

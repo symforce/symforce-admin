@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Form\Type;
+namespace Symforce\AdminBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType ;
 
@@ -14,7 +14,7 @@ use Symfony\Component\Form\FormInterface;
 
 
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use App\AdminBundle\Form\DataTransformer\ViewTransformer ;
+use Symforce\AdminBundle\Form\DataTransformer\ViewTransformer ;
 
 class ViewType extends AbstractType {
     

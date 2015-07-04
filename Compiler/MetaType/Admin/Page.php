@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\AdminBundle\Compiler\MetaType\Admin ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Admin ;
 
-use App\AdminBundle\Compiler\Annotation;
-use App\AdminBundle\Compiler\Generator;
+use Symforce\AdminBundle\Compiler\Annotation;
+use Symforce\AdminBundle\Compiler\Generator;
 
 /**
  * Description of Page
@@ -13,9 +13,9 @@ use App\AdminBundle\Compiler\Generator;
  */
 class Page extends EntityAware {
     
-    const PAGE_ANNOT_CLASS   = 'App\AdminBundle\Compiler\Annotation\Page' ;
-    const PAGE_ENTITY_CLASS  = 'App\AdminBundle\Entity\Page' ;
-    const PAGE_CONTROLLER_CLASS = 'App\AdminBundle\Controller\WebPageController' ;
+    const PAGE_ANNOT_CLASS   = 'Symforce\AdminBundle\Compiler\Annotation\Page' ;
+    const PAGE_ENTITY_CLASS  = 'Symforce\AdminBundle\Entity\Page' ;
+    const PAGE_CONTROLLER_CLASS = 'Symforce\AdminBundle\Controller\WebPageController' ;
     
     public $parent_entity ;
     public $parent_admin ;
@@ -157,14 +157,14 @@ class Page extends EntityAware {
     }
     
     /**
-     * @return \App\AdminBundle\Compiler\Generator\PhpClass
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpClass
      */
     public function getCompileClass() {
         if( null === $this->_compile_class ) {
-            $class = new \App\AdminBundle\Compiler\Generator\PhpClass() ;
+            $class = new \Symforce\AdminBundle\Compiler\Generator\PhpClass() ;
             $class
                 ->setName( $this->_compile_class_name )
-                ->setParentClassName( '\App\AdminBundle\Compiler\Generator\RouteWebPageGenerator' )
+                ->setParentClassName( '\Symforce\AdminBundle\Compiler\Generator\RouteWebPageGenerator' )
                 ->setFinal(true)
                 ; 
             $this->_compile_class  = $class ;

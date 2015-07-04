@@ -1,6 +1,6 @@
 {% set app_domain = app_param('app.admin.domain') %}
 {% set app_version = app_param('app.version') %}
-{% import "AppAdminBundle::admin_macro.html.twig" as app_admin_macro %}
+{% import "AppAdminBundle::admin_macro.html.twig" as symforce_admin_macro %}
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -123,11 +123,11 @@
                 {% if admin %}
                     {% if admin.routeparent %}
                         {% for _admin in admin.routeparents %}
-                            {{ app_admin_macro.breadcrumb(_admin, false ) }}
+                            {{ symforce_admin_macro.breadcrumb(_admin, false ) }}
                         {% endfor %}
                     {% endif %}
                     
-                    {{ app_admin_macro.breadcrumb(admin, action ) }}
+                    {{ symforce_admin_macro.breadcrumb(admin, action ) }}
                     
                 {% endif %}
             </ol>

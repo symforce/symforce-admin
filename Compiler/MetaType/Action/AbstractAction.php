@@ -1,10 +1,10 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Action ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Action ;
 
-use App\AdminBundle\Compiler\Generator\ActionTwigGenerator ;
+use Symforce\AdminBundle\Compiler\Generator\ActionTwigGenerator ;
 
-abstract class AbstractAction extends \App\AdminBundle\Compiler\MetaType\Admin\EntityAware {
+abstract class AbstractAction extends \Symforce\AdminBundle\Compiler\MetaType\Admin\EntityAware {
     
     public function getRouteObject() {
         return $this->admin_object ; 
@@ -30,7 +30,7 @@ abstract class AbstractAction extends \App\AdminBundle\Compiler\MetaType\Admin\E
     public $_compile_class_name ;
     
     /**
-     * @var \App\AdminBundle\Compiler\MetaType\PropertyContainer
+     * @var \Symforce\AdminBundle\Compiler\MetaType\PropertyContainer
      */
     public $children ;
     
@@ -47,21 +47,21 @@ abstract class AbstractAction extends \App\AdminBundle\Compiler\MetaType\Admin\E
     public $parent_class_name ;
     
     /**
-     * @var \App\AdminBundle\Compiler\Generator\TransGeneratorValue 
+     * @var \Symforce\AdminBundle\Compiler\Generator\TransGeneratorValue 
      */
     public $action_label ;
     
     /**
-     * @var \App\AdminBundle\Compiler\Generator\TransGeneratorValue 
+     * @var \Symforce\AdminBundle\Compiler\Generator\TransGeneratorValue 
      */
     public $title_label ;
     
     /**
-     * @var \App\AdminBundle\Compiler\Generator\TransGeneratorValue 
+     * @var \Symforce\AdminBundle\Compiler\Generator\TransGeneratorValue 
      */
     public $form_label ;
     
-    public function __construct($name, \App\AdminBundle\Compiler\MetaType\Admin\Entity $entity, \App\AdminBundle\Compiler\Annotation\Annotation $annot = null) {
+    public function __construct($name, \Symforce\AdminBundle\Compiler\MetaType\Admin\Entity $entity, \Symforce\AdminBundle\Compiler\Annotation\Annotation $annot = null) {
         
         $this->setAdminObject($entity) ;
         if( $annot ) {
@@ -78,12 +78,12 @@ abstract class AbstractAction extends \App\AdminBundle\Compiler\MetaType\Admin\E
             if( $this->isCustomize() ) {
                 throw new \Exception(sprintf("entity(%s) @Admin\Action(%s) missing class value", $entity->class_name, $name) ) ;
             }
-            $this->parent_class_name = 'App\AdminBundle\Compiler\Cache\\' .  ucfirst( $entity->generator->camelize( $this->name ) ) . 'ActionCache' ;
+            $this->parent_class_name = 'Symforce\AdminBundle\Compiler\Cache\\' .  ucfirst( $entity->generator->camelize( $this->name ) ) . 'ActionCache' ;
         }
         
         if( null !== $this->property_annotation_class_name  ) {
             
-            $this->children = new \App\AdminBundle\Compiler\MetaType\PropertyContainer($this) ;
+            $this->children = new \Symforce\AdminBundle\Compiler\MetaType\PropertyContainer($this) ;
 
             if( isset($entity->cache->class_annotations[ $this->property_annotation_class_name ]) ) {
                 foreach($entity->cache->class_annotations[ $this->property_annotation_class_name ]   as $property =>  $annot ) {
@@ -174,11 +174,11 @@ abstract class AbstractAction extends \App\AdminBundle\Compiler\MetaType\Admin\E
         }
     }
     
-    public function addProperty( $property, \App\AdminBundle\Compiler\Annotation\Annotation $annot ){
+    public function addProperty( $property, \Symforce\AdminBundle\Compiler\Annotation\Annotation $annot ){
         new BaseProperty($this->children , $this->admin_object, $property, $annot ) ;
     }
     
-    public function addParentProperty( $property, $target_property, \App\AdminBundle\Compiler\Annotation\Annotation $annot ){
+    public function addParentProperty( $property, $target_property, \Symforce\AdminBundle\Compiler\Annotation\Annotation $annot ){
         $map        =  $this->admin_object->getPropertyDoctrineAssociationMapping( $property ) ;
         $target_class   = $map['targetEntity'] ;
         $this->throwPropertyError( $property, "can not set `%s->%s` value `%s`", $target_class, $target_property, json_encode( $annot) );
@@ -234,7 +234,7 @@ abstract class AbstractAction extends \App\AdminBundle\Compiler\MetaType\Admin\E
     }
     
     /**
-     * @return \App\AdminBundle\Compiler\Generator\PhpClass
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpClass
      */
     public function getCompileClass() {
         if( null === $this->_compile_class ) {
@@ -245,12 +245,12 @@ abstract class AbstractAction extends \App\AdminBundle\Compiler\MetaType\Admin\E
     
     
     /**
-     * @return \App\AdminBundle\Compiler\Generator\PhpWriter
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpWriter
      */
     protected $_compile_form_writer = null ;
 
     /**
-     * @return \App\AdminBundle\Compiler\Generator\PhpWriter
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpWriter
      */
     public function getCompileFormWriter() {
         if( null !== $this->_compile_form_writer ) {
@@ -287,7 +287,7 @@ abstract class AbstractAction extends \App\AdminBundle\Compiler\MetaType\Admin\E
     }
     
     /**
-     * @return \App\AdminBundle\Compiler\Generator\PhpClass
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpClass
      */
     public function compile(){
         $class  = $this->getCompileClass() ;

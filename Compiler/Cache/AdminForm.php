@@ -1,12 +1,12 @@
 <?php
 
-namespace App\AdminBundle\Compiler\Cache ;
+namespace Symforce\AdminBundle\Compiler\Cache ;
 
 trait AdminForm {
     
     public $auth_properties ;
     
-    public function buildFormElement(\Symfony\Bundle\FrameworkBundle\Controller\Controller $controller, \Symfony\Component\Form\FormBuilder $builder, \App\AdminBundle\Compiler\Cache\AdminCache $admin, \App\AdminBundle\Compiler\Cache\ActionCache $action, $object, $property_name, $parent_property ) {
+    public function buildFormElement(\Symfony\Bundle\FrameworkBundle\Controller\Controller $controller, \Symfony\Component\Form\FormBuilder $builder, \Symforce\AdminBundle\Compiler\Cache\AdminCache $admin, \Symforce\AdminBundle\Compiler\Cache\ActionCache $action, $object, $property_name, $parent_property ) {
        
         if( $object ) {
             if( !($object instanceof $admin->class_name) ) {
@@ -21,9 +21,9 @@ trait AdminForm {
                     return ;
                 }
                 $flag   = $status['properties'][$property_name] ;
-                $readable   = \App\AdminBundle\Compiler\MetaType\Admin\Workflow::FLAG_VIEW & $flag ;
-                $editable   = \App\AdminBundle\Compiler\MetaType\Admin\Workflow::FLAG_EDIT & $flag ;
-                if( \App\AdminBundle\Compiler\MetaType\Admin\Workflow::FLAG_AUTH & $flag ) {
+                $readable   = \Symforce\AdminBundle\Compiler\MetaType\Admin\Workflow::FLAG_VIEW & $flag ;
+                $editable   = \Symforce\AdminBundle\Compiler\MetaType\Admin\Workflow::FLAG_EDIT & $flag ;
+                if( \Symforce\AdminBundle\Compiler\MetaType\Admin\Workflow::FLAG_AUTH & $flag ) {
                     if( $readable || $editable ) {
                         throw new \Exception ;
                     }
@@ -203,12 +203,12 @@ trait AdminForm {
             $requirments[$property_name]    = $value ;
         }
 
-        $builder->add('app_admin_form_dynamic_values', 'hidden', array(
+        $builder->add('symforce_admin_form_dynamic_values', 'hidden', array(
             'mapped'   => false ,
             'data'  => json_encode($requirments) ,
         ));
 
-        $builder->add('app_admin_form_dynamic_deps', 'hidden', array(
+        $builder->add('symforce_admin_form_dynamic_deps', 'hidden', array(
             'mapped'   => false ,
             'data'  => json_encode($elements) ,
         ));

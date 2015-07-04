@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Form\Type;
+namespace Symforce\AdminBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType ;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType ;
@@ -15,7 +15,7 @@ use Symfony\Component\Form\FormInterface;
 
 
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use App\AdminBundle\Form\DataTransformer\OwnerTransformer ;
+use Symforce\AdminBundle\Form\DataTransformer\OwnerTransformer ;
 
 
 class OwnerType extends ChoiceType {

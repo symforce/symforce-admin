@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Form\Type;
+namespace Symforce\AdminBundle\Form\Type;
 
 class CheckboxType extends \Symfony\Component\Form\Extension\Core\Type\CheckboxType {
     

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Event;
+namespace Symforce\AdminBundle\Event;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\EventDispatcher\Event;

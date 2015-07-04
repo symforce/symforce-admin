@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Compiler\Cache ;
+namespace Symforce\AdminBundle\Compiler\Cache ;
 
 use Symfony\Component\DependencyInjection\ContainerInterface ;
 
@@ -27,7 +27,7 @@ abstract class WebPageCache {
     protected $container ;
     
     /**
-     * @var \App\AdminBundle\Compiler\Loader\AdminLoader 
+     * @var \Symforce\AdminBundle\Compiler\Loader\AdminLoader 
      */
     protected $loader ;
     
@@ -50,7 +50,7 @@ abstract class WebPageCache {
     
     public function setContainer(ContainerInterface $app){
         $this->container = $app ;
-        $app->get('app.admin.compiler')->set( \App\AdminBundle\Compiler\Loader\Compiler::STAT_PASS );
+        $app->get('app.admin.compiler')->set( \Symforce\AdminBundle\Compiler\Loader\Compiler::STAT_PASS );
     }
     
     public function getOption( $name ) {

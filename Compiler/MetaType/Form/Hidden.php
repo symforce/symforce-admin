@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Form ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Form ;
 
 class Hidden extends Text {
     

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Action ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Action ;
 
 class CustomizeAction extends AbstractAction {
     
@@ -21,7 +21,7 @@ class CustomizeAction extends AbstractAction {
             $this->throwError( " %s not exists!", $class_name ) ;
         }
         $rc = new \ReflectionClass( $class_name ) ;
-        $parent_name = 'App\AdminBundle\Compiler\Cache\CustomizeActionCache' ;
+        $parent_name = 'Symforce\AdminBundle\Compiler\Cache\CustomizeActionCache' ;
         if( !$rc->isSubclassOf( $parent_name ) ) {
             $this->throwError( " %s should extend form %s", $class_name, $parent_name ) ;
         }

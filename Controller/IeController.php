@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Controller;
+namespace Symforce\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response; 
@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use App\AdminBundle\Entity\File ;
+use Symforce\AdminBundle\Entity\File ;
 
 /**
  * @Route("/ie")

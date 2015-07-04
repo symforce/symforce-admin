@@ -28,12 +28,12 @@ use Symfony\Component\Console\Output\OutputInterface;
 class FileCommand extends ContainerAwareCommand
 {
     /**
-     * @var \App\AdminBundle\Compiler\Loader\AdminLoader
+     * @var \Symforce\AdminBundle\Compiler\Loader\AdminLoader
      */
     private $loader ;
     
     /**
-     * @var \App\AdminBundle\Compiler\Cache\AdminCache
+     * @var \Symforce\AdminBundle\Compiler\Cache\AdminCache
      */
     private $admin ;
     
@@ -62,7 +62,7 @@ class FileCommand extends ContainerAwareCommand
         
         $em  = $this->getContainer()->get('doctrine')->getManager() ;
         
-        $dql    = sprintf("SELECT a FROM App\AdminBundle\Entity\File a WHERE a.session_id IS NOT NUll OR a.entity_id=0 ORDER BY a.updated ASC"); 
+        $dql    = sprintf("SELECT a FROM Symforce\AdminBundle\Entity\File a WHERE a.session_id IS NOT NUll OR a.entity_id=0 ORDER BY a.updated ASC"); 
          
         $query   = $em->createQuery($dql);
         $query->setMaxResults( 0x7ff ) ;

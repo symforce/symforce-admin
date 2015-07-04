@@ -1,15 +1,15 @@
 <?php
 
-namespace App\AdminBundle\Entity;
+namespace Symforce\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use App\AdminBundle\Compiler\Annotation as Admin ;
+use Symforce\AdminBundle\Compiler\Annotation as Admin ;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="app_menu_group")
- * @Admin\Entity("app_menu_group", label="菜单组", icon="rss", menu="sys", dashboard=true, class="App\AdminBundle\Admin\MenuGroupAdmin",  groups={
+ * @Admin\Entity("app_menu_group", label="菜单组", icon="rss", menu="sys", dashboard=true, class="Symforce\AdminBundle\Admin\MenuGroupAdmin",  groups={
  *      "default": "默认",
  *      "render":"属性",
  *      "child":"子选项"
@@ -133,7 +133,7 @@ class MenuGroup
     public $use_image = false ;
     
     /** 
-     * @ORM\OneToOne(targetEntity="App\AdminBundle\Entity\File")
+     * @ORM\OneToOne(targetEntity="Symforce\AdminBundle\Entity\File")
      * @Admin\Form(label="默认图片", type="image", max_size="1m", image_size="96x96", group="child", show_on={"use_image":"1"}, use_crop=false )
      */
     public $default_image ;

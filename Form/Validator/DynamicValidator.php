@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Form\Validator;
+namespace Symforce\AdminBundle\Form\Validator;
 
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Form\FormError;

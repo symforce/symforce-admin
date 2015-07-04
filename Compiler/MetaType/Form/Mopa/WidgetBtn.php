@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Form\Mopa ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Form\Mopa ;
 
 /**
  * Description of Widget

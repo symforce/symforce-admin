@@ -1,11 +1,11 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Form ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Form ;
 
-use App\AdminBundle\Compiler\Annotation\FormType ;
+use Symforce\AdminBundle\Compiler\Annotation\FormType ;
 
 /**
- * @FormType("appfile", map="App\AdminBundle\Entity\File")
+ * @FormType("appfile", map="Symforce\AdminBundle\Entity\File")
  */
 class File extends Element {
     

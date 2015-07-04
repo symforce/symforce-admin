@@ -1,12 +1,12 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Admin ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Admin ;
 
-use App\AdminBundle\Compiler\Annotation\Annotation ;
+use Symforce\AdminBundle\Compiler\Annotation\Annotation ;
 
 /**
  */
-class RouteAssoc extends \App\AdminBundle\Compiler\MetaType\Type {
+class RouteAssoc extends \Symforce\AdminBundle\Compiler\MetaType\Type {
     
     /**
      * @var Entity 

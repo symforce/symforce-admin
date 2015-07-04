@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Controller;
+namespace Symforce\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Compiler ;
+namespace Symforce\AdminBundle\Compiler ;
 
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
@@ -9,7 +9,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request ;
 use Symfony\Component\Form\FormFactory ;
 
-use App\AdminBundle\Entity\Locale ;
+use Symforce\AdminBundle\Entity\Locale ;
 
 class LocaleListener implements EventSubscriberInterface
 {

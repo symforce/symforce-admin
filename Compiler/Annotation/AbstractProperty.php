@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Compiler\Annotation ;
+namespace Symforce\AdminBundle\Compiler\Annotation ;
 
 
 abstract class AbstractProperty extends Annotation

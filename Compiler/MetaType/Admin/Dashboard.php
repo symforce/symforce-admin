@@ -1,8 +1,8 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Admin ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Admin ;
 
-class Dashboard extends \App\AdminBundle\Compiler\MetaType\Type {
+class Dashboard extends \Symforce\AdminBundle\Compiler\MetaType\Type {
     
     public $position ;
     

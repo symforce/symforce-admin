@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Compiler\Loader ;
+namespace Symforce\AdminBundle\Compiler\Loader ;
 
 class RoutingLoader extends \Symfony\Component\Config\Loader\Loader {
     

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Action ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Action ;
 
 class PageAction  extends AbstractAction {
     
@@ -19,12 +19,12 @@ class PageAction  extends AbstractAction {
         return true ;
     }
     
-    public function addProperty( $property, \App\AdminBundle\Compiler\Annotation\Annotation $annot ){
+    public function addProperty( $property, \Symforce\AdminBundle\Compiler\Annotation\Annotation $annot ){
         $this->throwError("can not add property:%s = %s ", $property, json_encode($annot) );
     }
     
     /**
-     * @return \App\AdminBundle\Compiler\Generator\PhpClass
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpClass
      */
     public function compile(){
         $class  = parent::compile() ;

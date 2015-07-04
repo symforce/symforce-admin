@@ -1,11 +1,11 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Form ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Form ;
 
-abstract class Element extends \App\AdminBundle\Compiler\MetaType\PropertyAbstract {
+abstract class Element extends \Symforce\AdminBundle\Compiler\MetaType\PropertyAbstract {
     
     /**
-     * @var \App\AdminBundle\Compiler\Generator\TransGeneratorValue 
+     * @var \Symforce\AdminBundle\Compiler\Generator\TransGeneratorValue 
      */
     public $label ;
     
@@ -193,9 +193,9 @@ abstract class Element extends \App\AdminBundle\Compiler\MetaType\PropertyAbstra
         if( true === $value ) {
             $this->auth_node = $value ;
         } else if( 'super' === $value ) {
-            $this->auth_node = \App\UserBundle\Entity\User::ROLE_SUPER_ADMIN ;
+            $this->auth_node = \Symforce\UserBundle\Entity\User::ROLE_SUPER_ADMIN ;
         } else if( 'admin' === $value ) {
-            $this->auth_node = \App\UserBundle\Entity\User::ROLE_ADMIN ;
+            $this->auth_node = \Symforce\UserBundle\Entity\User::ROLE_ADMIN ;
         } else {
             $this->throwPropertyError("auth", " can not set to (%s)", var_export($value,1) );
         }
@@ -244,9 +244,9 @@ abstract class Element extends \App\AdminBundle\Compiler\MetaType\PropertyAbstra
             'attr' => array() ,
         );
         
-        if( !$this->label || !$this->label instanceof \App\AdminBundle\Compiler\Generator\TransGeneratorValue ) {
+        if( !$this->label || !$this->label instanceof \Symforce\AdminBundle\Compiler\Generator\TransGeneratorValue ) {
             throw new \Exception(
-                    sprintf("label should be \App\AdminBundle\Compiler\Generator\TransGeneratorValue, but get `%s` for `%s->%s`", 
+                    sprintf("label should be \Symforce\AdminBundle\Compiler\Generator\TransGeneratorValue, but get `%s` for `%s->%s`", 
                             is_object($this->label) ? get_class($this->label) : gettype($this->label) ,
                             $this->admin_object->class_name, 
                             $this->class_property
@@ -389,7 +389,7 @@ abstract class Element extends \App\AdminBundle\Compiler\MetaType\PropertyAbstra
         $options    = $this->getFormOptions() ;
         
         if( $this->admin_object->property_slug_name === $this->class_property ) {
-            $options['constraints'][] = $this->compilePhpCode( 'new \App\AdminBundle\Form\Constraints\Slug( array( "create" => $action->isCreateAction()) )' )  ;
+            $options['constraints'][] = $this->compilePhpCode( 'new \Symforce\AdminBundle\Form\Constraints\Slug( array( "create" => $action->isCreateAction()) )' )  ;
             $options['required']  = false ;
         }
         
@@ -408,18 +408,18 @@ abstract class Element extends \App\AdminBundle\Compiler\MetaType\PropertyAbstra
             ;
     } 
     
-    public function compileFormOption(\App\AdminBundle\Compiler\Generator\PhpWriter $writer, array & $options) {
+    public function compileFormOption(\Symforce\AdminBundle\Compiler\Generator\PhpWriter $writer, array & $options) {
         $writer->writeln('return ' . var_export( $options , 1 ) . ';' ) ;
     }
     
     
-    public function compileActionForm(\App\AdminBundle\Compiler\MetaType\Action\AbstractAction $action, $builder = '$builder', $admin = '$this', $object = '$object', $parent_property = null ){
+    public function compileActionForm(\Symforce\AdminBundle\Compiler\MetaType\Action\AbstractAction $action, $builder = '$builder', $admin = '$this', $object = '$object', $parent_property = null ){
         $writer = $action->getCompileFormWriter() ;
         $writer->write('if('. $admin .'->isPropertyVisiable("'. $this->class_property . '", $action, '. $object .')) { $this->buildFormElement($controller, ' . $builder . ', ' . $admin . ', $action, ' .  $object . ', "'. $this->class_property . '", ' . var_export( $parent_property, 1 ) . ');');
         /*
         if( $this instanceof Bool ) {
              // hack to fix the bool=false radio not get auto checked
-            $writer->write( sprintf('%s->get("%s")->addViewTransformer(new \App\AdminBundle\Form\DataTransformer\BoolTransformer());', $builder, $this->class_property) ) ;
+            $writer->write( sprintf('%s->get("%s")->addViewTransformer(new \Symforce\AdminBundle\Form\DataTransformer\BoolTransformer());', $builder, $this->class_property) ) ;
         }
         */
         $writer->writeln('}');

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Menu ;
+namespace Symforce\AdminBundle\Menu ;
 
 
 use Knp\Menu\ItemInterface;

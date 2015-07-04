@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Form\Type;
+namespace Symforce\AdminBundle\Form\Type;
 
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -11,7 +11,7 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
 
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use App\AdminBundle\Form\DataTransformer\PasswordTransformer ;
+use Symforce\AdminBundle\Form\DataTransformer\PasswordTransformer ;
 
 class PasswordType extends \Symfony\Component\Form\Extension\Core\Type\PasswordType {
     

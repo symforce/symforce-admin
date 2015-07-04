@@ -1,9 +1,9 @@
 <?php
 
-namespace App\AdminBundle\Compiler ;
+namespace Symforce\AdminBundle\Compiler ;
 
 use Doctrine\Bundle\DoctrineBundle\Registry ;
-use App\AdminBundle\Compiler\Generator ;
+use Symforce\AdminBundle\Compiler\Generator ;
 
 /**
  *
@@ -41,7 +41,7 @@ class MetaFormFactory {
         $as = $reader->getClassAnnotations($rc) ; 
         $annot  = null ;
         if( $as) foreach($as as $_annot ) {
-            if( $_annot instanceof \App\AdminBundle\Compiler\Annotation\FormType ) {
+            if( $_annot instanceof \Symforce\AdminBundle\Compiler\Annotation\FormType ) {
                 if( null !== $annot ) {
                     throw new \Exception(sprintf("app_admin.form.type ( class: %s ) has multi form annotation", $rc->getName() ));
                 }
@@ -155,7 +155,7 @@ class MetaFormFactory {
         $this->gen = $gen ;
     }
 
-    public function create($class_name, $property_name, \App\AdminBundle\Compiler\Annotation\Form $annot, \App\AdminBundle\Compiler\MetaType\PropertyContainer $parent, \App\AdminBundle\Compiler\MetaType\Admin\Entity $entity = null ) {
+    public function create($class_name, $property_name, \Symforce\AdminBundle\Compiler\Annotation\Form $annot, \Symforce\AdminBundle\Compiler\MetaType\PropertyContainer $parent, \Symforce\AdminBundle\Compiler\MetaType\Admin\Entity $entity = null ) {
         $om     = $this->doctrine->getManagerForClass( $class_name ) ;
         if( !$om ) {
             throw new \Exception(sprintf("%s->%s has no orm", $class_name, $property_name));
@@ -270,7 +270,7 @@ class MetaFormFactory {
         
         $form_class = $this->types[ $form_type ]['class'] ;
         /*
-        if( !($form_class instanceof \App\AdminBundle\Compiler\MetaType\Form\Element) ) {
+        if( !($form_class instanceof \Symforce\AdminBundle\Compiler\MetaType\Form\Element) ) {
             throw new \Exception(sprintf("`%s` is invalid ", $form_class));
         }*/
         $form_element  = new $form_class( $parent, $entity, $property_name , $annot ) ;

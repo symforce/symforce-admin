@@ -1,8 +1,8 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Form ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Form ;
 
-use App\AdminBundle\Compiler\Annotation\FormType ;
+use Symforce\AdminBundle\Compiler\Annotation\FormType ;
 
 /**
  * @FormType(orm="string", default=true )
@@ -55,7 +55,7 @@ class Text extends Element {
             $max    = $this->max_length ?: 0xff ;
             $min    = $this->min_length ?: 0 ;
             
-            $writer = new \App\AdminBundle\Compiler\Generator\PhpWriter();
+            $writer = new \Symforce\AdminBundle\Compiler\Generator\PhpWriter();
             $writer
                ->writeln('new \Symfony\Component\Validator\Constraints\Length(array(')  
                ->indent()

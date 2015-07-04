@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\AdminBundle\Compiler\MetaType\Admin ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Admin ;
 
-use App\AdminBundle\Compiler\Annotation;
-use App\AdminBundle\Compiler\Generator;
+use Symforce\AdminBundle\Compiler\Annotation;
+use Symforce\AdminBundle\Compiler\Generator;
 
 /**
  * Description of Page
@@ -14,7 +14,7 @@ use App\AdminBundle\Compiler\Generator;
 class Owner extends EntityAware {
     
     const OWNER_ANNOT_CLASS = 'App\\AdminBundle\\Compiler\\Annotation\\Owner' ;
-    const USER_ENTITY_CLASS   = 'App\UserBundle\Entity\User' ;
+    const USER_ENTITY_CLASS   = 'Symforce\UserBundle\Entity\User' ;
     
     public $owner_property ;
 

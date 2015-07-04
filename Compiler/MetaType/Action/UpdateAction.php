@@ -1,12 +1,12 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Action ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Action ;
 
 class UpdateAction  extends AbstractAction {
     
     public $table = true ; 
     
-    public $property_annotation_class_name = 'App\AdminBundle\Compiler\Annotation\Update' ;
+    public $property_annotation_class_name = 'Symforce\AdminBundle\Compiler\Annotation\Update' ;
     public $icon = 'edit' ;
     public $template = 'AppAdminBundle:Admin:update.html.twig' ;
     
@@ -26,12 +26,12 @@ class UpdateAction  extends AbstractAction {
         return true ;
     }
     
-    public function addProperty( $property, \App\AdminBundle\Compiler\Annotation\Annotation $annot ){
+    public function addProperty( $property, \Symforce\AdminBundle\Compiler\Annotation\Annotation $annot ){
         $_property  = new UpdateProperty($this->children , $this->admin_object, $this, $property, $annot ) ;
     }
     
     /**
-     * @return \App\AdminBundle\Compiler\Generator\PhpClass
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpClass
      */
     public function compile(){
         $class  = parent::compile() ;

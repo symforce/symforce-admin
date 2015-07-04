@@ -1,8 +1,8 @@
 <?php
 
-namespace App\AdminBundle\Compiler\Generator ;
+namespace Symforce\AdminBundle\Compiler\Generator ;
 
-use App\AdminBundle\Compiler\MetaType\Action\AbstractAction as Action ;
+use Symforce\AdminBundle\Compiler\MetaType\Action\AbstractAction as Action ;
 
 /**
  * Description of ActionGenerator
@@ -37,7 +37,7 @@ class ActionTwigGenerator {
     private $template_name ;
     
     /**
-     * @var \App\AdminBundle\Compiler\Generator\PhpWriter 
+     * @var \Symforce\AdminBundle\Compiler\Generator\PhpWriter 
      */
     private $writer  ;
     
@@ -52,7 +52,7 @@ class ActionTwigGenerator {
         $this->template_name    = 'AppAdminBundle:Cache:' . $this->template_file ;
          */
         
-        $this->writer   = new \App\AdminBundle\Compiler\Generator\PhpWriter() ;
+        $this->writer   = new \Symforce\AdminBundle\Compiler\Generator\PhpWriter() ;
         
         $this->writer
                 ->writeln('{% extends "' . $this->parent_template . '" %}' )
@@ -65,13 +65,13 @@ class ActionTwigGenerator {
     }
 
     /**
-     * @return \App\AdminBundle\Compiler\Generator\PhpWriter
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpWriter
      */
     public function getWriter() {
         return $this->writer ;
     }
     
-    public function flush(\App\AdminBundle\Compiler\Generator $gen) {
+    public function flush(\Symforce\AdminBundle\Compiler\Generator $gen) {
         
         $template_path   = $gen->getParameter('kernel.root_dir') . '/Resources/views/' . $this->template_file ;
         

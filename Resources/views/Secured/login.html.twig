@@ -7,7 +7,7 @@
     <div class="col-xs-6 col-xs-offset-3">
     {% block content %}
         
-        <form action="{{ path( 'app_admin_check' ) }}" class="form-horizontal" method="post" id="login_form" >
+        <form action="{{ path( 'symforce_admin_check' ) }}" class="form-horizontal" method="post" id="login_form" >
             
             {{ form_widget(form) }}
             
@@ -21,7 +21,7 @@
          <script type="text/javascript">
         $(function(){
             new FormValidator('#login_form', {
-                'url': '{{ path('app_admin_login') }}' ,
+                'url': '{{ path('symforce_admin_login') }}' ,
                 'elements': '.captcha_input input'
             }) ;
         });

@@ -1,19 +1,18 @@
 <?php
 
-namespace App\AdminBundle\Admin ;
+namespace Symforce\AdminBundle\Admin ;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use App\AdminBundle\Compiler\Cache\ActionCache ;
+use Symforce\AdminBundle\Compiler\Cache\ActionCache ;
 use Symfony\Component\Form\Form ;
-
 
 /**
  * Description of PageAdmin
  *
  * @author loong
  */
-abstract class PageAdmin extends \App\AdminBundle\Compiler\Cache\AdminCache {
+abstract class PageAdmin extends \Symforce\AdminBundle\Compiler\Cache\AdminCache {
     
     public function auth( $action, $page = null ){
         $pass   = parent::auth($action, $page) ;

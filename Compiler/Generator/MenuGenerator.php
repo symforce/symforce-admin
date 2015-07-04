@@ -1,9 +1,9 @@
 <?php
 
-namespace App\AdminBundle\Compiler\Generator ;
+namespace Symforce\AdminBundle\Compiler\Generator ;
 
 
-use App\AdminBundle\Compiler\CacheObject\Menu ;
+use Symforce\AdminBundle\Compiler\CacheObject\Menu ;
 
 
 /**
@@ -11,7 +11,7 @@ use App\AdminBundle\Compiler\CacheObject\Menu ;
  */
 class MenuGenerator {
     
-    public function buildMenuTree(\App\AdminBundle\Compiler\Generator $gen , array & $menu_config ){
+    public function buildMenuTree(\Symforce\AdminBundle\Compiler\Generator $gen , array & $menu_config ){
         
         $list   = array(
                 'root'  => new Menu('root') , 
@@ -59,15 +59,15 @@ class MenuGenerator {
             
         }
         
-        foreach($gen->admin_generators as $object ) if( $object instanceof \App\AdminBundle\Compiler\MetaType\Admin\Entity) {
+        foreach($gen->admin_generators as $object ) if( $object instanceof \Symforce\AdminBundle\Compiler\MetaType\Admin\Entity) {
             /**
-             * @var \App\AdminBundle\Compiler\MetaType\Entity 
+             * @var \Symforce\AdminBundle\Compiler\MetaType\Entity 
              */
             $menu   = $object->menu ;
             if( !$menu ) {
                   continue ;
             }
-            if( $menu instanceof \App\AdminBundle\Compiler\MetaType\Admin\Menu ) { 
+            if( $menu instanceof \Symforce\AdminBundle\Compiler\MetaType\Admin\Menu ) { 
                 $name = $object->name ;
                 $tr   = $object->tr_node ;
                 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Compiler\CacheObject ;
+namespace Symforce\AdminBundle\Compiler\CacheObject ;
 
 /**
  * @todo add route path name

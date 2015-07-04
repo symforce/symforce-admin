@@ -1,9 +1,9 @@
 <?php
 
 
-namespace App\AdminBundle\Compiler\MetaType\Admin ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Admin ;
 
-use App\AdminBundle\Compiler\Annotation\Annotation ;
+use Symforce\AdminBundle\Compiler\Annotation\Annotation ;
 
 class ActionCollection {
     
@@ -15,23 +15,23 @@ class ActionCollection {
     public function __construct(Entity  $entity) {
         
         $annotations = array() ;
-        if( isset($entity->cache->class_annotations['App\AdminBundle\Compiler\Annotation\Action']) ) {
-            $annotations = $entity->cache->class_annotations['App\AdminBundle\Compiler\Annotation\Action'] ;
+        if( isset($entity->cache->class_annotations['Symforce\AdminBundle\Compiler\Annotation\Action']) ) {
+            $annotations = $entity->cache->class_annotations['Symforce\AdminBundle\Compiler\Annotation\Action'] ;
         }
         
         $default_actions    =  array( 
-                'view'  => '\App\AdminBundle\Compiler\MetaType\Action\ViewAction' ,
+                'view'  => '\Symforce\AdminBundle\Compiler\MetaType\Action\ViewAction' ,
             
-                'create' => '\App\AdminBundle\Compiler\MetaType\Action\CreateAction' ,
-                'update' => '\App\AdminBundle\Compiler\MetaType\Action\UpdateAction' ,
-                'delete' => '\App\AdminBundle\Compiler\MetaType\Action\DeleteAction' ,
+                'create' => '\Symforce\AdminBundle\Compiler\MetaType\Action\CreateAction' ,
+                'update' => '\Symforce\AdminBundle\Compiler\MetaType\Action\UpdateAction' ,
+                'delete' => '\Symforce\AdminBundle\Compiler\MetaType\Action\DeleteAction' ,
             
-                'list' => '\App\AdminBundle\Compiler\MetaType\Action\ListAction' ,
+                'list' => '\Symforce\AdminBundle\Compiler\MetaType\Action\ListAction' ,
             
-                'search' => '\App\AdminBundle\Compiler\MetaType\Action\SearchAction' ,
-                'batch' => '\App\AdminBundle\Compiler\MetaType\Action\BatchAction' ,
+                'search' => '\Symforce\AdminBundle\Compiler\MetaType\Action\SearchAction' ,
+                'batch' => '\Symforce\AdminBundle\Compiler\MetaType\Action\BatchAction' ,
             
-                'page' => '\App\AdminBundle\Compiler\MetaType\Action\PageAction' ,
+                'page' => '\Symforce\AdminBundle\Compiler\MetaType\Action\PageAction' ,
             ) ;
         
         $autoload_actions   = array( 'list', 'create', 'update', 'delete' , 'view', 'page' );
@@ -57,7 +57,7 @@ class ActionCollection {
         
         // add CustomizeAction
         foreach($annotations as $action_name => $annot ) {
-            $action         = new \App\AdminBundle\Compiler\MetaType\Action\CustomizeAction( $action_name, $entity, $annot ) ; 
+            $action         = new \Symforce\AdminBundle\Compiler\MetaType\Action\CustomizeAction( $action_name, $entity, $annot ) ; 
             $this->children[$action_name] = $action ;
         }
     }
@@ -75,7 +75,7 @@ class ActionCollection {
         
     }
     
-    public function addClassAction(\App\AdminBundle\Compiler\Annotation\Action $annot ){
+    public function addClassAction(\Symforce\AdminBundle\Compiler\Annotation\Action $annot ){
         try{
             $name   = $annot->name ;
             
@@ -96,7 +96,7 @@ class ActionCollection {
                 
                 $this->children->put($name, $action) ;
             }
-        }catch( \App\AdminBundle\Compiler\MetaType\Exception $e ){
+        }catch( \Symforce\AdminBundle\Compiler\MetaType\Exception $e ){
             $this->throwError( $e->getMessage() );
         }
     }

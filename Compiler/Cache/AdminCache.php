@@ -1,9 +1,9 @@
 <?php
 
-namespace App\AdminBundle\Compiler\Cache ;
+namespace Symforce\AdminBundle\Compiler\Cache ;
 
 use Symfony\Component\DependencyInjection\ContainerAware ;
-use App\AdminBundle\Compiler\Loader\AdminLoader ;
+use Symforce\AdminBundle\Compiler\Loader\AdminLoader ;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -466,7 +466,7 @@ abstract class AdminCache extends ContainerAware {
         
         if( $this->workflow ) {
             $step = $this->getRouteWorkflowValue() ;
-            if(\App\AdminBundle\Compiler\MetaType\Admin\Workflow::NO_FILTER !== $step ) {
+            if(\Symforce\AdminBundle\Compiler\MetaType\Admin\Workflow::NO_FILTER !== $step ) {
                 $where[]     = sprintf("a.%s='%s'", $this->workflow['property'] , $step ) ;
             }
         }

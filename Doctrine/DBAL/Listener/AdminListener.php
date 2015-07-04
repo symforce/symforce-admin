@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Doctrine\DBAL\Listener;
+namespace Symforce\AdminBundle\Doctrine\DBAL\Listener;
 
 use Doctrine\DBAL\Types\Type;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
@@ -64,7 +64,7 @@ class AdminListener implements EventSubscriber {
 
     private function getRichTextFilesPattern(){
         if( null === $this->richtext_files_pattern ) {
-            $this->richtext_files_pattern = \App\AdminBundle\Entity\File::getRichTextFilesPattern($this->container->getParameter('app.web_assets_dir') ) ;
+            $this->richtext_files_pattern = \Symforce\AdminBundle\Entity\File::getRichTextFilesPattern($this->container->getParameter('app.web_assets_dir') ) ;
         }
         return $this->richtext_files_pattern ;
     }
@@ -222,7 +222,7 @@ class AdminListener implements EventSubscriber {
                 
                 $meta   = $om->getClassMetadata($className) ;
                 $object_id  = $meta->getReflectionProperty( $conf['id'] )->getValue($object) ;
-                $repo       = $om->getRepository('App\AdminBundle\Entity\File') ;
+                $repo       = $om->getRepository('Symforce\AdminBundle\Entity\File') ;
                 
                 foreach ($conf['html'] as $property_name => $property_conf ) {
                     $property = $meta->getReflectionProperty($property_name) ;
@@ -268,7 +268,7 @@ class AdminListener implements EventSubscriber {
             if( isset($conf['html'])  ) {
                 $meta   = $om->getClassMetadata($className) ;
                 $object_id  = $meta->getReflectionProperty( $conf['id'] )->getValue($object) ;
-                $repo       = $om->getRepository('App\AdminBundle\Entity\File') ;
+                $repo       = $om->getRepository('Symforce\AdminBundle\Entity\File') ;
                 
                 foreach ($conf['html'] as $property_name => $property_conf ) {
                     $property = $meta->getReflectionProperty($property_name) ;

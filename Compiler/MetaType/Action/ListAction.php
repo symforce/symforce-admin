@@ -1,10 +1,10 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Action ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Action ;
 
 class ListAction  extends AbstractAction {
     
-    public $property_annotation_class_name = 'App\AdminBundle\Compiler\Annotation\Table' ;
+    public $property_annotation_class_name = 'Symforce\AdminBundle\Compiler\Annotation\Table' ;
     public $template = 'AppAdminBundle:Admin:list.html.twig' ;
     public $dashboard = true ;
     public $toolbar = true ;
@@ -38,7 +38,7 @@ class ListAction  extends AbstractAction {
         return true ;
     }
     
-    public function addProperty( $property, \App\AdminBundle\Compiler\Annotation\Annotation $annot ){
+    public function addProperty( $property, \Symforce\AdminBundle\Compiler\Annotation\Annotation $annot ){
         
         $map  =  $this->admin_object->getPropertyDoctrineAssociationMapping( $property ) ;
         if( $map ) {
@@ -82,7 +82,7 @@ class ListAction  extends AbstractAction {
         }
     }
     
-    public function addParentProperty( $property, $target_property, \App\AdminBundle\Compiler\Annotation\Annotation $annot ){
+    public function addParentProperty( $property, $target_property, \Symforce\AdminBundle\Compiler\Annotation\Annotation $annot ){
         // add child route for admin object in this case
         // check map type should be OneToMany 
         $map        =  $this->admin_object->getPropertyDoctrineAssociationMapping( $property ) ;
@@ -111,7 +111,7 @@ class ListAction  extends AbstractAction {
     }
     
     /**
-     * @return \App\AdminBundle\Compiler\Generator\PhpClass
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpClass
      */
     public function compile(){
         
@@ -226,7 +226,7 @@ class ListAction  extends AbstractAction {
                         ->writeln('{% ' . sprintf('if twig_macro_exists(child_macro, "%s") ', $macro_name ). ' %}' ) 
                             ->writeln( '<td>') 
                             ->indent()
-                                ->writeln( '{{ ' . sprintf('child_macro.%s(app_admin_class(%s), admin, _object)', $macro_name, var_export($child_admin->class_name,1) ). '}}' ) 
+                                ->writeln( '{{ ' . sprintf('child_macro.%s(symforce_admin_class(%s), admin, _object)', $macro_name, var_export($child_admin->class_name,1) ). '}}' ) 
                             ->outdent()
                             ->writeln( '</td>') 
                         ->writeln( '{% endif %}') ;

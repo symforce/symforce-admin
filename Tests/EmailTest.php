@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Tests\Controller;
+namespace Symforce\AdminBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

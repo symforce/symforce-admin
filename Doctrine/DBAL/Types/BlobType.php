@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Doctrine\DBAL\Types ;
+namespace Symforce\AdminBundle\Doctrine\DBAL\Types ;
 
 use Doctrine\DBAL\Types\Type;
 use Doctrine\DBAL\Platforms\AbstractPlatform;

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Action ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Action ;
 
-class ActionPropertyGroup extends \App\AdminBundle\Compiler\MetaType\Type {
+class ActionPropertyGroup extends \Symforce\AdminBundle\Compiler\MetaType\Type {
     
     /**
-     * @var \App\AdminBundle\Compiler\Generator\TransGeneratorValue 
+     * @var \Symforce\AdminBundle\Compiler\Generator\TransGeneratorValue 
      */
     public $label ;
     
@@ -35,14 +35,14 @@ class ActionPropertyGroup extends \App\AdminBundle\Compiler\MetaType\Type {
     }
     
     public function set_label( $label ) {
-        if( $label instanceof \App\AdminBundle\Compiler\Generator\TransGeneratorValue ) {
+        if( $label instanceof \Symforce\AdminBundle\Compiler\Generator\TransGeneratorValue ) {
             $this->label    = $label ;
         } else {
             $this->throwError("can not set label `%s`, you should use name", $label ) ;
         }
     }
     
-    public function fixLabel( \App\AdminBundle\Compiler\Generator\TransGeneratorNode $tr, $app_domain ){
+    public function fixLabel( \Symforce\AdminBundle\Compiler\Generator\TransGeneratorNode $tr, $app_domain ){
         if( !$this->label ) {
             $path   = 'group.' . strtolower( $this->id ) ;
             if( $this->name ) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Form\Type;
+namespace Symforce\AdminBundle\Form\Type;
 
 
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -44,7 +44,7 @@ class ComboboxType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options) {
     
          /*
-        $validator = new \App\AdminBundle\Form\Validator\CaptchaValidator (
+        $validator = new \Symforce\AdminBundle\Form\Validator\CaptchaValidator (
             $this->translator,
             $this->session,
             $options['invalid_message'],

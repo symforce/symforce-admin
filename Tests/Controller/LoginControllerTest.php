@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Tests\Controller;
+namespace Symforce\AdminBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase as BaseTestCase;
 use Liip\FunctionalTestBundle\Test\WebTestCase;
@@ -15,7 +15,7 @@ class LoginControllerTest extends WebTestCase
     public function setUp()
     {
         $classes = array(
-            'App\UserBundle\DataFixtures\ORM\LoadUserData',
+            'Symforce\UserBundle\DataFixtures\ORM\LoadUserData',
         );
         $this->loadFixtures($classes);
     }

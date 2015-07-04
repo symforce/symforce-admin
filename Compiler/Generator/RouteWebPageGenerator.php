@@ -1,9 +1,9 @@
 <?php
 
-namespace App\AdminBundle\Compiler\Generator ;
+namespace Symforce\AdminBundle\Compiler\Generator ;
 
 
-use App\AdminBundle\Compiler\CacheObject\Menu ;
+use Symforce\AdminBundle\Compiler\CacheObject\Menu ;
 
 /**
  *
@@ -12,11 +12,11 @@ use App\AdminBundle\Compiler\CacheObject\Menu ;
 class RouteWebPageGenerator {
     //put your code here
     
-    const ROUTE_ANNOT_CLASS   = 'App\AdminBundle\Compiler\Annotation\Route' ;
+    const ROUTE_ANNOT_CLASS   = 'Symforce\AdminBundle\Compiler\Annotation\Route' ;
     const SYMFONY_ROUTE_ANNOT_CLASS = 'Sensio\Bundle\FrameworkExtraBundle\Configuration\Route' ;
     
     /**
-     * @var \App\AdminBundle\Compiler\Cache\AdminCache
+     * @var \Symforce\AdminBundle\Compiler\Cache\AdminCache
      */
     protected $admin ;
     
@@ -51,7 +51,7 @@ class RouteWebPageGenerator {
     protected $page_one2one_map ;
 
     /**
-     * @var \App\AdminBundle\Compiler\Cache\AdminCache
+     * @var \Symforce\AdminBundle\Compiler\Cache\AdminCache
      */
     protected $parent_admin ;
     
@@ -95,18 +95,18 @@ class RouteWebPageGenerator {
     protected $eneity_id_name ;
     
     /**
-     * @var \App\AdminBundle\Compiler\Loader\AdminLoader 
+     * @var \Symforce\AdminBundle\Compiler\Loader\AdminLoader 
      */
     protected $loader ;
     
      /**
-     * @var \App\AdminBundle\Compiler\Loader\RouteCacheLoader
+     * @var \Symforce\AdminBundle\Compiler\Loader\RouteCacheLoader
      */
     protected $page_loader ;
     
     protected $err_msg ;
 
-    public function __construct(\App\AdminBundle\Compiler\Loader\RouteCacheLoader $page_loader, \App\AdminBundle\Compiler\Loader\AdminLoader $loader) {
+    public function __construct(\Symforce\AdminBundle\Compiler\Loader\RouteCacheLoader $page_loader, \Symforce\AdminBundle\Compiler\Loader\AdminLoader $loader) {
         
         $this->page_loader  = $page_loader ;
         $this->loader   = $loader ;
@@ -222,7 +222,7 @@ class RouteWebPageGenerator {
         }
     }
 
-    public function addRoute(\ReflectionMethod $m, \App\AdminBundle\Compiler\Annotation\Route $annot, array $as = null ){
+    public function addRoute(\ReflectionMethod $m, \Symforce\AdminBundle\Compiler\Annotation\Route $annot, array $as = null ){
         $this->err_msg = sprintf("%s->%s(@%s): ",  $m->getDeclaringClass()->getName() , $m->getName(), self::ROUTE_ANNOT_CLASS); 
                 
         $admin_name = null ;
@@ -312,8 +312,8 @@ class RouteWebPageGenerator {
             }
         }
         
-        $generator   = new \App\AdminBundle\Compiler\Generator\PhpWriter();
-        $dispatcher   = new \App\AdminBundle\Compiler\Generator\PhpWriter();
+        $generator   = new \Symforce\AdminBundle\Compiler\Generator\PhpWriter();
+        $dispatcher   = new \Symforce\AdminBundle\Compiler\Generator\PhpWriter();
         $dispatcher_args    = array() ;
         $entity_object_name = '$' .$this->admin_name ;
         
@@ -444,8 +444,8 @@ class RouteWebPageGenerator {
                 array & $requirements_entitys,
                 array & $requirements, 
                 array & $requirement_keys,
-                \App\AdminBundle\Compiler\Generator\PhpWriter $generator,
-                \App\AdminBundle\Compiler\Generator\PhpWriter $dispatcher,
+                \Symforce\AdminBundle\Compiler\Generator\PhpWriter $generator,
+                \Symforce\AdminBundle\Compiler\Generator\PhpWriter $dispatcher,
                 $with_entity , 
                 $path ,
                 $break_requirement_key = null ,

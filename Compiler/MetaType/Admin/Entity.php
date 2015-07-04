@@ -1,26 +1,26 @@
 <?php
 
 
-namespace App\AdminBundle\Compiler\MetaType\Admin ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Admin ;
 
-use App\AdminBundle\Compiler\Annotation;
+use Symforce\AdminBundle\Compiler\Annotation;
 
-use App\AdminBundle\Compiler\Generator;
+use Symforce\AdminBundle\Compiler\Generator;
 
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\EntityManager;
 use Doctrine\Bundle\DoctrineBundle\Registry ;
 
-class Entity extends \App\AdminBundle\Compiler\MetaType\Type {
+class Entity extends \Symforce\AdminBundle\Compiler\MetaType\Type {
     
-    const USED_NAME =  ' app tmp temp put get post file save admin loader root parent child children tree id list create update delete view action batch action property filter search cache options accessor controller request object_id _app_admin_route_parameters _app_admin_route_parents ';
+    const USED_NAME =  ' app tmp temp put get post file save admin loader root parent child children tree id list create update delete view action batch action property filter search cache options accessor controller request object_id _symforce_admin_route_parameters _symforce_admin_route_parents ';
     
     const ANNOT_TREE_CLASS   = 'Gedmo\Mapping\Annotation\Tree' ;
-    const ANNOT_TREE_LEAF_CLASS   = 'App\AdminBundle\Compiler\Annotation\TreeLeaf' ;
+    const ANNOT_TREE_LEAF_CLASS   = 'Symforce\AdminBundle\Compiler\Annotation\TreeLeaf' ;
     const ANNOT_SLUG_CLASS   = 'Gedmo\Mapping\Annotation\Slug' ;
-    const ANNOT_TOSTR_CLASS   = 'App\AdminBundle\Compiler\Annotation\ToString' ;
-    const ANNOT_WORKFLOW_CLASS   = 'App\AdminBundle\Compiler\Annotation\Workflow' ;
+    const ANNOT_TOSTR_CLASS   = 'Symforce\AdminBundle\Compiler\Annotation\ToString' ;
+    const ANNOT_WORKFLOW_CLASS   = 'Symforce\AdminBundle\Compiler\Annotation\Workflow' ;
     
     /**
      * @var string 
@@ -65,7 +65,7 @@ class Entity extends \App\AdminBundle\Compiler\MetaType\Type {
     /**
      * @var string 
      */
-    public $parent_class_name = 'App\AdminBundle\Compiler\Cache\AdminCache' ;
+    public $parent_class_name = 'Symforce\AdminBundle\Compiler\Cache\AdminCache' ;
     
     /**
      * @var string
@@ -88,7 +88,7 @@ class Entity extends \App\AdminBundle\Compiler\MetaType\Type {
     public $icon ;
     
     /**
-     * @var \App\AdminBundle\Compiler\Generator\TransGeneratorValue 
+     * @var \Symforce\AdminBundle\Compiler\Generator\TransGeneratorValue 
      */
     public $label ;
     
@@ -139,17 +139,17 @@ class Entity extends \App\AdminBundle\Compiler\MetaType\Type {
 
 
     /**
-     * @var \App\AdminBundle\Compiler\Generator
+     * @var \Symforce\AdminBundle\Compiler\Generator
      */
     public $generator ;
     
     /**
-     * @var \App\AdminBundle\Compiler\Generator\TransGeneratorNode 
+     * @var \Symforce\AdminBundle\Compiler\Generator\TransGeneratorNode 
      */
     public $tr_node ;
     
     /**
-     * @var \App\AdminBundle\Compiler\Generator\AnnotationCache 
+     * @var \Symforce\AdminBundle\Compiler\Generator\AnnotationCache 
      */
     public $cache ;
     
@@ -179,7 +179,7 @@ class Entity extends \App\AdminBundle\Compiler\MetaType\Type {
     public $_orm_map ;
     public $_auth_parents = array() ;
 
-    public function __construct(\App\AdminBundle\Compiler\Generator\AnnotationCache $cache, $bundle_name, ClassMetadata $meta , Generator $gen ) {
+    public function __construct(\Symforce\AdminBundle\Compiler\Generator\AnnotationCache $cache, $bundle_name, ClassMetadata $meta , Generator $gen ) {
         
         $this->cache    = $cache ;
         
@@ -196,7 +196,7 @@ class Entity extends \App\AdminBundle\Compiler\MetaType\Type {
             $this->property_id_name = $meta->getSingleIdentifierFieldName() ;
         }
         
-        $this->setMyPropertie( $cache->class_annotations['App\AdminBundle\Compiler\Annotation\Entity'] ) ;
+        $this->setMyPropertie( $cache->class_annotations['Symforce\AdminBundle\Compiler\Annotation\Entity'] ) ;
         
         if( ! $this->name ) {
             $this->name = strtolower( preg_replace( '/\W/', '_',  $this->class_name ) ) ;
@@ -373,7 +373,7 @@ class Entity extends \App\AdminBundle\Compiler\MetaType\Type {
 
 
     public function getLabel() {
-        if( !$this->label || !($this->label instanceof \App\AdminBundle\Compiler\Generator\TransGeneratorValue) ) {
+        if( !$this->label || !($this->label instanceof \Symforce\AdminBundle\Compiler\Generator\TransGeneratorValue) ) {
             if( !$this->label ) {
                 $this->label = $this->generator->humanize( basename( str_replace('\\', '/', $this->class_name ) ) );
             }
@@ -407,7 +407,7 @@ class Entity extends \App\AdminBundle\Compiler\MetaType\Type {
     }
     
     protected function set_form( $value ) {
-        $this->form  = new \App\AdminBundle\Compiler\MetaType\Form\Form($this, $value ) ;
+        $this->form  = new \Symforce\AdminBundle\Compiler\MetaType\Form\Form($this, $value ) ;
     }
 
     protected function set_string( $value ){
@@ -588,13 +588,13 @@ class Entity extends \App\AdminBundle\Compiler\MetaType\Type {
     }
     
     /**
-     * @var \App\AdminBundle\Compiler\Generator\PhpClass
+     * @var \Symforce\AdminBundle\Compiler\Generator\PhpClass
      */
     private $_compile_class ;
 
 
     /**
-     * @return \App\AdminBundle\Compiler\Generator\PhpClass
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpClass
      */
     public function getCompileClass() {
         if( null === $this->_compile_class ) {
@@ -606,7 +606,7 @@ class Entity extends \App\AdminBundle\Compiler\MetaType\Type {
     public $_compile_validator_writer = null ;
     
     /**
-     * @return \App\AdminBundle\Compiler\Generator\PhpWriter
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpWriter
      */
     public function getCompileValidatorWriter() {
         if( null === $this->_compile_validator_writer ) {

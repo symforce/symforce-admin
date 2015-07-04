@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Service;
+namespace Symforce\AdminBundle\Service;
 use Symfony\Component\Config\Definition\Exception\Exception;
 
 /**
@@ -36,14 +36,14 @@ class MenuService {
     }
 
     /**
-     * @return  \App\AdminBundle\Admin\MenuAdmin
+     * @return  \Symforce\AdminBundle\Admin\MenuAdmin
      */
     public function getMenuAdmin(){
         return $this->container->get('app.admin.loader')->getAdminByName('app_menu') ;
     }
 
     /**
-     * @return  \App\AdminBundle\Admin\PageAdmin
+     * @return  \Symforce\AdminBundle\Admin\PageAdmin
      */
     public function getPageAdmin(){
         return $this->container->get('app.admin.loader')->getAdminByName('app_page') ;
@@ -87,8 +87,8 @@ class MenuService {
         return $twig->render( $template , $args ) ;
     }
     
-    protected function compileGroup(\App\AdminBundle\Entity\MenuGroup $group, $path ) {
-        $writer = new \App\AdminBundle\Compiler\Generator\PhpWriter() ;
+    protected function compileGroup(\Symforce\AdminBundle\Entity\MenuGroup $group, $path ) {
+        $writer = new \Symforce\AdminBundle\Compiler\Generator\PhpWriter() ;
 
         $id     = 'app_menu_group_' . $group->slug ;
         
@@ -118,7 +118,7 @@ class MenuService {
         \Dev::write_file($path,  $writer->getContent() ) ;
     }
 
-    protected function compileMenu(\App\AdminBundle\Entity\Menu $menu, \App\AdminBundle\Compiler\Generator\PhpWriter $writer, $deep = 0 ) {
+    protected function compileMenu(\Symforce\AdminBundle\Entity\Menu $menu, \Symforce\AdminBundle\Compiler\Generator\PhpWriter $writer, $deep = 0 ) {
 
         $li_tag = $menu->menu_group->child_wapper ;
         $text_tag  = $menu->menu_group->child_tag ;
@@ -201,7 +201,7 @@ class MenuService {
     }
 
 
-    protected function compileMenuChildren(\App\AdminBundle\Entity\Menu $menu, \App\AdminBundle\Compiler\Generator\PhpWriter $writer, $_deep ) {
+    protected function compileMenuChildren(\Symforce\AdminBundle\Entity\Menu $menu, \Symforce\AdminBundle\Compiler\Generator\PhpWriter $writer, $_deep ) {
         if( !$menu->menu_group->multi_level ) {
             return ;
         }
@@ -231,13 +231,13 @@ class MenuService {
 
     /**
      * @param $menu_id
-     * @return  \App\AdminBundle\Entity\Menu
+     * @return  \Symforce\AdminBundle\Entity\Menu
      */
     protected function getMenuById( $menu_id ) {
         return $this->getMenuAdmin()->getObjectById($menu_id) ;
     }
 
-    public function getMenuItemActiveClass($menu_id, \App\AdminBundle\Entity\Page $page = null ) {
+    public function getMenuItemActiveClass($menu_id, \Symforce\AdminBundle\Entity\Page $page = null ) {
         $menu   = $this->getMenuById($menu_id) ;
         if( !$menu ) {
             return ;

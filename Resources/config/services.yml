@@ -1,6 +1,6 @@
 parameters:
-    app.admin.menu_builder.class: App\AdminBundle\Menu\Builder
-    # knp_menu.renderer.twig.class: App\AdminBundle\Menu\BootstrapRenderer
+    app.admin.menu_builder.class: Symforce\AdminBundle\Menu\Builder
+    # knp_menu.renderer.twig.class: Symforce\AdminBundle\Menu\BootstrapRenderer
     knp_menu.renderer.twig.template: "AppAdminBundle:Menu:menu_bootstrap.html.twig"
     # app.admin.cache.path: "%kernel.cache_dir%/AdminLoaderCache.php"
     # app.admin.cache.expired: "%kernel.cache_dir%/AdminLoaderExpired.php"
@@ -9,7 +9,7 @@ parameters:
 services:
     # loader
     app.admin.compiler:
-        class: App\AdminBundle\Compiler\Loader\Compiler
+        class: Symforce\AdminBundle\Compiler\Loader\Compiler
     
     app.page.service:
         class: AppAdminCache\WebPageService
@@ -17,7 +17,7 @@ services:
             - [ setContainer, ["@service_container"] ]
             
     app.page.menu:
-        class: App\AdminBundle\Service\MenuService
+        class: Symforce\AdminBundle\Service\MenuService
         calls:
             - [ setContainer, ["@service_container"] ]
     
@@ -25,29 +25,29 @@ services:
         alias: app.page.service
         
     app.admin.generator:
-        class: App\AdminBundle\Compiler\Generator
+        class: Symforce\AdminBundle\Compiler\Generator
         arguments: [ "@service_container", null , null, null, null, null ]
  
     app.admin.loader:
-        class: App\AdminBundle\Compiler\Loader\AdminLoader
+        class: Symforce\AdminBundle\Compiler\Loader\AdminLoader
         arguments: [ "@service_container", null, null ]
     
     app.admin.imagine:
-        class: App\AdminBundle\Service\Imagine
+        class: Symforce\AdminBundle\Service\Imagine
         arguments: [ "@service_container" ]
     
     app.admin.form.factory:
-        class: App\AdminBundle\Compiler\MetaFormFactory
+        class: Symforce\AdminBundle\Compiler\MetaFormFactory
         arguments: [ "@doctrine", "@annotation_reader", null ]
     
     app.locale.listener:
-        class: App\AdminBundle\Compiler\LocaleListener
+        class: Symforce\AdminBundle\Compiler\LocaleListener
         arguments: [ "@form.factory", null , null ]
         tags:
             - { name:"kernel.event_subscriber" }
             
     app.form.listener:
-        class: App\AdminBundle\Event\FormSubscriber
+        class: Symforce\AdminBundle\Event\FormSubscriber
         calls:
             - [ setContainer, ["@service_container"] ]
         tags:
@@ -55,20 +55,20 @@ services:
 
     # doctrine
     app.repos.file:
-        class: App\AdminBundle\Entity\FileRepository
+        class: Symforce\AdminBundle\Entity\FileRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
-        arguments: [ App\AdminBundle\Entity\File ]
+        arguments: [ Symforce\AdminBundle\Entity\File ]
         calls:
             - [ setContainer, ["@service_container"] ]
 
     # Router
     app.route.loader:
-        class: App\AdminBundle\Compiler\Loader\RouteCacheLoader
+        class: Symforce\AdminBundle\Compiler\Loader\RouteCacheLoader
         arguments: [ "@app.admin.loader", null ]
 
     app.routing.loader:
-        class: App\AdminBundle\Compiler\Loader\RoutingLoader
+        class: Symforce\AdminBundle\Compiler\Loader\RoutingLoader
         public: false
         calls:
             - [ setContainer, ["@service_container"] ]
@@ -93,7 +93,7 @@ services:
     # twig 
     app.admin.twig.extension:
         public: false
-        class: App\AdminBundle\Twig\Extension\AppAdminTwigExtension
+        class: Symforce\AdminBundle\Twig\Extension\AppAdminTwigExtension
         arguments: [ "@twig.loader" ]
         calls:
             - [ setContainer, ["@service_container"] ]
@@ -101,7 +101,7 @@ services:
             - { name:"twig.extension" }
     # trans
     app.translation.loader.yaml:
-        class: App\AdminBundle\Translation\Loader\AppTransLoader
+        class: Symforce\AdminBundle\Translation\Loader\AppTransLoader
         calls:
             - [ setMetaLoader, ["@app.admin.loader"] ] 
         tags:
@@ -109,7 +109,7 @@ services:
 
     # doctrine
     app.admin.dbal.listener:
-        class: App\AdminBundle\Doctrine\DBAL\Listener\AdminListener
+        class: Symforce\AdminBundle\Doctrine\DBAL\Listener\AdminListener
         public: false 
         calls:
             - [ setContainer, ["@service_container"] ]

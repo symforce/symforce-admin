@@ -1,8 +1,8 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Form ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Form ;
 
-use App\AdminBundle\Compiler\Annotation\FormType ;
+use Symforce\AdminBundle\Compiler\Annotation\FormType ;
 
 /**
  * @FormType("appembed", map="*")
@@ -10,7 +10,7 @@ use App\AdminBundle\Compiler\Annotation\FormType ;
 class Embed extends Element {
     
     /**
-     * @var \App\AdminBundle\Compiler\MetaType\PropertyContainer 
+     * @var \Symforce\AdminBundle\Compiler\MetaType\PropertyContainer 
      */
     public $children ;
     
@@ -53,7 +53,7 @@ class Embed extends Element {
         return $options ;
     }
     
-    public function compileActionForm(\App\AdminBundle\Compiler\MetaType\Action\AbstractAction $action, $builder = '$builder', $admin = '$this' , $object = '$object', $parent_property = null ){
+    public function compileActionForm(\Symforce\AdminBundle\Compiler\MetaType\Action\AbstractAction $action, $builder = '$builder', $admin = '$this' , $object = '$object', $parent_property = null ){
         
         $is_page_property   = false ;
         $copy_properties    = $this->copy_properties ;

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\AdminBundle\Entity;
+namespace Symforce\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use App\AdminBundle\Compiler\Annotation as Admin ;
+use Symforce\AdminBundle\Compiler\Annotation as Admin ;
 
 
 /**
@@ -59,7 +59,7 @@ class Page
     public $meta_description ;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\AdminBundle\Entity\File")
+     * @ORM\OneToOne(targetEntity="Symforce\AdminBundle\Entity\File")
      * @Admin\Form(group="content", type="image", max_size="1m", image_size="1920x470", use_crop=false )
      */
     public $image;

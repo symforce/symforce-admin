@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Form\DataTransformer;
+namespace Symforce\AdminBundle\Form\DataTransformer;
 
 class BoolTransformer implements  \Symfony\Component\Form\DataTransformerInterface {
 

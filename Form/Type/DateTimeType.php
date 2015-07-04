@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Form\Type;
+namespace Symforce\AdminBundle\Form\Type;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType ;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -8,7 +8,7 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use App\AdminBundle\Form\DataTransformer\DateTimeTransformer ;
+use Symforce\AdminBundle\Form\DataTransformer\DateTimeTransformer ;
 
 /**
  * https://github.com/eternicode/bootstrap-datepicker

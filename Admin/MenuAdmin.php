@@ -1,10 +1,10 @@
 <?php
 
-namespace App\AdminBundle\Admin ;
+namespace Symforce\AdminBundle\Admin ;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use App\AdminBundle\Compiler\Cache\ActionCache ;
+use Symforce\AdminBundle\Compiler\Cache\ActionCache ;
 use Symfony\Component\Form\Form ;
 
 /**
@@ -12,9 +12,9 @@ use Symfony\Component\Form\Form ;
  *
  * @author loong
  */
-abstract class MenuAdmin extends \App\AdminBundle\Compiler\Cache\AdminCache {
+abstract class MenuAdmin extends \Symforce\AdminBundle\Compiler\Cache\AdminCache {
     
-    public function buildFormElement(\Symfony\Bundle\FrameworkBundle\Controller\Controller $controller, \Symfony\Component\Form\FormBuilder $builder, \App\AdminBundle\Compiler\Cache\AdminCache $admin, \App\AdminBundle\Compiler\Cache\ActionCache $action, $object, $property_name, $parent_property ) {
+    public function buildFormElement(\Symfony\Bundle\FrameworkBundle\Controller\Controller $controller, \Symfony\Component\Form\FormBuilder $builder, \Symforce\AdminBundle\Compiler\Cache\AdminCache $admin, \Symforce\AdminBundle\Compiler\Cache\ActionCache $action, $object, $property_name, $parent_property ) {
         $menu_group     = $object->menu_group ;
         if( in_array( $property_name, array('image') ) ) {
             if( !$menu_group->use_image  ) {

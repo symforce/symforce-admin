@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Controller;
+namespace Symforce\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
@@ -15,7 +15,7 @@ class WebPageController extends Controller
     protected $loader ;
     
     /**
-     * @var \App\AdminBundle\Compiler\Cache\AdminCache 
+     * @var \Symforce\AdminBundle\Compiler\Cache\AdminCache 
      */
     protected $page_admin ;
     
@@ -102,7 +102,7 @@ class WebPageController extends Controller
     
     
     /**
-     * @return \App\UserBundle\Entity\User
+     * @return \Symforce\UserBundle\Entity\User
      */
     final public function getUser() {
         return $this->container->get('security.context')->getToken()->getUser();

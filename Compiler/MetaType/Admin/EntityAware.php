@@ -1,31 +1,31 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Admin ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Admin ;
 
 /**
  * Description of EntityAware
  *
  * @author loong
  */
-abstract class EntityAware extends \App\AdminBundle\Compiler\MetaType\Type {
+abstract class EntityAware extends \Symforce\AdminBundle\Compiler\MetaType\Type {
     
     /**
-     * @var \App\AdminBundle\Compiler\MetaType\Admin\Entity
+     * @var \Symforce\AdminBundle\Compiler\MetaType\Admin\Entity
      */
     public $admin_object ;
     
     /**
-     * @var \App\AdminBundle\Compiler\Generator\TransGeneratorValue 
+     * @var \Symforce\AdminBundle\Compiler\Generator\TransGeneratorValue 
      */
     public $label ;
 
     /**
-     * @var \App\AdminBundle\Compiler\Generator\TransGeneratorNode 
+     * @var \Symforce\AdminBundle\Compiler\Generator\TransGeneratorNode 
      */
     public $tr_node ;
     
     /**
-     * @var \App\AdminBundle\Compiler\Generator\PhpClass 
+     * @var \Symforce\AdminBundle\Compiler\Generator\PhpClass 
      */
     protected $_compile_class ;
     

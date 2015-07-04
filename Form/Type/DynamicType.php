@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Form\Type;
+namespace Symforce\AdminBundle\Form\Type;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvents;
@@ -43,7 +43,7 @@ class DynamicType extends HiddenType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $validator = new \App\AdminBundle\Form\Validator\DynamicValidator (
+        $validator = new \Symforce\AdminBundle\Form\Validator\DynamicValidator (
             $this->container 
         );
         

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType;
+namespace Symforce\AdminBundle\Compiler\MetaType;
 
 abstract class Type {
     
@@ -59,10 +59,10 @@ abstract class Type {
                     
                     $this->_annot_properties[ $property ] = true ;
                     
-                } catch( \App\AdminBundle\Compiler\MetaType\Exception $e ) {
+                } catch( \Symforce\AdminBundle\Compiler\MetaType\Exception $e ) {
                     if( 
-                            $this instanceof \App\AdminBundle\Compiler\MetaType\DoctrineType || 
-                            $this instanceof \App\AdminBundle\Compiler\MetaType\DoctrineProperty
+                            $this instanceof \Symforce\AdminBundle\Compiler\MetaType\DoctrineType || 
+                            $this instanceof \Symforce\AdminBundle\Compiler\MetaType\DoctrineProperty
                     ) {
                         $this->throwPropertyError(  $property, $e->getMessage() ) ;
                     } else {

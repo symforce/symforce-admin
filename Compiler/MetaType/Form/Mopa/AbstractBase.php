@@ -1,8 +1,8 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Form\Mopa ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Form\Mopa ;
 
-use App\AdminBundle\Compiler\MetaType\BaseType ;
+use Symforce\AdminBundle\Compiler\MetaType\BaseType ;
 
 /**
  * Description of AbstractTag

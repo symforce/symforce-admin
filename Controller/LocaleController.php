@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Controller;
+namespace Symforce\AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,7 +11,7 @@ class LocaleController extends Controller
 {
 
    /**
-     * @Route("/locale/{inline}", name="app_admin_locale", requirements={"inline"="(0|1)"})
+     * @Route("/locale/{inline}", name="symforce_admin_locale", requirements={"inline"="(0|1)"})
      * @Template()
      */
     public function localeAction(Request $request, $inline = 0 )

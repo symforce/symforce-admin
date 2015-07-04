@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Compiler\Loader;
+namespace Symforce\AdminBundle\Compiler\Loader;
 
 use Symfony\Component\Validator\Mapping\Loader\LoaderInterface ;
 use Symfony\Component\Validator\Mapping\ClassMetadata ;
@@ -14,7 +14,7 @@ class ValidatorLoader implements LoaderInterface {
     //put your code here
     
     /**
-     * @var \App\AdminBundle\Compiler\Cache\AdminLoader
+     * @var \Symforce\AdminBundle\Compiler\Cache\AdminLoader
      */
     protected $loader ;
 

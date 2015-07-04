@@ -1,16 +1,16 @@
 <?php
 
 
-namespace App\AdminBundle\Compiler\MetaType\Admin ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Admin ;
 
-use App\AdminBundle\Compiler\Annotation\Status ;
+use Symforce\AdminBundle\Compiler\Annotation\Status ;
 
 /**
  * Description of Status
  *
  * @author loong
  */
-class WorkflowStep extends \App\AdminBundle\Compiler\MetaType\Type {
+class WorkflowStep extends \Symforce\AdminBundle\Compiler\MetaType\Type {
     
     /**
      * @var Workflow
@@ -39,7 +39,7 @@ class WorkflowStep extends \App\AdminBundle\Compiler\MetaType\Type {
     public $properties ;
     
     /**
-     * @var \App\AdminBundle\Compiler\Generator\TransGeneratorNode 
+     * @var \Symforce\AdminBundle\Compiler\Generator\TransGeneratorNode 
      */
     public $tr_node ;
     

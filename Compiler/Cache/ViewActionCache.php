@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Compiler\Cache;
+namespace Symforce\AdminBundle\Compiler\Cache;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;

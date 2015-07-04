@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Translation\Loader;
+namespace Symforce\AdminBundle\Translation\Loader;
 
 use Symfony\Component\Translation\Exception\InvalidResourceException;
 use Symfony\Component\Translation\Exception\NotFoundResourceException;

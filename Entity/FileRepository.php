@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Entity ;
+namespace Symforce\AdminBundle\Entity ;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\DependencyInjection\ContainerInterface;

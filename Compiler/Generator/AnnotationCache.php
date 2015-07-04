@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Compiler\Generator;
+namespace Symforce\AdminBundle\Compiler\Generator;
 
 
 use Doctrine\Common\Annotations\Reader;
@@ -48,7 +48,7 @@ class AnnotationCache {
         }
         
         /*
-        if( $this->class_name === 'App\AdminBundle\Entity\Page' ) {
+        if( $this->class_name === 'Symforce\AdminBundle\Entity\Page' ) {
             \Dev::dump($this, 4 );
         }
          */
@@ -58,7 +58,7 @@ class AnnotationCache {
         foreach($annotations  as $_annot ) {
                 $_type = get_class($_annot) ;
                 
-                if( !($_annot instanceof \App\AdminBundle\Compiler\Annotation\Annotation ) ) {
+                if( !($_annot instanceof \Symforce\AdminBundle\Compiler\Annotation\Annotation ) ) {
                     if( 0 === strpos($_type, 'Doctrine') ) {
                         continue ;
                     }
@@ -75,7 +75,7 @@ class AnnotationCache {
                     continue ;
                 }
                 
-                if( $_annot instanceof  \App\AdminBundle\Compiler\Annotation\AbstractProperty ) {
+                if( $_annot instanceof  \Symforce\AdminBundle\Compiler\Annotation\AbstractProperty ) {
                     if( $for_class ) {
                         if( ! $_annot->property ) {
                             var_dump($_annot) ; 

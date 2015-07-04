@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Routing;
+namespace Symforce\AdminBundle\Routing;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;

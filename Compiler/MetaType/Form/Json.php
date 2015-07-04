@@ -1,8 +1,8 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Form ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Form ;
 
-use App\AdminBundle\Compiler\Annotation\FormType ;
+use Symforce\AdminBundle\Compiler\Annotation\FormType ;
 
 /**
  * @FormType("textarea")
@@ -15,9 +15,9 @@ class Json extends Textarea {
     public function getFormOptions() {
         $options    = parent::getFormOptions() ;
         
-            $writer = new \App\AdminBundle\Compiler\Generator\PhpWriter();
+            $writer = new \Symforce\AdminBundle\Compiler\Generator\PhpWriter();
             $writer
-               ->writeln('new \App\AdminBundle\Form\Constraints\Json(array(') 
+               ->writeln('new \Symforce\AdminBundle\Form\Constraints\Json(array(') 
                ->indent()
                    // ->writeln( sprintf(' "min" => %d, ',  $min )) 
                ->outdent() 

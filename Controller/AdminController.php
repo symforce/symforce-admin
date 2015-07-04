@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Controller;
+namespace symforce\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
@@ -12,19 +12,16 @@ class AdminController extends Controller
 {
     
     /**
-     * @var \App\AdminBundle\Compiler\Cache\Loader
+     * @var \Symforce\AdminBundle\Compiler\Cache\Loader
      */
     private $loader ;
     
     public function adminAction(Request $request)
     { 
-        $this->loader   = $this->container->get('app.admin.loader') ;
-        
-        $cache  = $this->container->get('app.page.service') ;
-//        $access = \Symfony\Component\PropertyAccess\PropertyAccess::createPropertyAccessor() ;
-        
+        $this->loader   = $this->container->get('symforce.admin.loader') ;
+
+        $cache  = $this->container->get('symforce.page.service') ;
         $option = $cache->getAdminOption( $request->attributes->get('_app_route_name') ) ;
-        
         $action = $option['dispatcher']($this->loader, $request) ;
         
         if( !$this->loader->auth( $action->getAdmin()->getName(), $action->getName()) ) {

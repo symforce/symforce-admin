@@ -1,8 +1,8 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Form ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Form ;
 
-use App\AdminBundle\Compiler\MetaType\Type ;
+use Symforce\AdminBundle\Compiler\MetaType\Type ;
 
 class Option extends Type {
     
@@ -16,7 +16,7 @@ class Option extends Type {
     public $value ;
     
     /**
-     * @var \App\AdminBundle\Compiler\Generator\TransGeneratorValue
+     * @var \Symforce\AdminBundle\Compiler\Generator\TransGeneratorValue
      */
     protected $label ;
     
@@ -75,12 +75,12 @@ class Option extends Type {
         $this->text = $value ;
     }
     
-    public function setLabel( \App\AdminBundle\Compiler\Generator\TransGeneratorNode $node, $path, $domain = null ) {
+    public function setLabel( \Symforce\AdminBundle\Compiler\Generator\TransGeneratorNode $node, $path, $domain = null ) {
         $this->label    = $node->createValue( $path . '.' . $this->key , $this->text, $domain ) ;
     }
     
     /**
-     * @return \App\AdminBundle\Compiler\Generator\TransGeneratorValue
+     * @return \Symforce\AdminBundle\Compiler\Generator\TransGeneratorValue
      */
     public function getLabel() {
         return $this->label ;

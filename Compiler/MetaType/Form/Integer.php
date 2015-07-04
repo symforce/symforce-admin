@@ -1,8 +1,8 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Form;
+namespace Symforce\AdminBundle\Compiler\MetaType\Form;
 
-use App\AdminBundle\Compiler\Annotation\FormType ;
+use Symforce\AdminBundle\Compiler\Annotation\FormType ;
 
 /**
  * @FormType(orm="integer,bigint,smallint", default=true )
@@ -48,7 +48,7 @@ class Integer extends Element {
             $min    = $this->min ?: 0 ;
             
             
-            $writer = new \App\AdminBundle\Compiler\Generator\PhpWriter();
+            $writer = new \Symforce\AdminBundle\Compiler\Generator\PhpWriter();
             $writer
                ->writeln('new \Symfony\Component\Validator\Constraints\Range(array(')  
                ->indent()
@@ -64,9 +64,9 @@ class Integer extends Element {
         }
         
         if( $this->greater_than || $this->less_than ) {
-            $writer = new \App\AdminBundle\Compiler\Generator\PhpWriter();
+            $writer = new \Symforce\AdminBundle\Compiler\Generator\PhpWriter();
             $writer
-               ->writeln('new \App\AdminBundle\Form\Constraints\CompareValidator(array(')  
+               ->writeln('new \Symforce\AdminBundle\Form\Constraints\CompareValidator(array(')  
                ->indent() ;
              if( $this->greater_than ) {
                  $writer->writeln( sprintf(' "greater_than" => %s, ', var_export($this->greater_than, 1) ))  ;

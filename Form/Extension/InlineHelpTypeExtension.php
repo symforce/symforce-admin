@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Form\Extension;
+namespace Symforce\AdminBundle\Form\Extension;
 
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\OptionsResolver\Options;

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Action ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Action ;
 
 class CreateAction  extends AbstractAction {
     
     public $dashboard = true ;
     public $toolbar = true ;
     
-    public $property_annotation_class_name = 'App\AdminBundle\Compiler\Annotation\Create' ;
+    public $property_annotation_class_name = 'Symforce\AdminBundle\Compiler\Annotation\Create' ;
     public $template = 'AppAdminBundle:Admin:create.html.twig' ;
     
     public function isCreateTemplate(){
@@ -26,12 +26,12 @@ class CreateAction  extends AbstractAction {
         return true ;
     }
     
-    public function addProperty( $property, \App\AdminBundle\Compiler\Annotation\Annotation $annot ){
+    public function addProperty( $property, \Symforce\AdminBundle\Compiler\Annotation\Annotation $annot ){
         $_property  = new CreateProperty($this->children , $this->admin_object, $this, $property, $annot ) ;
     }
     
     /**
-     * @return \App\AdminBundle\Compiler\Generator\PhpClass
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpClass
      */
     public function compile(){
         $class  = parent::compile() ;

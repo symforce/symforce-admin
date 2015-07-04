@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Entity ;
+namespace Symforce\AdminBundle\Entity ;
 
 /**
  * @author ChangLong changl@shinetechchina.com

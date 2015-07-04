@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Controller;
+namespace Symforce\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response; 
@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Component\HttpFoundation\JsonResponse ;
 
-use App\AdminBundle\Entity\File ;
+use Symforce\AdminBundle\Entity\File ;
 
 /**
  * @author loong
@@ -20,7 +20,7 @@ use App\AdminBundle\Entity\File ;
 class FormHelperController extends Controller {
     
     /**
-     * @return \App\AdminBundle\Compiler\Loader\AdminLoader
+     * @return \Symforce\AdminBundle\Compiler\Loader\AdminLoader
      */
     private function getLoader() {
         return $this->container->get('app.admin.loader') ;

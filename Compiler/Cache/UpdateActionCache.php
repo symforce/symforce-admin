@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Compiler\Cache;
+namespace Symforce\AdminBundle\Compiler\Cache;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -54,7 +54,7 @@ abstract class UpdateActionCache extends ActionCache  {
         $this->setForm($form);
         
         $dispatcher = $this->admin->getService('event_dispatcher');
-        $event = new \App\AdminBundle\Event\FormEvent($form, $request);
+        $event = new \Symforce\AdminBundle\Event\FormEvent($form, $request);
         $dispatcher->dispatch('app.event.form', $event) ;
         if (null !== $event->getResponse()) {
             return $event->getResponse() ;

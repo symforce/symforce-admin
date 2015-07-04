@@ -1,10 +1,10 @@
 <?php
 
-namespace App\AdminBundle\Admin ;
+namespace Symforce\AdminBundle\Admin ;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use App\AdminBundle\Compiler\Cache\ActionCache ;
+use Symforce\AdminBundle\Compiler\Cache\ActionCache ;
 use Symfony\Component\Form\Form ;
 
 /**
@@ -12,7 +12,7 @@ use Symfony\Component\Form\Form ;
  *
  * @author loong
  */
-abstract class MenuGroupAdmin extends \App\AdminBundle\Compiler\Cache\AdminCache {
+abstract class MenuGroupAdmin extends \Symforce\AdminBundle\Compiler\Cache\AdminCache {
     
     public function onUpdate(Controller $controller, Request $request, ActionCache $action, $menu , Form $form ){
         

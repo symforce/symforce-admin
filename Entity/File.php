@@ -1,13 +1,13 @@
 <?php
 
 
-namespace App\AdminBundle\Entity ;
+namespace Symforce\AdminBundle\Entity ;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * @ORM\Entity(repositoryClass="App\AdminBundle\Entity\FileRepository")
+ * @ORM\Entity(repositoryClass="Symforce\AdminBundle\Entity\FileRepository")
  * @ORM\Table(name="app_file", indexes={@ORM\Index(name="entity_idx", columns={"class_name", "property_name"}), @ORM\Index(name="session_idx", columns={"session_id"}) } )
  */
 class File

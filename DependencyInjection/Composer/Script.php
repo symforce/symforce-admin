@@ -1,17 +1,15 @@
 <?php
 
-namespace App\AdminBundle\DependencyInjection\Composer;
-
-use Composer\Script\Event;
+namespace Symforce\AdminBundle\DependencyInjection\Composer;
 
 class Script
 {
 
-    public static function Install(Event $event) {
+    public static function Install(\Composer\Script\Event $event) {
 
         exec('./app/console assets:install --symlink --relative');
-        exec('./app/console app:admin:setup');
-        exec('./app/console app:admin:dump --force');
+        exec('./app/console symforce:admin:setup');
+        exec('./app/console symforce:admin:dump --force');
         
         return true;
     }

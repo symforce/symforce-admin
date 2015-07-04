@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Form\Constraints ;
+namespace Symforce\AdminBundle\Form\Constraints ;
 
 
 /**

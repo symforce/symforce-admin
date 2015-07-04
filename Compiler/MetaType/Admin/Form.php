@@ -1,13 +1,13 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Admin ; 
+namespace Symforce\AdminBundle\Compiler\MetaType\Admin ; 
 
 class Form extends EntityAware {
     
-    const FORM_ANNOT_CLASS   = 'App\AdminBundle\Compiler\Annotation\Form' ;
+    const FORM_ANNOT_CLASS   = 'Symforce\AdminBundle\Compiler\Annotation\Form' ;
     
     /**
-     * @var \App\AdminBundle\Compiler\MetaType\PropertyContainer
+     * @var \Symforce\AdminBundle\Compiler\MetaType\PropertyContainer
      */
     public $children ;
     
@@ -17,7 +17,7 @@ class Form extends EntityAware {
     public $lazy_children = array() ;
     
     /**
-     * @var array|App\AdminBundle\Compiler\MetaType\Form\Group 
+     * @var array|Symforce\AdminBundle\Compiler\MetaType\Form\Group 
      */
     public $groups  = array() ;
     
@@ -29,7 +29,7 @@ class Form extends EntityAware {
             $this->setMyPropertie( $annot ) ;
         }
         
-        $this->children = new \App\AdminBundle\Compiler\MetaType\PropertyContainer($this) ;
+        $this->children = new \Symforce\AdminBundle\Compiler\MetaType\PropertyContainer($this) ;
         
     }
     
@@ -89,7 +89,7 @@ class Form extends EntityAware {
     }
 
 
-    private function craeteElement($property, \App\AdminBundle\Compiler\Annotation\Annotation $annot){
+    private function craeteElement($property, \Symforce\AdminBundle\Compiler\Annotation\Annotation $annot){
        $this->admin_object->generator->form_factory->create( $this->admin_object->class_name , $property , $annot, $this->children, $this->admin_object ) ; 
     }
     
@@ -112,7 +112,7 @@ class Form extends EntityAware {
                     $this->throwError("property:%s form type must be `embed',  you use:`%s`", $property, $embed->compile_form_type );
                 }
             } else {
-                $embed  = new \App\AdminBundle\Compiler\MetaType\Form\Embed( $this, $property) ;
+                $embed  = new \Symforce\AdminBundle\Compiler\MetaType\Form\Embed( $this, $property) ;
             }
             
             foreach ($annotations as $parent_class => & $properties ) {
@@ -122,7 +122,7 @@ class Form extends EntityAware {
                 }
                 $admin  = $this->admin_object->generator->getAdminByClass( $parent_class ) ;
                 $cache  = $this->admin_object->generator->getAnnotationCache( $parent_class ) ;
-                $embed->children   = new \App\AdminBundle\Compiler\MetaType\PropertyContainer( $this, $admin ) ;
+                $embed->children   = new \Symforce\AdminBundle\Compiler\MetaType\PropertyContainer( $this, $admin ) ;
                 foreach($properties as $parent_property => $annot ) {
                     $copy_annot = false ;
                     if( isset($cache->propertie_annotations[ $parent_property ][ self::FORM_ANNOT_CLASS ] ) ) {
@@ -154,7 +154,7 @@ class Form extends EntityAware {
         }
         
         if( !isset($this->groups['default']) ) {
-            $this->groups['default']    = new \App\AdminBundle\Compiler\MetaType\Form\Group( 'default' ) ;
+            $this->groups['default']    = new \Symforce\AdminBundle\Compiler\MetaType\Form\Group( 'default' ) ;
         }
         
         foreach($this->children->properties as $field) {
@@ -162,7 +162,7 @@ class Form extends EntityAware {
                 $this->groups['default']->add($field->class_property , $field->position);
             } else {
                  if( !isset( $this->groups[$field->group] ) ) {
-                     $this->groups[$field->group]   = new \App\AdminBundle\Compiler\MetaType\Form\Group( $field->group ) ;
+                     $this->groups[$field->group]   = new \Symforce\AdminBundle\Compiler\MetaType\Form\Group( $field->group ) ;
                  }
                 $this->groups[$field->group]->add($field->class_property, $field->position);
             }
@@ -201,7 +201,7 @@ class Form extends EntityAware {
                     }
                 }
             }
-            $_group = new \App\AdminBundle\Compiler\MetaType\Form\Group( $group ) ;
+            $_group = new \Symforce\AdminBundle\Compiler\MetaType\Form\Group( $group ) ;
             if( !$_group->id ) {
                 $this->throwError("@form.groups, null id(%s)", $_group->id ) ;
             }
@@ -218,7 +218,7 @@ class Form extends EntityAware {
     protected $_compile_form_writer = null ;
 
     /**
-     * @return \App\AdminBundle\Compiler\Generator\PhpWriter
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpWriter
      */
     public function getCompileFormWriter() {
         if( null !== $this->_compile_form_writer ) {
@@ -234,7 +234,7 @@ class Form extends EntityAware {
                     )
                 ->addParameter(
                         \CG\Generator\PhpParameter::create('action')
-                        ->setType('\App\AdminBundle\Compiler\Cache\ActionCache')
+                        ->setType('\Symforce\AdminBundle\Compiler\Cache\ActionCache')
                         ->setDefaultValue(null)
                     )
                 ->addParameter(
@@ -294,12 +294,12 @@ class Form extends EntityAware {
     }
     
     /**
-     * @return \App\AdminBundle\Compiler\Generator\PhpWriter
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpWriter
      */
     protected $_compile_action_form_writer = null ;
 
     /**
-     * @return \App\AdminBundle\Compiler\Generator\PhpWriter
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpWriter
      */
     public function getCompileActionFormWriter() {
         if( null !== $this->_compile_action_form_writer ) {
@@ -322,11 +322,11 @@ class Form extends EntityAware {
                     )
                 ->addParameter(
                         \CG\Generator\PhpParameter::create('admin')
-                        ->setType('\App\AdminBundle\Compiler\Cache\AdminCache')
+                        ->setType('\Symforce\AdminBundle\Compiler\Cache\AdminCache')
                     )
                 ->addParameter(
                         \CG\Generator\PhpParameter::create('action')
-                        ->setType('\App\AdminBundle\Compiler\Cache\ActionCache')
+                        ->setType('\Symforce\AdminBundle\Compiler\Cache\ActionCache')
                     )
                 ->addParameter(
                         \CG\Generator\PhpParameter::create('object')

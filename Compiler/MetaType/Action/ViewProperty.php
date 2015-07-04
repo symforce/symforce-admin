@@ -1,12 +1,12 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Action ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Action ;
 
-use App\AdminBundle\Compiler\MetaType\Form ;
+use Symforce\AdminBundle\Compiler\MetaType\Form ;
 
 class ViewProperty extends ActionProperty {
     
-    public function __construct(\App\AdminBundle\Compiler\MetaType\PropertyContainer $property_container, \App\AdminBundle\Compiler\MetaType\Admin\Entity $entity, $property, \App\AdminBundle\Compiler\Annotation\Annotation $annot = null ) {
+    public function __construct(\Symforce\AdminBundle\Compiler\MetaType\PropertyContainer $property_container, \Symforce\AdminBundle\Compiler\MetaType\Admin\Entity $entity, $property, \Symforce\AdminBundle\Compiler\Annotation\Annotation $annot = null ) {
         parent::__construct($property_container, $entity, $property, $annot ) ;
         $this->checkAnnotChange() ;
     }
@@ -189,7 +189,7 @@ class ViewProperty extends ActionProperty {
                 } else if( $this->form_element instanceof Form\Tree ) {
                     $map    = $this->getPropertyDoctrineAssociationMapping() ;
                     $code   = $this->getMapValueCode( $property_code, $map );
-                } else if( $this->form_element instanceof \App\UserBundle\Form\MetaType\AuthorizeMetaType ) {
+                } else if( $this->form_element instanceof \Symforce\UserBundle\Form\MetaType\AuthorizeMetaType ) {
                     $code   = '*' ;
                 } else {
                     \Dev::debug($this->admin_object->name, $this->class_property, get_class($this->form_element) );
@@ -287,10 +287,10 @@ class ViewProperty extends ActionProperty {
             $admin_object    = $this->admin_object->generator->getAdminByClass( $target_class ) ;
             
             $text   = $admin_object->label->getTwigCode() ;
-            $admin_code = 'app_admin_class(' . var_export($target_class, 1) .')' ;
+            $admin_code = 'symforce_admin_class(' . var_export($target_class, 1) .')' ;
             $view_code = $admin_code . '.string(' .  $property_code . ') ';
             
-            $url    = sprintf('{{ app_admin_path("%s", "%s", %s ) }}', $admin_object->name, $action, $property_code ) ;
+            $url    = sprintf('{{ symforce_admin_path("%s", "%s", %s ) }}', $admin_object->name, $action, $property_code ) ;
 
             $code   = '{% if ' . $property_code . ' %}' ;
                 $code   .= '{% if ' . sprintf('app_auth("%s", "%s", %s )', $admin_object->name, $action, $property_code ). ' %}' ;
@@ -327,7 +327,7 @@ class ViewProperty extends ActionProperty {
         return $this->_twig_value[ $object] ;
     }
 
-    public function compileView(\App\AdminBundle\Compiler\Generator\PhpWriter $twig_writer ){
+    public function compileView(\Symforce\AdminBundle\Compiler\Generator\PhpWriter $twig_writer ){
         $property_name  = $this->class_property ;
         
         $show_on_start  = '' ;

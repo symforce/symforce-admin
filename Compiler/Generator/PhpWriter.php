@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Compiler\Generator;
+namespace Symforce\AdminBundle\Compiler\Generator;
 
 /**
  * A writer implementation.

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Form ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Form ;
 
-use App\AdminBundle\Compiler\Annotation\FormType ;
+use Symforce\AdminBundle\Compiler\Annotation\FormType ;
 
 /**
  * @FormType("apppassword", guess="password,passwd")
@@ -27,7 +27,7 @@ class Password extends Text {
         $options   = parent::getFormOptions() ;
         
         if( 0 ) {
-            $writer = new \App\AdminBundle\Compiler\Generator\PhpWriter();
+            $writer = new \Symforce\AdminBundle\Compiler\Generator\PhpWriter();
             $writer
                ->writeln('new \Symfony\Component\Security\Core\Validator\Constraints\UserPassword(array(')  
                ->indent()

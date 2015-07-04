@@ -276,7 +276,7 @@
 {% endblock %}
 
 {% block appview_widget %}
-    {% set appview_admin = app_admin_class(_object) %}
+    {% set appview_admin = symforce_admin_class(_object) %}
     {% import appview_admin.template as appview_admin_macro %}
     <div class="app-form-view"> 
         {{ attribute(appview_admin_macro, "macro_value_"  ~ property_name , [_object] ) }}

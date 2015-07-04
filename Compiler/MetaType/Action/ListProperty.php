@@ -1,8 +1,8 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Action ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Action ;
 
-use App\AdminBundle\Compiler\MetaType\Form ;
+use Symforce\AdminBundle\Compiler\MetaType\Form ;
 
 class ListProperty extends ViewProperty {
     

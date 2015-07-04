@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Form\DataTransformer ;
+namespace Symforce\AdminBundle\Form\DataTransformer ;
 
 use Symfony\Component\Form\DataTransformerInterface ;
 use Symfony\Component\Form\Exception\TransformationFailedException;
@@ -14,13 +14,13 @@ class OwnerTransformer implements DataTransformerInterface {
 
     
     /**
-     * @var \App\AdminBundle\Compiler\Loader\AdminLoader
+     * @var \Symforce\AdminBundle\Compiler\Loader\AdminLoader
      */
     private $admin_loader ;
     private $admin_class ;
     private $reverse_data ;
 
-    public function __construct(\App\AdminBundle\Compiler\Loader\AdminLoader $admin_loader, $admin_class ) {
+    public function __construct(\Symforce\AdminBundle\Compiler\Loader\AdminLoader $admin_loader, $admin_class ) {
         $this->admin_loader = $admin_loader ;
         $this->admin_class = $admin_class ;
     }

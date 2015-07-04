@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Compiler\Generator ;
+namespace Symforce\AdminBundle\Compiler\Generator ;
 
 use Symfony\Component\Routing\RouteCollection ;
 
@@ -10,12 +10,12 @@ use Symfony\Component\Routing\RouteCollection ;
 class RouteAdminGenerator {
     
     /**
-     * @var \App\AdminBundle\Compiler\Cache\AdminCache
+     * @var \Symforce\AdminBundle\Compiler\Cache\AdminCache
      */
     protected $admin ;
     
     /**
-     * @var \App\AdminBundle\Compiler\Loader\RouteCacheLoader
+     * @var \Symforce\AdminBundle\Compiler\Loader\RouteCacheLoader
      */
     protected $loader ;
     
@@ -34,7 +34,7 @@ class RouteAdminGenerator {
      */
     protected $tree ;
     
-    public function __construct(\App\AdminBundle\Compiler\Loader\RouteCacheLoader $loader, \App\AdminBundle\Compiler\Cache\AdminCache $admin) {
+    public function __construct(\Symforce\AdminBundle\Compiler\Loader\RouteCacheLoader $loader, \Symforce\AdminBundle\Compiler\Cache\AdminCache $admin) {
         $this->loader   = $loader ;
         $this->admin    = $admin ;
         $this->admin_name    = $admin->getName() ;
@@ -133,15 +133,15 @@ class RouteAdminGenerator {
         }
     }
     
-    public function generateActionPath(\App\AdminBundle\Compiler\Cache\ActionCache $action, \Symfony\Component\Routing\RouteCollection $route_admin_collection ) {
+    public function generateActionPath(\Symforce\AdminBundle\Compiler\Cache\ActionCache $action, \Symfony\Component\Routing\RouteCollection $route_admin_collection ) {
         $class  = $this->loader->getCompileClass() ;
         $writer  = $this->loader->getCompileAppAdminWriter() ;
         
         $route_name     = $action->getAdminRouteName() ;
         $admin_name     = $this->admin->getName();
         $admin_class     = $this->admin->getClassName() ;
-        $generator      = new \App\AdminBundle\Compiler\Generator\PhpWriter();
-        $dispatcher     = new \App\AdminBundle\Compiler\Generator\PhpWriter();
+        $generator      = new \Symforce\AdminBundle\Compiler\Generator\PhpWriter();
+        $dispatcher     = new \Symforce\AdminBundle\Compiler\Generator\PhpWriter();
         
         $requirement    = array() ;
         
@@ -153,8 +153,8 @@ class RouteAdminGenerator {
         
         $dispatcher->writeln('function(AdminLoader $loader, Request $request){')->indent();
         $dispatcher->writeln( sprintf('$loader->setRouteAdminAction("%s", "%s");', $admin_name, $action->getName() ) ) ;
-        $dispatcher->writeln('$_app_admin_route_parameters = array();');
-        $dispatcher->writeln('$_app_admin_route_parents = array();');
+        $dispatcher->writeln('$_symforce_admin_route_parameters = array();');
+        $dispatcher->writeln('$_symforce_admin_route_parents = array();');
         
         $path   = array() ;
     
@@ -166,8 +166,8 @@ class RouteAdminGenerator {
         }
         $dispatcher->writeln( sprintf('$%s = $loader->getAdminByClass("%s");', $admin_name , $admin_class) ) ;
         
-        $dispatcher->writeln( sprintf('$%s->setRouteParameters($_app_admin_route_parameters);', $admin_name) ) ;
-        $dispatcher->writeln( sprintf('$%s->setRouteParents($_app_admin_route_parents);', $admin_name) ) ;
+        $dispatcher->writeln( sprintf('$%s->setRouteParameters($_symforce_admin_route_parameters);', $admin_name) ) ;
+        $dispatcher->writeln( sprintf('$%s->setRouteParents($_symforce_admin_route_parents);', $admin_name) ) ;
         
         $route_parent = $this->admin->getRouteParent() ;
         if( $route_parent ) {
@@ -246,7 +246,7 @@ class RouteAdminGenerator {
         
         
         $route_config  = array(
-            '_controller'   => 'App\AdminBundle\Controller\AdminController::adminAction' ,
+            '_controller'   => 'Symforce\AdminBundle\Controller\AdminController::adminAction' ,
             '_app_route_name'  => $route_name , 
         );
         
@@ -285,17 +285,17 @@ class RouteAdminGenerator {
         }
     }
     
-    public function generateRouteDispatcher(\App\AdminBundle\Compiler\Generator\PhpWriter $dispatcher, array & $requirement, array & $path ) {
+    public function generateRouteDispatcher(\Symforce\AdminBundle\Compiler\Generator\PhpWriter $dispatcher, array & $requirement, array & $path ) {
         $admin_name = $this->admin->getName() ;
         $admin_object_id  = $admin_name . '_id' ;
         
         $dispatcher->writeln( sprintf('$%s = $loader->getAdminByClass("%s");', $admin_name , $this->admin->getClassName() ) ) ;
-        $dispatcher->writeln( sprintf('$_app_admin_route_parents["%s"] = $%s;', $admin_name , $admin_name, $admin_name ) ) ;
+        $dispatcher->writeln( sprintf('$_symforce_admin_route_parents["%s"] = $%s;', $admin_name , $admin_name, $admin_name ) ) ;
         
         $dispatcher->writeln( sprintf('$object_id   = $request->get("%s") ;', $admin_object_id ) ) ;
-        $dispatcher->writeln( sprintf('$_app_admin_route_parameters["%s"] = $object_id ;', $admin_object_id) ) ;
+        $dispatcher->writeln( sprintf('$_symforce_admin_route_parameters["%s"] = $object_id ;', $admin_object_id) ) ;
         $dispatcher->writeln( sprintf('$%s->setRouteObjectId($object_id);', $admin_name , $admin_name ) ) ;
-        $dispatcher->writeln( sprintf('$%s->setRouteParameters($_app_admin_route_parameters);', $admin_name) ) ;
+        $dispatcher->writeln( sprintf('$%s->setRouteParameters($_symforce_admin_route_parameters);', $admin_name) ) ;
         
         $route_parent = $this->admin->getRouteParent() ;
         if( $route_parent ) {
@@ -313,13 +313,13 @@ class RouteAdminGenerator {
         $requirement[ $admin_object_id ] = '\d+' ;
     }
     
-    public function generateRouteGenerator(\App\AdminBundle\Compiler\Generator\PhpWriter $generator, $use_object, $is_first = false ) {
+    public function generateRouteGenerator(\Symforce\AdminBundle\Compiler\Generator\PhpWriter $generator, $use_object, $is_first = false ) {
         $admin_name = $this->admin->getName() ;
         $route_parent = $this->admin->getRouteParent() ;
         if( $route_parent ) {
             if( $is_first ) {
                 $generator->writeln(sprintf('$%s = $loader->getAdminByClass("%s");', $admin_name , $this->admin->getClassName() ) ) ;
-                $generator->writeln(sprintf('$_app_admin_route_parameters = $%s->getRouteParameters();', $admin_name));
+                $generator->writeln(sprintf('$_symforce_admin_route_parameters = $%s->getRouteParameters();', $admin_name));
             }
             $route_parent_name = $route_parent->getName() ;
             $parent_property    = $this->admin->getRouteParentProperty() ;
@@ -334,9 +334,9 @@ class RouteAdminGenerator {
                             ->indent()
                             ->writeln( sprintf('$options["%s_id"] = $accessor->getValue($%s_object, "%s") ;', $route_parent_name, $route_parent_name, $route_parent->getPropertyIdName() ) ) 
                             ->outdent()
-                        ->writeln( sprintf('} else if( isset($_app_admin_route_parameters["%s_id"] )) {', $route_parent_name) )
+                        ->writeln( sprintf('} else if( isset($_symforce_admin_route_parameters["%s_id"] )) {', $route_parent_name) )
                             ->indent()
-                            ->writeln( sprintf('$options["%s_id"] = $_app_admin_route_parameters["%s_id"] ;', $route_parent_name, $route_parent_name ) )
+                            ->writeln( sprintf('$options["%s_id"] = $_symforce_admin_route_parameters["%s_id"] ;', $route_parent_name, $route_parent_name ) )
                             ->outdent()
                         ->writeln( '} else {' )
                             ->indent()
@@ -347,9 +347,9 @@ class RouteAdminGenerator {
                 
             } else {
                  $generator
-                        ->writeln( sprintf('if( isset($_app_admin_route_parameters["%s_id"] )) {', $route_parent_name) )
+                        ->writeln( sprintf('if( isset($_symforce_admin_route_parameters["%s_id"] )) {', $route_parent_name) )
                             ->indent()
-                            ->writeln( sprintf(' $options["%s_id"] = $_app_admin_route_parameters["%s_id"] ;', $route_parent_name, $route_parent_name ) )
+                            ->writeln( sprintf(' $options["%s_id"] = $_symforce_admin_route_parameters["%s_id"] ;', $route_parent_name, $route_parent_name ) )
                             ->outdent()
                         ->writeln( '} else {' )
                             ->indent()

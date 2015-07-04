@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Compiler\Cache ;
+namespace Symforce\AdminBundle\Compiler\Cache ;
 
 trait AdminPage {
     
@@ -22,7 +22,7 @@ trait AdminPage {
      */
     protected $page_children ;
     
-    public function fixPageEntityId($object, \App\AdminBundle\Entity\Page $page ){
+    public function fixPageEntityId($object, \Symforce\AdminBundle\Entity\Page $page ){
         if( !$this->page_one2one_map || $this->page_parent_entity ) {
             throw new \Exception("big error!") ;
         }
@@ -41,12 +41,12 @@ trait AdminPage {
             return null ;
         }
         if( null === $this->page_admin ) {
-            $this->page_admin   = $this->admin_loader->getAdminByClass( \App\AdminBundle\Compiler\MetaType\Admin\Page::PAGE_ENTITY_CLASS ) ;
+            $this->page_admin   = $this->admin_loader->getAdminByClass( \Symforce\AdminBundle\Compiler\MetaType\Admin\Page::PAGE_ENTITY_CLASS ) ;
         }
         return $this->page_admin ;
     }
     
-    public function getRootPageObject($object = null, \App\AdminBundle\Entity\Page $object_page = null ) {
+    public function getRootPageObject($object = null, \Symforce\AdminBundle\Entity\Page $object_page = null ) {
         $page_admin     = $this->getPageAdmin() ;
         $root_page  = null ;
         if( $object ) {

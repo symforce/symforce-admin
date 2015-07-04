@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Controller;
+namespace Symforce\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,13 +13,13 @@ class DashboardController extends Controller
 {
     
     /**
-     * @return \App\AdminBundle\Compiler\Loader\AdminLoader
+     * @return \Symforce\AdminBundle\Compiler\Loader\AdminLoader
      */
     private function getLoader() {
-        return $this->get('app.admin.loader') ;
+        return $this->get('symforce.admin.loader') ;
     }
 
-    private function getDutyCount(array & $tree, array & $duty_count, \App\AdminBundle\Compiler\Loader\AdminLoader $loader){
+    private function getDutyCount(array & $tree, array & $duty_count, \Symforce\AdminBundle\Compiler\Loader\AdminLoader $loader){
         
         foreach($tree as $admin_name => $child ) {
             $admin  = $loader->getAdminByName($admin_name) ;
@@ -49,7 +49,7 @@ class DashboardController extends Controller
     }
 
     /**
-     * @Route("/", name="app_admin_dashboard")
+     * @Route("/", name="symforce_admin_dashboard")
      * @Template()
      */
     public function indexAction(Request $request)
@@ -71,7 +71,7 @@ class DashboardController extends Controller
     }
     
     /**
-     * @Route("/workflow/{admin_name}/{target}/{id}", name="app_admin_workflow_action")
+     * @Route("/workflow/{admin_name}/{target}/{id}", name="symforce_admin_workflow_action")
      */
     public function workflowAction(Request $request, $admin_name, $target, $id )
     {
@@ -126,7 +126,7 @@ class DashboardController extends Controller
     
     /**
      * @param string $name
-     * @return \App\AdminBundle\Compiler\Cache\AdminCache
+     * @return \Symforce\AdminBundle\Compiler\Cache\AdminCache
      */
     private function getAdminByName( $name ) {
         return $this->container->get('app.admin.loader')->getAdminByName( $name ) ;

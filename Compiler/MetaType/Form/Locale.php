@@ -1,7 +1,7 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Form ;
-use App\AdminBundle\Compiler\Annotation\FormType ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Form ;
+use Symforce\AdminBundle\Compiler\Annotation\FormType ;
 
 /**
  * @FormType(guess=true)

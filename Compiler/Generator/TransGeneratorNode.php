@@ -1,8 +1,8 @@
 <?php
 
-namespace App\AdminBundle\Compiler\Generator ;
+namespace Symforce\AdminBundle\Compiler\Generator ;
 
-use App\AdminBundle\Compiler\Generator ;
+use Symforce\AdminBundle\Compiler\Generator ;
 
 /**
  * Description of TransGeneratorNode

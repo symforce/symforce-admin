@@ -1,8 +1,8 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Form ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Form ;
 
-use App\AdminBundle\Compiler\Annotation\FormType ;
+use Symforce\AdminBundle\Compiler\Annotation\FormType ;
 
 /**
  * @FormType(guess="mail")
@@ -12,7 +12,7 @@ class Email extends Text {
     public function getFormOptions(){
         $options    =  parent::getFormOptions() ; 
         
-        $writer = new \App\AdminBundle\Compiler\Generator\PhpWriter();
+        $writer = new \Symforce\AdminBundle\Compiler\Generator\PhpWriter();
         $writer
            ->writeln('new \Symfony\Component\Validator\Constraints\Email(array(')  
            ->indent()

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Twig\Extension;
+namespace Symforce\AdminBundle\Twig\Extension;
 
 use CG\Core\ClassUtils;
 
@@ -11,7 +11,7 @@ class AppAdminTwigExtension extends \Twig_Extension
     protected $loader;
     
     /**
-     * @var \App\AdminBundle\Compiler\Loader\AdminLoader
+     * @var \Symforce\AdminBundle\Compiler\Loader\AdminLoader
      */
     protected $admin_loader;
     
@@ -45,9 +45,9 @@ class AppAdminTwigExtension extends \Twig_Extension
             
             'app_locale_form'   => new \Twig_Function_Method($this, 'app_locale_form') ,
             'app_auth'   => new \Twig_Function_Method($this, 'app_auth') ,
-            'app_admin_class'   => new \Twig_Function_Method($this, 'app_class') ,
+            'symforce_admin_class'   => new \Twig_Function_Method($this, 'app_class') ,
             'app_admin'   => new \Twig_Function_Method($this, 'app_admin') ,
-            'app_admin_path'   => new \Twig_Function_Method($this, 'app_admin_path') ,
+            'symforce_admin_path'   => new \Twig_Function_Method($this, 'symforce_admin_path') ,
             'app_path'   => new \Twig_Function_Method($this, 'app_page_path') ,
             'app_now'   => new \Twig_Function_Method($this, 'app_now') ,
             'twig_macro_exists'  => new \Twig_Function_Method($this, 'twig_macro_exists') ,
@@ -107,7 +107,7 @@ class AppAdminTwigExtension extends \Twig_Extension
         return $this->admin_loader->getAdminByClass($admin_class); 
     }
     
-    public function app_admin_path( $admin, $action, $object = null , $options = array() ) {
+    public function symforce_admin_path( $admin, $action, $object = null , $options = array() ) {
         $admin  = $this->admin_loader->getAdminByName($admin) ;
         return $admin->path($action, $object, $options ) ;
     }

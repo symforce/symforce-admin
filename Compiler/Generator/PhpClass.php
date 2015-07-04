@@ -1,11 +1,11 @@
 <?php
 
-namespace App\AdminBundle\Compiler\Generator;
+namespace Symforce\AdminBundle\Compiler\Generator;
 
 class PhpClass extends \CG\Generator\PhpClass {
     
     /**
-     * @var \App\AdminBundle\Compiler\Generator\PhpWriter
+     * @var \Symforce\AdminBundle\Compiler\Generator\PhpWriter
      */
     protected $lazy_writer ;
     
@@ -13,7 +13,7 @@ class PhpClass extends \CG\Generator\PhpClass {
     
     /**
      * @param string $name
-     * @return \App\AdminBundle\Compiler\Generator\PhpMethod
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpMethod
      */
     public function addMethod( $name ) {
         $method  = new PhpMethod($name) ;
@@ -27,7 +27,7 @@ class PhpClass extends \CG\Generator\PhpClass {
 
     /**
      * @param string $name
-     * @return \App\AdminBundle\Compiler\Generator\PhpMethod
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpMethod
      */
     public function getMethod($name) {
         if( !$this->hasMethod($name) ) {
@@ -41,7 +41,7 @@ class PhpClass extends \CG\Generator\PhpClass {
      * @param string $name
      * @param string $key
      * @param mixed $value
-     * @return \App\AdminBundle\Compiler\Generator\PhpClass
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpClass
      */
     public function addLazyArray($name, $key, $value ) {
         if( !isset($this->lazy_properties[$name]) ) {
@@ -60,7 +60,7 @@ class PhpClass extends \CG\Generator\PhpClass {
     }
 
     /**
-     * @return \App\AdminBundle\Compiler\Generator\PhpWriter
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpWriter
      */
     public function getLazyWriter() {
         if( null === $this->lazy_writer ) {
@@ -78,7 +78,7 @@ class PhpClass extends \CG\Generator\PhpClass {
      * @param bool $_get
      * @param string $visibility
      * @param bool $_lazy
-     * @return \App\AdminBundle\Compiler\Generator\PhpProperty
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpProperty
      */
     public function addProperty($name, $value, $type = null , $_get = false, $visibility = 'protected', $_lazy = false ) {
         $property   = new PhpProperty($name) ;
@@ -113,7 +113,7 @@ class PhpClass extends \CG\Generator\PhpClass {
             $root_dir   = realpath( str_replace(str_replace('\\', '/', __NAMESPACE__) , '', __DIR__) . '/../app/Resources/AppAdminBundle/src' ) . '/' ;
         }
         
-        $writer = new \App\AdminBundle\Compiler\Generator\PhpWriter();
+        $writer = new \Symforce\AdminBundle\Compiler\Generator\PhpWriter();
         
         $parts = explode("\\", $this->getName() );
         
@@ -277,7 +277,7 @@ class PhpClass extends \CG\Generator\PhpClass {
     }
     
     
-    public function flush(\App\AdminBundle\Compiler\Generator $gen) {
+    public function flush(\Symforce\AdminBundle\Compiler\Generator $gen) {
         $this->writeCache() ;
     }
     

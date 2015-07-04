@@ -1,13 +1,13 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Action\Html ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Action\Html ;
 
 /**
  * Description of AbstractTag
  *
  * @author loong
  */
-abstract class Base extends \App\AdminBundle\Compiler\MetaType\Type {
+abstract class Base extends \Symforce\AdminBundle\Compiler\MetaType\Type {
     
     public $code ;
     

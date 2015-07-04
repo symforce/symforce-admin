@@ -1,8 +1,8 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Action ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Action ;
 
-class ActionProperty extends \App\AdminBundle\Compiler\MetaType\PropertyAbstract {
+class ActionProperty extends \Symforce\AdminBundle\Compiler\MetaType\PropertyAbstract {
     
     /** @var integer */
     public $position ;
@@ -20,7 +20,7 @@ class ActionProperty extends \App\AdminBundle\Compiler\MetaType\PropertyAbstract
     // ========== system properties
     
     /**
-     * @var \App\AdminBundle\Compiler\MetaType\Form\Element
+     * @var \Symforce\AdminBundle\Compiler\MetaType\Form\Element
      */
     public $form_element ;
     

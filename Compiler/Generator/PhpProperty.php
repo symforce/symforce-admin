@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Compiler\Generator;
+namespace Symforce\AdminBundle\Compiler\Generator;
 
 class PhpProperty extends \CG\Generator\PhpProperty {
     
@@ -34,8 +34,8 @@ class PhpProperty extends \CG\Generator\PhpProperty {
     }
     
     /**
-     * @param \App\AdminBundle\Compiler\Generator\PhpClass $class
-     * @return \App\AdminBundle\Compiler\Generator\PhpProperty
+     * @param \Symforce\AdminBundle\Compiler\Generator\PhpClass $class
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpProperty
      */
     public function setClass(PhpClass $class){
         $this->_class   = $class ;
@@ -45,7 +45,7 @@ class PhpProperty extends \CG\Generator\PhpProperty {
     
     /**
      * @param bool $_get
-     * @return \App\AdminBundle\Compiler\Generator\PhpProperty
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpProperty
      */
     public function useGetter( $_get ){
         $this->_get = !! $_get ;
@@ -54,7 +54,7 @@ class PhpProperty extends \CG\Generator\PhpProperty {
     
     /**
      * @param bool $_lazy
-     * @return \App\AdminBundle\Compiler\Generator\PhpProperty
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpProperty
      */
     public function setLazy( $_lazy = true ){
         $this->_lazy = !! $_lazy ;
@@ -63,7 +63,7 @@ class PhpProperty extends \CG\Generator\PhpProperty {
     
     /**
      * @param string $type
-     * @return \App\AdminBundle\Compiler\Generator\PhpProperty
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpProperty
      */
     public function setType( $type ){
         $this->type = $type ;
@@ -94,7 +94,7 @@ class PhpProperty extends \CG\Generator\PhpProperty {
         return $this ;
     }
     
-    public function writeCache(\App\AdminBundle\Compiler\Generator\PhpWriter $lazy_writer , \App\AdminBundle\Compiler\Generator\PhpWriter $writer ) {
+    public function writeCache(\Symforce\AdminBundle\Compiler\Generator\PhpWriter $lazy_writer , \Symforce\AdminBundle\Compiler\Generator\PhpWriter $writer ) {
         
         $default_value  = $this->getDefaultValue() ;
         if( $this->_lazy ) {

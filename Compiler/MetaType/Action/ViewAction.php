@@ -1,10 +1,10 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Action ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Action ;
 
 class ViewAction  extends AbstractAction {
     
-    public $property_annotation_class_name = 'App\AdminBundle\Compiler\Annotation\View' ;
+    public $property_annotation_class_name = 'Symforce\AdminBundle\Compiler\Annotation\View' ;
     public $template = 'AppAdminBundle:Admin:view.html.twig' ;
     
     public $_groups = array() ;
@@ -29,12 +29,12 @@ class ViewAction  extends AbstractAction {
         return true ;
     }
     
-    public function addProperty( $property, \App\AdminBundle\Compiler\Annotation\Annotation $annot ){
+    public function addProperty( $property, \Symforce\AdminBundle\Compiler\Annotation\Annotation $annot ){
         $_property  = new ViewProperty($this->children , $this->admin_object, $property, $annot ) ;
     }
     
     /**
-     * @return \App\AdminBundle\Compiler\Generator\PhpClass
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpClass
      */
     public function compile(){
         parent::compile() ;
@@ -95,7 +95,7 @@ class ViewAction  extends AbstractAction {
         }
         
         
-        $macro_writer   = new \App\AdminBundle\Compiler\Generator\PhpWriter() ;
+        $macro_writer   = new \Symforce\AdminBundle\Compiler\Generator\PhpWriter() ;
         foreach($children as $property_name => $property ) {
             
             $label  = null ;
@@ -108,7 +108,7 @@ class ViewAction  extends AbstractAction {
             }
             
             $admin_twig_calss   = var_export( $this->admin_object->class_name ,1) ;
-            $admin_twig_code    = sprintf('app_admin_class(%s)', $admin_twig_calss ) ;
+            $admin_twig_code    = sprintf('symforce_admin_class(%s)', $admin_twig_calss ) ;
             
             $admin_class->addLazyArray( 'properties_label',  $property_name  ,  array(
                 $label->getPath() ,
@@ -314,7 +314,7 @@ class ViewAction  extends AbstractAction {
         return $class ;
     }
 
-    private function compileAnonymousChildren(array $_anonymous_children,  \App\AdminBundle\Compiler\Generator\PhpWriter $twig_writer){
+    private function compileAnonymousChildren(array $_anonymous_children,  \Symforce\AdminBundle\Compiler\Generator\PhpWriter $twig_writer){
         
         foreach($_anonymous_children as $child_admin_name => $child_properties ) {
             $child_admin    = $this->admin_object->generator->getAdminByName( $child_admin_name ) ;
@@ -350,7 +350,7 @@ class ViewAction  extends AbstractAction {
                             ->writeln( '<div class="control-value col-xs-9">')
                                     ->writeln( '<td>') 
                                     ->indent()
-                                        ->writeln( '{{ ' . sprintf('child_macro.%s( app_admin_class(%s), admin, _object)', $macro_name, var_export($child_admin->class_name,1) ). '}}' ) 
+                                        ->writeln( '{{ ' . sprintf('child_macro.%s( symforce_admin_class(%s), admin, _object)', $macro_name, var_export($child_admin->class_name,1) ). '}}' ) 
                                     ->outdent()
                                     ->writeln( '</td>')
                             ->writeln( '</div>')

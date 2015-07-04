@@ -1,18 +1,18 @@
 <?php
 
-namespace App\AdminBundle\Compiler ;
+namespace Symforce\AdminBundle\Compiler ;
 
 use Symfony\Component\DependencyInjection\ContainerInterface ;
 
-use App\AdminBundle\Compiler\Generator\TransGenerator ;
-use App\AdminBundle\Compiler\Generator\TransGeneratorNode ;
-use App\AdminBundle\Compiler\Generator\TransGeneratorValue ;
-use App\AdminBundle\Compiler\Generator\ActionTwigGenerator ;
+use Symforce\AdminBundle\Compiler\Generator\TransGenerator ;
+use Symforce\AdminBundle\Compiler\Generator\TransGeneratorNode ;
+use Symforce\AdminBundle\Compiler\Generator\TransGeneratorValue ;
+use Symforce\AdminBundle\Compiler\Generator\ActionTwigGenerator ;
 
-use App\AdminBundle\Compiler\FormFactory ;
+use Symforce\AdminBundle\Compiler\FormFactory ;
 
-use App\AdminBundle\Compiler\MetaType\Entity\Entity ;
-use App\AdminBundle\Compiler\MetaType\Entity\Action ;
+use Symforce\AdminBundle\Compiler\MetaType\Entity\Entity ;
+use Symforce\AdminBundle\Compiler\MetaType\Entity\Action ;
 
 /**
  * Description of $twig
@@ -89,7 +89,7 @@ class Generator {
     
     public function __construct( ContainerInterface $app, array $resources , array $menu_config , array $dashboard_config, $admin_cache_path, $admin_expired_file ){
         $this->app  = $app ;
-        $app->get('app.admin.compiler')->set( \App\AdminBundle\Compiler\Loader\Compiler::STAT_ADMIN );
+        $app->get('app.admin.compiler')->set( \Symforce\AdminBundle\Compiler\Loader\Compiler::STAT_ADMIN );
         
         $this->app_domain = $app->getParameter('app.admin.domain') ;
         $this->form_factory   = $app->get('app.admin.form.factory') ;
@@ -118,13 +118,13 @@ class Generator {
                         $this->setDoctrineConfig( $class_name , 'uuid', $property_name );
                     }
                 }
-                $cache  = new \App\AdminBundle\Compiler\Generator\AnnotationCache($reader, $meta ) ;
+                $cache  = new \Symforce\AdminBundle\Compiler\Generator\AnnotationCache($reader, $meta ) ;
                 $this->as_cache[ $class_name ] = $cache ;
-                if( !isset($cache->class_annotations['App\AdminBundle\Compiler\Annotation\Entity']) ) {
+                if( !isset($cache->class_annotations['Symforce\AdminBundle\Compiler\Annotation\Entity']) ) {
                     continue ;
                 }
                 
-                $object = new \App\AdminBundle\Compiler\MetaType\Admin\Entity($cache, $bundle_name, $meta, $this ) ;
+                $object = new \Symforce\AdminBundle\Compiler\MetaType\Admin\Entity($cache, $bundle_name, $meta, $this ) ;
                 $this->admin_generators[ $class_name ] = $object ;
                 
                 $admin_name = $object->name  ;
@@ -208,7 +208,7 @@ class Generator {
              } 
         }, $tr_cache ); 
         
-        $app->get('app.admin.compiler')->set( \App\AdminBundle\Compiler\Loader\Compiler::STAT_OK );
+        $app->get('app.admin.compiler')->set( \Symforce\AdminBundle\Compiler\Loader\Compiler::STAT_OK );
     }
     
     private function sortAdminTree( $parent, array & $node ,  array & $attached, $check_inversed ){
@@ -370,7 +370,7 @@ class Generator {
     /**
      * 
      * @param string $class_name
-     * @return \App\AdminBundle\Compiler\Generator\AnnotationCache
+     * @return \Symforce\AdminBundle\Compiler\Generator\AnnotationCache
      */
     public function getAnnotationCache( $class_name ) {
         if( !isset($this->as_cache[$class_name])) {
@@ -392,7 +392,7 @@ class Generator {
     }
     
     /**
-     * @return \App\AdminBundle\Compiler\MetaType\Entity\Entity
+     * @return \Symforce\AdminBundle\Compiler\MetaType\Entity\Entity
      */
     public function getAdminByName( $admin_name ) {
         if( !isset( $this->admin_alias[$admin_name] ) ) {
@@ -402,7 +402,7 @@ class Generator {
     }
     
     /**
-     * @return \App\AdminBundle\Compiler\MetaType\Entity\Entity
+     * @return \Symforce\AdminBundle\Compiler\MetaType\Entity\Entity
      */
     public function getAdminByClass( $class_name ) {
         if( !isset( $this->admin_generators[$class_name] ) ) {
@@ -442,7 +442,7 @@ class Generator {
      * @param string $domain
      * @return ActionGenerator 
      */
-    private function getActionTwigGenerator(\App\AdminBundle\Compiler\MetaType\Action\AbstractAction $action ) {
+    private function getActionTwigGenerator(\Symforce\AdminBundle\Compiler\MetaType\Action\AbstractAction $action ) {
         $_key   = 'twig.'. $action->admin_object->name . '.' . $action->name ;
         if( isset($this->cached_generators[ $_key]) ) {
             return $this->cached_generators[ $_key] ;
@@ -456,12 +456,12 @@ class Generator {
      * @param string $domain
      * @return ActionGenerator 
      */
-    public function getActionPhpGenerator(\App\AdminBundle\Compiler\MetaType\Action\AbstractAction $action ) {
+    public function getActionPhpGenerator(\Symforce\AdminBundle\Compiler\MetaType\Action\AbstractAction $action ) {
         $_key   = 'action.' .$action->admin_object->name . '.' . $action->name ;
         if( isset($this->cached_generators[ $_key]) ) {
             return $this->cached_generators[ $_key] ;
         } 
-        $class = new \App\AdminBundle\Compiler\Generator\PhpClass() ;
+        $class = new \Symforce\AdminBundle\Compiler\Generator\PhpClass() ;
         $class
             ->setName( $action->_compile_class_name )
             ->setParentClassName( '\\'. $action->parent_class_name )
@@ -479,20 +479,20 @@ class Generator {
      * @param string $domain
      * @return ActionGenerator 
      */
-    public function getAdminPhpGenerator(\App\AdminBundle\Compiler\MetaType\Admin\Entity $admin ) {
+    public function getAdminPhpGenerator(\Symforce\AdminBundle\Compiler\MetaType\Admin\Entity $admin ) {
         $_key   = 'admin.' . $admin->name  ;
         if( isset($this->cached_generators[ $_key]) ) {
             return $this->cached_generators[ $_key] ;
         }
-        $class = new \App\AdminBundle\Compiler\Generator\PhpClass() ;
+        $class = new \Symforce\AdminBundle\Compiler\Generator\PhpClass() ;
         
         $rc = new \ReflectionObject( $admin ) ;
         $default_properties    = $rc->getDefaultProperties() ;
         if(  $default_properties['parent_class_name']  === $admin->parent_class_name ) {
             $parent_name    = preg_replace('/\\\\Entity\\\\(\w+)$/', '\\\\Admin\\\\\\1Admin', $admin->class_name ) ;
             if( class_exists($parent_name) ) {
-                if( !is_subclass_of($parent_name, "\App\AdminBundle\Compiler\Cache\AdminCache") ) {
-                    throw new \Exception(sprintf("%s admin class %s exists, but not extends from App\AdminBundle\Compiler\Cache\AdminCache",  $admin->class_name , $parent_name ));
+                if( !is_subclass_of($parent_name, "\Symforce\AdminBundle\Compiler\Cache\AdminCache") ) {
+                    throw new \Exception(sprintf("%s admin class %s exists, but not extends from Symforce\AdminBundle\Compiler\Cache\AdminCache",  $admin->class_name , $parent_name ));
                 }
                 $admin->parent_class_name   = $parent_name ;
             }
@@ -553,7 +553,7 @@ class Generator {
     /**
      * @param string $domain
      * @param array $path
-     * @return \App\AdminBundle\Compiler\Generator\TransGeneratorNode
+     * @return \Symforce\AdminBundle\Compiler\Generator\TransGeneratorNode
      */
     public function getTransNode( $domain , array $path ) {
         $tr     = $this->getTransGenerator($domain) ;
@@ -593,7 +593,7 @@ class Generator {
     /**
      * @dep
      */
-    public function setAuthorizeConfig1(\App\AdminBundle\Compiler\MetaType\Admin\Entity $admin){
+    public function setAuthorizeConfig1(\Symforce\AdminBundle\Compiler\MetaType\Admin\Entity $admin){
         
         $admin_name = $admin->name ;
         $node = array(

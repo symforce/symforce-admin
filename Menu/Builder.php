@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Menu ;
+namespace Symforce\AdminBundle\Menu ;
 
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\Request;
@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Router;
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 
-use App\AdminBundle\Compiler\CacheParent\AdminLoader ;
+use Symforce\AdminBundle\Compiler\CacheParent\AdminLoader ;
 
 class Builder extends ContainerAware
 {
@@ -51,7 +51,7 @@ class Builder extends ContainerAware
         return $menu;
     }
     
-    private function addMenu(\App\AdminBundle\Compiler\CacheObject\Menu $tree, \Knp\Menu\MenuItem $menu, $as_root = true ){
+    private function addMenu(\Symforce\AdminBundle\Compiler\CacheObject\Menu $tree, \Knp\Menu\MenuItem $menu, $as_root = true ){
         
         if( $as_root ) {
             $_menu  = $menu ;

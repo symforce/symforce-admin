@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Event;
+namespace Symforce\AdminBundle\Event;
  
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;

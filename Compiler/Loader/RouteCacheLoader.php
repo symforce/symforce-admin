@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Compiler\Loader ;
+namespace Symforce\AdminBundle\Compiler\Loader ;
 
 /**
  * Description of WebPageLoader
@@ -74,7 +74,7 @@ class RouteCacheLoader {
     private $route_page_collection ;
 
     /**
-     * @var \App\AdminBundle\Compiler\Generator\PhpClass
+     * @var \Symforce\AdminBundle\Compiler\Generator\PhpClass
      */
     private   $_compile_class ;
     
@@ -106,7 +106,7 @@ class RouteCacheLoader {
     
     /**
      * @param string $admin_name
-     * @return \App\AdminBundle\Compiler\Generator\RouteWebPageGenerator
+     * @return \Symforce\AdminBundle\Compiler\Generator\RouteWebPageGenerator
      */
     public function getPageGeneratorByName( $admin_name ) {
         if( !$this->loader->hasAdminName($admin_name) ) {
@@ -117,7 +117,7 @@ class RouteCacheLoader {
     
     /**
      * @param string $admin_name
-     * @return \App\AdminBundle\Compiler\Generator\RouteWebPageGenerator
+     * @return \Symforce\AdminBundle\Compiler\Generator\RouteWebPageGenerator
      */
     public function getPageGeneratorByClass( $admin_class ) {
         if( !isset($this->page_generators[$admin_class]) ) {
@@ -178,7 +178,7 @@ class RouteCacheLoader {
         }
     }
     
-    public function addPageRoute($admin_name, $action_name, \Symfony\Component\Routing\Route $route, \ReflectionMethod $m, \App\AdminBundle\Compiler\Annotation\Route $annot ) {
+    public function addPageRoute($admin_name, $action_name, \Symfony\Component\Routing\Route $route, \ReflectionMethod $m, \Symforce\AdminBundle\Compiler\Annotation\Route $annot ) {
         if( null === $this->route_page_collection ) {
              throw new \Exception('should call getRouteCollection first');
         }
@@ -264,7 +264,7 @@ class RouteCacheLoader {
             }
             //\Dev::dump($cache_expired); exit;
             
-            $this->loader->getService('app.admin.compiler')->set( \App\AdminBundle\Compiler\Loader\Compiler::STAT_ROUTE );
+            $this->loader->getService('app.admin.compiler')->set( \Symforce\AdminBundle\Compiler\Loader\Compiler::STAT_ROUTE );
             
             $this->config   = array();
             if( $this->loader->hasConfig('web_page_class') ) {
@@ -311,12 +311,12 @@ class RouteCacheLoader {
                 }
             }
             
-            $default_controller  = new \ReflectionClass( \App\AdminBundle\Compiler\MetaType\Admin\Page::PAGE_CONTROLLER_CLASS );
+            $default_controller  = new \ReflectionClass( \Symforce\AdminBundle\Compiler\MetaType\Admin\Page::PAGE_CONTROLLER_CLASS );
             foreach($this->page_generators as $page_generator) {
                 $admin_name = $page_generator->getAdminName() ;
                 $admin_action = $admin_name . ':index' ;
                 if( !isset($this->page_actions_map[ $admin_action ]) && !isset($this->page_action_alias[$admin_action]) ) {
-                    $annot = new \App\AdminBundle\Compiler\Annotation\Route(array(
+                    $annot = new \Symforce\AdminBundle\Compiler\Annotation\Route(array(
                         'admin' => $admin_name ,
                         'action' => 'index' ,
                         'template' => 'AppAdminBundle:WebPage:index.html.twig' ,
@@ -325,7 +325,7 @@ class RouteCacheLoader {
                 }
                 $admin_action = $admin_name . ':view' ;
                 if( !isset($this->page_actions_map[ $admin_action ]) && !isset($this->page_action_alias[$admin_action]) ) {
-                    $annot = new \App\AdminBundle\Compiler\Annotation\Route(array(
+                    $annot = new \Symforce\AdminBundle\Compiler\Annotation\Route(array(
                         'admin' => $admin_name ,
                         'action' => 'view' ,
                         'entity'   => true ,
@@ -343,7 +343,7 @@ class RouteCacheLoader {
             foreach($this->loader->getAdminMaps() as $admin_class => $admin_cache_calss ){
                 $admin  = $this->loader->getAdminByClass( $admin_class ) ;
                 $this->route_page_collection->addResource( new \Symfony\Component\Config\Resource\FileResource( $admin->getReflectionClass()->getFileName() ) ) ;
-                $this->admin_route_generators[ $admin->getName() ] = new \App\AdminBundle\Compiler\Generator\RouteAdminGenerator( $this, $admin ) ;
+                $this->admin_route_generators[ $admin->getName() ] = new \Symforce\AdminBundle\Compiler\Generator\RouteAdminGenerator( $this, $admin ) ;
             }
             
             foreach($this->admin_route_generators as $admin_name => $admin_route_generator){
@@ -355,7 +355,7 @@ class RouteCacheLoader {
             
             $class->writeCache() ;
             
-            $this->loader->getService('app.admin.compiler')->set( \App\AdminBundle\Compiler\Loader\Compiler::STAT_OK );
+            $this->loader->getService('app.admin.compiler')->set( \Symforce\AdminBundle\Compiler\Loader\Compiler::STAT_OK );
             
             $content_cache  = array( time(), array_keys($this->route_file_resources), $this->route_page_collection) ;
             $content   = '<' . '?php return unserialize(' . var_export(serialize($content_cache), 1) . ');' ;
@@ -374,18 +374,18 @@ class RouteCacheLoader {
     }
     
     /**
-     * @return \App\AdminBundle\Compiler\Generator\PhpClass
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpClass
      */
     public function getCompileClass() {
         if( null === $this->_compile_class ) {
-            $class = new \App\AdminBundle\Compiler\Generator\PhpClass() ;
+            $class = new \Symforce\AdminBundle\Compiler\Generator\PhpClass() ;
             $class
                 ->setName( 'AppAdminCache\WebPageService' )
-                ->setParentClassName( '\App\AdminBundle\Compiler\Cache\WebPageCache' )
+                ->setParentClassName( '\Symforce\AdminBundle\Compiler\Cache\WebPageCache' )
                 ->addUseStatement('Symfony\Component\PropertyAccess\PropertyAccessorInterface')
                 ->addUseStatement('Symfony\Component\HttpFoundation\Request')
-                ->addUseStatement('App\AdminBundle\Compiler\Loader\AdminLoader')
-                ->addUseStatement('App\AdminBundle\Controller\AdminController')
+                ->addUseStatement('Symforce\AdminBundle\Compiler\Loader\AdminLoader')
+                ->addUseStatement('Symforce\AdminBundle\Controller\AdminController')
                 ->setFinal(true)
                 ; 
             $this->_compile_class  = $class ;
@@ -393,20 +393,20 @@ class RouteCacheLoader {
         return  $this->_compile_class ;
     }
     
-    public $_compile_app_admin_writer = null ;
+    public $_compile_symforce_admin_writer = null ;
     
     /**
-     * @return \App\AdminBundle\Compiler\Generator\PhpWriter
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpWriter
      */
     public function getCompileAppAdminWriter() {
-        if( null === $this->_compile_app_admin_writer ) {
+        if( null === $this->_compile_symforce_admin_writer ) {
             $class  = $this->getCompileClass() ;
             $fn  = $class->addMethod('loadAppAdminRoute')
                 ->setVisibility('public')
                 ;
-            $this->_compile_app_admin_writer    = $fn->getWriter() ;
+            $this->_compile_symforce_admin_writer    = $fn->getWriter() ;
         } 
-        return $this->_compile_app_admin_writer ;
+        return $this->_compile_symforce_admin_writer ;
     }
     
 }

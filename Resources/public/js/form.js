@@ -244,7 +244,7 @@ var FormDynamic = (function(){
         initialize: function(form, options){
             this.dom        = $(form) ;
             this.dom.attr('novalidate', 'novalidate' );
-            this.dynamic_input   = $(form).find('input[type="hidden"][id$="_app_admin_form_dynamic"]') ;
+            this.dynamic_input   = $(form).find('input[type="hidden"][id$="_symforce_admin_form_dynamic"]') ;
 
             this.dynamic_elements   = {};
             this.deps_elements   = {} ;
@@ -325,7 +325,7 @@ var FormDynamic = (function(){
                     return  jQuery.parseJSON(val) ;
                 }
                 return {} ;
-            })( this.dom.find('input[type="hidden"][id$="_app_admin_form_dynamic_values"]')  );
+            })( this.dom.find('input[type="hidden"][id$="_symforce_admin_form_dynamic_values"]')  );
 
             var dynamic_deps   = (function(input){
                 if( input.get(0) ) {
@@ -333,7 +333,7 @@ var FormDynamic = (function(){
                     return  jQuery.parseJSON(val) ;
                 }
                 return {} ;
-            })( this.dom.find('input[type="hidden"][id$="_app_admin_form_dynamic_deps"]')  ) ;
+            })( this.dom.find('input[type="hidden"][id$="_symforce_admin_form_dynamic_deps"]')  ) ;
 
             var show_on = {} ;
             Klass.each(dynamic_deps, function( configs , element_name ){
@@ -468,7 +468,7 @@ $(function(){
    $('.app_form_btn_cancel').click(function(evt){
        var url  = null ;
         _.some($(this).closest('form').find('input[type="hidden"]').toArray(), function(el){
-            if( /app_admin_form_referer/.test( $(el).attr('name') ) ) {
+            if( /symforce_admin_form_referer/.test( $(el).attr('name') ) ) {
                 url = $(el).val() ;
                 return true ;
             }

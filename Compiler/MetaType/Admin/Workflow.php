@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\AdminBundle\Compiler\MetaType\Admin ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Admin ;
 
 /**
  * Description of StatusCollection
@@ -64,7 +64,7 @@ class Workflow extends EntityAware {
     public $_admin_children_permertions  ;
     public $_parsed_children_permertions  ;
 
-    public function __construct(Entity $admin, \App\AdminBundle\Compiler\Annotation\Workflow $annot ) {
+    public function __construct(Entity $admin, \Symforce\AdminBundle\Compiler\Annotation\Workflow $annot ) {
         $this->setAdminObject($admin) ;
         $this->setMyPropertie( $annot ) ;
         
@@ -562,7 +562,7 @@ class Workflow extends EntityAware {
         return $children_config ; 
     }
     
-    public function compileListAction(\App\AdminBundle\Compiler\Generator\PhpWriter $writer){
+    public function compileListAction(\Symforce\AdminBundle\Compiler\Generator\PhpWriter $writer){
         
         $writer->writeln('<div class="btn-group btn-group-sm">');
         

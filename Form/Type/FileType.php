@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Form\Type;
+namespace Symforce\AdminBundle\Form\Type;
 
 use Symfony\Component\Form\Extension\Core\Type\HiddenType ;
 use Symfony\Component\Form\AbstractType;
@@ -15,7 +15,7 @@ use Symfony\Component\Form\FormInterface;
 
 
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use App\AdminBundle\Form\DataTransformer\FileTransformer ;
+use Symforce\AdminBundle\Form\DataTransformer\FileTransformer ;
 
 
 class FileType extends AbstractType {
@@ -58,11 +58,11 @@ class FileType extends AbstractType {
             
             $oldValue = $admin->getReflectionProperty( $options['admin_property'])->getValue($object) ;
 
-            $pattern = \App\AdminBundle\Entity\File::getFilesPattern( $this->container->getParameter('app.web_assets_dir') ) ;
+            $pattern = \Symforce\AdminBundle\Entity\File::getFilesPattern( $this->container->getParameter('app.web_assets_dir') ) ;
             if( $data && preg_match( $pattern , $data, $ls) ) {
                 
                 $em     = $admin->getManager() ;
-                $file   = $em->getRepository('App\AdminBundle\Entity\File')->loadByUUID( $ls[1] ) ;
+                $file   = $em->getRepository('Symforce\AdminBundle\Entity\File')->loadByUUID( $ls[1] ) ;
                 
                 $object_id  = $admin->getId( $object ) ;
                 if( $object_id ) {

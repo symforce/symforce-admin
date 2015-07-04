@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Controller;
+namespace Symforce\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response; 
@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Component\HttpFoundation\JsonResponse ;
 
-use App\AdminBundle\Entity\File ;
+use Symforce\AdminBundle\Entity\File ;
 
 /**
  * @author loong
@@ -48,14 +48,14 @@ class FileManagerController extends Controller {
         
         $em = $this->container->get('doctrine')->getManager() ;
         /**
-         * @var $repo \App\AdminBundle\Entity\FileRepository
+         * @var $repo \Symforce\AdminBundle\Entity\FileRepository
          */
-        $repo = $em->getRepository('App\AdminBundle\Entity\File') ;
+        $repo = $em->getRepository('Symforce\AdminBundle\Entity\File') ;
         $repo->setContainer($this->container) ;
         
         $session_id = $this->getRequest()->getSession()->getId() ;
         
-        $file = new \App\AdminBundle\Entity\File() ;
+        $file = new \Symforce\AdminBundle\Entity\File() ;
         $form = $this->createFormBuilder($file, array(
                 'label'        => 'Image' ,
             ))
@@ -230,7 +230,7 @@ class FileManagerController extends Controller {
         $file->setContent( $data ) ;
         
         $em = $this->get('doctrine')->getManager() ;
-        $_file = $em->getRepository('App\AdminBundle\Entity\File')->loadByURL( $request->get('url') ) ; 
+        $_file = $em->getRepository('Symforce\AdminBundle\Entity\File')->loadByURL( $request->get('url') ) ; 
         if( $_file 
                 && $admin->getClassName() === $_file->getClassName()
                 && $field_name === $_file->getPropertyName()
@@ -256,7 +256,7 @@ class FileManagerController extends Controller {
      */
     public function fileViewAction(Request $request, $type, $uuid, $ext )
     {
-        $repo   = $this->container->get('doctrine')->getManager()->getRepository('App\AdminBundle\Entity\File');
+        $repo   = $this->container->get('doctrine')->getManager()->getRepository('Symforce\AdminBundle\Entity\File');
         $file   = $repo->loadByUUID($uuid) ;
         
         $is_debug   = $this->container->getParameter('kernel.debug') ;

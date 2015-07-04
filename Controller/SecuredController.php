@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Controller;
+namespace Symforce\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Asset ;
 class SecuredController extends Controller
 {
     /**
-     * @Route("/login", name="app_admin_login")
+     * @Route("/login", name="symforce_admin_login")
      * @Template()
      */
     public function loginAction(Request $request)
@@ -24,7 +24,7 @@ class SecuredController extends Controller
         // $form   = $this->container->get('app.admin.loader')->getAdminByName('app_user')->getLoginForm( $request ) ;
         
         $dispatcher = $this->container->get('event_dispatcher');
-        $event = new \App\AdminBundle\Event\FormEvent($form, $request);
+        $event = new \Symforce\AdminBundle\Event\FormEvent($form, $request);
         $dispatcher->dispatch('app.event.form', $event) ;
         if (null !== $event->getResponse()) {
             return $event->getResponse() ;
@@ -36,7 +36,7 @@ class SecuredController extends Controller
     }
 
     /**
-     * @Route("/login_check", name="app_admin_check")
+     * @Route("/login_check", name="symforce_admin_check")
      */
     public function securityCheckAction()
     {
@@ -44,7 +44,7 @@ class SecuredController extends Controller
     }
 
     /**
-     * @Route("/logout", name="app_admin_logout")
+     * @Route("/logout", name="symforce_admin_logout")
      */
     public function logoutAction()
     {
@@ -101,7 +101,7 @@ class SecuredController extends Controller
             if( $error instanceof \Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException ) {
                 $_error = new \Symfony\Component\Form\FormError( $tr->trans('app.login.error.crsf', array(), $app_domain ) ) ;
                 $form->addError( $_error  ) ;
-            } else if ( $error instanceof \App\UserBundle\Exception\CaptchaException ) {
+            } else if ( $error instanceof \Symforce\UserBundle\Exception\CaptchaException ) {
                 $_error = $tr->trans('app.login.error.captcha' , array(), $app_domain ) ;
                 if( $this->container->getParameter('kernel.debug') ) {
                     $_error .= sprintf(" code(%s)",  $error->getCode()  ) ;

@@ -28,12 +28,12 @@ use Symfony\Component\Console\Output\OutputInterface;
 class WorkflowCommand extends ContainerAwareCommand
 {
     /**
-     * @var \App\AdminBundle\Compiler\Loader\AdminLoader
+     * @var \Symforce\AdminBundle\Compiler\Loader\AdminLoader
      */
     private $loader ;
     
     /**
-     * @var \App\AdminBundle\Compiler\Cache\AdminCache
+     * @var \Symforce\AdminBundle\Compiler\Cache\AdminCache
      */
     private $admin ;
     
@@ -88,7 +88,7 @@ class WorkflowCommand extends ContainerAwareCommand
         $this->tree($tree, $input, $output) ;
     }
     
-    private function getWorkflowSteps(\App\AdminBundle\Compiler\Cache\AdminCache $admin){
+    private function getWorkflowSteps(\Symforce\AdminBundle\Compiler\Cache\AdminCache $admin){
         $steps  = array() ;
         foreach( $admin->workflow['status'] as $step_name => $step ) {
             if( $step['internal'] ) continue ;
@@ -97,7 +97,7 @@ class WorkflowCommand extends ContainerAwareCommand
         return $steps ;
     }
     
-    private function parse($convert, \App\AdminBundle\Compiler\Cache\AdminCache $admin, InputInterface $input, OutputInterface $output) {
+    private function parse($convert, \Symforce\AdminBundle\Compiler\Cache\AdminCache $admin, InputInterface $input, OutputInterface $output) {
         
         $steps  = $this->getWorkflowSteps($admin) ;
         $step_help  = json_encode( $steps) ;
@@ -159,7 +159,7 @@ class WorkflowCommand extends ContainerAwareCommand
     }
     
     
-    private function check(\App\AdminBundle\Compiler\Cache\AdminCache $admin, InputInterface $input, OutputInterface $output){
+    private function check(\Symforce\AdminBundle\Compiler\Cache\AdminCache $admin, InputInterface $input, OutputInterface $output){
         
         $steps  = $this->getWorkflowSteps($admin) ;
         

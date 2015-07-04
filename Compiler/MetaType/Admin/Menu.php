@@ -1,8 +1,8 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType\Admin ;
+namespace Symforce\AdminBundle\Compiler\MetaType\Admin ;
 
-class Menu extends \App\AdminBundle\Compiler\MetaType\Type {
+class Menu extends \Symforce\AdminBundle\Compiler\MetaType\Type {
     
     public $position ;
  

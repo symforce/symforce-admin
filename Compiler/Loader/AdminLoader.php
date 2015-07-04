@@ -1,10 +1,10 @@
 <?php
 
-namespace App\AdminBundle\Compiler\Loader ;
+namespace Symforce\AdminBundle\Compiler\Loader ;
 
 use Symfony\Component\DependencyInjection\ContainerInterface ;
 
-use App\AdminBundle\Compiler\Cache\AdminCache ;
+use Symforce\AdminBundle\Compiler\Cache\AdminCache ;
 
 /**
  * Description of AdminLoader
@@ -316,7 +316,7 @@ final class AdminLoader {
     }
     
     /**
-     * @return \App\UserBundle\Entity\User
+     * @return \Symforce\UserBundle\Entity\User
      */
     public function getCurrentLoginUser(){
         $securityContext = $this->container->get('security.context') ;
@@ -327,7 +327,7 @@ final class AdminLoader {
     public function getCurrentLoginSecurityAuthorize( $admin_name = null ){
         $user   = $this->getCurrentLoginUser() ;
         $data   = null ;
-        if( $user instanceof \App\UserBundle\Entity\User ) {
+        if( $user instanceof \Symforce\UserBundle\Entity\User ) {
             $group  = $user->getUserGroup() ;
             if( $group ) {
                 $data   = $group->getAuthorize() ;
@@ -364,7 +364,7 @@ final class AdminLoader {
     }
     
     /**
-     * @return \App\UserBundle\Entity\User
+     * @return \Symforce\UserBundle\Entity\User
      */
     final public function getUser() {
         return $this->container->get('security.context')->getToken()->getUser();

@@ -1,7 +1,7 @@
 
 services:
     app_routing.route_provider:
-        class: App\AdminBundle\Routing\RouteProvider
+        class: Symforce\AdminBundle\Routing\RouteProvider
         arguments: [ "@doctrine", %app_routing.entity_class%, %app_routing.default_controller%, %app_routing.default_template% ]
         
     app_routing.url_matcher:

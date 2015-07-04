@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Compiler\Cache ;
+namespace Symforce\AdminBundle\Compiler\Cache ;
 
 trait  AdminSecurity {
     
@@ -10,7 +10,7 @@ trait  AdminSecurity {
     protected $_auth_parents ;
     
     /**
-     * @return \App\UserBundle\Entity\User
+     * @return \Symforce\UserBundle\Entity\User
      */
     public function getCurrentLoginUser() {
         return $this->admin_loader->getCurrentLoginUser() ;
@@ -19,7 +19,7 @@ trait  AdminSecurity {
     public function auth( $action, $object = null ){
         $securityContext = $this->container->get('security.context') ;
         $user   = $securityContext->getToken()->getUser() ;
-        $group  = $user instanceof \App\UserBundle\Entity\User ? $user->getUserGroup() : null ;
+        $group  = $user instanceof \Symforce\UserBundle\Entity\User ? $user->getUserGroup() : null ;
         
         $is_visiable    = false ;
         if ( $securityContext->isGranted('ROLE_SUPER_ADMIN') ) {
@@ -110,7 +110,7 @@ trait  AdminSecurity {
                     return $securityContext->isGranted( $this->form_elements[$property_name]['auth'] ) ;
                 }
             } else {
-               if( !$securityContext->isGranted(\App\UserBundle\Entity\User::ROLE_SUPER_ADMIN) )  {
+               if( !$securityContext->isGranted(\Symforce\UserBundle\Entity\User::ROLE_SUPER_ADMIN) )  {
                    return false ;
                }
             }

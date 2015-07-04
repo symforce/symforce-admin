@@ -1,12 +1,12 @@
 <?php
 
-namespace App\AdminBundle\Form\DataTransformer ;
+namespace Symforce\AdminBundle\Form\DataTransformer ;
 
 use Symfony\Component\Form\DataTransformerInterface ;
 use Symfony\Component\Form\Exception\TransformationFailedException;
 
-use App\AdminBundle\Entity\File ;
-use App\AdminBundle\Entity\TmpFile ;
+use Symforce\AdminBundle\Entity\File ;
+use Symforce\AdminBundle\Entity\TmpFile ;
 use Doctrine\ORM\Id\UuidGenerator ;
 
 /**
@@ -17,12 +17,12 @@ use Doctrine\ORM\Id\UuidGenerator ;
 class TreeTransformer implements DataTransformerInterface {
 
     /**
-     * @var \App\AdminBundle\Compiler\Loader\AdminLoader
+     * @var \Symforce\AdminBundle\Compiler\Loader\AdminLoader
      */
     private $admin_loader ;
     private $entity_class ;
 
-    public function __construct(\App\AdminBundle\Compiler\Loader\AdminLoader $admin_loader, $entity_class ) {
+    public function __construct(\Symforce\AdminBundle\Compiler\Loader\AdminLoader $admin_loader, $entity_class ) {
         $this->admin_loader = $admin_loader ;
         $this->entity_class = $entity_class ;
     }

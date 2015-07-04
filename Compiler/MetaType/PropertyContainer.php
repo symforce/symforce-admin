@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Compiler\MetaType ;
+namespace Symforce\AdminBundle\Compiler\MetaType ;
 
 /**
  * @author loong
@@ -23,7 +23,7 @@ class PropertyContainer {
     public $entity ; 
     
     /**
-     * @var \App\AdminBundle\Compiler\Generator\TransGeneratorNode 
+     * @var \Symforce\AdminBundle\Compiler\Generator\TransGeneratorNode 
      */
     public $tr_node ;
     

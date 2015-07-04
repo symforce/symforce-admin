@@ -1,11 +1,11 @@
 <?php
 
-namespace App\AdminBundle\Compiler\Generator;
+namespace Symforce\AdminBundle\Compiler\Generator;
 
 class PhpMethod extends \CG\Generator\PhpMethod {
     
     /**
-     * @var \App\AdminBundle\Compiler\Generator\PhpWriter
+     * @var \Symforce\AdminBundle\Compiler\Generator\PhpWriter
      */
     protected $_writer ;
     
@@ -15,18 +15,18 @@ class PhpMethod extends \CG\Generator\PhpMethod {
 
 
     /**
-     * @return \App\AdminBundle\Compiler\Generator\PhpWriter
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpWriter
      */
     public function getWriter(){
         if( null === $this->_writer ) {
-            $this->_writer  = new \App\AdminBundle\Compiler\Generator\PhpWriter();
+            $this->_writer  = new \Symforce\AdminBundle\Compiler\Generator\PhpWriter();
         }
         return $this->_writer ;
     }
     
     /**
      * @param bool $value
-     * @return \App\AdminBundle\Compiler\Generator\PhpMethod
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpMethod
      */
     public function useLazyParent( $value = true ) {
         $this->_lazy_parent = !! $value ;
@@ -36,7 +36,7 @@ class PhpMethod extends \CG\Generator\PhpMethod {
     
     /**
      * @param string $code
-     * @return \App\AdminBundle\Compiler\Generator\PhpMethod
+     * @return \Symforce\AdminBundle\Compiler\Generator\PhpMethod
      */
     public function addLazyCode($code){
         if( null == $this->_lazy_code ) {
