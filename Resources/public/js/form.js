@@ -465,7 +465,7 @@ $(function(){
            
        }) ; 
    });
-   $('.app_form_btn_cancel').click(function(evt){
+   $('.sf_form_btn_cancel').click(function(evt){
        var url  = null ;
         _.some($(this).closest('form').find('input[type="hidden"]').toArray(), function(el){
             if( /sf_admin_form_referer/.test( $(el).attr('name') ) ) {
@@ -499,9 +499,9 @@ var SymforceFormValidator   = (function(){
             $.each(this.elements, function(el) {
                 var _this   = $(this) ;
                 _this.on("focus",  function(evt){
-                    _this.trigger('app_focus');
+                    _this.trigger('sf_focus');
                 });
-                _this.on("app_focus",  function(){
+                _this.on("sf_focus",  function(){
                     if( iTimer ) {
                        clearTimeout(iTimer) ;
                        iTimer   = null ;
@@ -513,11 +513,11 @@ var SymforceFormValidator   = (function(){
                        clearTimeout(iTimer) ;
                    }
                    iTimer = setTimeout(function(){
-                       _this.trigger('app_blur');
+                       _this.trigger('sf_blur');
                    }, 200 ) ;
                 });
                 
-                _this.on("app_blur",  function(evt){
+                _this.on("sf_blur",  function(evt){
                     klass.validate(evt, _this);
                 });
                 
@@ -741,7 +741,7 @@ var SymforceFormFile = new Klass({
         this.input  = $(input) ;
         this.box    =  this.input.closest('div') ;
         this.handle  = this.box.find('input[type="file"]') ;
-        this.view  = this.box.find('.app_form_file_view') ;
+        this.view  = this.box.find('.sf_form_file_view') ;
         
         var _this   = this ;
         if( this.options.is_image ){
@@ -817,7 +817,7 @@ var SymforceFormFile = new Klass({
         } else if ( width < 300 ) {
             width   = 300 ;
         }
-        var html = '<img id="app_form_image_resize_corp" width="'+ width +'" src="' + this.input.val() + '"/>' ;
+        var html = '<img id="sf_form_image_resize_corp" width="'+ width +'" src="' + this.input.val() + '"/>' ;
         var new_image_crop_percent = null ;
         
         var _this = this ;
@@ -853,7 +853,7 @@ var SymforceFormFile = new Klass({
           if( modal_width < 300 ) modal_width = 300 ;
           modal.find("div.modal-dialog").css('width',  modal_width );
           setTimeout(function(){
-              var height  = $('#app_form_image_resize_corp').height() ;
+              var height  = $('#sf_form_image_resize_corp').height() ;
               var p   = _this.image_crop_percent ;
               
               var options   = {
@@ -876,7 +876,7 @@ var SymforceFormFile = new Klass({
                   options['setSelect']  = crop ;
               }
               
-              $('#app_form_image_resize_corp').Jcrop(options, function() {
+              $('#sf_form_image_resize_corp').Jcrop(options, function() {
                     _this.image_jcrop_api = this ;
                     new_image_crop_percent = null ; 
               });
@@ -901,7 +901,7 @@ var SymforceFormFile = new Klass({
             var config_width    =  this.options.config.width ;
             var config_height    =  this.options.config.height ;
 
-            var image_box_width = this.image_element.closest('.app_form_file_view').width() ;
+            var image_box_width = this.image_element.closest('.sf_form_file_view').width() ;
             if( config_width > image_box_width ) {
                config_height   = image_box_width  / config_width * config_height ;
                config_width    = image_box_width ;
@@ -978,9 +978,9 @@ var SymforceFormFile = new Klass({
         this.image_real_width   = 0 ;
         this.image_real_height  = 0 ;
         
-        this.image_adjust_handle  = this.box.find('.app_form_image_adjust') ;
-        this.image_delete_handle  = this.box.find('.app_form_image_delete') ;
-        this.image_default_handle  = this.box.find('.app_form_image_default') ; 
+        this.image_adjust_handle  = this.box.find('.sf_form_image_adjust') ;
+        this.image_delete_handle  = this.box.find('.sf_form_image_delete') ;
+        this.image_default_handle  = this.box.find('.sf_form_image_default') ; 
         
         this.image_delete_handle.click( this.onDeleteClick );
         this.image_default_handle.click( this.onDefaultClick );
@@ -998,14 +998,14 @@ var SymforceFormFile = new Klass({
         
         if( this.options.is_image ) {
             if( url ) {
-                  this.box.removeClass('app_form_image_hidden') ;
+                  this.box.removeClass('sf_form_image_hidden') ;
                   this.image_element.attr('src', url ) ;
                   this.image_element.attr('alt', name ) ;
                   this.image_element.css('width', 'auto' ) ;
                   this.image_element.css('height', 'auto' ) ;
                   this.input.val( url ) ;
               } else {
-                  this.box.addClass('app_form_image_hidden') ;
+                  this.box.addClass('sf_form_image_hidden') ;
                   this.image_element.attr('src', '' ) ;
                   this.image_element.attr('alt', '' ) ;
                   this.input.val( '' ) ;
@@ -1015,13 +1015,13 @@ var SymforceFormFile = new Klass({
               }
         } else {
             if( url ) {
-                  this.box.addClass('app_form_file_show') ;
+                  this.box.addClass('sf_form_file_show') ;
                   this.view.attr('href', url ) ;
                   this.view.attr('target', '_blank' ) ;
                   this.view.text(name ) ;
                   this.input.val( url ) ;
             } else {
-                  this.box.removeClass('app_form_file_show') ;
+                  this.box.removeClass('sf_form_file_show') ;
                   this.view.attr('href', 'javascript:alert(1)' ) ;
                   this.view.attr('target', '_self' ) ;
                   this.view.text('' ) ;

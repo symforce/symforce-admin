@@ -55,7 +55,7 @@ $(function() {
        }
    });
    
-   $.each($('.input-group-addon,.app-addon'), function(i){
+   $.each($('.input-group-addon,.sf-addon'), function(i){
        var next = $(this).next().get(0) ;
        var prev = $(this).prev().get(0) ;
        if( next ) {

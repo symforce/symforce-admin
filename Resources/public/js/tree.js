@@ -41,7 +41,7 @@ var SymforceFormTree = (function(){
                 _this.handle.on('blur', function(evt){
                     iTimer  = setTimeout(function(){
                         if( !_this.modal  ) {
-                           _this.input.trigger('app_blur'); 
+                           _this.input.trigger('sf_blur'); 
                         } 
                     }, 300 );
                 });
@@ -73,7 +73,7 @@ var SymforceFormTree = (function(){
             if( this.copy_property ) {
                 this.copy_property.val( text ) ;
             }
-            this.input.trigger( "app_change", [ id , text ] );
+            this.input.trigger( "sf_change", [ id , text ] );
         },
         
         onEventSelect: function() {
@@ -138,8 +138,8 @@ var SymforceFormTree = (function(){
         
         onHandle: function(evt, url ){
             
-            this.input.trigger('app_focus');
-            this.handle.trigger('app_focus');
+            this.input.trigger('sf_focus');
+            this.handle.trigger('sf_focus');
             
             if(evt) {
                 evt.stopPropagation();
@@ -181,7 +181,7 @@ var SymforceFormTree = (function(){
                   } ;
             
             this.modal   = bootbox.dialog({
-                message: '<div class="app_form_tree_root"></div>',
+                message: '<div class="sf_form_tree_root"></div>',
                 title: this.options.title ,
                 buttons: buttons , 
                 backdrop: true,
@@ -191,7 +191,7 @@ var SymforceFormTree = (function(){
             this.modal_select_btn   = this.modal.find('button[data-bb-handler="select"]') ;
             this.modal_select_btn.prop('disabled', true ) ;
             
-            this.tree_root  = $( this.modal.find(".app_form_tree_root").get(0) ) ;
+            this.tree_root  = $( this.modal.find(".sf_form_tree_root").get(0) ) ;
             this.loadTree( url ) ;
         }
     });
@@ -248,7 +248,7 @@ var SymforceFormSimpleTree = (function(){
             } else {
                 this.options.url = this.options.default_url + '/' + route_name ;
             }
-            this.handle.trigger( "app_change", [ route_name ] ) ;
+            this.handle.trigger( "sf_change", [ route_name ] ) ;
         },
         
         onEventSelect: function() {
@@ -316,7 +316,7 @@ var SymforceFormSimpleTree = (function(){
             
             (function(input){
                 setTimeout(function(){
-                    input.trigger('app_focus');
+                    input.trigger('sf_focus');
                 }, 500);
             })(this.handle); 
             
@@ -353,7 +353,7 @@ var SymforceFormSimpleTree = (function(){
                   } ;
             
             this.modal   = bootbox.dialog({
-                message: '<div class="app_form_tree_root"></div>',
+                message: '<div class="sf_form_tree_root"></div>',
                 title: this.options.title ,
                 buttons: buttons , 
                 backdrop: true,
@@ -363,7 +363,7 @@ var SymforceFormSimpleTree = (function(){
             this.modal_select_btn   = this.modal.find('button[data-bb-handler="select"]') ;
             this.modal_select_btn.prop('disabled', true ) ;
             
-            this.tree_root  = $( this.modal.find(".app_form_tree_root").get(0) ) ;
+            this.tree_root  = $( this.modal.find(".sf_form_tree_root").get(0) ) ;
             this.loadTree( url ) ;
         }
     });

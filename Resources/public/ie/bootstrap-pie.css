@@ -37,8 +37,8 @@ li.first_last_child,
 .btn.first_child,
 .btn.first_last_child,
 .btn_pie,
-.app_form_input,
-.app-addon,
+.sf_form_input,
+.sf-addon,
 .input-group-addon
 {
     behavior:url(/bundles/appadmin/ie/css3pie/PIE.htc);
