@@ -110,7 +110,7 @@ class PhpClass extends \CG\Generator\PhpClass {
         
         static $root_dir    = null ;
         if( null == $root_dir ) {
-            $root_dir   = realpath( str_replace(str_replace('\\', '/', __NAMESPACE__) , '', __DIR__) . '/../app/Resources/AppAdminBundle/src' ) . '/' ;
+            $root_dir   = realpath( str_replace(str_replace('\\', '/', __NAMESPACE__) , '', __DIR__) . '/../app/Resources/SymforceAdminBundle/src' ) . '/' ;
         }
         
         $writer = new \Symforce\AdminBundle\Compiler\Generator\PhpWriter();

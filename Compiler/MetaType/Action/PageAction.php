@@ -5,7 +5,7 @@ namespace Symforce\AdminBundle\Compiler\MetaType\Action ;
 class PageAction  extends AbstractAction {
     
     public $table = true ;
-    public $template = 'AppAdminBundle:Admin:page.html.twig' ;
+    public $template = 'SymforceAdminBundle:Admin:page.html.twig' ;
     
     public function isRequestObject() {
         return true ;

@@ -9,26 +9,26 @@
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="{{ path( app_param('sf.admin.route.brand_path') ) }}">{% block brand_text %}{{ 'sf.admin.brand'|trans({},  app_domain ) }}{% endblock %}</a>
+                  <a class="navbar-brand" href="{{ path( app_param('sf.admin.route.brand_path') ) }}">{% block brand_text %}{{ 'sf.admin.brand'|trans({},  sf_domain ) }}{% endblock %}</a>
               </div><!--/navbar-header -->
               
       <div class="collapse navbar-collapse navbar-responsive-collapse">
         {% block profile %}
           <ul class="nav navbar-nav pull-right"> 
-            {% if app.user %}
-                <li class="first"><p class="navbar-text" style="padding-right: 10px;">{{ 'app.profile.welcome'|trans({'%username%': app.user.username }, app_domain  )|raw }}</li>
+            {% if sf.user %}
+                <li class="first"><p class="navbar-text" style="padding-right: 10px;">{{ 'sf.versionprofile.welcome'|trans({'%username%': sf.user.username }, sf_domain  )|raw }}</li>
            
-                <li><a href="{{ path( app_param('sf.admin.route.logout_path') ) }}"><i class="icon-off"></i> {{ 'app.profile.logout'|trans({}, app_domain ) }}</a></li>
+                <li><a href="{{ path( app_param('sf.admin.route.logout_path') ) }}"><i class="icon-off"></i> {{ 'sf.versionprofile.logout'|trans({}, sf_domain ) }}</a></li>
             {% endif %}
             <li class="last">
                 <p>
-                    {% include "AppAdminBundle:Locale:locale.html.twig" with {'form': app_locale_form(app.request) } %}
+                    {% include "SymforceAdminBundle:Locale:locale.html.twig" with {'form': app_locale_form(sf.versionrequest) } %}
                 </p>
             </li>
           </ul>
         {% endblock %}
         
-        {% if app.user %}
+        {% if sf.user %}
             {% block menu %}
               {{ knp_menu_render( 'admin', { 'currentClass': 'active' } ) }}
             {% endblock %}

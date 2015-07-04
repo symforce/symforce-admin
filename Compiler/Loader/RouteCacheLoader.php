@@ -319,7 +319,7 @@ class RouteCacheLoader {
                     $annot = new \Symforce\AdminBundle\Compiler\Annotation\Route(array(
                         'admin' => $admin_name ,
                         'action' => 'index' ,
-                        'template' => 'AppAdminBundle:WebPage:index.html.twig' ,
+                        'template' => 'SymforceAdminBundle:WebPage:index.html.twig' ,
                     ));
                     $page_generator->addRoute( $default_controller->getMethod('defaultIndexAction'), $annot); 
                 }
@@ -329,7 +329,7 @@ class RouteCacheLoader {
                         'admin' => $admin_name ,
                         'action' => 'view' ,
                         'entity'   => true ,
-                        'template' => 'AppAdminBundle:WebPage:view.html.twig' ,
+                        'template' => 'SymforceAdminBundle:WebPage:view.html.twig' ,
                     ));
                     $page_generator->addRoute( $default_controller->getMethod('defaultViewAction'), $annot); 
                 }

@@ -8,7 +8,7 @@ class UpdateAction  extends AbstractAction {
     
     public $property_annotation_class_name = 'Symforce\AdminBundle\Compiler\Annotation\Update' ;
     public $icon = 'edit' ;
-    public $template = 'AppAdminBundle:Admin:update.html.twig' ;
+    public $template = 'SymforceAdminBundle:Admin:update.html.twig' ;
     
     public function isRequestObject() {
         return true ;

@@ -39,7 +39,7 @@ type:
     
 ignored_route:
     SensioDistributionBundle: ~
-    AppAdminBundle: [ 'Ie', 'Secured', 'FileManager', 'Locale', 'FormHelper', 'Dashboard', 'Captcha' ]
+    SymforceAdminBundle: [ 'Ie', 'Secured', 'FileManager', 'Locale', 'FormHelper', 'Dashboard', 'Captcha' ]
     
 ignored_template:
     SensioDistributionBundle: ~
@@ -50,4 +50,4 @@ ignored_template:
     TwigBundle: [ 'Exception' ]
     SwiftmailerBundle: [ 'Collector' ]
     DoctrineBundle: [ 'Collector' ]
-    AppAdminBundle: [ 'Secured', 'Form', 'Admin', 'Dashboard', 'FileManager', 'FormHelper', 'Locale', 'Menu' ]
+    SymforceAdminBundle: [ 'Secured', 'Form', 'Admin', 'Dashboard', 'FileManager', 'FormHelper', 'Locale', 'Menu' ]

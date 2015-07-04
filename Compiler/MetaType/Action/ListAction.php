@@ -5,7 +5,7 @@ namespace Symforce\AdminBundle\Compiler\MetaType\Action ;
 class ListAction  extends AbstractAction {
     
     public $property_annotation_class_name = 'Symforce\AdminBundle\Compiler\Annotation\Table' ;
-    public $template = 'AppAdminBundle:Admin:list.html.twig' ;
+    public $template = 'SymforceAdminBundle:Admin:list.html.twig' ;
     public $dashboard = true ;
     public $toolbar = true ;
     

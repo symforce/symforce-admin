@@ -10,7 +10,7 @@ use Symfony\Component\Config\Definition\Exception\Exception;
  */
 class MenuService {
 
-    const UNKNOW_TEMPLATE   = 'AppAdminBundle:Menu:unknow.html.twig' ;
+    const UNKNOW_TEMPLATE   = 'SymforceAdminBundle:Menu:unknow.html.twig' ;
 
     private $debug  = false ;
     

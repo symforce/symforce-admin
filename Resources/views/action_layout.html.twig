@@ -1,4 +1,4 @@
-{% extends "AppAdminBundle::layout.html.twig" %}
+{% extends "SymforceAdminBundle::layout.html.twig" %}
 
 {% block content %}
 
@@ -45,11 +45,11 @@
 
     <div class="col-sm-12">
         <div id="action_menu_bar">
-        {% include 'AppAdminBundle:Menu:knp_menu.html.twig' with { menu: admin.actionbarmenu  } %}
+        {% include 'SymforceAdminBundle:Menu:knp_menu.html.twig' with { menu: admin.actionbarmenu  } %}
         </div>
     </div>
 
-    {% include 'AppAdminBundle::admin_message.html.twig' %}
+    {% include 'SymforceAdminBundle::admin_message.html.twig' %}
     
     <div style="clear:both;">
     {% block content_left %}

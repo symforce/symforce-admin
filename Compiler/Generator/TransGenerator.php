@@ -39,7 +39,7 @@ class TransGenerator extends TransGeneratorNode {
     }
     
     public function flush($gen, $locale, array & $cache ) {
-        $path   = $gen->getParameter('kernel.root_dir') . '/Resources/AppAdminBundle/translations/' . $this->domain . '.' . $locale . '.yaml' ;
+        $path   = $gen->getParameter('kernel.root_dir') . '/Resources/SymforceAdminBundle/translations/' . $this->domain . '.' . $locale . '.yaml' ;
         $this->removeEmptyValue( $this->data ) ;
         $data   = Yaml::dump( $this->data , 4 ) ;
         $cache[ $path ] = $data ; 

@@ -5,7 +5,7 @@ namespace Symforce\AdminBundle\Compiler\MetaType\Action ;
 class ViewAction  extends AbstractAction {
     
     public $property_annotation_class_name = 'Symforce\AdminBundle\Compiler\Annotation\View' ;
-    public $template = 'AppAdminBundle:Admin:view.html.twig' ;
+    public $template = 'SymforceAdminBundle:Admin:view.html.twig' ;
     
     public $_groups = array() ;
 

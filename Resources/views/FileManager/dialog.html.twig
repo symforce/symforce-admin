@@ -1,9 +1,9 @@
-{% extends "AppAdminBundle::layout.html.twig" %}
+{% extends "SymforceAdminBundle::layout.html.twig" %}
 
 {% form_theme form 'form_div_layout.html.twig' %}
 
 {% block title %}
-    {{ 'app.filemanager.title' | trans({}, app_domain ) }}
+    {{ 'sf.versionfilemanager.title' | trans({}, sf_domain ) }}
 {% endblock %}
     
 {% block header_css %}
@@ -76,7 +76,7 @@
             <img src="{{ web_assets_dir }}{{ it }}" alt="{{ it.name }}" class="img-rounded" />
         </div>
     {% else %}
-        {{ 'app.filemanager.empty' | trans({}, app_domain ) }}
+        {{ 'sf.versionfilemanager.empty' | trans({}, sf_domain ) }}
     {% endfor %}
 </div>
     

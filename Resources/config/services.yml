@@ -1,7 +1,7 @@
 parameters:
     sf.admin.menu_builder.class: Symforce\AdminBundle\Menu\Builder
     # knp_menu.renderer.twig.class: Symforce\AdminBundle\Menu\BootstrapRenderer
-    knp_menu.renderer.twig.template: "AppAdminBundle:Menu:menu_bootstrap.html.twig"
+    knp_menu.renderer.twig.template: "SymforceAdminBundle:Menu:menu_bootstrap.html.twig"
     # sf.admin.cache.path: "%kernel.cache_dir%/AdminLoaderCache.php"
     # sf.admin.cache.expired: "%kernel.cache_dir%/AdminLoaderExpired.php"
     # knp_menu.renderer.list.options: { currentClass: "active" }

@@ -100,7 +100,7 @@ final class AdminLoader {
         $this->cache_expired_time = $cache_time ;
         $dirs   = include($path) ;
       
-        $cache_dir   = $this->container->getParameter('kernel.root_dir') . '/Resources/AppAdminBundle/src/' ;
+        $cache_dir   = $this->container->getParameter('kernel.root_dir') . '/Resources/SymforceAdminBundle/src/' ;
         $root_dir    = dirname( $this->container->getParameter('kernel.root_dir') ) . '/' ;
 
         foreach($dirs as $dir => $entities ) {

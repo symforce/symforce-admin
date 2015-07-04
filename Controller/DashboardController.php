@@ -108,7 +108,7 @@ class DashboardController extends Controller
                     $msg    = $tr->trans('sf.workflow.action.finish', array(
                         '%object%'  => $admin->string( $object ) ,
                         '%action%'  => $tr->trans( $new_status['action'], array(), $new_status['domain'] ) ,
-                    ), 'AppAdminBundle' ) ;
+                    ), 'SymforceAdminBundle' ) ;
                     
                     $request->getSession()->getFlashBag()->add('info', $msg) ;
                     

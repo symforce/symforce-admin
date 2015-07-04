@@ -124,7 +124,7 @@
                 for(var ev in events) if ( events.hasOwnProperty(ev) ) {
                     obj.on(ev, events[ev]);
                 }
-            })('#{{ id }}', '{{ datetime_picker }}', "{{ app_picker_format(datetime_format, datetime_picker )  }}", '{{ app.request.locale }}' );
+            })('#{{ id }}', '{{ datetime_picker }}', "{{ app_picker_format(datetime_format, datetime_picker )  }}", '{{ sf.versionrequest.locale }}' );
             
         </script>
     {% endblock %}
@@ -166,8 +166,8 @@
         max: {{ max_file_size }} ,
         id: '{{ attribute(form.parent.vars.value, admin_id )  | number_format  }}' ,
         url: '{{ path( 'app_upload_save', { "admin_name": admin_name , "field_name": name }) }}' ,
-        type_error: '{{ 'app.form.file.error.type' | trans({}, app_param('sf.admin.domain') ) }}' ,
-        size_error: '{{ 'app.form.file.error.size' | trans({}, app_param('sf.admin.domain') ) }}' ,
+        type_error: '{{ 'sf.versionform.file.error.type' | trans({}, app_param('sf.admin.domain') ) }}' ,
+        size_error: '{{ 'sf.versionform.file.error.size' | trans({}, app_param('sf.admin.domain') ) }}' ,
         config: {{ img | json_encode | raw }} ,
         is_image: true 
     });
@@ -197,8 +197,8 @@
                 max: {{ max_file_size }} ,
                 id: '{{ attribute(form.parent.vars.value, admin_id )  | number_format  }}' ,
                 url: '{{ path( 'app_upload_save', { "admin_name": admin_name , "field_name": name }) }}' ,
-                type_error: '{{ 'app.form.file.error.type' | trans({}, app_param('sf.admin.domain') ) }}' ,
-                size_error: '{{ 'app.form.file.error.size' | trans({}, app_param('sf.admin.domain') ) }}' 
+                type_error: '{{ 'sf.versionform.file.error.type' | trans({}, app_param('sf.admin.domain') ) }}' ,
+                size_error: '{{ 'sf.versionform.file.error.size' | trans({}, app_param('sf.admin.domain') ) }}' 
             });
         </script>
     {% endblock %}
@@ -215,14 +215,14 @@
                 var options = {
                     menubar : "edit insert format table tools view" ,
                     filemanager: {
-                        title: '{{ 'app.filemanager.title' | trans({}, app_param('sf.admin.domain') ) }}' ,
+                        title: '{{ 'sf.versionfilemanager.title' | trans({}, app_param('sf.admin.domain') ) }}' ,
                         url: '{{ path( 'app_filemanager', { "admin_name": admin_name , "field_name": name, "entity_id": attribute(form.parent.vars.value, admin_id ) | number_format }) }}' 
                     } ,
                     external_plugins: {
                         {# "advtextcolor": "{{ asset('/bundles/appadmin/tinymce_plugins/advtextcolor/plugin.min.js') }}", #}
                         "filemanager": "{{ asset('/bundles/appadmin/tinymce_plugins/filemanager/plugin.min.js') }}"
                     } ,
-                    language: '{{ app.request.locale }}' ,
+                    language: '{{ sf.versionrequest.locale }}' ,
                     selector:'#{{ id }}' ,
                     plugins: 'advlist paste searchreplace link anchor autolink image lists table charmap fullscreen code textcolor ',
                     //  toolbar: 'undo redo | searchreplace | bold italic underline strikethrough remove | bullist numlist outdent indent blockquote hr | link unlink anchor  | forecolor backcolor',
@@ -329,7 +329,7 @@
                 img.src = '{{ captcha_code }}?n=' + (new Date()).getTime();
             }
         </script>
-        <a class="captcha_reload" href="javascript:reload_{{ image_id }}();">{{ 'app.form.captcha.reload'|trans({}, translation_domain) }}</a>
+        <a class="captcha_reload" href="javascript:reload_{{ image_id }}();">{{ 'sf.versionform.captcha.reload'|trans({}, translation_domain) }}</a>
     {% endif %}
     
     {% if horizontal %}

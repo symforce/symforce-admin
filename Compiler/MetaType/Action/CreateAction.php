@@ -8,7 +8,7 @@ class CreateAction  extends AbstractAction {
     public $toolbar = true ;
     
     public $property_annotation_class_name = 'Symforce\AdminBundle\Compiler\Annotation\Create' ;
-    public $template = 'AppAdminBundle:Admin:create.html.twig' ;
+    public $template = 'SymforceAdminBundle:Admin:create.html.twig' ;
     
     public function isCreateTemplate(){
         return true ;

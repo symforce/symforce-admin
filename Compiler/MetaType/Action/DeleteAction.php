@@ -7,7 +7,7 @@ class DeleteAction  extends AbstractAction {
     public $table = true ;
     
     public $icon = 'remove' ;
-    public $template = 'AppAdminBundle:Admin:delete.html.twig' ;
+    public $template = 'SymforceAdminBundle:Admin:delete.html.twig' ;
     
     public function isRequestObject() {
         return true ;

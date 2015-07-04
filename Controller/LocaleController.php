@@ -16,7 +16,7 @@ class LocaleController extends Controller
      */
     public function localeAction(Request $request, $inline = 0 )
     {
-        // AppAdminBundle:Locale:locale.html.twig
+        // SymforceAdminBundle:Locale:locale.html.twig
         
         $service    = $this->container->get('sf.locale.listener');
         $form   = $service->getForm($request, $inline ) ;

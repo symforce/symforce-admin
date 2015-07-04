@@ -49,7 +49,7 @@ class ActionTwigGenerator {
         $this->template_file    = $this->admin_name . '.' . $action->name . '.html.twig' ;
         
         /*
-        $this->template_name    = 'AppAdminBundle:Cache:' . $this->template_file ;
+        $this->template_name    = 'SymforceAdminBundle:Cache:' . $this->template_file ;
          */
         
         $this->writer   = new \Symforce\AdminBundle\Compiler\Generator\PhpWriter() ;

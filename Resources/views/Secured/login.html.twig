@@ -1,4 +1,4 @@
-{% extends 'AppAdminBundle::layout.html.twig' %}
+{% extends 'SymforceAdminBundle::layout.html.twig' %}
 
 {% block body %}
 
@@ -7,20 +7,20 @@
     <div class="col-xs-6 col-xs-offset-3">
     {% block content %}
         
-        <form action="{{ path( 'sf_admin_check' ) }}" class="form-horizontal" method="post" id="login_form" >
+        <form action="{{ path( 'sf_admin_check' ) }}" class="form-horizontal" method="post" id="sf_admin_login_form" >
             
             {{ form_widget(form) }}
             
             <div class="form-group">
                 <div class="col-xs-offset-3 col-xs-9">
-                    <input type="submit" name="_submit" value="{{ 'app.login.signin' | trans({}, app_domain ) }}" class="btn btn-primary" />
+                    <input type="submit" name="_submit" value="{{ 'sf.versionlogin.signin' | trans({}, sf_domain ) }}" class="btn btn-primary" />
                 </div>
             </div>
         </form>
 
          <script type="text/javascript">
         $(function(){
-            new FormValidator('#login_form', {
+            new FormValidator('#sf_admin_login_form', {
                 'url': '{{ path('sf_admin_login') }}' ,
                 'elements': '.captcha_input input'
             }) ;
