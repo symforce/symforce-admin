@@ -84,7 +84,7 @@ class Group extends \Symforce\AdminBundle\Compiler\MetaType\Type {
     public function compileForm($action, $parent_builder, $admin , $object, \Symforce\AdminBundle\Compiler\MetaType\PropertyContainer $property_container, \Symforce\AdminBundle\Compiler\Generator\PhpWriter $writer, $parent_property = null){
             $this_builder   = $parent_builder . '_' . $this->id ;
             $options    = array(
-                "appform_type"  => "appgroup" ,
+                "sf_form_type"  => "appgroup" ,
                 "label" =>  $this->label->getPhpCode() ,
             );
             
@@ -96,7 +96,7 @@ class Group extends \Symforce\AdminBundle\Compiler\MetaType\Type {
                 if( !\Dev::isSimpleArray($this->show_on) ) {
                     $_or   = array( $_or ) ;
                 }
-                $options['dynamic_show_on'] = $_or ;
+                $options['sf_dynamic'] = $_or ;
             }
             
             $writer->write(  $this_builder  . ' = $builder->create("sf_form_group_' . $this->id . '", "appgroup", ')

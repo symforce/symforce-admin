@@ -238,8 +238,8 @@ abstract class Element extends \Symforce\AdminBundle\Compiler\MetaType\PropertyA
     public function getFormOptions(){
         
         $options    = array(
-            'appform_type'  => $this->compile_form_type ,
-            'appform_meta'  => $this->compile_meta_type ,
+            'sf_form_type'  => $this->compile_form_type ,
+            'sf_form_meta'  => $this->compile_meta_type ,
             'constraints' => array() ,
             'attr' => array() ,
         );
@@ -307,7 +307,7 @@ abstract class Element extends \Symforce\AdminBundle\Compiler\MetaType\PropertyA
             /**
              * @todo add php code handle
              */
-            $options['dynamic_show_on'] = $this->show_on ;
+            $options['sf_dynamic'] = $this->show_on ;
         }
         return $options ;
     }

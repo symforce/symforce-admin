@@ -27,8 +27,8 @@ var FormDynamic = (function(){
         Binds: [ 'onDepsChange', 'onDepsChanged', 'onChanged', 'onChange' ] ,
         initialize: function(form, dom ){
             this.form   = form ;
-            this.name   = $(dom).attr('appform_name') ;
-            this.type   = $(dom).attr('appform_type') ;
+            this.name   = $(dom).attr('sf_form_name') ;
+            this.type   = $(dom).attr('sf_form_type') ;
             this.dom    = $(dom) ;
             form.elements[ this.name ] = this ;
             this.iTimer = null ;
@@ -253,7 +253,7 @@ var FormDynamic = (function(){
             this.elements = {} ;
             
             (function(_this){
-                $.each( _this.dom.find('div[appform_name]'), function(){
+                $.each( _this.dom.find('div[sf_form_name]'), function(){
                     new Element( _this , this ) ;
                 }) ;
             })(this);
@@ -642,7 +642,7 @@ var FormValidator   = (function(){
             var children    = [] ;
             var last_child  = null ;
             for(var i = 0; i < groups.length; i++ ) {
-                var group_type  = $(groups[i]).attr('appform_type') ;
+                var group_type  = $(groups[i]).attr('sf_form_type') ;
                 if( 'appgroup' === group_type ) {
                     continue ;
                 }

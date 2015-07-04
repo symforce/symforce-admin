@@ -23,7 +23,7 @@ class Entity extends Choice {
         */
         
         if( null !== $this->choice_code ) {
-            $_options['appform_type'] = 'appentity' ;
+            $_options['sf_form_type'] = 'appentity' ;
             $_options['entity_class']   = $map['targetEntity'] ;
         } else if( null !== $this->choice_code ){
             \Dev::dump($this->choice_code); exit;

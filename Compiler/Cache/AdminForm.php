@@ -56,7 +56,7 @@ trait AdminForm {
             }
         }
         $options    = $admin->getFormBuilderOption( $property_name, $action, $object ) ;
-        $type       = $options['appform_type'] ;
+        $type       = $options['sf_form_type'] ;
         if( isset($options['read_only']) && $options['read_only'] ) {
             if( in_array($type, array('appowner', 'appentity', 'appworkflow', 'choice', 'checkbox', 'appfile', 'appimage', 'apphtml', 'money' )) ) {
                 $options    = array(
@@ -90,7 +90,7 @@ trait AdminForm {
         /**
          * @FIXME since symfony 2.7, without this hack radio(value=0) will not get checked
          */
-        if( 'bool' == $options['appform_meta'] ) {
+        if( 'bool' == $options['sf_form_meta'] ) {
             if( $object ) {
                 $options['data'] = $admin->getReflectionProperty($property_name)->getValue( $object ) ? 1 : 0 ;
             } else {
@@ -128,7 +128,7 @@ trait AdminForm {
             throw new \Exception( sprintf("%s->%s not exists", $this->name , $property_name) ) ;
         }
         if( null === $type ) {
-            $type   = $options['appform_type'] ;
+            $type   = $options['sf_form_type'] ;
         } else {
             if( $type === 'appview' ) {
                 $options    = array(

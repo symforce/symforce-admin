@@ -65,7 +65,7 @@ class DynamicViewTypeExtension extends AbstractTypeExtension
             $view->vars['widget_form_group_attr']['sf_name'] = $form->getName() ;
             $view->vars['widget_form_group_attr']['sf_type'] = $options['sf_type'] ;
             /*
-            $view->vars['widget_form_group_attr']['appform_meta'] = $options['appform_meta'] ;
+            $view->vars['widget_form_group_attr']['sf_form_meta'] = $options['sf_form_meta'] ;
             */
 
             if( isset($options['sf_dynamic']) ) {
