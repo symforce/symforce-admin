@@ -8,11 +8,11 @@ use Symfony\Component\Translation\Loader\YamlFileLoader ;
 use Symfony\Component\Config\Resource\FileResource;
 
 /**
- * Description of AppTransLoader
+ * Description of SymforceTransLoader
  *
  * @author loong
  */
-class AppTransLoader extends YamlFileLoader
+class SymforceTransLoader extends YamlFileLoader
 {
     public function setMetaLoader( $loader ) {
         

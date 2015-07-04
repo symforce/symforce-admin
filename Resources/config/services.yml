@@ -101,7 +101,7 @@ services:
             - { name:"twig.extension" }
     # trans
     sf.translation.loader.yaml:
-        class: Symforce\AdminBundle\Translation\Loader\AppTransLoader
+        class: Symforce\AdminBundle\Translation\Loader\SymforceTransLoader
         calls:
             - [ setMetaLoader, ["@sf.admin.loader"] ] 
         tags:
