@@ -9,7 +9,7 @@ use Symforce\AdminBundle\Compiler\Annotation as Admin ;
 /**
  * @ORM\Entity
  * @ORM\Table(name="sf_menu_group")
- * @Admin\Entity("sf_menu_group", label="菜单组", icon="rss", menu="sys", dashboard=true, class="Symforce\AdminBundle\Admin\MenuGroupAdmin",  groups={
+ * @Admin\Entity("menu_group", label="菜单组", icon="rss", menu="sys", dashboard=true, class="Symforce\AdminBundle\Admin\MenuGroupAdmin",  groups={
  *      "default": "默认",
  *      "render":"属性",
  *      "child":"子选项"

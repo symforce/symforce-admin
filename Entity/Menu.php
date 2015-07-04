@@ -9,7 +9,7 @@ use Symforce\AdminBundle\Compiler\Annotation as Admin ;
 /**
  * @ORM\Entity
  * @ORM\Table(name="sf_menu")
- * @Admin\Entity("sf_menu", label="菜单", icon="menu")
+ * @Admin\Entity("menu", label="菜单", icon="menu")
  * 
  * @Gedmo\Tree(type="nested") 
  * 

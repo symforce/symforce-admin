@@ -10,7 +10,7 @@ use Symforce\AdminBundle\Compiler\Annotation as Admin ;
 /**
  * @ORM\Entity(repositoryClass="Gedmo\Tree\Entity\Repository\NestedTreeRepository")
  * @ORM\Table(name="sf_pages")
- * @Admin\Entity("sf_page", label="Page", icon="archive", position=3, menu="admin_group", dashboard=true , groups={
+ * @Admin\Entity("page", label="Page", icon="archive", position=3, menu="admin_group", dashboard=true , groups={
  *      "default": "默认" ,
  *      "content":"内容",
  *      "route":"路由" ,

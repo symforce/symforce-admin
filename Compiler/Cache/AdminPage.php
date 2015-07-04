@@ -13,7 +13,7 @@ trait AdminPage {
     public $page_route_parent;
 
     /**
-     * @var \SymforceAdminCache\AppPage\AdminAppPage 
+     * @var \SymforceAdminCache\Page\AdminPage 
      */
     protected $page_admin ;
     
@@ -34,7 +34,7 @@ trait AdminPage {
     
     /**
      * 
-     * @return \SymforceAdminCache\AppPage\AdminAppPage
+     * @return \SymforceAdminCache\Page\AdminPage
      */
     public function getPageAdmin() {
         if( !$this->property_page_name ) {
