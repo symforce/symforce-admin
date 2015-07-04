@@ -12,7 +12,7 @@ services:
         class: Symforce\AdminBundle\Compiler\Loader\Compiler
     
     sf.page.service:
-        class: AppAdminCache\WebPageService
+        class: SymforceAdminCache\WebPageService
         calls:
             - [ setContainer, ["@service_container"] ]
             

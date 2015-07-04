@@ -29,7 +29,7 @@ class MenuService {
     }
     
     /**
-     * @return  \AppAdminCache\AppMenuGroup\AdminAppMenuGroup
+     * @return  \SymforceAdminCache\AppMenuGroup\AdminAppMenuGroup
      */
     public function getGroupAdmin(){
         return $this->container->get('sf.admin.loader')->getAdminByName('sf_menu_group') ;

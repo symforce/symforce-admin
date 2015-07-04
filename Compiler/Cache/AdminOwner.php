@@ -7,7 +7,7 @@ trait AdminOwner {
     protected $property_owner_name ;
     
     /**
-     * @var \AppAdminCache\AppUser\AdminAppUser
+     * @var \SymforceAdminCache\AppUser\AdminAppUser
      */
     protected $owner_admin ;
     
@@ -17,7 +17,7 @@ trait AdminOwner {
 
 
     /**
-     * @return \AppAdminCache\AppUser\AdminAppUser
+     * @return \SymforceAdminCache\AppUser\AdminAppUser
      */
     public function getOwnerAdmin() {
         if( !$this->property_owner_name ) {
