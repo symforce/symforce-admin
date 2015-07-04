@@ -1,0 +1,24 @@
+
+services:
+    app_routing.route_provider:
+        class: App\AdminBundle\Routing\RouteProvider
+        arguments: [ "@doctrine", %app_routing.entity_class%, %app_routing.default_controller%, %app_routing.default_template% ]
+        
+    app_routing.url_matcher:
+        class: Symfony\Cmf\Component\Routing\NestedMatcher\UrlMatcher
+        arguments: ["@cmf_routing.matcher.dummy_collection", "@cmf_routing.matcher.dummy_context"]
+
+    app_routing.nested_matcher:
+        class: Symfony\Cmf\Component\Routing\NestedMatcher\NestedMatcher
+        arguments: ["@app_routing.route_provider"]
+        calls:
+            - [setFinalMatcher, ["@app_routing.url_matcher"]]
+    
+    app_routing.dynamic_router:
+        class: Symfony\Cmf\Component\Routing\DynamicRouter
+        arguments:
+            - "@router.request_context"
+            - "@app_routing.nested_matcher"
+            - "@cmf_routing.generator"
+        tags:
+            - { name: router, priority: 300 }

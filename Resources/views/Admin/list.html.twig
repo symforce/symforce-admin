@@ -1,0 +1,24 @@
+{% extends "AppAdminBundle::action_layout.html.twig" %}
+
+
+{% block content_left %}
+
+{% block content_list_table %}
+    {{ pagination.getTotalItemCount }} 
+{% endblock %}
+
+<div>
+
+    <div>
+        {{ knp_pagination_render(pagination, "MopaBootstrapBundle:Pagination:sliding.html.twig") }}
+    </div>
+
+    {% block content_list_filter %}
+        content_list_filter
+    {% endblock %}
+    
+</div>
+
+
+{% endblock %}
+ 

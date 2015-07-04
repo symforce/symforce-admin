@@ -1,0 +1,15 @@
+
+
+{{ app_menu('header-nav') }}
+
+id: {{ page.id }} <br />
+title: {{ page.title }} <br />
+slug: {{ page.slug }} <br />
+keywords: {{ page.meta_keywords }} <br />
+description: {{ page.meta_description }} <br />
+
+content: {{ page.content | raw }}
+
+{{ app_menu('footer-nav') }}
+
+
