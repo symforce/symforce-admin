@@ -433,7 +433,7 @@
     {% endspaceless %}
     
         <script type="text/javascript">
-            new AppFormTree("#{{ id }}", {
+            new SymforceFormTree("#{{ id }}", {
                 required: {{ required ? 1 : 0 }} ,
                 name: "{{ target_admin.name }}" ,
                 title: "{{ label }}" , 
@@ -450,7 +450,7 @@
     {% endspaceless %}
     
         <script type="text/javascript">
-            new AppFormSimpleTree("#{{ id }}", {
+            new SymforceFormSimpleTree("#{{ id }}", {
                 required: {{ required ? 1 : 0 }} ,
                 title: "{{ label }}" , 
                 default_url: "{{ path('sf_form_route', {'default_route_name': null } ) }}" ,
@@ -467,7 +467,7 @@
     {% endspaceless %}
     
         <script type="text/javascript">
-            new AppFormSimpleTree("#{{ id }}", {
+            new SymforceFormSimpleTree("#{{ id }}", {
                 required: {{ required ? 1 : 0 }} ,
                 title: "{{ label }}" , 
                 default_url: "{{ path('sf_form_template', {'default_name': null } ) }}" ,

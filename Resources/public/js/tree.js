@@ -1,4 +1,4 @@
-var AppFormTree = (function(){
+var SymforceFormTree = (function(){
     
    var Tree = new Klass({
         Binds: [ 'onHandle', 'onEventSelect', 'onEventDelete', 'onEventClose', 'afterClosed', 'onEventReset', 'onEventChanged' ] ,
@@ -199,7 +199,7 @@ var AppFormTree = (function(){
 })();
 
 
-var AppFormSimpleTree = (function(){
+var SymforceFormSimpleTree = (function(){
     
    var Tree = new Klass({
         Binds: [ 'onHandle', 'onEventSelect', 'onEventDelete', 'onEventClose', 'afterClosed', 'onEventReset', 'onEventChanged' ] ,
