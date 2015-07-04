@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\DependencyInjection;
+namespace Symforce\AdminBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -12,7 +12,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('app_admin');
+        $rootNode = $treeBuilder->root('symforce_admin');
         
         $rootNode
             ->children()
@@ -20,9 +20,9 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('routing')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode('entity_class')->cannotBeEmpty()->defaultValue("App\\AdminBundle\\Entity\\Page")->end()
-                        ->scalarNode('default_controller')->cannotBeEmpty()->defaultValue('AppAdminBundle:DefaultPage:dispatch')->end()
-                        ->scalarNode('default_template')->cannotBeEmpty()->defaultValue('AppAdminBundle:Page:default.html.twig')->end()
+                        ->scalarNode('entity_class')->cannotBeEmpty()->defaultValue("Symforce\\AdminBundle\\Entity\\Page")->end()
+                        ->scalarNode('default_controller')->cannotBeEmpty()->defaultValue('SymforceAdminBundle:DefaultPage:dispatch')->end()
+                        ->scalarNode('default_template')->cannotBeEmpty()->defaultValue('SymforceAdminBundle:Page:default.html.twig')->end()
                     ->end()
                 ->end()
 
@@ -49,15 +49,15 @@ class Configuration implements ConfigurationInterface
         $node
             ->addDefaultsIfNotSet()
             ->children()
-                ->scalarNode('domain')->cannotBeEmpty()->defaultValue('AppAdminBundle')->end()
+                ->scalarNode('domain')->cannotBeEmpty()->defaultValue('SymforceAdminBundle')->end()
 
                 ->arrayNode('route')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode('login_path')->cannotBeEmpty()->defaultValue('app_admin_login')->end()
-                        ->scalarNode('logout_path')->cannotBeEmpty()->defaultValue('app_admin_logout')->end()
-                        ->scalarNode('dashboard_path')->cannotBeEmpty()->defaultValue('app_admin_dashboard')->end()
-                        ->scalarNode('brand_path')->cannotBeEmpty()->defaultValue('app_admin_dashboard')->end()
+                        ->scalarNode('login_path')->cannotBeEmpty()->defaultValue('symforce_admin_login')->end()
+                        ->scalarNode('logout_path')->cannotBeEmpty()->defaultValue('symforce_admin_logout')->end()
+                        ->scalarNode('dashboard_path')->cannotBeEmpty()->defaultValue('symforce_admin_dashboard')->end()
+                        ->scalarNode('brand_path')->cannotBeEmpty()->defaultValue('symforce_admin_dashboard')->end()
                     ->end()
                 ->end()
             ->end()

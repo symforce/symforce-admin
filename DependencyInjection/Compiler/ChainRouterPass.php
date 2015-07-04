@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\DependencyInjection\Compiler;
+namespace Symforce\AdminBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -19,7 +19,7 @@ class ChainRouterPass implements CompilerPassInterface
     
     public function process(ContainerBuilder $container)
     {
-        $container->setParameter('app.compile.state', 0 );
+        $container->setParameter('symforce.compile.state', 0 );
         $container->setAlias('router_default', 'router.default');
 
         // $app_route_provider = $container->findDefinition('app_routing.route_provider');

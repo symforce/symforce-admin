@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\DependencyInjection\Compiler;
+namespace Symforce\AdminBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -38,7 +38,7 @@ class FormCompilerPass implements CompilerPassInterface
             // Symfony 2.5~
             $loaderChain = $container->getDefinition('validator.mapping.loader.loader_chain');
             $arguments = $loaderChain->getArguments();
-            array_push($arguments[0], new Reference('app.validator.loader'));
+            array_push($arguments[0], new Reference('symforce.validator.loader'));
             $loaderChain->setArguments($arguments);
         }
     }

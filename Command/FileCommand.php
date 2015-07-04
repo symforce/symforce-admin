@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace App\AdminBundle\Command;
+namespace Symforce\AdminBundle\Command;
 
 use Assetic\Asset\AssetCollectionInterface;
 use Assetic\Asset\AssetInterface;
@@ -43,7 +43,7 @@ class FileCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('app:files:clear')
+            ->setName('symforce:files:clear')
             ->setDescription('Clear unused file cache')
             ->addOption('force', null, InputOption::VALUE_NONE, 'run the sql')
             ->addOption('dev', null, InputOption::VALUE_NONE, 'debug')

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Command ;
+namespace Symforce\AdminBundle\Command ;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 
@@ -20,7 +20,7 @@ class SetupCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('app:admin:setup')
+            ->setName('symforce:admin:setup')
             ->setDescription('setup the admin caches')
             ->addOption('nosymlink', null, InputOption::VALUE_NONE, 'Symlinks the assets instead of copying it' )
             ->addOption('norelative', null, InputOption::VALUE_NONE, 'Make relative symlinks' )

@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace App\AdminBundle\Command;
+namespace Symforce\AdminBundle\Command;
 
 use Assetic\Asset\AssetCollectionInterface;
 use Assetic\Asset\AssetInterface;
@@ -38,7 +38,7 @@ class DumpCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('app:admin:dump')
+            ->setName('symforce:admin:dump')
             ->setDescription('Dumps all assets to the filesystem')
             ->addArgument('write_to', InputArgument::OPTIONAL, 'Override the configured asset root')
             ->addOption('watch', null, InputOption::VALUE_NONE, 'Check for changes every second, debug mode only')

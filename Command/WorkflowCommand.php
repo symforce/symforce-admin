@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace App\AdminBundle\Command;
+namespace Symforce\AdminBundle\Command;
 
 use Assetic\Asset\AssetCollectionInterface;
 use Assetic\Asset\AssetInterface;
@@ -45,7 +45,7 @@ class WorkflowCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('app:workflow:status')
+            ->setName('symforce:workflow:status')
             ->setDescription('Dumps all assets to the filesystem')
             ->addOption('admin', null, InputOption::VALUE_OPTIONAL, 'for admin')
             ->addOption('convert', null, InputOption::VALUE_OPTIONAL, 'for admin status change')

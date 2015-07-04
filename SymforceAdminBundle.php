@@ -1,20 +1,15 @@
 <?php
 
-namespace App\AdminBundle;
+namespace Symforce\AdminBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-
-use Doctrine\Common\Annotations\AnnotationRegistry ;
-
-use App\AdminBundle\DependencyInjection\Compiler ;
-
 use Symfony\Component\DependencyInjection\Compiler\PassConfig;
-
 use Symfony\Component\Console\Application;
 
+use Symforce\AdminBundle\DependencyInjection\Compiler ;
 
-class AppAdminBundle extends Bundle
+class SymforceAdminBundle extends Bundle
 {
     
     /**
@@ -33,10 +28,9 @@ class AppAdminBundle extends Bundle
     {
         parent::build($container);
 
-
         /*
             since Symfony 2.7, not need this
-            AnnotationRegistry::registerFile( __DIR__ . '/Compiler/Annotation/All.php') ;
+            \Doctrine\Common\Annotations\AnnotationRegistry::registerFile( __DIR__ . '/Compiler/Annotation/All.php') ;
         */
         
         $container->addCompilerPass(new Compiler\ChainRouterPass());

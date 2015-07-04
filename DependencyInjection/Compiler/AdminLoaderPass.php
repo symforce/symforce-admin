@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\DependencyInjection\Compiler;
+namespace Symforce\AdminBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -55,7 +55,7 @@ class AdminLoaderPass implements CompilerPassInterface
             }
         }
         
-        $generator  = $container->getDefinition('app.admin.generator') ;
+        $generator  = $container->getDefinition('symforce.admin.generator') ;
         $generator->replaceArgument(1, $classes ) ; 
     }
     
