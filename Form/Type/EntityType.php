@@ -43,7 +43,7 @@ class EntityType extends \Symfony\Component\Form\Extension\Core\Type\ChoiceType 
     }
     
     public function getName(){
-        return 'appentity' ;
+        return 'sf_entity' ;
     }
     
     public function getExtendedType()

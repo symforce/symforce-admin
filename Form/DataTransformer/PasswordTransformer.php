@@ -62,7 +62,7 @@ class PasswordTransformer implements DataTransformerInterface {
      */
     public function reverseTransform($value) {
         if( !$this->admin_loader ) {
-            $this->admin_loader = $this->container->get('app.admin.loader') ;
+            $this->admin_loader = $this->container->get('symforce.admin.loader') ;
         }
         if( $value && !empty($value) ) {
             $admin  = $this->admin_loader->getAdminByClass($this->entity_class) ;
@@ -80,7 +80,7 @@ class PasswordTransformer implements DataTransformerInterface {
     
     public function setReverseData( $object, $property ) {
         if( !$this->admin_loader ) {
-            $this->admin_loader = $this->container->get('app.admin.loader') ;
+            $this->admin_loader = $this->container->get('symforce.admin.loader') ;
         }
         $this->plain_property   = $property ;
         $this->entity_class     = get_class($object) ;

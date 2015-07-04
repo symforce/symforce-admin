@@ -89,7 +89,7 @@ class ComboboxType extends AbstractType
      */
     public function getName()
     {
-        return 'appcombobox' ;
+        return 'sf_combobox' ;
     }
 }
 

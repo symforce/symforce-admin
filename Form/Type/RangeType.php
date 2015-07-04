@@ -51,7 +51,7 @@ class RangeType extends TextType {
     }
     
     public function getName(){
-        return 'apprange' ;
+        return 'sf_range' ;
     }
     
     /**
@@ -101,7 +101,7 @@ class RangeType extends TextType {
            'unit' ,
            'unit_icon' ,
            'choices' ,
-            'trans_unit' ,
+           'trans_unit' ,
         ));
     }
 } 

@@ -23,7 +23,7 @@ class FormHelperController extends Controller {
      * @return \Symforce\AdminBundle\Compiler\Loader\AdminLoader
      */
     private function getLoader() {
-        return $this->container->get('app.admin.loader') ;
+        return $this->container->get('symforce.admin.loader') ;
     }
     
     /**

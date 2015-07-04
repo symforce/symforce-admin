@@ -46,7 +46,7 @@ class PasswordType extends \Symfony\Component\Form\Extension\Core\Type\PasswordT
     }
     
     public function getName(){
-        return 'apppassword' ;
+        return 'sf_password' ;
     }
     
     public function getParent()

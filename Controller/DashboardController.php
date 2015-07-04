@@ -129,6 +129,6 @@ class DashboardController extends Controller
      * @return \Symforce\AdminBundle\Compiler\Cache\AdminCache
      */
     private function getAdminByName( $name ) {
-        return $this->container->get('app.admin.loader')->getAdminByName( $name ) ;
+        return $this->container->get('symforce.admin.loader')->getAdminByName( $name ) ;
     }
 }

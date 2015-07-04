@@ -28,7 +28,7 @@ class FileManagerController extends Controller {
     {
         $entity_id  = (int) $entity_id ;
         
-        $loader = $this->container->get('app.admin.loader');
+        $loader = $this->container->get('symforce.admin.loader');
         
         if( !$loader->hasAdminName($admin_name) ) {
             return $this->onError( sprintf('admin `%s` not exists(%d)!', $admin_name, __LINE__ )) ;
@@ -178,7 +178,7 @@ class FileManagerController extends Controller {
         
         $entity_id     = (int) $request->get('id') ;
         
-        $loader = $this->container->get('app.admin.loader');
+        $loader = $this->container->get('symforce.admin.loader');
         
         if( !$loader->hasAdminName($admin_name) ) {
             return $this->onError( sprintf('admin `%s` not exists(%d)!', $admin_name, __LINE__ )) ;

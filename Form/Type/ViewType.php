@@ -46,7 +46,7 @@ class ViewType extends AbstractType {
     }
     
     public function getName(){
-        return 'appview' ;
+        return 'sf_view' ;
     }
     
     /**

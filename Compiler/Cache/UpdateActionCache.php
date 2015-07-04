@@ -74,7 +74,7 @@ abstract class UpdateActionCache extends ActionCache  {
         }
         
         return $controller->render( $this->template , array(
-            'apploader' =>  $controller->get('app.admin.loader') , 
+            'apploader' =>  $controller->get('symforce.admin.loader') , 
             'admin' => $this->admin ,
             'action' => $this ,
             'form'  => $form->createView() ,

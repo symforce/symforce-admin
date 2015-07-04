@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType ;
 class ColorType extends TextType {
     
     public function getName(){
-        return 'appcolor' ;
+        return 'sf_color' ;
     }
     
     public function getExtendedType()

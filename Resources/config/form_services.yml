@@ -3,7 +3,7 @@ services:
     app.validator.loader:
         class: Symforce\AdminBundle\Compiler\Loader\ValidatorLoader
         calls:
-            - [ setAdminLoader, ["@app.admin.loader"] ]
+            - [ setAdminLoader, ["@symforce.admin.loader"] ]
         tags:
             - { name: "validator.constraint_validator", alias: "validator.admin_validator" }
             

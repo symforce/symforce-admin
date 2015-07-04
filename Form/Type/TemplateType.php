@@ -33,7 +33,7 @@ class TemplateType extends AbstractType {
     }
     
     public function getName(){
-        return 'apptemplate' ;
+        return 'sf_template' ;
     }
     
     /**

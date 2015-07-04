@@ -23,7 +23,7 @@ class CheckboxType extends \Symfony\Component\Form\Extension\Core\Type\CheckboxT
      */
     public function getName()
     {
-        return 'appcheckbox';
+        return 'sf_checkbox';
     }
     
     public function getExtendedType()

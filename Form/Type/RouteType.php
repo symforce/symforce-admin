@@ -33,7 +33,7 @@ class RouteType extends AbstractType {
     }
     
     public function getName(){
-        return 'approute' ;
+        return 'sf_route' ;
     }
     
     /**

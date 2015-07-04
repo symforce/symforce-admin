@@ -32,21 +32,21 @@ class MenuService {
      * @return  \AppAdminCache\AppMenuGroup\AdminAppMenuGroup
      */
     public function getGroupAdmin(){
-        return $this->container->get('app.admin.loader')->getAdminByName('app_menu_group') ;
+        return $this->container->get('symforce.admin.loader')->getAdminByName('app_menu_group') ;
     }
 
     /**
      * @return  \Symforce\AdminBundle\Admin\MenuAdmin
      */
     public function getMenuAdmin(){
-        return $this->container->get('app.admin.loader')->getAdminByName('app_menu') ;
+        return $this->container->get('symforce.admin.loader')->getAdminByName('app_menu') ;
     }
 
     /**
      * @return  \Symforce\AdminBundle\Admin\PageAdmin
      */
     public function getPageAdmin(){
-        return $this->container->get('app.admin.loader')->getAdminByName('app_page') ;
+        return $this->container->get('symforce.admin.loader')->getAdminByName('app_page') ;
     }
     
     public function render(\Twig_Environment $twig, array & $context, $name, array $args = array() ) {

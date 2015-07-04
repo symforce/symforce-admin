@@ -28,7 +28,7 @@ class DynamicType extends HiddenType {
     }
     
     public function getName(){
-        return 'appdynamic' ;
+        return 'sf_dynamic' ;
     }
     
     public function getParent()

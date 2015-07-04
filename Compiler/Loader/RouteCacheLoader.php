@@ -264,7 +264,7 @@ class RouteCacheLoader {
             }
             //\Dev::dump($cache_expired); exit;
             
-            $this->loader->getService('app.admin.compiler')->set( \Symforce\AdminBundle\Compiler\Loader\Compiler::STAT_ROUTE );
+            $this->loader->getService('symforce.admin.compiler')->set( \Symforce\AdminBundle\Compiler\Loader\Compiler::STAT_ROUTE );
             
             $this->config   = array();
             if( $this->loader->hasConfig('web_page_class') ) {
@@ -355,7 +355,7 @@ class RouteCacheLoader {
             
             $class->writeCache() ;
             
-            $this->loader->getService('app.admin.compiler')->set( \Symforce\AdminBundle\Compiler\Loader\Compiler::STAT_OK );
+            $this->loader->getService('symforce.admin.compiler')->set( \Symforce\AdminBundle\Compiler\Loader\Compiler::STAT_OK );
             
             $content_cache  = array( time(), array_keys($this->route_file_resources), $this->route_page_collection) ;
             $content   = '<' . '?php return unserialize(' . var_export(serialize($content_cache), 1) . ');' ;

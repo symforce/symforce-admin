@@ -171,6 +171,6 @@ class CaptchaType extends AbstractType
      */
     public function getName()
     {
-        return 'appcaptcha' ;
+        return 'sf_captcha' ;
     }
 }

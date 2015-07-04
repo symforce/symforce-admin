@@ -39,7 +39,7 @@ class OwnerType extends ChoiceType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $transformer    = new OwnerTransformer( $this->container->get('app.admin.loader'), $options['admin_class'] ) ;
+        $transformer    = new OwnerTransformer( $this->container->get('symforce.admin.loader'), $options['admin_class'] ) ;
         $builder->addEventListener(FormEvents::PRE_SUBMIT , function(FormEvent $event) use ($transformer ){
             $parent = $event->getForm()->getParent() ;
             $object = $parent->getData() ;
@@ -50,7 +50,7 @@ class OwnerType extends ChoiceType {
     }
     
     public function getName(){
-        return 'appowner' ;
+        return 'sf_owner' ;
     }
     
     public function getParent()
@@ -64,7 +64,7 @@ class OwnerType extends ChoiceType {
     public function buildView_(FormView $view, FormInterface $form, array $options)
     {
         $object = $view->parent->vars['value'] ;
-        $admin  = $this->container->get('app.admin.loader')->getAdminByClass( $options['admin_class'] ) ;
+        $admin  = $this->container->get('symforce.admin.loader')->getAdminByClass( $options['admin_class'] ) ;
         $config = $admin->getObjectWorkflowStatus( $object ) ;
         $view->vars['admin']  = $admin ;
         parent::buildView($view, $form, $options) ;

@@ -21,7 +21,7 @@ class SecuredController extends Controller
     {
         
         $form   = $this->crateForm($request) ;
-        // $form   = $this->container->get('app.admin.loader')->getAdminByName('app_user')->getLoginForm( $request ) ;
+        // $form   = $this->container->get('symforce.admin.loader')->getAdminByName('app_user')->getLoginForm( $request ) ;
         
         $dispatcher = $this->container->get('event_dispatcher');
         $event = new \Symforce\AdminBundle\Event\FormEvent($form, $request);
@@ -63,7 +63,7 @@ class SecuredController extends Controller
         }
         
         $tr = $this->container->get('translator') ;
-        $app_domain  = $this->container->getParameter('app.admin.domain') ;
+        $app_domain  = $this->container->getParameter('symforce.admin.domain') ;
       
         $builder = $this->container->get('form.factory')->createNamedBuilder('login', 'form', array(
             'label'  => 'app.login.label' ,

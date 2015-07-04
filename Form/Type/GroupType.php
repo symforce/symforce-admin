@@ -56,6 +56,6 @@ class GroupType extends AbstractType
      */
     public function getName()
     {
-        return 'appgroup';
+        return 'sf_group';
     }
 }

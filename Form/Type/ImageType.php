@@ -18,7 +18,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class ImageType extends FileType {
 
     public function getName(){
-        return 'appimage' ;
+        return 'sf_image' ;
     }
     
     /**

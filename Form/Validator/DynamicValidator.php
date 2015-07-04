@@ -44,7 +44,7 @@ class DynamicValidator
         }
         $form   = $event->getForm()->getParent() ;
         $object = $form->getData() ;
-        $admin  = $this->container->get('app.admin.loader')->getAdminByClass($object) ;
+        $admin  = $this->container->get('symforce.admin.loader')->getAdminByClass($object) ;
         $ps     = explode(',',  $data ) ;
         foreach($ps as $p) {
             $this->reversed[$p] = $admin->getReflectionProperty($p)->getValue($object) ;

@@ -28,7 +28,7 @@ class RefererType extends HiddenType {
     }
     
     public function getName(){
-        return 'appreferer' ;
+        return 'sf_referer' ;
     }
     
     public function getParent()

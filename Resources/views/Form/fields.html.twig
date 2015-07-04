@@ -166,8 +166,8 @@
         max: {{ max_file_size }} ,
         id: '{{ attribute(form.parent.vars.value, admin_id )  | number_format  }}' ,
         url: '{{ path( 'app_upload_save', { "admin_name": admin_name , "field_name": name }) }}' ,
-        type_error: '{{ 'app.form.file.error.type' | trans({}, app_param('app.admin.domain') ) }}' ,
-        size_error: '{{ 'app.form.file.error.size' | trans({}, app_param('app.admin.domain') ) }}' ,
+        type_error: '{{ 'app.form.file.error.type' | trans({}, app_param('symforce.admin.domain') ) }}' ,
+        size_error: '{{ 'app.form.file.error.size' | trans({}, app_param('symforce.admin.domain') ) }}' ,
         config: {{ img | json_encode | raw }} ,
         is_image: true 
     });
@@ -197,8 +197,8 @@
                 max: {{ max_file_size }} ,
                 id: '{{ attribute(form.parent.vars.value, admin_id )  | number_format  }}' ,
                 url: '{{ path( 'app_upload_save', { "admin_name": admin_name , "field_name": name }) }}' ,
-                type_error: '{{ 'app.form.file.error.type' | trans({}, app_param('app.admin.domain') ) }}' ,
-                size_error: '{{ 'app.form.file.error.size' | trans({}, app_param('app.admin.domain') ) }}' 
+                type_error: '{{ 'app.form.file.error.type' | trans({}, app_param('symforce.admin.domain') ) }}' ,
+                size_error: '{{ 'app.form.file.error.size' | trans({}, app_param('symforce.admin.domain') ) }}' 
             });
         </script>
     {% endblock %}
@@ -215,7 +215,7 @@
                 var options = {
                     menubar : "edit insert format table tools view" ,
                     filemanager: {
-                        title: '{{ 'app.filemanager.title' | trans({}, app_param('app.admin.domain') ) }}' ,
+                        title: '{{ 'app.filemanager.title' | trans({}, app_param('symforce.admin.domain') ) }}' ,
                         url: '{{ path( 'app_filemanager', { "admin_name": admin_name , "field_name": name, "entity_id": attribute(form.parent.vars.value, admin_id ) | number_format }) }}' 
                     } ,
                     external_plugins: {

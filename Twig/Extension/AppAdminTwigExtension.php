@@ -27,7 +27,7 @@ class AppAdminTwigExtension extends \Twig_Extension
     
     public function setContainer(ContainerInterface $container ){
         $this->container    = $container ;
-        $this->admin_loader = $container->get('app.admin.loader') ;
+        $this->admin_loader = $container->get('symforce.admin.loader') ;
     }
 
     /**

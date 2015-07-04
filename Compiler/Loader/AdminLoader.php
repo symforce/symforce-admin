@@ -45,7 +45,7 @@ final class AdminLoader {
 
     public function __construct(ContainerInterface $app, $cache_path , $expired_file ) {
         $this->container    = $app ;
-        $this->app_domain   = $app->getParameter('app.admin.domain') ;
+        $this->app_domain   = $app->getParameter('symforce.admin.domain') ;
         $cache_expired = $this->isCacheExpired($cache_path, $expired_file) ; 
         
         $is_debug   = $app->getParameter('kernel.debug')  ;
@@ -55,7 +55,7 @@ final class AdminLoader {
         }
         
         if( $cache_expired ) {
-            $app->get('app.admin.generator') ;
+            $app->get('symforce.admin.generator') ;
         }
         
         $cache  = include( $cache_path ) ;
@@ -140,7 +140,7 @@ final class AdminLoader {
             }
         }
 
-        return $this->container->getParameter('app.admin.debug') ;
+        return $this->container->getParameter('symforce.admin.debug') ;
     }
     
     public function getAppDomain() {
