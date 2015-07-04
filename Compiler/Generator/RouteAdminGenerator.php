@@ -81,7 +81,7 @@ class RouteAdminGenerator {
         $this->admin->setRouteParent() ;
         $this->generatePath($route_admin_collection) ;
         
-        $writer  = $this->loader->getCompileAppAdminWriter() ;
+        $writer  = $this->loader->getCompileAdminWriter() ;
         
         if( count($this->children) ) {
             $writer->indent() ;
@@ -107,7 +107,7 @@ class RouteAdminGenerator {
     }
 
     public function generatePath(\Symfony\Component\Routing\RouteCollection $route_admin_collection) {
-        $writer  = $this->loader->getCompileAppAdminWriter() ;
+        $writer  = $this->loader->getCompileAdminWriter() ;
         
         $writer->writeln(sprintf("// %s,    %s", $this->admin_name, $this->admin->getClassName() )) ;
         $writer->indent() ;
@@ -135,7 +135,7 @@ class RouteAdminGenerator {
     
     public function generateActionPath(\Symforce\AdminBundle\Compiler\Cache\ActionCache $action, \Symfony\Component\Routing\RouteCollection $route_admin_collection ) {
         $class  = $this->loader->getCompileClass() ;
-        $writer  = $this->loader->getCompileAppAdminWriter() ;
+        $writer  = $this->loader->getCompileAdminWriter() ;
         
         $route_name     = $action->getAdminRouteName() ;
         $admin_name     = $this->admin->getName();

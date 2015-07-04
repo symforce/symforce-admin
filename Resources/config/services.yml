@@ -93,7 +93,7 @@ services:
     # twig 
     sf.admin.twig.extension:
         public: false
-        class: Symforce\AdminBundle\Twig\Extension\AppAdminTwigExtension
+        class: Symforce\AdminBundle\Twig\Extension\SymforceAdminTwigExtension
         arguments: [ "@twig.loader" ]
         calls:
             - [ setContainer, ["@service_container"] ]

@@ -6,7 +6,7 @@ use CG\Core\ClassUtils;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class AppAdminTwigExtension extends \Twig_Extension
+class SymforceAdminTwigExtension extends \Twig_Extension
 {
     protected $loader;
     

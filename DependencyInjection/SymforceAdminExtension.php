@@ -15,7 +15,7 @@ use Symfony\Component\Yaml\Parser as YamlParser ;
 // use Symfony\Component\PropertyAccess\PropertyAccess ;
 
 
-class AppAdminExtension extends Extension
+class SymforceAdminExtension extends Extension
 {
     /**
      *

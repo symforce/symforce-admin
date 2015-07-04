@@ -398,10 +398,10 @@ class RouteCacheLoader {
     /**
      * @return \Symforce\AdminBundle\Compiler\Generator\PhpWriter
      */
-    public function getCompileAppAdminWriter() {
+    public function getCompileAdminWriter() {
         if( null === $this->_compile_sf_admin_writer ) {
             $class  = $this->getCompileClass() ;
-            $fn  = $class->addMethod('loadAppAdminRoute')
+            $fn  = $class->addMethod('loadAdminRoute')
                 ->setVisibility('public')
                 ;
             $this->_compile_sf_admin_writer    = $fn->getWriter() ;

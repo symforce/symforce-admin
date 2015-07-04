@@ -45,7 +45,7 @@ abstract class WebPageCache {
 
     public function __construct() {
         $this->__wakeup() ;
-        $this->loadAppAdminRoute() ;
+        $this->loadAdminRoute() ;
     }
     
     public function setContainer(ContainerInterface $container){
