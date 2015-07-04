@@ -99,7 +99,7 @@ class Group extends \Symforce\AdminBundle\Compiler\MetaType\Type {
                 $options['sf_dynamic'] = $_or ;
             }
             
-            $writer->write(  $this_builder  . ' = $builder->create("sf_form_group_' . $this->id . '", "appgroup", ')
+            $writer->write(  $this_builder  . ' = $builder->create("sf_form_group_' . $this->id . '", "sf_group", ')
                     ->write(var_export($options, 1) ) 
                     ->writeln(');');
 

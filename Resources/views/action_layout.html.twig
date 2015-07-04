@@ -15,7 +15,7 @@
 {% set content_right_width = 12 - content_left_width %}
 
 {% if content_left_width > 0 %}
-<div class="col-sm-{{ content_left_width }}" id="action_menu_tree">
+<div class="col-sm-{{ content_left_width }}" id="sf_action_menu_tree">
     
     {% block content_right %}
     
@@ -44,7 +44,7 @@
 <div class="col-sm-{{ content_right_width }}">
 
     <div class="col-sm-12">
-        <div id="action_menu_bar">
+        <div id="sf_action_menu_bar">
         {% include 'SymforceAdminBundle:Menu:knp_menu.html.twig' with { menu: admin.actionbarmenu  } %}
         </div>
     </div>

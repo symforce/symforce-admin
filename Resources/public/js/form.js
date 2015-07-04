@@ -154,19 +154,19 @@ var SymforceFormDynamic = (function(){
                         _this.fireEvent('change') ;
                     });
                 }, 
-                apptree:  function(_this) {
+                sf_tree:  function(_this) {
                     setText(_this, _this.dom.find('input[type="hidden"]'), _this.dom.find('input[type="text"]') , '0' ) ;
                 },
-                approute: function(_this) {
+                sf_route: function(_this) {
                     setText(_this, _this.dom.find('input[type="text"]') ) ;
                 },
-                appgroup: function(_this){
+                sf_group: function(_this){
                     _this.getValue   = function(){
                         console.log('unimplement', this.name, this.type );
                     };
                 }
             };
-            type1['apprange'] = function(_this) {
+            type1['sf_range'] = function(_this) {
                 type1['integer'](_this, _this.dom.find('input') ) ;
             };
             var type2 = {
@@ -174,7 +174,7 @@ var SymforceFormDynamic = (function(){
                 sf_entity:'select' ,
                 sf_html:'html' ,
                 sf_owner:'select' ,
-                appdatetime: 'text' 
+                sf_datetime: 'text' 
             };
     
             if( type2.hasOwnProperty(this.type) ) {
@@ -307,7 +307,7 @@ var SymforceFormDynamic = (function(){
                     _.each( _this.dynamic_elements, function(value, key){
                         if( value ) {
                             var type    = _this.elements[key].type ;
-                            if( 'appgroup' !== type ) {
+                            if( 'sf_group' !== type ) {
                                 elements.push(key) ;
                             }
                         }
@@ -643,7 +643,7 @@ var SymforceFormValidator   = (function(){
             var last_child  = null ;
             for(var i = 0; i < groups.length; i++ ) {
                 var group_type  = $(groups[i]).attr('sf_form_type') ;
-                if( 'appgroup' === group_type ) {
+                if( 'sf_group' === group_type ) {
                     continue ;
                 }
                 var _elements  = $(groups[i]).find('input,email,select,textarea') ;

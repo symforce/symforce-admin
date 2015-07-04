@@ -13,16 +13,16 @@ class AdminLoaderPass implements CompilerPassInterface
         $this->addResource($container);
         
         /*
-        foreach ($container->findTaggedServiceIds('appmeta.loader') as $id => $attributes) {
+        foreach ($container->findTaggedServiceIds('sf.meta.loader') as $id => $attributes) {
 		
             if( isset($attributes[0]) ) {
                 $attributes = $attributes[0] ;
             }
             if( !isset($attributes['dir']) ) {
-                throw new \Exception(sprintf(" service `%s` tag `appmeta.loader` need `dir` attribute", $id) );
+                throw new \Exception(sprintf(" service `%s` tag `sf.meta.loader` need `dir` attribute", $id) );
             }
             if( !preg_match('/^\w+$/', $attributes['dir'])){
-                throw new \Exception(sprintf(" service `%s` tag `appmeta.loader` attribute `dir` is invalid", $id) ); 
+                throw new \Exception(sprintf(" service `%s` tag `sf.meta.loader` attribute `dir` is invalid", $id) ); 
             }
             if( !isset($attributes['file']) ) {
                 $attributes['file'] = '*.php' ;

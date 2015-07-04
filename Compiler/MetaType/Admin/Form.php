@@ -108,7 +108,7 @@ class Form extends EntityAware {
             $embed  = null ;
             if( $this->children->hasProperty($property) ) {
                 $embed  = $this->children->getProperty( $property ) ;
-                if( 'appembed' !== $embed->compile_form_type ) {
+                if( 'sf_embed' !== $embed->compile_form_type ) {
                     $this->throwError("property:%s form type must be `embed',  you use:`%s`", $property, $embed->compile_form_type );
                 }
             } else {

@@ -52,7 +52,7 @@
 
 {# app form type #}
         
-{% block appgroup_widget %}
+{% block sf_group_widget %}
     <fieldset>
         <legend>{{ label }}</legend>
         {{ block('form_rows_visible') }}
@@ -60,7 +60,7 @@
 {% endblock %}
 
         
-{% block appcolor_widget %}
+{% block sf_color_widget %}
     
     {% spaceless %}
             <div class="input-group">
@@ -69,7 +69,7 @@
             </div>
     {% endspaceless %}
 
-    {% block appcolor_javascripts %}
+    {% block sf_color_javascripts %}
         <script type="text/javascript">
             $('#{{ id }}').colorpicker().on('changeColor', function(ev){
                 $( this ).next().css( 'background-color', ev.color.toHex() );
@@ -80,7 +80,7 @@
 {% endblock %}
 
 
-{% block appdatetime_widget %}
+{% block sf_datetime_widget %}
     
     {% spaceless %}
             <div class="input-group">
@@ -95,7 +95,7 @@
         {{ block('form_message') }}
     {% endif %}
         
-    {% block appdatetime_javascripts %}
+    {% block sf_datetime_javascripts %}
         <script type="text/javascript">
             (function(id, type, format, language ){
                 var events = {} ;
@@ -259,7 +259,7 @@
     {{ block('choice_widget') }}
 {% endblock %}
         
-{% block appembed_widget %}
+{% block sf_embed_widget %}
     {% if children_render %}
         {{ block('form_widget') }}
     {% else %}
@@ -278,12 +278,12 @@
 {% block sf_view_widget %}
     {% set sf_view_admin = sf_admin_class(_object) %}
     {% import sf_view_admin.template as sf_view_admin_macro %}
-    <div class="app-form-view"> 
+    <div class="sf-form-view"> 
         {{ attribute(sf_view_admin_macro, "macro_value_"  ~ property_name , [_object] ) }}
     </div>
 {% endblock %}
         
-{% block appcheckbox_widget %}
+{% block sf_checkbox_widget %}
 {% spaceless %}
 {% if label is not sameas(false) and label is empty %}
     {% set label = name|humanize %}
@@ -309,7 +309,7 @@
 {% endspaceless %}
 {% endblock %}
         
-{% block appcaptcha_widget %}
+{% block sf_captcha_widget %}
 {% if is_human %}
 -
 {% else %}
@@ -342,7 +342,7 @@
         
         
         
-{% block apprange_widget %}
+{% block sf_range_widget %}
     {% spaceless %}
        <style type="text/css">
                .tt-hint{
@@ -426,7 +426,7 @@
     </script>
 {% endblock %}
 
-{% block apptree_widget %}
+{% block sf_tree_widget %}
     {% spaceless %}
             <input type="text" class="form-control" {% if required %} required="required"{% endif %} readonly="readonly" value="{{ value.string }}" style="background-color: transparent; ime-mode: disabled " />
             <input type="hidden" name="{{ full_name }}" id="{{ id }}" value="{{ value.id }}" />
@@ -444,7 +444,7 @@
         
 {% endblock %}
 
-{% block approute_widget %}
+{% block sf_route_widget %}
     {% spaceless %}
         <input type="text" name="{{ full_name }}" id="{{ id }}" readonly="readonly" class="form-control" {% if required %} required="required"{% endif %} value="{{ value }}" style="background-color: transparent; ime-mode: disabled " />
     {% endspaceless %}
@@ -461,7 +461,7 @@
 {% endblock %}
 
 
-{% block apptemplate_widget %}
+{% block sf_template_widget %}
     {% spaceless %}
         <input type="text" name="{{ full_name }}" id="{{ id }}" readonly="readonly" class="form-control" {% if required %} required="required"{% endif %} value="{{ value }}" style="background-color: transparent; ime-mode: disabled " />
     {% endspaceless %}

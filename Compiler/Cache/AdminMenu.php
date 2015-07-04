@@ -48,7 +48,7 @@ trait AdminMenu {
             $factory    = $this->getService('knp_menu.factory') ;
             $menu   = $factory->createItem('root', array(
                     "childrenAttributes"    => array(
-                        "class"    => "action_menu_bar" ,
+                        "class"    => "sf_action_menu_bar" ,
                     ) ,
                 )) ;
             $this->action_bar_menu  = $menu ;
@@ -68,7 +68,7 @@ trait AdminMenu {
         $factory    = $this->getService('knp_menu.factory') ;
         $menu   = $factory->createItem('root', array(
                 "childrenAttributes"    => array(
-                    "class"    => "action_menu_root" ,
+                    "class"    => "sf_action_menu_root" ,
                 ) ,
             )) ;
         $this->action_menu  = $menu ;

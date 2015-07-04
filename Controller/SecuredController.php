@@ -89,7 +89,7 @@ class SecuredController extends Controller
                         )
                     ) )
                 
-                    ->add('captcha', 'appcaptcha', array(
+                    ->add('captcha', 'sf_captcha', array(
                         'label' => 'sf.form.captcha.label' ,
                         'translation_domain' => $sf_domain ,
                     ))

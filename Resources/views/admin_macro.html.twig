@@ -20,8 +20,8 @@
     
         {% if action %}
             {% if 'list' != action.name %}
-                 <span class="app_breadcrumb_object">
-                     <a class="app_breadcrumb_nolink">
+                 <span class="sf_breadcrumb_object">
+                     <a class="sf_breadcrumb_nolink">
                          {% if 'view' == action.name %}
                             {{ _admin.string(_admin.routeobject) }}
                          {% else %}
@@ -31,11 +31,11 @@
                  </span>
             {% endif %}
         {% else %}
-             <span class="app_breadcrumb_object">
+             <span class="sf_breadcrumb_object">
                 {% if app_auth( _admin.name, 'view', _admin.routeobject ) %} 
                     <a href="{{ _admin.path('view', _admin.routeobject ) }}">{{ _admin.string(_admin.routeobject) }}</a>
                 {% else %}
-                    <a class="app_breadcrumb_nolink">{{ _admin.string(_admin.routeobject) }}</a>
+                    <a class="sf_breadcrumb_nolink">{{ _admin.string(_admin.routeobject) }}</a>
                 {% endif %}
              </span>
        {% endif %}

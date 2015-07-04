@@ -350,7 +350,7 @@ class RouteCacheLoader {
                 $admin_route_generator->generate($route_admin_collection) ;
             }
             
-            $route_admin_collection->addPrefix('/admin/app') ;
+            $route_admin_collection->addPrefix('/admin/object') ;
             $this->route_page_collection->addCollection($route_admin_collection) ; 
             
             $class->writeCache() ;

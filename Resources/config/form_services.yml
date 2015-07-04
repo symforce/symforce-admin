@@ -50,7 +50,7 @@ services:
     sf.form.type.color:
         class: Symforce\AdminBundle\Form\Type\ColorType
         tags:
-            - { name: form.type, alias: appcolor }
+            - { name: form.type, alias: sf_color }
         
     sf.form.type.dynamic:
         class: Symforce\AdminBundle\Form\Type\DynamicType
