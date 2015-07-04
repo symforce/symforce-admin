@@ -432,13 +432,6 @@ class Generator {
     }
     
     /**
-     * @return string
-     */
-    public function getTemplateCacheDir() {
-        return $this->container->getParameter('kernel.root_dir') . '/../src/App/AdminBundle/Resources/views/Cache/' ;
-    }
-    
-    /**
      * @param string $domain
      * @return ActionGenerator 
      */
