@@ -1,6 +1,6 @@
 services:
     
-    app.validator.loader:
+    sf.validator.loader:
         class: Symforce\AdminBundle\Compiler\Loader\ValidatorLoader
         calls:
             - [ setAdminLoader, ["@sf.admin.loader"] ]
@@ -9,7 +9,7 @@ services:
             
     # form.extension
     
-    app.form.extension.inline_help:
+    sf.form.extension.inline_help:
         class: Symforce\AdminBundle\Form\Extension\InlineHelpTypeExtension
         arguments: [ [] ]
         calls:
@@ -17,7 +17,7 @@ services:
         tags:
             - { name: form.type_extension, alias: form }
          
-    app.form.extension.dynamic:
+    sf.form.extension.dynamic:
         class: Symforce\AdminBundle\Form\Extension\DynamicViewTypeExtension
         arguments: [ [] ]
         calls:
@@ -26,124 +26,124 @@ services:
             - { name: form.type_extension, alias: form }
          
     # form.type
-    app.form.type.tree:
+    sf.form.type.tree:
         class: Symforce\AdminBundle\Form\Type\TreeType
         calls:
             - [ setContainer, ["@service_container"] ]
         tags:
             - { name: form.type, alias: apptree }
             
-    app.form.type.route:
+    sf.form.type.route:
         class: Symforce\AdminBundle\Form\Type\RouteType
         calls:
             - [ setContainer, ["@service_container"] ]
         tags:
             - { name: form.type, alias: approute }
             
-    app.form.type.template:
+    sf.form.type.template:
         class: Symforce\AdminBundle\Form\Type\TemplateType
         calls:
             - [ setContainer, ["@service_container"] ]
         tags:
             - { name: form.type, alias: apptemplate }
     
-    app.form.type.color:
+    sf.form.type.color:
         class: Symforce\AdminBundle\Form\Type\ColorType
         tags:
             - { name: form.type, alias: appcolor }
         
-    app.form.type.dynamic:
+    sf.form.type.dynamic:
         class: Symforce\AdminBundle\Form\Type\DynamicType
         calls:
             - [ setContainer, ["@service_container"] ]
         tags:
             - { name: form.type, alias: appdynamic }
             
-    app.form.type.referer:
+    sf.form.type.referer:
         class: Symforce\AdminBundle\Form\Type\RefererType
         calls:
             - [ setContainer, ["@service_container"] ]
         tags:
             - { name: form.type, alias: appreferer }
             
-    app.form.type.datetime:
+    sf.form.type.datetime:
         class: Symforce\AdminBundle\Form\Type\DateTimeType
         calls:
             - [ setContainer, ["@service_container"] ]
         tags:
             - { name: form.type, alias: appdatetime }
             
-    app.form.type.file:
+    sf.form.type.file:
         class: Symforce\AdminBundle\Form\Type\FileType
         calls:
             - [ setContainer, ["@service_container"] ]
         tags:
             - { name: form.type, alias: appfile }
            
-    app.form.type.image:
+    sf.form.type.image:
         class: Symforce\AdminBundle\Form\Type\ImageType
         calls:
             - [ setContainer, ["@service_container"] ]
         tags:
             - { name: form.type, alias: appimage }
            
-    app.form.type.html:
+    sf.form.type.html:
         class: Symforce\AdminBundle\Form\Type\HtmlType
         calls:
             - [ setContainer, ["@service_container"] ]
         tags:
             - { name: form.type, alias: apphtml }
             
-    app.form.type.password:
+    sf.form.type.password:
         class: Symforce\AdminBundle\Form\Type\PasswordType
         calls:
             - [ setContainer, ["@service_container"] ]
         tags:
             - { name: form.type, alias: apppassword }
             
-    app.form.type.embed:
+    sf.form.type.embed:
         class: Symforce\AdminBundle\Form\Type\EmbedType
         calls:
             - [ setContainer, ["@service_container"] ]
         tags:
             - { name: form.type, alias: appembed }
             
-    app.form.type.entity:
+    sf.form.type.entity:
         class: Symforce\AdminBundle\Form\Type\EntityType
         calls:
             - [ setContainer, ["@service_container"] ]
         tags:
             - { name: form.type, alias: appentity }
             
-    app.form.type.workflow:
+    sf.form.type.workflow:
         class: Symforce\AdminBundle\Form\Type\WorkflowType
         calls:
             - [ setContainer, ["@service_container"] ]
         tags:
             - { name: form.type, alias: appworkflow }
 
-    app.form.type.owner:
+    sf.form.type.owner:
         class: Symforce\AdminBundle\Form\Type\OwnerType
         calls:
             - [ setContainer, ["@service_container"] ]
         tags:
             - { name: form.type, alias: appowner }
             
-    app.form.type.view:
+    sf.form.type.view:
         class: Symforce\AdminBundle\Form\Type\ViewType
         calls:
             - [ setContainer, ["@service_container"] ]
         tags:
             - { name: form.type, alias: appview }
             
-    app.form.type.checkbox:
+    sf.form.type.checkbox:
         class: Symforce\AdminBundle\Form\Type\CheckboxType
         calls:
             - [ setContainer, ["@service_container"] ]
         tags:
             - { name: form.type, alias: appcheckbox }
             
-    app.form.type.captcha:
+    sf.form.type.captcha:
         class: Symforce\AdminBundle\Form\Type\CaptchaType
         arguments: [ "@session", "@gregwar_captcha.generator", "@translator", %gregwar_captcha.config% ]
         calls:
@@ -151,21 +151,21 @@ services:
         tags:
             - { name: form.type, alias: appcaptcha }
          
-    app.form.type.group:
+    sf.form.type.group:
         class: Symforce\AdminBundle\Form\Type\GroupType
         calls:
             - [ setContainer, ["@service_container"] ]
         tags:
             - { name: form.type, alias: appgroup }
             
-    app.form.type.range:
+    sf.form.type.range:
         class: Symforce\AdminBundle\Form\Type\RangeType
         calls:
             - [ setContainer, ["@service_container"] ]
         tags:
             - { name: form.type, alias: apprange }
             
-    app.form.type.combobox:
+    sf.form.type.combobox:
         class: Symforce\AdminBundle\Form\Type\ComboboxType
         calls:
             - [ setContainer, ["@service_container"] ]

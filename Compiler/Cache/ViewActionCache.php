@@ -36,10 +36,10 @@ class ViewActionCache extends ActionCache  {
         
         $label  = null ;
         if( $this->admin->tree && $this->admin->getTreeObjectId() ) {
-            $label = $this->admin->trans('app.tree.create.title', array(
+            $label = $this->admin->trans('sf.tree.create.title', array(
                         '%object%' => $this->admin->string(  $this->admin->getTreeObject() ) ,
                         '%admin%' => $this->admin->getLabel() ,
-                       ) , $this->app_domain 
+                       ) , $this->sf_domain 
                    ) ;
         } else {
             $label = $this->admin->getFormLabel() ;

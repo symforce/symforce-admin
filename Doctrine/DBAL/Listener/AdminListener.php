@@ -64,7 +64,7 @@ class AdminListener implements EventSubscriber {
 
     private function getRichTextFilesPattern(){
         if( null === $this->richtext_files_pattern ) {
-            $this->richtext_files_pattern = \Symforce\AdminBundle\Entity\File::getRichTextFilesPattern($this->container->getParameter('app.web_assets_dir') ) ;
+            $this->richtext_files_pattern = \Symforce\AdminBundle\Entity\File::getRichTextFilesPattern($this->container->getParameter('sf.web_assets_dir') ) ;
         }
         return $this->richtext_files_pattern ;
     }

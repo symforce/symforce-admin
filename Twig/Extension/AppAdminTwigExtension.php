@@ -36,38 +36,38 @@ class AppAdminTwigExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'app_debug' => new \Twig_Function_Method($this, 'app_debug', array('is_safe' => array('html'))) ,
-            'app_param' => new \Twig_Function_Method($this, 'app_param', array('is_safe' => array('html'))) ,
+            'sf_debug' => new \Twig_Function_Method($this, 'sf_debug', array('is_safe' => array('html'))) ,
+            'sf_param' => new \Twig_Function_Method($this, 'sf_param', array('is_safe' => array('html'))) ,
             
-            'app_date_format'   => new \Twig_Function_Method($this, 'app_date_format') ,
-            'app_date_diff'   => new \Twig_Function_Method($this, 'app_date_diff') ,
-            'app_date_countdown'    => new \Twig_Function_Method($this, 'app_date_countdown', array('is_safe' => array('html'))) ,
+            'sf_date_format'   => new \Twig_Function_Method($this, 'sf_date_format') ,
+            'sf_date_diff'   => new \Twig_Function_Method($this, 'sf_date_diff') ,
+            'sf_date_countdown'    => new \Twig_Function_Method($this, 'sf_date_countdown', array('is_safe' => array('html'))) ,
             
-            'app_locale_form'   => new \Twig_Function_Method($this, 'app_locale_form') ,
-            'app_auth'   => new \Twig_Function_Method($this, 'app_auth') ,
-            'sf_admin_class'   => new \Twig_Function_Method($this, 'app_class') ,
-            'app_admin'   => new \Twig_Function_Method($this, 'app_admin') ,
+            'sf_locale_form'   => new \Twig_Function_Method($this, 'sf_locale_form') ,
+            'sf_auth'   => new \Twig_Function_Method($this, 'sf_auth') ,
+            'sf_admin_class'   => new \Twig_Function_Method($this, 'sf_class') ,
+            'sf_admin'   => new \Twig_Function_Method($this, 'sf_admin') ,
             'sf_admin_path'   => new \Twig_Function_Method($this, 'sf_admin_path') ,
-            'app_path'   => new \Twig_Function_Method($this, 'app_page_path') ,
-            'app_now'   => new \Twig_Function_Method($this, 'app_now') ,
+            'sf_path'   => new \Twig_Function_Method($this, 'sf_page_path') ,
+            'sf_now'   => new \Twig_Function_Method($this, 'sf_now') ,
             'twig_macro_exists'  => new \Twig_Function_Method($this, 'twig_macro_exists') ,
-            'app_money' => new \Twig_Function_Method($this, 'app_money') ,
+            'sf_money' => new \Twig_Function_Method($this, 'sf_money') ,
             
-            'app_check_class' => new \Twig_Function_Method($this, 'app_check_class') ,
+            'sf_check_class' => new \Twig_Function_Method($this, 'sf_check_class') ,
             
-            'app_picker_format' => new \Twig_Function_Method($this, 'app_picker_format') ,
-            'app_string_cut' => new \Twig_Function_Method($this, 'string_cut', array('is_safe' => array('html')) ) ,
+            'sf_picker_format' => new \Twig_Function_Method($this, 'sf_picker_format') ,
+            'sf_string_cut' => new \Twig_Function_Method($this, 'string_cut', array('is_safe' => array('html')) ) ,
             
-            'app_percent' => new \Twig_Function_Method($this, 'app_percent', array('is_safe' => array('html')) ) ,
+            'sf_percent' => new \Twig_Function_Method($this, 'sf_percent', array('is_safe' => array('html')) ) ,
             
-            'app_menu'  =>  new \Twig_Function_Method($this, 'app_menu', array(
+            'sf_menu'  =>  new \Twig_Function_Method($this, 'sf_menu', array(
                     'needs_environment' => true,
                     'needs_context' => true,
                     'is_safe' => array('html')) ) ,
         );
     }
     
-    public function app_check_class($object, $class) {
+    public function sf_check_class($object, $class) {
         if( !is_object($object) ) {
             throw new \Exception(sprintf("expect class(%s), get(%s)", $class, gettype($object))) ;
         } else if( !($object instanceof $class) ) {
@@ -81,29 +81,29 @@ class AppAdminTwigExtension extends \Twig_Extension
     }
     
     
-    public function app_money($value, $per = 2 , $currency = 'CNY' ){
+    public function sf_money($value, $per = 2 , $currency = 'CNY' ){
         $locale = \Locale::getDefault();
         $format = new \NumberFormatter($locale, \NumberFormatter::CURRENCY) ;
         return $pattern = $format->formatCurrency($value, $currency) ;
     }
     
-    public function app_now(){
+    public function sf_now(){
         return time() ; 
     }
     
-    public function app_locale_form( \Symfony\Component\HttpFoundation\Request $reqest ) {
-        return $this->container->get('app.locale.listener')->getInlineForm($reqest) ;
+    public function sf_locale_form( \Symfony\Component\HttpFoundation\Request $reqest ) {
+        return $this->container->get('sf.locale.listener')->getInlineForm($reqest) ;
     }
 
-    public function app_auth($admin_name, $action_name = null , $object = null ){
+    public function sf_auth($admin_name, $action_name = null , $object = null ){
         return $this->admin_loader->auth($admin_name, $action_name, $object ); 
     }
     
-    public function app_admin($admin_name){
+    public function sf_admin($admin_name){
         return $this->admin_loader->getAdminByName($admin_name); 
     }
     
-    public function app_class($admin_class){
+    public function sf_class($admin_class){
         return $this->admin_loader->getAdminByClass($admin_class); 
     }
     
@@ -112,19 +112,19 @@ class AppAdminTwigExtension extends \Twig_Extension
         return $admin->path($action, $object, $options ) ;
     }
     
-    public function app_debug( $o , $exit = true ) {
+    public function sf_debug( $o , $exit = true ) {
          \Dev::dump($o, 8 ) ;
          if( $exit ) {
              exit ;
          } 
     }
     
-    public function app_page_path( $action, $object = null , $options = array() ) {
-        $cache = $this->container->get('app.page.service') ;
+    public function sf_page_path( $action, $object = null , $options = array() ) {
+        $cache = $this->container->get('sf.page.service') ;
         return $cache->path($action, $object, $options ) ;
     }
     
-    public function app_param( $node )
+    public function sf_param( $node )
     {
         if( $this->container->hasParameter($node) ) {
             return $this->container->getParameter($node) ;
@@ -132,24 +132,24 @@ class AppAdminTwigExtension extends \Twig_Extension
         return $node ;
     }
     
-    public function app_date_format($data, $format) {
+    public function sf_date_format($data, $format) {
         if( $data instanceof \DateTime ) {
             return $data->format( $format ) ;
         }
         return $data ;
     }
     
-    public function app_date_countdown(\DateTime $date, $stop_text = null ){
+    public function sf_date_countdown(\DateTime $date, $stop_text = null ){
         $options    = array(
             'date'  => $date->format('Y-m-d H:i:s') ,
         ) ;
         if( $stop_text ) {
             $options['pass']    = $stop_text ;
         }
-        return '<span class="app_countdown" data='. var_export(json_encode($options), 1).'></span>';
+        return '<span class="sf_countdown" data='. var_export(json_encode($options), 1).'></span>';
     }
     
-    public function app_date_diff(\DateTime $date, $now = null , $text = null ) {
+    public function sf_date_diff(\DateTime $date, $now = null , $text = null ) {
         if( null === $now ) {
             $now = time() ;
         }
@@ -172,7 +172,7 @@ class AppAdminTwigExtension extends \Twig_Extension
         return $pass . '秒' ;
     }
     
-    public function app_picker_format($format, $type ) {
+    public function sf_picker_format($format, $type ) {
         static $cache   = array() ;
         if( isset($cache[$type][$format]) ) {
             return $cache[$type][$format] ;
@@ -232,13 +232,13 @@ class AppAdminTwigExtension extends \Twig_Extension
         return  $code ; 
     }
     
-    public function app_percent($number){
+    public function sf_percent($number){
         return $number * 100 / 100 ;
     }
 
-    public function app_menu( \Twig_Environment $env, array & $context, $name, array $args = array() ) {
-        $app_menu =  $this->container->get('app.page.menu') ;
-        return $app_menu->render($env, $context, $name, $args ) ;
+    public function sf_menu( \Twig_Environment $env, array & $context, $name, array $args = array() ) {
+        $sf_menu =  $this->container->get('sf.page.menu') ;
+        return $sf_menu->render($env, $context, $name, $args ) ;
     }
 
     /**
@@ -248,6 +248,6 @@ class AppAdminTwigExtension extends \Twig_Extension
      */
     public function getName()
     {
-        return 'app.admin';
+        return 'sf.admin';
     }
 }

@@ -63,7 +63,7 @@ class FileRepository extends EntityRepository implements ContainerAwareInterface
 
     private function getUrlPattern(){
         if( null == $this->_url_pattern ) {
-            $this->_url_pattern = File::getAllFilesPattern( $this->container->getParameter('app.web_assets_dir') ) ;
+            $this->_url_pattern = File::getAllFilesPattern( $this->container->getParameter('sf.web_assets_dir') ) ;
         }
         return $this->_url_pattern ;
     }

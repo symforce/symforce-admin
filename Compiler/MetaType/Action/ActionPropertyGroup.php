@@ -42,13 +42,13 @@ class ActionPropertyGroup extends \Symforce\AdminBundle\Compiler\MetaType\Type {
         }
     }
     
-    public function fixLabel( \Symforce\AdminBundle\Compiler\Generator\TransGeneratorNode $tr, $app_domain ){
+    public function fixLabel( \Symforce\AdminBundle\Compiler\Generator\TransGeneratorNode $tr, $sf_domain ){
         if( !$this->label ) {
             $path   = 'group.' . strtolower( $this->id ) ;
             if( $this->name ) {
                 $this->label    = $tr->createValue( $path , $this->name );
             } else {
-                $this->label    = $tr->createValue( 'app.form.' . $path , null, $app_domain );
+                $this->label    = $tr->createValue( 'sf.form.' . $path , null, $sf_domain );
             }
         }
     }

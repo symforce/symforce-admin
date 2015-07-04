@@ -16,7 +16,7 @@ class DashboardGenerator {
         
         $groups   = array() ;
         
-        $tr = $gen->getTransNodeByPath( $gen->app_domain , 'app.dashboard') ; 
+        $tr = $gen->getTransNodeByPath( $gen->sf_domain , 'sf.dashboard') ; 
         
         foreach( $dashboard_config['groups']  as $name => $attr ) {
             if( isset($groups[$name]) ) {
@@ -33,7 +33,7 @@ class DashboardGenerator {
             if( $attr['label'] ) {
                 $tr->set($name, $attr['label'] );
             }
-            $_item->setLabel( 'app.dashboard.' . $name  ) ;
+            $_item->setLabel( 'sf.dashboard.' . $name  ) ;
             
             if( isset($attr['icon']) ) {
                 $_item->setIcon( $attr['icon']  ) ;

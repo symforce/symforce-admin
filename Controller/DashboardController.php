@@ -105,7 +105,7 @@ class DashboardController extends Controller
                     $json['refresh']    = true ;
                     
                     $tr     = $this->container->get('translator') ; 
-                    $msg    = $tr->trans('app.workflow.action.finish', array(
+                    $msg    = $tr->trans('sf.workflow.action.finish', array(
                         '%object%'  => $admin->string( $object ) ,
                         '%action%'  => $tr->trans( $new_status['action'], array(), $new_status['domain'] ) ,
                     ), 'AppAdminBundle' ) ;

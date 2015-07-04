@@ -57,13 +57,13 @@ class Bool extends Choice {
     public function getChoices() {
         if( !$this->yes ) {
             $this->yes   = new Option( 1, 'Yes' , 'yes' )  ;
-            $this->yes->setLabel( $this->tr_node, 'app.form.choices.yesno' , $this->admin_object->app_domain );
+            $this->yes->setLabel( $this->tr_node, 'sf.form.choices.yesno' , $this->admin_object->sf_domain );
         } else {
             $this->yes->setLabel( $this->tr_node, 'choices' );
         }
         if( ! $this->no ) {
             $this->no   = new Option( 0, 'No' , 'no')  ;
-            $this->no->setLabel( $this->tr_node, 'app.form.choices.yesno' , $this->admin_object->app_domain );
+            $this->no->setLabel( $this->tr_node, 'sf.form.choices.yesno' , $this->admin_object->sf_domain );
         } else {
             $this->no->setLabel( $this->tr_node, 'choices' );
         }

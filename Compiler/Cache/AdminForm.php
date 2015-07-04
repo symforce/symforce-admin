@@ -251,7 +251,7 @@ trait AdminForm {
             return $value ; 
         }
         $path   = $this->form_choices[ $name ][ $value ] ;
-        return $this->translator->trans( $path[0], array(),  $path[1] ? $this->app_domain : $this->tr_domain ) ;
+        return $this->translator->trans( $path[0], array(),  $path[1] ? $this->sf_domain : $this->tr_domain ) ;
     }
     
     public function getChoicesText( $name, $value ) {
@@ -265,7 +265,7 @@ trait AdminForm {
         $_values = array() ;
         foreach($values as $value ) {
             $path   = $this->form_choices[ $name ][ $value ] ;
-            $_value = $this->translator->trans( $path[0], array(),  $path[1] ? $this->app_domain : $this->tr_domain ) ;
+            $_value = $this->translator->trans( $path[0], array(),  $path[1] ? $this->sf_domain : $this->tr_domain ) ;
             $_values[ $value ] = $_value ;
         }
         return join(', ', $_values ) ;

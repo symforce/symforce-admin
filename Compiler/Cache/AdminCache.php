@@ -38,7 +38,7 @@ abstract class AdminCache extends ContainerAware {
     protected $tr_domain ;
     
     /** @var string */
-    protected $app_domain ;
+    protected $sf_domain ;
     
     /** @var array */
     protected $action_maps = null ;
@@ -211,7 +211,7 @@ abstract class AdminCache extends ContainerAware {
     }
     
     public function getAppDomain(){
-        return $this->app_domain ;
+        return $this->sf_domain ;
     }
     
     public function getId( $object ) {
@@ -403,7 +403,7 @@ abstract class AdminCache extends ContainerAware {
                 if( 0 === strpos( $path, $this->name . '.' ) ) {
                     $domain = $this->tr_domain ;
                 } else {
-                    $domain = $this->app_domain ;
+                    $domain = $this->sf_domain ;
                 } 
             }
         }
@@ -480,14 +480,14 @@ abstract class AdminCache extends ContainerAware {
 
     public function afterUpdate(Controller $controller, Request $request, ActionCache $action, $object, \Symfony\Component\Form\Form $form ){
          $request->getSession()->getFlashBag()->add('info',
-                     $this->trans( 'app.action.update.finish' , $object )
+                     $this->trans( 'sf.action.update.finish' , $object )
                  ) ;
          return $controller->redirect( $action->getFormReferer($form) ) ;
      }
 
     public function afterCreate(Controller $controller, Request $request, ActionCache $action, $object, \Symfony\Component\Form\Form $form ){
          $request->getSession()->getFlashBag()->add('info', 
-                                    $this->trans( 'app.action.create.finish' , $object )
+                                    $this->trans( 'sf.action.create.finish' , $object )
                                  );
          return $controller->redirect( $action->getFormReferer($form) ) ;
     }

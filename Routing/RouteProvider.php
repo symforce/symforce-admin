@@ -81,7 +81,7 @@ class RouteProvider  implements \Symfony\Cmf\Component\Routing\RouteProviderInte
         
         $route  = new Route( $path, $defaults, $requirements);
         
-        $name   = 'app_page_' . $page->getSlug() ;
+        $name   = 'sf_page_' . $page->getSlug() ;
         
         $collection->add($name, $route);
         

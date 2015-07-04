@@ -247,7 +247,7 @@ class RouteAdminGenerator {
         
         $route_config  = array(
             '_controller'   => 'Symforce\AdminBundle\Controller\AdminController::adminAction' ,
-            '_app_route_name'  => $route_name , 
+            '_sf_route_name'  => $route_name , 
         );
         
         $route = new \Symfony\Component\Routing\Route( $path , $route_config , $requirement ) ;

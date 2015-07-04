@@ -45,7 +45,7 @@ class AppAdminExtension extends Extension
 
         $this->setParameters($container, 'sf.admin.route', $configs['admin']['route'] );
         unset($configs['admin']['route'] ) ;
-        $this->setParameters($container, 'symforce.admin', $configs['admin'] );
+        $this->setParameters($container, 'sf.admin', $configs['admin'] );
 
         if( !$container->hasParameter('mopa_bootstrap.form.templating') ||
                 "MopaBootstrapBundle:Form:fields.html.twig" == $container->getParameter('mopa_bootstrap.form.templating') 
@@ -79,7 +79,7 @@ class AppAdminExtension extends Extension
          }
          
          $admin_loader   = $container->getDefinition('sf.admin.loader') ;
-         $route_loader   = $container->getDefinition('symforce.route.loader') ;
+         $route_loader   = $container->getDefinition('sf.route.loader') ;
          
          $cache_dir = $container->getParameter('kernel.cache_dir') ;
          $admin_cache_file = $cache_dir . '/AppLoaderAdminCache.php' ;
@@ -101,7 +101,7 @@ class AppAdminExtension extends Extension
          if(  !isset($configs['language'][ $locale ] ) ) {
              throw new \Exception(sprintf("default locale `%s` is not find in sf.admin.language: %s", $locale, json_encode( $configs['language'] ) ) );
          }
-         $locale_listener = $container->getDefinition('symforce.locale.listener') ;
+         $locale_listener = $container->getDefinition('sf.locale.listener') ;
          $locale_listener->replaceArgument(1, $locale ) ;
          $locale_listener->replaceArgument(2, $configs['language'] ) ;
          unset( $configs['language'] ) ;
@@ -111,7 +111,7 @@ class AppAdminExtension extends Extension
         $config   = $this->yamlParser->parse(file_get_contents( __DIR__.'/../Resources/config/form.yml' )) ;
         $this->merge_recursive($config, $configs['form'] );  
         
-        $form_factory  = $container->getDefinition('sf.admin.form.factory') ;
+        $form_factory  = $container->getDefinition('sf.form.factory') ;
         $form_factory->replaceArgument(2, $config['type'] ) ;
         
         $ignored    = array() ;
@@ -128,7 +128,7 @@ class AppAdminExtension extends Extension
                 }
             }
         } 
-        $container->setParameter('symforce.form.route.ignored', '/' . join('|', $ignored ) . '/' ) ;
+        $container->setParameter('sf.form.route.ignored', '/' . join('|', $ignored ) . '/' ) ;
         
         $ignored    = array() ;
         foreach($config['ignored_template'] as $bundule => $controllers ) {
@@ -144,7 +144,7 @@ class AppAdminExtension extends Extension
                 }
             }
         }
-        $container->setParameter('symforce.form.template.ignored', '/' . join('|', $ignored ) . '/' ) ;
+        $container->setParameter('sf.form.template.ignored', '/' . join('|', $ignored ) . '/' ) ;
     }
     
     private function merge_recursive( array & $a1, array & $a2){

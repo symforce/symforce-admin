@@ -36,7 +36,7 @@ abstract class ActionCache {
     protected $tr_domain ;
     
     /** @var string */
-    protected $app_domain ;
+    protected $sf_domain ;
     
     /**
      * @var string
@@ -142,7 +142,7 @@ abstract class ActionCache {
     }
     
     public function getAppDomain(){
-        return $this->app_domain ;
+        return $this->sf_domain ;
     }
     
     public function isRequestObject() {
@@ -283,7 +283,7 @@ abstract class ActionCache {
                 if( 0 === strpos( $path, $this->admin_name . '.' ) ) {
                     $domain = $this->tr_domain ;
                 } else {
-                    $domain = $this->app_domain ;
+                    $domain = $this->sf_domain ;
                 }
             }
         }
@@ -297,7 +297,7 @@ abstract class ActionCache {
         if( null === $this->translator ) {
             $this->translator   = $this->admin->getTranslator() ;
         }
-        return $this->translator->trans( 'app.button.' . $name , array(), $this->app_domain );
+        return $this->translator->trans( 'sf.button.' . $name , array(), $this->sf_domain );
     }
     
     /**

@@ -1,39 +1,39 @@
 
 _sf_admin_locale:
-    prefix: %app.web_assets_dir%
+    prefix: %sf.web_assets_dir%
     resource: "@AppAdminBundle/Controller/LocaleController.php"
     type:     annotation
 
 _sf_admin_captcha:
-    prefix: %app.web_assets_dir%
+    prefix: %sf.web_assets_dir%
     resource: "@AppAdminBundle/Controller/CaptchaController.php"
     type:     annotation
 
 _sf_admin_file_manager:
-    prefix: %app.web_assets_dir%
+    prefix: %sf.web_assets_dir%
     resource: "@AppAdminBundle/Controller/FileManagerController.php"
     type:     annotation
 
 _sf_admin_ie:
-    prefix: %app.web_assets_dir%
+    prefix: %sf.web_assets_dir%
     resource: "@AppAdminBundle/Controller/IeController.php"
     type:     annotation
 
 _sf_admin_dashboard:
-    prefix: %app.web_admin_dir%
+    prefix: %sf.web_admin_dir%
     resource: "@AppAdminBundle/Controller/DashboardController.php"
     type:     annotation
 
 _sf_admin_form_helper:
-    prefix: %app.web_admin_dir%
+    prefix: %sf.web_admin_dir%
     resource: "@AppAdminBundle/Controller/FormHelperController.php"
     type:     annotation
 
 _sf_admin_form_secured:
-    prefix: %app.web_admin_dir%
+    prefix: %sf.web_admin_dir%
     resource: "@AppAdminBundle/Controller/SecuredController.php"
     type:     annotation
 
-_app_admin:
+_sf_admin:
     resource: "."
-    type: "app.admin"
+    type: "sf.admin"

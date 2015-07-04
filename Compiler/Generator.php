@@ -33,7 +33,7 @@ class Generator {
     public $as_cache = array() ;
     
     /** @var string */
-    public $app_domain ;
+    public $sf_domain ;
     
     /**
      * @var array 
@@ -43,12 +43,12 @@ class Generator {
     /**
      * @var TransGeneratorNode  
      */
-    protected $trans_app_node ;
+    protected $trans_sf_node ;
     
     /**
      * @var array 
      */
-    protected $trans_app_values = array() ;
+    protected $trans_sf_values = array() ;
     
     /**
      * @var array 
@@ -91,16 +91,16 @@ class Generator {
         $this->app  = $app ;
         $app->get('sf.admin.compiler')->set( \Symforce\AdminBundle\Compiler\Loader\Compiler::STAT_ADMIN );
         
-        $this->app_domain = $app->getParameter('sf.admin.domain') ;
-        $this->form_factory   = $app->get('sf.admin.form.factory') ;
+        $this->sf_domain = $app->getParameter('sf.admin.domain') ;
+        $this->form_factory   = $app->get('sf.form.factory') ;
         $this->form_factory->setGenerator( $this ) ;
         
         // echo "\n",__FILE__, ":", __LINE__, "\n";  exit;
         
-        $this->trans_app_node = $this->getTransNodeByPath( $this->app_domain , 'app') ;
-        $this->trans_app_node->set('admin.brand', $this->app->getParameter('sf.admin.brand') ) ;
+        $this->trans_sf_node = $this->getTransNodeByPath( $this->sf_domain , 'app') ;
+        $this->trans_sf_node->set('admin.brand', $this->app->getParameter('sf.admin.brand') ) ;
         if( $this->app->hasParameter('sf.admin.title') ) {
-            $this->trans_app_node->set('admin.title', $this->app->getParameter('sf.admin.title') ) ;
+            $this->trans_sf_node->set('admin.title', $this->app->getParameter('sf.admin.title') ) ;
         } 
         
         $doctrine  = $app->get('doctrine') ;
@@ -149,7 +149,7 @@ class Generator {
              $object->compile() ;
         }
         
-        foreach($this->trans_app_values as $group => $values ) {
+        foreach($this->trans_sf_values as $group => $values ) {
             foreach($values as $name => $value ) {
                 if( $value->isNull() ) {
                     if( preg_match('/\.label$/', $name) ) {
@@ -428,7 +428,7 @@ class Generator {
     }
     
     public function getAppDomain(){
-        return $this->app_domain ;
+        return $this->sf_domain ;
     }
     
     /**
@@ -531,14 +531,14 @@ class Generator {
     
     
     public function getTransValue( $type, $name , $value = null ) {
-        if( isset( $this->trans_app_values[$type][$name]) ) {
-            if( null !== $value && $this->trans_app_values[$type][$name]->isNull() ) {
-                $this->trans_app_values[$type][$name]->setValue( $value ); 
+        if( isset( $this->trans_sf_values[$type][$name]) ) {
+            if( null !== $value && $this->trans_sf_values[$type][$name]->isNull() ) {
+                $this->trans_sf_values[$type][$name]->setValue( $value ); 
             }
         } else {
-            $this->trans_app_values[$type][$name] = $this->trans_app_node->createValue( $type . '.' . $name , $value ) ;
+            $this->trans_sf_values[$type][$name] = $this->trans_sf_node->createValue( $type . '.' . $name , $value ) ;
         }
-        return $this->trans_app_values[$type][$name] ;
+        return $this->trans_sf_values[$type][$name] ;
     }
     
     public function trans( $path , $options = array(), $domain = null ){

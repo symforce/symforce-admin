@@ -117,7 +117,7 @@ class ViewProperty extends ActionProperty {
                             $code .=   $this->form_element->_unit->getTwigCode() ;
                         }
                     } else if( $this->form_element instanceof Form\Money ) {
-                        $code   = '{{ ' . sprintf('app_money(%s, %d, "%s")', $property_code, $this->form_element->precision, $this->form_element->currency ) . ' }}' ;
+                        $code   = '{{ ' . sprintf('sf_money(%s, %d, "%s")', $property_code, $this->form_element->precision, $this->form_element->currency ) . ' }}' ;
                     } else if( $this->form_element instanceof Form\Percent ) {
                         $code   = '{{ ' . sprintf('%s|number_format(%d, ".", ",")', $property_code, $this->form_element->precision ) . ' }}' ;
                     } else {
@@ -145,16 +145,16 @@ class ViewProperty extends ActionProperty {
                     }
                 } else if( $this->form_element instanceof Form\DateTime ) {
                     $format = $this->format ?:  $this->form_element->format ;
-                    $code   = '{{ app_date_format(' . $property_code . ', "' . $format. '" ) }}' ;
+                    $code   = '{{ sf_date_format(' . $property_code . ', "' . $format. '" ) }}' ;
                     if( $this->form_element instanceof Form\Birthday ) {
 
                     } 
                 } else if( $this->form_element instanceof Form\File ) {
                     if( $this->form_element instanceof Form\Image ) {
                         // $this->form_element->image_size
-                        $code   = '{% if ' . $property_code . ' %}' . sprintf('<div class="app_image_view" style="width:%spx;height:%spx;"><img src="{{ web_assets_dir }}{{ %s }}" /></div>', $this->form_element->image_size[0],$this->form_element->image_size[1], $property_code) .'{% endif %}' ;
+                        $code   = '{% if ' . $property_code . ' %}' . sprintf('<div class="sf_image_view" style="width:%spx;height:%spx;"><img src="{{ web_assets_dir }}{{ %s }}" /></div>', $this->form_element->image_size[0],$this->form_element->image_size[1], $property_code) .'{% endif %}' ;
                     } else {
-                        $code   = '{% if ' . $property_code . ' %}' . sprintf('<div class="app_file_view"><a href="{{ web_assets_dir }}{{ %s }}" >{{ %s }}</a></div>', $property_code, $property_code) .'{% endif %}' ;
+                        $code   = '{% if ' . $property_code . ' %}' . sprintf('<div class="sf_file_view"><a href="{{ web_assets_dir }}{{ %s }}" >{{ %s }}</a></div>', $property_code, $property_code) .'{% endif %}' ;
                     }
                 } else if( $this->form_element instanceof Form\Embed ) {
                     $map    = $this->getPropertyDoctrineAssociationMapping() ;
@@ -217,7 +217,7 @@ class ViewProperty extends ActionProperty {
                        
                         $text   = $child_admin_object->label->getTwigCode() ;
                         
-                        $code  = '{% if ' . sprintf('app_auth("%s", "list")', $child_admin_object->name). ' %}' ;
+                        $code  = '{% if ' . sprintf('sf_auth("%s", "list")', $child_admin_object->name). ' %}' ;
                             $code .= sprintf('<a href="%s">%s ({{ %s.count() }})</a>', $url, $text, $property_code ) ;
                         $code .= '{% else %}' ;
                             $code .= sprintf('%s ({{ %s.count() }}) ', $text, $property_code ) ;
@@ -235,13 +235,13 @@ class ViewProperty extends ActionProperty {
                     if( $orm_type ) {
                         if( 'date'  === $orm_type ) {
                             $format = $this->format ?: "Y/m/d" ;
-                            $code   = '{{ app_date_format(' . $property_code . ', "' . $format . '" ) }}' ;
+                            $code   = '{{ sf_date_format(' . $property_code . ', "' . $format . '" ) }}' ;
                         } else if( 'datetime' === $orm_type) {
                             $format = $this->format ?: "Y/m/d H:i:s" ;
-                            $code   = '{{ app_date_format(' . $property_code . ', "' . $format . '" ) }}' ;
+                            $code   = '{{ sf_date_format(' . $property_code . ', "' . $format . '" ) }}' ;
                         } else if( 'time'  === $orm_type ) {
                             $format = $this->format ?: "H:i:s" ;
-                            $code   = '{{ app_date_format(' . $property_code . ', "' . $format . '" ) }}' ;
+                            $code   = '{{ sf_date_format(' . $property_code . ', "' . $format . '" ) }}' ;
                         } else if( 'integer' === $orm_type ) {
 
                         } else if( 'text' === $orm_type ) {
@@ -293,7 +293,7 @@ class ViewProperty extends ActionProperty {
             $url    = sprintf('{{ sf_admin_path("%s", "%s", %s ) }}', $admin_object->name, $action, $property_code ) ;
 
             $code   = '{% if ' . $property_code . ' %}' ;
-                $code   .= '{% if ' . sprintf('app_auth("%s", "%s", %s )', $admin_object->name, $action, $property_code ). ' %}' ;
+                $code   .= '{% if ' . sprintf('sf_auth("%s", "%s", %s )', $admin_object->name, $action, $property_code ). ' %}' ;
                     $code .= sprintf('<a href="%s">{{ %s }}</a>', $url, $view_code ) ;
                 $code .= '{% else %}' ;
                     $code .= '{{ ' . $view_code . ' }}' ; // empty value

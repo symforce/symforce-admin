@@ -69,11 +69,11 @@ class DeleteActionCache extends ActionCache {
                         foreach($list  as $count ) {
                             if( $count > 0 ) {
                                 if( !$child_admin->auth('delete') ) {
-                                    $error   = $this->admin->trans('app.action.delete.error.child', array(
+                                    $error   = $this->admin->trans('sf.action.delete.error.child', array(
                                         '%admin%'    => $this->admin->getLabel() ,
                                         '%child%'    => $child_admin->getLabel() ,
                                         '%count%'    => $count ,
-                                    ), $this->app_domain );
+                                    ), $this->sf_domain );
                                     $context->addViolation( $error) ;
                                 } 
                             }
@@ -90,7 +90,7 @@ class DeleteActionCache extends ActionCache {
         
         $dispatcher = $this->admin->getService('event_dispatcher');
         $event = new \Symforce\AdminBundle\Event\FormEvent($form, $request);
-        $dispatcher->dispatch('app.event.form', $event) ;
+        $dispatcher->dispatch('sf.event.form', $event) ;
         if (null !== $event->getResponse()) {
             return $event->getResponse() ;
         }
@@ -100,7 +100,7 @@ class DeleteActionCache extends ActionCache {
              $this->admin->fireEvent( 'submit', $form ) ;
              if ($form->isValid())  {
                 
-                $msg = $this->trans( 'app.action.delete.finish' , $object ) ;
+                $msg = $this->trans( 'sf.action.delete.finish' , $object ) ;
                 $this->admin->remove( $object ) ;
                 $request->getSession()->getFlashBag()->add('info', $msg ) ;
 

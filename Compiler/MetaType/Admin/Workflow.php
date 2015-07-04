@@ -574,8 +574,8 @@ class Workflow extends EntityAware {
                 $writer->writeln('{% if is_granted("' . $node->role . '") %}');
             }
             
-            $counter    = '{% set app_workflow_counter = admin.getRouteWorkflowCount("' . $name . '") %}' ;
-            $counter    .= '(<span {% if app_workflow_counter > 0 %}class="'. $this->admin_object->name . '_workflow_count_' . $name .'{% endif %}">{{ app_workflow_counter }}</span>)';
+            $counter    = '{% set sf_workflow_counter = admin.getRouteWorkflowCount("' . $name . '") %}' ;
+            $counter    .= '(<span {% if sf_workflow_counter > 0 %}class="'. $this->admin_object->name . '_workflow_count_' . $name .'{% endif %}">{{ sf_workflow_counter }}</span>)';
             
             if( $node->isInternal() ) {
                 $label  = '{{ "' . $node->label->getPath() . '"| trans({"%admin%": admin.label}, "' . $node->label->getDomain() . '") }} ' . $counter  ;

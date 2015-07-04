@@ -138,7 +138,7 @@ trait AdminMenu {
         if( $this->auth('list', $route_object ) ) {
             $options['uri'] = $this->getAction('list', $route_object)->path() ;
         } else {
-            $options['labelAttributes']['class'] = 'app_action_tree_nolink' ;
+            $options['labelAttributes']['class'] = 'sf_action_tree_nolink' ;
         }
         $menu  = $root_menu->addChild( $this->getLabel() , $options ) ;
         if( $this->getAction('list')->isRouteAction() ) {
@@ -163,7 +163,7 @@ trait AdminMenu {
             if( $this->hasAction('view') && $this->auth('view', $route_object) ) {
                 $options['uri'] = $this->getAction('view')->path() ;
             } else {
-                $options['labelAttributes']['class'] = 'app_action_tree_nolink' ;
+                $options['labelAttributes']['class'] = 'sf_action_tree_nolink' ;
             }
             $_menu  = $menu->addChild( $this->string( $object ) , $options ) ;
             if( $this->hasAction('view')  && $this->getAction('view')->isRouteAction() ) {
@@ -217,11 +217,11 @@ trait AdminMenu {
             if( $this->auth('list', $object) ) {
                 $options['uri'] = $this->path('list', 0 ) ;
             }  else {
-                $options['labelAttributes']['class'] = 'app_action_tree_nolink' ;
+                $options['labelAttributes']['class'] = 'sf_action_tree_nolink' ;
             } 
-            $menu   = $factory->createItem( $this->trans('app.tree.root',  array(
+            $menu   = $factory->createItem( $this->trans('sf.tree.root',  array(
                 '%admin%'   => $this->getLabel() ,
-            ), $this->app_domain ), $options) ;
+            ), $this->sf_domain ), $options) ;
             if( !$this->tree_object_id ) {
                 $menu->setCurrent( true ) ;
             } 
@@ -235,7 +235,7 @@ trait AdminMenu {
         if( $this->auth('list', $object) ) {
             $options['uri'] = $this->path('list', $object) ;
         }  else {
-            $options['labelAttributes']['class'] = 'app_action_tree_nolink' ;
+            $options['labelAttributes']['class'] = 'sf_action_tree_nolink' ;
         }
         
         $menu   = $factory->createItem(  $this->string($object), $options) ;

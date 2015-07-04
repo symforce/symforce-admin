@@ -335,7 +335,7 @@ class RouteWebPageGenerator {
         $requirements_entitys  = array() ;
         $route_config  = array(
             '_controller'   => $m->getDeclaringClass()->getName() . '::dispatchAction' ,
-            '_app_web_page'  => $admin_name . ':' . $action_name , 
+            '_sf_web_page'  => $admin_name . ':' . $action_name , 
         );
         
         $path   = $this->getRoutePath( $requirements_entitys, $requirements, $requirement_keys, 

@@ -18,14 +18,14 @@ class LocaleController extends Controller
     {
         // AppAdminBundle:Locale:locale.html.twig
         
-        $service    = $this->container->get('app.locale.listener');
+        $service    = $this->container->get('sf.locale.listener');
         $form   = $service->getForm($request, $inline ) ;
         
         if( 'POST' === $request->getMethod() && !$inline ) {
         	$form->bind( $request ) ; 
         	if ($form->isValid()) { 
                     $locale = $form->getData() ;
-                    $request->getSession()->set( 'app_locale' ,  $locale->getLocale() ) ;
+                    $request->getSession()->set( 'sf_locale' ,  $locale->getLocale() ) ;
                     
                     return $this->redirect(  $locale->getRedirectUrl() ) ;
         	} 

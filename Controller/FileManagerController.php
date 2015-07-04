@@ -21,7 +21,7 @@ class FileManagerController extends Controller {
     const TIME_OFFISET = 1218124800 ; //  mktime(0, 0, 0, 8, 8 , 2008 )
     
     /**
-     * @Route("/filemanager/{admin_name}/{field_name}/{entity_id}", name="app_filemanager", requirements={"admin_name"="[\w\_]+", "field_name"="[\w\-]+", "entity_id"="\d+"})
+     * @Route("/filemanager/{admin_name}/{field_name}/{entity_id}", name="sf_filemanager", requirements={"admin_name"="[\w\_]+", "field_name"="[\w\-]+", "entity_id"="\d+"})
      * @Template()
      */
     public function dialogAction(Request $request, $admin_name, $field_name, $entity_id )
@@ -150,7 +150,7 @@ class FileManagerController extends Controller {
                    $em->flush() ; 
                    
                    return  $this->sendJSON( array( 
-                        'url'   => $this->getParameter('app.web_assets_dir') . $file->__toString() ,
+                        'url'   => $this->getParameter('sf.web_assets_dir') . $file->__toString() ,
                         'name'   => $file->getName() , 
                         'ext'   => $ext , 
                         'size'   => $file->getSize() , 
@@ -170,7 +170,7 @@ class FileManagerController extends Controller {
     }
     
     /**
-     * @Route("/upload/save/{admin_name}/{field_name}", name="app_upload_save")
+     * @Route("/upload/save/{admin_name}/{field_name}", name="sf_upload_save")
      * @Template()
      */
     public function imageAction(Request $request, $admin_name, $field_name )
@@ -243,7 +243,7 @@ class FileManagerController extends Controller {
         $em->flush() ; 
         
         return  $this->sendJSON( array( 
-            'url'   => $this->getParameter('app.web_assets_dir') . $file->__toString() ,
+            'url'   => $this->getParameter('sf.web_assets_dir') . $file->__toString() ,
             'name'   => $file->getName() , 
             'ext'   => $ext , 
             'size'   => $file->getSize() , 
@@ -251,7 +251,7 @@ class FileManagerController extends Controller {
     }
     
     /**
-     * @Route("/upload/{type}/{uuid}.{ext}", name="app_upload_cache", requirements={"type" = "html|file", "uuid" = "[0-9a-f]{8}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{12}", "ext" = "\w{2,5}" } )
+     * @Route("/upload/{type}/{uuid}.{ext}", name="sf_upload_cache", requirements={"type" = "html|file", "uuid" = "[0-9a-f]{8}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{12}", "ext" = "\w{2,5}" } )
      * @Template()
      */
     public function fileViewAction(Request $request, $type, $uuid, $ext )

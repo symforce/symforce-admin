@@ -20,7 +20,7 @@ class SetupCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('symforce:admin:setup')
+            ->setName('sf:admin:setup')
             ->setDescription('setup the admin caches')
             ->addOption('nosymlink', null, InputOption::VALUE_NONE, 'Symlinks the assets instead of copying it' )
             ->addOption('norelative', null, InputOption::VALUE_NONE, 'Make relative symlinks' )
@@ -47,7 +47,7 @@ EOT
 
         $source_dir = realpath($source_dir) ;
 
-        $target_dir    =  $root_dir . '/web' . $this->getContainer()->getParameter('app.web_assets_dir')  . '/bundles'  ;
+        $target_dir    =  $root_dir . '/web' . $this->getContainer()->getParameter('sf.web_assets_dir')  . '/bundles'  ;
 
         $this->ensureDirectoryExists( $target_dir . '/js'  );
         $this->ensureDirectoryExists( $target_dir . '/css' );

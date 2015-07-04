@@ -147,7 +147,7 @@ class ViewAction  extends AbstractAction {
                         ;
             
             if( $this->admin_object->generator->getParameter('kernel.debug') ) {
-                $macro_writer->writeln( sprintf('{{ app_check_class(_object, %s) }}' ,$admin_twig_calss ));
+                $macro_writer->writeln( sprintf('{{ sf_check_class(_object, %s) }}' ,$admin_twig_calss ));
             }
             
             $macro_writer->writeln('{% if _property_value is same as(false) %}{% set _property_value = ' .  $property->getTwigValue() . ' %}{% endif %}') ;
@@ -232,7 +232,7 @@ class ViewAction  extends AbstractAction {
         }
         
         foreach($this->_groups as $group ) {
-            $group->fixLabel($this->admin_object->form->tr_node , $this->admin_object->generator->app_domain ) ;
+            $group->fixLabel($this->admin_object->form->tr_node , $this->admin_object->generator->sf_domain ) ;
             $group->sort() ;
         }
         
@@ -319,7 +319,7 @@ class ViewAction  extends AbstractAction {
         foreach($_anonymous_children as $child_admin_name => $child_properties ) {
             $child_admin    = $this->admin_object->generator->getAdminByName( $child_admin_name ) ;
             $twig_writer
-                    ->writeln('{# if ' . sprintf('app_auth("%s", "list")', $child_admin->name ) .' #}')
+                    ->writeln('{# if ' . sprintf('sf_auth("%s", "list")', $child_admin->name ) .' #}')
                     ->indent()
                     ->writeln('{% ' . sprintf('import "%s" as child_macro', $child_admin->_final_template ) .' %}')
              ;

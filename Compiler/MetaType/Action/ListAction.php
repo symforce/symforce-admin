@@ -160,7 +160,7 @@ class ListAction  extends AbstractAction {
             }
             
             $twig_writer
-                    ->writeln('{# if ' . sprintf('app_auth("%s", "list")', $child_admin->name ) .' #}')
+                    ->writeln('{# if ' . sprintf('sf_auth("%s", "list")', $child_admin->name ) .' #}')
                     ->indent()
                     ->writeln('{% ' . sprintf('import "%s" as child_macro', $child_admin->_final_template ) .' %}')
              ;
@@ -216,7 +216,7 @@ class ListAction  extends AbstractAction {
                 continue ;
             }
             $twig_writer
-                    ->writeln('{#% if ' . sprintf('app_auth("%s", "list")', $child_admin->name ) .' #}')
+                    ->writeln('{#% if ' . sprintf('sf_auth("%s", "list")', $child_admin->name ) .' #}')
                     ->indent()
                     ->writeln('{% ' . sprintf('import "%s" as child_macro', $child_admin->_final_template ) .' %}')
              ;
@@ -272,7 +272,7 @@ class ListAction  extends AbstractAction {
             $twig_writer
                         ->writeln('{% block admin_action_tree %}')
                         ->write('{% if admin.auth("list", _object) %}')
-                        ->write('  <a href="{{ admin.path("list", _object ) }}">{{ "app.tree.child" | trans({ "%admin%": admin.label }, "' . $this->admin_object->app_domain . '") }}</a>')
+                        ->write('  <a href="{{ admin.path("list", _object ) }}">{{ "sf.tree.child" | trans({ "%admin%": admin.label }, "' . $this->admin_object->sf_domain . '") }}</a>')
                         ->write('{% endif %}')
                         ->writeln('{% endblock admin_action_tree %}' )
                         ;

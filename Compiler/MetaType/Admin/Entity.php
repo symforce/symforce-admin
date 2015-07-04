@@ -115,7 +115,7 @@ class Entity extends \Symforce\AdminBundle\Compiler\MetaType\Type {
     /**
      * @var string 
      */
-    public $app_domain ;
+    public $sf_domain ;
 
 
     /** @var Form */
@@ -220,7 +220,7 @@ class Entity extends \Symforce\AdminBundle\Compiler\MetaType\Type {
         if( null === $this->tr_domain ) {
              $this->tr_domain    = $this->bundle_name ;
         }
-        $this->app_domain   = $gen->getAppDomain() ;
+        $this->sf_domain   = $gen->getAppDomain() ;
         
         if( isset($cache->class_annotations[self::ANNOT_TREE_CLASS]) ) {
             // not work for yml/xml,  because the private stof_doctrine_extensions.listener.tree service 
@@ -637,7 +637,7 @@ class Entity extends \Symforce\AdminBundle\Compiler\MetaType\Type {
         
         $class->addProperty('class_name',  $this->class_name ); 
         $class->addProperty('tr_domain',  $this->tr_domain );
-        $class->addProperty('app_domain',  $this->app_domain ) ;
+        $class->addProperty('sf_domain',  $this->sf_domain ) ;
         
         $class->addProperty('icon', $this->icon , 'string', null, 'public' ) ;
         $class->addProperty('template', $this->template , 'string', null, 'public' ) ;

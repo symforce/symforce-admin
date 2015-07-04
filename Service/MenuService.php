@@ -32,21 +32,21 @@ class MenuService {
      * @return  \AppAdminCache\AppMenuGroup\AdminAppMenuGroup
      */
     public function getGroupAdmin(){
-        return $this->container->get('sf.admin.loader')->getAdminByName('app_menu_group') ;
+        return $this->container->get('sf.admin.loader')->getAdminByName('sf_menu_group') ;
     }
 
     /**
      * @return  \Symforce\AdminBundle\Admin\MenuAdmin
      */
     public function getMenuAdmin(){
-        return $this->container->get('sf.admin.loader')->getAdminByName('app_menu') ;
+        return $this->container->get('sf.admin.loader')->getAdminByName('sf_menu') ;
     }
 
     /**
      * @return  \Symforce\AdminBundle\Admin\PageAdmin
      */
     public function getPageAdmin(){
-        return $this->container->get('sf.admin.loader')->getAdminByName('app_page') ;
+        return $this->container->get('sf.admin.loader')->getAdminByName('sf_page') ;
     }
     
     public function render(\Twig_Environment $twig, array & $context, $name, array $args = array() ) {
@@ -55,13 +55,13 @@ class MenuService {
             'slug'  => $name ,
         ));
         
-        $args['app_group_name'] = $name ;
+        $args['sf_group_name'] = $name ;
 
         if( !$group ) {
             $template   = self::UNKNOW_TEMPLATE ;
         } else {
             $updated = $group->updated ;
-            $template  = 'app_menu_cached_' . $name . '.html.twig' ;
+            $template  = 'sf_menu_cached_' . $name . '.html.twig' ;
             $path   = $this->container->getParameter('kernel.root_dir')  . '/Resources/views/' . $template ;
             if( $this->debug || !file_exists($path) || filemtime($path) < $updated->getTimestamp() ) {
                 $this->compileGroup( $group, $path) ;
@@ -90,7 +90,7 @@ class MenuService {
     protected function compileGroup(\Symforce\AdminBundle\Entity\MenuGroup $group, $path ) {
         $writer = new \Symforce\AdminBundle\Compiler\Generator\PhpWriter() ;
 
-        $id     = 'app_menu_group_' . $group->slug ;
+        $id     = 'sf_menu_group_' . $group->slug ;
         
         $writer->writeln( sprintf('<!-- app menu group( %s ) -->', $group->name ));
         if( $group->group_css ) {
@@ -98,7 +98,7 @@ class MenuService {
             $child_css  = $group->child_css  ;
             $writer->writeln( sprintf('<style type="text/css">%s</style>', $group_css ));
         }
-        $writer->writeln( sprintf('<div id="%s" class="app_menu_box %s">', $id, $group->group_class ));
+        $writer->writeln( sprintf('<div id="%s" class="sf_menu_box %s">', $id, $group->group_class ));
         $writer->writeln( sprintf('<%s>', $group->group_tag ));
 
         foreach($group->menu_list as $menu ) {
@@ -123,7 +123,7 @@ class MenuService {
         $li_tag = $menu->menu_group->child_wapper ;
         $text_tag  = $menu->menu_group->child_tag ;
 
-        $class  = sprintf('app_menu_item app_menu_deep%d ', $deep ) . $menu->menu_group->child_class ;
+        $class  = sprintf('sf_menu_item sf_menu_deep%d ', $deep ) . $menu->menu_group->child_class ;
 
         if( 'a' === $text_tag ) {
             $text_tag  = null ;
@@ -218,7 +218,7 @@ class MenuService {
                 continue ;
             }
             if( !$has_children ) {
-                $writer->writeln( sprintf('<%s class="app_menu_items app_menu_items_deep%d">', $tag , $_deep ));
+                $writer->writeln( sprintf('<%s class="sf_menu_items sf_menu_items_deep%d">', $tag , $_deep ));
                 $has_children   = true ;
             }
             $this->compileMenu($child, $writer, $deep );

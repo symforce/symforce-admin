@@ -21,7 +21,7 @@ final class AdminLoader {
     
     private $_admin_name_map ;
     
-    private $app_domain ;
+    private $sf_domain ;
     
     /**
      * @var ContainerInterface 
@@ -45,7 +45,7 @@ final class AdminLoader {
 
     public function __construct(ContainerInterface $app, $cache_path , $expired_file ) {
         $this->container    = $app ;
-        $this->app_domain   = $app->getParameter('sf.admin.domain') ;
+        $this->sf_domain   = $app->getParameter('sf.admin.domain') ;
         $cache_expired = $this->isCacheExpired($cache_path, $expired_file) ; 
         
         $is_debug   = $app->getParameter('kernel.debug')  ;
@@ -144,7 +144,7 @@ final class AdminLoader {
     }
     
     public function getAppDomain() {
-        return $this->app_domain ;
+        return $this->sf_domain ;
     }
     
     
@@ -299,20 +299,20 @@ final class AdminLoader {
     }
     
     
-    private $app_page_service ;
+    private $sf_page_service ;
     
     public function appPathWithObject($name, $object, array $options = array() ){
-        if( null === $this->app_page_service ) {
-            $this->app_page_service = $this->container->get('app.page.service') ;
+        if( null === $this->sf_page_service ) {
+            $this->sf_page_service = $this->container->get('sf.page.service') ;
         }
-        return $this->app_page_service->appPathWithObject($name, $object, $options ) ;
+        return $this->sf_page_service->appPathWithObject($name, $object, $options ) ;
     }
     
     public function appPathWithoutObject($name, array $options = array() ){
-        if( null === $this->app_page_service ) {
-            $this->app_page_service = $this->container->get('app.page.service') ;
+        if( null === $this->sf_page_service ) {
+            $this->sf_page_service = $this->container->get('sf.page.service') ;
         }
-        return $this->app_page_service->appPathWithoutObject($name,  $options ) ;
+        return $this->sf_page_service->appPathWithoutObject($name,  $options ) ;
     }
     
     /**

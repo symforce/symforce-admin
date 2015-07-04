@@ -22,7 +22,7 @@ class RoutingLoader extends \Symfony\Component\Config\Loader\Loader {
      * @return Boolean true if this class supports the given resource, false otherwise
      */
     public function supports($resource, $type = null){
-        return 'app.admin' === $type;
+        return 'sf.admin' === $type;
     }
 
     /**
@@ -33,6 +33,6 @@ class RoutingLoader extends \Symfony\Component\Config\Loader\Loader {
      */
     public function load($resource, $type = null) {
         // load mete loader first to generate the admin cache  
-        return $this->container->get('app.route.loader')->getRouteCollection() ;
+        return $this->container->get('sf.route.loader')->getRouteCollection() ;
     }
 }

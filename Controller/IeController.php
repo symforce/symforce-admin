@@ -59,7 +59,7 @@ class IeController extends Controller {
         $response->headers->addCacheControlDirective('must-revalidate', true);
          
         $date   = new \DateTime() ;
-        $date->setTimestamp( strtotime( $this->container->getParameter('app.version') ) ) ;
+        $date->setTimestamp( strtotime( $this->container->getParameter('sf.version') ) ) ;
         $response->setETag( $date->getTimestamp() ) ;
         $response->setLastModified($date) ;
         

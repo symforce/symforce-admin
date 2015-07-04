@@ -37,12 +37,12 @@ class Group extends \Symforce\AdminBundle\Compiler\MetaType\Type {
         $this->name = $name ;
     }
     
-    public function fixLabel( \Symforce\AdminBundle\Compiler\Generator\TransGeneratorNode $tr, $app_domain ){
+    public function fixLabel( \Symforce\AdminBundle\Compiler\Generator\TransGeneratorNode $tr, $sf_domain ){
         $path   = 'group.' . strtolower( $this->id ) ;
         if( $this->name ) {
             $this->label    = $tr->createValue( $path , $this->name ) ;
         } else {
-            $this->label    = $tr->createValue( 'app.form.' . $path , null, $app_domain );
+            $this->label    = $tr->createValue( 'sf.form.' . $path , null, $sf_domain );
         }
         
     }
@@ -99,7 +99,7 @@ class Group extends \Symforce\AdminBundle\Compiler\MetaType\Type {
                 $options['dynamic_show_on'] = $_or ;
             }
             
-            $writer->write(  $this_builder  . ' = $builder->create("app_form_group_' . $this->id . '", "appgroup", ')
+            $writer->write(  $this_builder  . ' = $builder->create("sf_form_group_' . $this->id . '", "appgroup", ')
                     ->write(var_export($options, 1) ) 
                     ->writeln(');');
 

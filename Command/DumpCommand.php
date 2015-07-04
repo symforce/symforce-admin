@@ -38,7 +38,7 @@ class DumpCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('symforce:admin:dump')
+            ->setName('sf:admin:dump')
             ->setDescription('Dumps all assets to the filesystem')
             ->addArgument('write_to', InputArgument::OPTIONAL, 'Override the configured asset root')
             ->addOption('watch', null, InputOption::VALUE_NONE, 'Check for changes every second, debug mode only')

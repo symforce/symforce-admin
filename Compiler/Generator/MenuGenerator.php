@@ -17,7 +17,7 @@ class MenuGenerator {
                 'root'  => new Menu('root') , 
         );
         
-        $tr = $gen->getTransNodeByPath( $gen->app_domain , 'app.menu') ;
+        $tr = $gen->getTransNodeByPath( $gen->sf_domain , 'sf.menu') ;
         
         foreach($menu_config['groups'] as $name => $attr ) {
             $_menu  = new Menu( $name ) ;
@@ -28,8 +28,8 @@ class MenuGenerator {
             if( $attr['label'] ) {
                 $tr->set($name, $attr['label'] );
             }
-            $_menu->setLabel( 'app.menu.' . $name  ) ;
-            $_menu->setDomain( $gen->app_domain ) ; 
+            $_menu->setLabel( 'sf.menu.' . $name  ) ;
+            $_menu->setDomain( $gen->sf_domain ) ; 
             
             if( false !== $attr['route'] ) {
                 $_menu->setRouteName( $attr['route']  ) ;

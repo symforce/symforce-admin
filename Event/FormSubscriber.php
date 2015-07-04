@@ -17,7 +17,7 @@ class FormSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            'app.event.form'     => array('onFormEvent', 0),
+            'sf.event.form'     => array('onFormEvent', 0),
         );
     }
     
@@ -53,10 +53,10 @@ class FormSubscriber implements EventSubscriberInterface
 
     public function onFormEvent(FormEvent $event)
     {
-        if( !isset($_POST['app_validate_element']) ) {
+        if( !isset($_POST['sf_validate_element']) ) {
             return ;
         }
-        $form_element_name  = $_POST['app_validate_element'] ;
+        $form_element_name  = $_POST['sf_validate_element'] ;
         if( !preg_match_all('/\[(.+?)\]/', $form_element_name , $matches ) ) {
             return ;
         }

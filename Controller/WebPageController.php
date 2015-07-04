@@ -84,10 +84,10 @@ class WebPageController extends Controller
     final public function dispatchAction(Request $request){
         $this->loader   = $this->container->get('sf.admin.loader') ;
         
-        $cache  = $this->container->get('app.page.service') ;
+        $cache  = $this->container->get('sf.page.service') ;
         $access = \Symfony\Component\PropertyAccess\PropertyAccess::createPropertyAccessor() ;
         
-        $page_action    = $request->attributes->get('_app_web_page') ;
+        $page_action    = $request->attributes->get('_sf_web_page') ;
         $option = $cache->getOption( $page_action ) ;
         $response   = $option['dispatcher']($access, $this, $request);
         if( $response instanceof \Symfony\Component\HttpFoundation\Response ) {

@@ -55,7 +55,7 @@ abstract class UpdateActionCache extends ActionCache  {
         
         $dispatcher = $this->admin->getService('event_dispatcher');
         $event = new \Symforce\AdminBundle\Event\FormEvent($form, $request);
-        $dispatcher->dispatch('app.event.form', $event) ;
+        $dispatcher->dispatch('sf.event.form', $event) ;
         if (null !== $event->getResponse()) {
             return $event->getResponse() ;
         }

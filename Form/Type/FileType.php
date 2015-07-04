@@ -39,7 +39,7 @@ class FileType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->addViewTransformer( new FileTransformer( $this->container->getParameter('app.web_assets_dir') ) ) ;
+        $builder->addViewTransformer( new FileTransformer( $this->container->getParameter('sf.web_assets_dir') ) ) ;
         
         $builder->addEventListener(FormEvents::PRE_SUBMIT, function(FormEvent $event) use ($options){
             // respond to the event, modify data, or form elements
@@ -58,7 +58,7 @@ class FileType extends AbstractType {
             
             $oldValue = $admin->getReflectionProperty( $options['admin_property'])->getValue($object) ;
 
-            $pattern = \Symforce\AdminBundle\Entity\File::getFilesPattern( $this->container->getParameter('app.web_assets_dir') ) ;
+            $pattern = \Symforce\AdminBundle\Entity\File::getFilesPattern( $this->container->getParameter('sf.web_assets_dir') ) ;
             if( $data && preg_match( $pattern , $data, $ls) ) {
                 
                 $em     = $admin->getManager() ;
@@ -122,7 +122,7 @@ class FileType extends AbstractType {
         $view->vars['admin_id']    = $options['admin_id'] ;
         $view->vars['accept_file_type']    = $options['accept_file_type'] ;
         $view->vars['max_file_size']    = $options['max_file_size'] ;
-        $view->vars['web_assets_dir'] = $this->container->getParameter('app.web_assets_dir') ;
+        $view->vars['web_assets_dir'] = $this->container->getParameter('sf.web_assets_dir') ;
     }
     
     public function setDefaultOptions(OptionsResolverInterface $resolver) {

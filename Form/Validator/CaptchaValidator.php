@@ -100,7 +100,7 @@ class CaptchaValidator
             }
         }
 
-        if( !$this->container->get('app.form.listener')->isXhrRequest() ) {
+        if( !$this->container->get('sf.form.listener')->isXhrRequest() ) {
             $this->session->remove($this->key );
             if ($this->session->has($this->key . '_fingerprint')) {
                 $this->session->remove($this->key . '_fingerprint');

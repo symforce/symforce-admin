@@ -20,8 +20,8 @@ class AdminController extends Controller
     { 
         $this->loader   = $this->container->get('sf.admin.loader') ;
 
-        $cache  = $this->container->get('symforce.page.service') ;
-        $option = $cache->getAdminOption( $request->attributes->get('_app_route_name') ) ;
+        $cache  = $this->container->get('sf.page.service') ;
+        $option = $cache->getAdminOption( $request->attributes->get('_sf_route_name') ) ;
         $action = $option['dispatcher']($this->loader, $request) ;
         
         if( !$this->loader->auth( $action->getAdmin()->getName(), $action->getName()) ) {

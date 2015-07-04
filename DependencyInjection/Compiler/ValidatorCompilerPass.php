@@ -14,18 +14,18 @@ class ValidatorCompilerPass implements CompilerPassInterface
         return ;
         
         $taggedServices = $container->findTaggedServiceIds(
-            'symforce.admingenerator.validator'
+            'sf.admingenerator.validator'
         );
 
         $taggedServicesDoctrine = $container->findTaggedServiceIds(
-            'symforce.admingenerator.doctrine'
+            'sf.admingenerator.doctrine'
         );
 
         $taggedServicesDoctrineOdm = $container->findTaggedServiceIds(
-            'symforce.admingenerator.doctrine_odm'
+            'sf.admingenerator.doctrine_odm'
         );
 
-        if ($container->hasDefinition('symforce.admingenerator.generator.doctrine')) {
+        if ($container->hasDefinition('sf.admingenerator.generator.doctrine')) {
             $this->addValidators($taggedServicesDoctrine, $container->getDefinition('admingenerator.generator.doctrine'));
             $this->addValidators($taggedServices, $container->getDefinition('admingenerator.generator.doctrine'));
         }

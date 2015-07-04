@@ -59,7 +59,7 @@ class HtmlType extends TextareaType {
             $oldValue = $admin->getReflectionProperty($property_name)->getValue($object) ;
             
             if( $data ) {
-                $pattern = \Symforce\AdminBundle\Entity\File::getRichTextFilesPattern($this->container->getParameter('app.web_assets_dir') ) ;
+                $pattern = \Symforce\AdminBundle\Entity\File::getRichTextFilesPattern($this->container->getParameter('sf.web_assets_dir') ) ;
                 preg_match_all( $pattern, $data, $ms, PREG_SET_ORDER );
                 
                 $repo       = $em->getRepository('Symforce\AdminBundle\Entity\File') ;

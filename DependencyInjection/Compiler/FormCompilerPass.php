@@ -38,7 +38,7 @@ class FormCompilerPass implements CompilerPassInterface
             // Symfony 2.5~
             $loaderChain = $container->getDefinition('validator.mapping.loader.loader_chain');
             $arguments = $loaderChain->getArguments();
-            array_push($arguments[0], new Reference('symforce.validator.loader'));
+            array_push($arguments[0], new Reference('sf.validator.loader'));
             $loaderChain->setArguments($arguments);
         }
     }

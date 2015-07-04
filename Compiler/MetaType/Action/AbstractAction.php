@@ -299,7 +299,7 @@ abstract class AbstractAction extends \Symforce\AdminBundle\Compiler\MetaType\Ad
                 ->addProperty('action_name', $this->admin_object->name . '.' . $this->name ) 
                 ->addProperty('icon',  $this->icon ) 
                 ->addProperty('tr_domain',  $this->admin_object->tr_domain )
-                ->addProperty('app_domain',  $this->admin_object->app_domain )
+                ->addProperty('sf_domain',  $this->admin_object->sf_domain )
         ;
         
         if( $this->template || $this->final_template ) {

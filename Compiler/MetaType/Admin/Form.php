@@ -169,7 +169,7 @@ class Form extends EntityAware {
         } 
         
         foreach($this->groups as $group) {
-            $group->fixLabel( $this->tr_node , $this->admin_object->generator->app_domain ) ;
+            $group->fixLabel( $this->tr_node , $this->admin_object->generator->sf_domain ) ;
             $group->sort() ;
         }
         

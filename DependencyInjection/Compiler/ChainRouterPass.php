@@ -19,9 +19,9 @@ class ChainRouterPass implements CompilerPassInterface
     
     public function process(ContainerBuilder $container)
     {
-        $container->setParameter('symforce.compile.state', 0 );
+        $container->setParameter('sf.compile.state', 0 );
         $container->setAlias('router_default', 'router.default');
 
-        // $app_route_provider = $container->findDefinition('app_routing.route_provider');
+        // $sf_route_provider = $container->findDefinition('sf_routing.route_provider');
     }
 }

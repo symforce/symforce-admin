@@ -28,10 +28,10 @@ abstract class CreateActionCache extends ActionCache {
         
         $label  = null ;
         if( $this->admin->tree && $this->admin->getTreeObjectId() ) {
-            $label = $this->admin->trans('app.tree.create.title', array(
+            $label = $this->admin->trans('sf.tree.create.title', array(
                         '%object%' => $this->admin->string(  $this->admin->getTreeObject() ) ,
                         '%admin%' => $this->admin->getLabel() ,
-                       ) , $this->app_domain 
+                       ) , $this->sf_domain 
                    ) ;
         } else {
             $label = $this->admin->getFormLabel() ;
@@ -51,7 +51,7 @@ abstract class CreateActionCache extends ActionCache {
         
         $dispatcher = $this->admin->getService('event_dispatcher');
         $event = new \Symforce\AdminBundle\Event\FormEvent($form, $request);
-        $dispatcher->dispatch('app.event.form', $event) ;
+        $dispatcher->dispatch('sf.event.form', $event) ;
         if (null !== $event->getResponse()) {
             return $event->getResponse() ;
         }

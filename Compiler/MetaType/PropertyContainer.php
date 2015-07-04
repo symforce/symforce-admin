@@ -35,7 +35,7 @@ class PropertyContainer {
     /**
      * @var string 
      */
-    public $app_domain ;
+    public $sf_domain ;
     
     public function __construct(Admin\EntityAware $parent, Admin\Entity $entity = null ) {
         $this->parent = $parent ;

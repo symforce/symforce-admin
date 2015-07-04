@@ -11,18 +11,18 @@ services:
     sf.admin.compiler:
         class: Symforce\AdminBundle\Compiler\Loader\Compiler
     
-    app.page.service:
+    sf.page.service:
         class: AppAdminCache\WebPageService
         calls:
             - [ setContainer, ["@service_container"] ]
             
-    app.page.menu:
+    sf.page.menu:
         class: Symforce\AdminBundle\Service\MenuService
         calls:
             - [ setContainer, ["@service_container"] ]
     
-    app_router:
-        alias: app.page.service
+    sf_router:
+        alias: sf.page.service
         
     sf.admin.generator:
         class: Symforce\AdminBundle\Compiler\Generator
@@ -36,17 +36,17 @@ services:
         class: Symforce\AdminBundle\Service\Imagine
         arguments: [ "@service_container" ]
     
-    sf.admin.form.factory:
+    sf.form.factory:
         class: Symforce\AdminBundle\Compiler\MetaFormFactory
         arguments: [ "@doctrine", "@annotation_reader", null ]
     
-    app.locale.listener:
+    sf.locale.listener:
         class: Symforce\AdminBundle\Compiler\LocaleListener
         arguments: [ "@form.factory", null , null ]
         tags:
             - { name:"kernel.event_subscriber" }
             
-    app.form.listener:
+    sf.form.listener:
         class: Symforce\AdminBundle\Event\FormSubscriber
         calls:
             - [ setContainer, ["@service_container"] ]
@@ -54,7 +54,7 @@ services:
             - { name:"kernel.event_subscriber" }
 
     # doctrine
-    app.repos.file:
+    sf.repos.file:
         class: Symforce\AdminBundle\Entity\FileRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
@@ -63,11 +63,11 @@ services:
             - [ setContainer, ["@service_container"] ]
 
     # Router
-    app.route.loader:
+    sf.route.loader:
         class: Symforce\AdminBundle\Compiler\Loader\RouteCacheLoader
         arguments: [ "@sf.admin.loader", null ]
 
-    app.routing.loader:
+    sf.routing.loader:
         class: Symforce\AdminBundle\Compiler\Loader\RoutingLoader
         public: false
         calls:
@@ -100,7 +100,7 @@ services:
         tags:
             - { name:"twig.extension" }
     # trans
-    app.translation.loader.yaml:
+    sf.translation.loader.yaml:
         class: Symforce\AdminBundle\Translation\Loader\AppTransLoader
         calls:
             - [ setMetaLoader, ["@sf.admin.loader"] ] 

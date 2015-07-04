@@ -21,11 +21,11 @@ class SecuredController extends Controller
     {
         
         $form   = $this->crateForm($request) ;
-        // $form   = $this->container->get('sf.admin.loader')->getAdminByName('app_user')->getLoginForm( $request ) ;
+        // $form   = $this->container->get('sf.admin.loader')->getAdminByName('sf_user')->getLoginForm( $request ) ;
         
         $dispatcher = $this->container->get('event_dispatcher');
         $event = new \Symforce\AdminBundle\Event\FormEvent($form, $request);
-        $dispatcher->dispatch('app.event.form', $event) ;
+        $dispatcher->dispatch('sf.event.form', $event) ;
         if (null !== $event->getResponse()) {
             return $event->getResponse() ;
         } 
@@ -63,26 +63,26 @@ class SecuredController extends Controller
         }
         
         $tr = $this->container->get('translator') ;
-        $app_domain  = $this->container->getParameter('sf.admin.domain') ;
+        $sf_domain  = $this->container->getParameter('sf.admin.domain') ;
       
         $builder = $this->container->get('form.factory')->createNamedBuilder('login', 'form', array(
-            'label'  => 'app.login.label' ,
-            'translation_domain' => $app_domain ,
+            'label'  => 'sf.login.label' ,
+            'translation_domain' => $sf_domain ,
         )) ; 
         
         $builder
                     ->add('username', 'text', array(
-                        'label' => 'app.login.username.label' ,
-                        'translation_domain' => $app_domain ,
+                        'label' => 'sf.login.username.label' ,
+                        'translation_domain' => $sf_domain ,
                         'data'  => $request->getSession()->get(SecurityContext::LAST_USERNAME) ,
                         'horizontal_input_wrapper_class' => 'col-xs-6',
                         'attr' => array(
-                            'placeholder' => 'app.login.username.placeholder' ,
+                            'placeholder' => 'sf.login.username.placeholder' ,
                         )
                     ) )
                     ->add('password', 'password', array(
-                        'label'  => 'app.login.password.label' ,
-                        'translation_domain' => $app_domain ,
+                        'label'  => 'sf.login.password.label' ,
+                        'translation_domain' => $sf_domain ,
                         'horizontal_input_wrapper_class' => 'col-xs-6',
                         'attr' => array(
                             
@@ -90,8 +90,8 @@ class SecuredController extends Controller
                     ) )
                 
                     ->add('captcha', 'appcaptcha', array(
-                        'label' => 'app.form.captcha.label' ,
-                        'translation_domain' => $app_domain ,
+                        'label' => 'sf.form.captcha.label' ,
+                        'translation_domain' => $sf_domain ,
                     ))
                 
                 ;
@@ -99,20 +99,20 @@ class SecuredController extends Controller
         
         if( $error ) {
             if( $error instanceof \Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException ) {
-                $_error = new \Symfony\Component\Form\FormError( $tr->trans('app.login.error.crsf', array(), $app_domain ) ) ;
+                $_error = new \Symfony\Component\Form\FormError( $tr->trans('sf.login.error.crsf', array(), $sf_domain ) ) ;
                 $form->addError( $_error  ) ;
             } else if ( $error instanceof \Symforce\UserBundle\Exception\CaptchaException ) {
-                $_error = $tr->trans('app.login.error.captcha' , array(), $app_domain ) ;
+                $_error = $tr->trans('sf.login.error.captcha' , array(), $sf_domain ) ;
                 if( $this->container->getParameter('kernel.debug') ) {
                     $_error .= sprintf(" code(%s)",  $error->getCode()  ) ;
                 }
                 $_error = new \Symfony\Component\Form\FormError( $_error );
                 $form->get('captcha')->addError( $_error ) ;
             } else if( $error instanceof \Symfony\Component\Security\Core\Exception\BadCredentialsException ) { 
-                $_error = new \Symfony\Component\Form\FormError( $tr->trans('app.login.error.credentials' , array(), $app_domain ) ) ;
+                $_error = new \Symfony\Component\Form\FormError( $tr->trans('sf.login.error.credentials' , array(), $sf_domain ) ) ;
                 $form->get('username')->addError( $_error ) ;
             }  else if( $error instanceof \Symfony\Component\Security\Core\Exception\DisabledException ) {
-                $_error = new \Symfony\Component\Form\FormError( $tr->trans('app.login.error.disabled' , array(), $app_domain ) ) ;
+                $_error = new \Symfony\Component\Form\FormError( $tr->trans('sf.login.error.disabled' , array(), $sf_domain ) ) ;
                 $form->get('username')->addError( $_error ) ;
             } else {
                 $_error = new \Symfony\Component\Form\FormError( $error->getMessage() ) ;

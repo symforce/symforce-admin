@@ -40,17 +40,17 @@ class LocaleListener implements EventSubscriberInterface
         if (!$request->hasPreviousSession()) {
             return;
         }
-        $_locale    = $request->getSession()->get('app_locale', null ) ;
+        $_locale    = $request->getSession()->get('sf_locale', null ) ;
         if( !$_locale || !isset( $this->languages[$_locale] ) ) {
             $_locale    = $this->default_locale ;
-            $request->getSession()->set('app_locale', $_locale );
+            $request->getSession()->set('sf_locale', $_locale );
         } 
         $request->setLocale( $_locale ) ;
    }
    
    public function getInlineForm(Request $request){
        
-       $_locale = $request->getSession()->get( 'app_locale' , $this->default_locale ) ;
+       $_locale = $request->getSession()->get( 'sf_locale' , $this->default_locale ) ;
        $languages  = $this->languages ;
        
        if( 'POST' === $request->getMethod() ) {
@@ -68,7 +68,7 @@ class LocaleListener implements EventSubscriberInterface
    
    public function getForm(Request $request, $inline = 0 ) {
        
-    	$_locale = $request->getSession()->get( 'app_locale' , $this->default_locale ) ;
+    	$_locale = $request->getSession()->get( 'sf_locale' , $this->default_locale ) ;
         $locale	= new Locale();
         $locale->setLocale( $_locale ) ;
         $locale->setRedirectUrl( $request->getRequestUri() ) ;
@@ -92,7 +92,7 @@ class LocaleListener implements EventSubscriberInterface
                                 'attr' => array(
                                     'class' => 'input-sm' ,
                                 ) ,
-                                'horizontal_input_wrapper_class'    => 'app_locale_select' ,
+                                'horizontal_input_wrapper_class'    => 'sf_locale_select' ,
                             ) ) 
                     ->add('redirect_url',  'hidden' ) 
                     ->getForm()

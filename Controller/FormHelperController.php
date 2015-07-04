@@ -27,7 +27,7 @@ class FormHelperController extends Controller {
     }
     
     /**
-     * @Route("/tree/{admin_name}/{parent_id}/{selected_id}/{deep}", name="app_form_tree", requirements={"admin_name"="[\w\_]+", "parent_id"="\d+", "selected_id"="\d+", "deep"="\d+"})
+     * @Route("/tree/{admin_name}/{parent_id}/{selected_id}/{deep}", name="sf_form_tree", requirements={"admin_name"="[\w\_]+", "parent_id"="\d+", "selected_id"="\d+", "deep"="\d+"})
      * @Template()
      */
     public function treeAction(Request $request, $admin_name, $parent_id = 0 , $selected_id = 0, $deep = 0 )
@@ -54,7 +54,7 @@ class FormHelperController extends Controller {
             }
         }
         
-        $node_id    = 'app_form_tree_' . $admin_name . '_' ;
+        $node_id    = 'sf_form_tree_' . $admin_name . '_' ;
         
         $fn = function( $parent_id ) use($admin, $node_id, $selected_id, $deep ) {
             $dql    = sprintf("SELECT a FROM %s a WHERE a.%s=%d", $admin->getClassName(), $admin->tree['parent'] , $parent_id );
@@ -70,7 +70,7 @@ class FormHelperController extends Controller {
                 $name   = $admin->string( $o ) ;
                 $id     = $admin->getId( $o ) ;
                 
-                $url =  $this->generateUrl('app_form_tree', array(
+                $url =  $this->generateUrl('sf_form_tree', array(
                     'admin_name'    => $admin->getName() ,
                     'parent_id'    => $id ,
                     'selected_id'  => $selected_id ,
@@ -121,19 +121,19 @@ class FormHelperController extends Controller {
     
     
     /**
-     * @Route("/routes/{default_route_name}",  name="app_form_route")
+     * @Route("/routes/{default_route_name}",  name="sf_form_route")
      * @Template()
      */
     public function routeAction(Request $request, $default_route_name = null )
     { 
         $routes = $this->container->get('router')->getRouteCollection();
         $nameParser = $this->container->get('controller_name_converter') ;
-        $ignored    = $this->container->getParameter('app.form.route.ignored') ;
+        $ignored    = $this->container->getParameter('sf.form.route.ignored') ;
         
         $maps   = array() ;
         foreach ($routes as $name => $route) {
             
-            if ( !$route->hasDefault('_controller') || $route->hasDefault('_app_route_name') ) {
+            if ( !$route->hasDefault('_controller') || $route->hasDefault('_sf_route_name') ) {
                 continue ;
             }
             if( in_array( 'GET', $route->getMethods() ) ) {
@@ -195,12 +195,12 @@ class FormHelperController extends Controller {
     }
     
     /**
-     * @Route("/templates/{default_name}",  name="app_form_template")
+     * @Route("/templates/{default_name}",  name="sf_form_template")
      * @Template()
      */
     public function templateAction(Request $request, $default_name = null )
     { 
-        $ignored    = $this->container->getParameter('app.form.template.ignored') ;
+        $ignored    = $this->container->getParameter('sf.form.template.ignored') ;
         
         $bundles = $this->container->getParameter('kernel.bundles') ;
         $maps   = array() ;

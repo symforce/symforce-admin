@@ -43,7 +43,7 @@ class MetaFormFactory {
         if( $as) foreach($as as $_annot ) {
             if( $_annot instanceof \Symforce\AdminBundle\Compiler\Annotation\FormType ) {
                 if( null !== $annot ) {
-                    throw new \Exception(sprintf("app_admin.form.type ( class: %s ) has multi form annotation", $rc->getName() ));
+                    throw new \Exception(sprintf("sf_admin.form.type ( class: %s ) has multi form annotation", $rc->getName() ));
                 }
                 $annot  = $_annot ;
             }
@@ -82,7 +82,7 @@ class MetaFormFactory {
         
         foreach ($config_types as $name => $class_name ) {
             if( !class_exists($class_name) ) {
-                throw new \Exception(sprintf("app_admin.form.type ( name: %s -> class: %s ) not exists", $name, $class_name));
+                throw new \Exception(sprintf("sf_admin.form.type ( name: %s -> class: %s ) not exists", $name, $class_name));
             }
             $rc = new \ReflectionClass( $class_name ) ;
             
@@ -102,9 +102,9 @@ class MetaFormFactory {
             }
             
             if( !$o['orm'] && !$o['map']) {
-                throw new \Exception(sprintf("app_admin.form.type ( name: %s -> class: %s ) no orm and map", $name, $class_name));
+                throw new \Exception(sprintf("sf_admin.form.type ( name: %s -> class: %s ) no orm and map", $name, $class_name));
             } else if( $o['orm'] && $o['map']) {
-                throw new \Exception(sprintf("app_admin.form.type ( name: %s -> class: %s ) set both orm and map", $name, $class_name));
+                throw new \Exception(sprintf("sf_admin.form.type ( name: %s -> class: %s ) set both orm and map", $name, $class_name));
             }
             
             if( $o['orm'] ) {
@@ -119,14 +119,14 @@ class MetaFormFactory {
                     }
                 } else {
                    if( null !==  $o['guess'] ) {
-                       throw new \Exception(sprintf("app_admin.form.type ( name: %s -> class: %s ) guess only support orm:string", $name, $class_name));
+                       throw new \Exception(sprintf("sf_admin.form.type ( name: %s -> class: %s ) guess only support orm:string", $name, $class_name));
                    }
                 }
             } 
             
             if( is_string($o['default']) ) {
                 if( isset($this->default_type[ $o['default'] ]) ) {
-                    throw new \Exception(sprintf("app_admin.form.type %s and %s has same default orm type:%s", $this->default_type[ $o['default'] ], $name, $o['default'] ));
+                    throw new \Exception(sprintf("sf_admin.form.type %s and %s has same default orm type:%s", $this->default_type[ $o['default'] ], $name, $o['default'] ));
                 }
                 $this->default_type[ $o['default'] ] = $name  ;
             }

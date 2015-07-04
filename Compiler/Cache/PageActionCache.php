@@ -51,7 +51,7 @@ class PageActionCache extends ActionCache  {
         
         $dispatcher = $this->admin->getService('event_dispatcher');
         $event = new \Symforce\AdminBundle\Event\FormEvent($form, $request);
-        $dispatcher->dispatch('app.event.form', $event) ;
+        $dispatcher->dispatch('sf.event.form', $event) ;
         if (null !== $event->getResponse()) {
             return $event->getResponse() ;
         }
@@ -76,7 +76,7 @@ class PageActionCache extends ActionCache  {
                     }
 
                     $request->getSession()->getFlashBag()->add('info',
-                                $this->trans( 'app.action.update.finish' , $object )
+                                $this->trans( 'sf.action.update.finish' , $object )
                             ) ;
 
                     return $controller->redirect( $this->getFormReferer($form) ) ;

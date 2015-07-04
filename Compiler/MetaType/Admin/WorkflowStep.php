@@ -173,7 +173,7 @@ class WorkflowStep extends \Symforce\AdminBundle\Compiler\MetaType\Type {
         }
         
         if( $this->internal ) {
-            $this->tr_node  = $this->parent->admin_object->generator->getTransNodeByPath( $this->parent->admin_object->app_domain , 'app.status.' . $this->name ) ;
+            $this->tr_node  = $this->parent->admin_object->generator->getTransNodeByPath( $this->parent->admin_object->sf_domain , 'sf.status.' . $this->name ) ;
             if( null === $this->label ) {
                 $this->label   = $this->name ;
             }

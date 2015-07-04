@@ -8,7 +8,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="Symforce\AdminBundle\Entity\FileRepository")
- * @ORM\Table(name="app_file", indexes={@ORM\Index(name="entity_idx", columns={"class_name", "property_name"}), @ORM\Index(name="session_idx", columns={"session_id"}) } )
+ * @ORM\Table(name="sf_file", indexes={@ORM\Index(name="entity_idx", columns={"class_name", "property_name"}), @ORM\Index(name="session_idx", columns={"session_id"}) } )
  */
 class File
 {
