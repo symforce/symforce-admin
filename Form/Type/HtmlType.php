@@ -54,7 +54,7 @@ class HtmlType extends TextareaType {
             $em     = $admin->getManager() ;
             $className  = $admin->getClassName() ;
             
-            $property_name  = $options['admin_property'] ;
+            $property_name  = $options['sf_admin_property'] ;
             
             $oldValue = $admin->getReflectionProperty($property_name)->getValue($object) ;
             
@@ -127,7 +127,7 @@ class HtmlType extends TextareaType {
         $view->vars['admin_name']    = $options['admin_name'] ;
         $view->vars['admin_id']     = $options['admin_id'] ;
         $view->vars['sf_admin_class']    = $options['sf_admin_class'] ;
-        $view->vars['admin_property']    = $options['admin_property'] ;
+        $view->vars['sf_admin_property']    = $options['sf_admin_property'] ;
         
         $view->vars['html_options']    = $options['html_options'] ;
     }
@@ -136,7 +136,7 @@ class HtmlType extends TextareaType {
          
         $resolver->setRequired(array(
              'sf_admin_class' ,
-             'admin_property' ,
+             'sf_admin_property' ,
              'admin_name' , 
              'admin_id' , 
             

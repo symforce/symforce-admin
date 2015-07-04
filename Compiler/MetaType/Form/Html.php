@@ -66,7 +66,7 @@ class Html extends Textarea {
         $options    = parent::getFormOptions() ; 
         
         $options['sf_admin_class']  = $this->admin_object->class_name ;
-        $options['admin_property']  = $this->class_property ;
+        $options['sf_admin_property']  = $this->class_property ;
         $options['admin_name']  = $this->admin_object->name ;
         $options['admin_id']  = $this->admin_object->property_id_name ;
         

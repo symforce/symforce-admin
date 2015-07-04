@@ -56,7 +56,7 @@ class FileType extends AbstractType {
             
             $admin  = $this->container->get('sf.admin.loader')->getAdminByClass( $options['sf_admin_class'] ) ;
             
-            $oldValue = $admin->getReflectionProperty( $options['admin_property'])->getValue($object) ;
+            $oldValue = $admin->getReflectionProperty( $options['sf_admin_property'])->getValue($object) ;
 
             $pattern = \Symforce\AdminBundle\Entity\File::getFilesPattern( $this->container->getParameter('sf.web_assets_dir') ) ;
             if( $data && preg_match( $pattern , $data, $ls) ) {
@@ -133,7 +133,7 @@ class FileType extends AbstractType {
         
         $resolver->setRequired(array(
              'sf_admin_class' ,
-             'admin_property' ,
+             'sf_admin_property' ,
              'admin_name' , 
              'admin_id' , 
              'accept_file_type' ,

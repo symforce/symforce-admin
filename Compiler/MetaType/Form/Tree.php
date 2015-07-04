@@ -22,7 +22,7 @@ class Tree extends Element {
         $options    = parent::getFormOptions() ;
         
         $options['sf_admin_class']  = $this->admin_object->class_name ;
-        $options['admin_property']  = $this->class_property ;
+        $options['sf_admin_property']  = $this->class_property ;
         $options['copy_property']  = $this->copy_property ;
         
         $map    = $this->admin_object->orm_metadata->getAssociationMapping( $this->class_property ) ;

@@ -69,7 +69,7 @@ class TreeType extends AbstractType {
         
         $resolver->setRequired(array(
              'sf_admin_class' ,
-             'admin_property' ,
+             'sf_admin_property' ,
              'target_class' 
         ));
     }
