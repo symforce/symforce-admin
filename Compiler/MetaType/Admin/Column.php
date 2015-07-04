@@ -16,7 +16,7 @@ class Column extends EntityAware {
     const COLUMN_ANNOT_CLASS   = 'Symforce\\AdminBundle\\Admin\\Annotation\\Column' ;
     const PAGE_ANNOT_CLASS   = 'Symforce\\AdminBundle\\Admin\\Annotation\\Page' ;
     const PAGE_ENTITY_CLASS  = 'Symforce\\AdminBundle\\Entity\\Page' ;
-    const USED_NAME =  ' app tmp temp put get post file save admin loader root parent child children tree id list create update delete view action batch action property filter search cache ';
+    const USED_NAME =  ' sf symforce app object tmp temp put get post file save admin loader root parent child children tree id list create update delete view action batch action property filter search cache ';
     
     public $column_property ;
     public $title_property ;
