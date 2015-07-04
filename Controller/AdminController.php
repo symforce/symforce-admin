@@ -18,7 +18,7 @@ class AdminController extends Controller
     
     public function adminAction(Request $request)
     { 
-        $this->loader   = $this->container->get('symforce.admin.loader') ;
+        $this->loader   = $this->container->get('sf.admin.loader') ;
 
         $cache  = $this->container->get('symforce.page.service') ;
         $option = $cache->getAdminOption( $request->attributes->get('_app_route_name') ) ;

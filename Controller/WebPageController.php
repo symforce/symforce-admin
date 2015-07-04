@@ -82,7 +82,7 @@ class WebPageController extends Controller
     }
     
     final public function dispatchAction(Request $request){
-        $this->loader   = $this->container->get('symforce.admin.loader') ;
+        $this->loader   = $this->container->get('sf.admin.loader') ;
         
         $cache  = $this->container->get('app.page.service') ;
         $access = \Symfony\Component\PropertyAccess\PropertyAccess::createPropertyAccessor() ;

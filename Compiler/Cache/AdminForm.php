@@ -203,12 +203,12 @@ trait AdminForm {
             $requirments[$property_name]    = $value ;
         }
 
-        $builder->add('symforce_admin_form_dynamic_values', 'hidden', array(
+        $builder->add('sf_admin_form_dynamic_values', 'hidden', array(
             'mapped'   => false ,
             'data'  => json_encode($requirments) ,
         ));
 
-        $builder->add('symforce_admin_form_dynamic_deps', 'hidden', array(
+        $builder->add('sf_admin_form_dynamic_deps', 'hidden', array(
             'mapped'   => false ,
             'data'  => json_encode($elements) ,
         ));

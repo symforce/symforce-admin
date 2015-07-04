@@ -54,14 +54,14 @@ class EmbedHiddenTransformer implements DataTransformerInterface {
      */
     public function reverseTransform($value) {
         if( ! $this->reverse_data ) {
-            throw new \Exception("bigger error");
+            throw new \Exception;
         }
         return $this->reverse_data ;
     }
     
     public function setReverseData($data) {
         if( !($data instanceof $this->entity_class) ) {
-            throw new \Exception("bigger error");
+            throw new \Exception;
         }
         $this->reverse_data = $data ;
     }

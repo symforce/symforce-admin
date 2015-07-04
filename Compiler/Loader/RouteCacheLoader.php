@@ -264,7 +264,7 @@ class RouteCacheLoader {
             }
             //\Dev::dump($cache_expired); exit;
             
-            $this->loader->getService('symforce.admin.compiler')->set( \Symforce\AdminBundle\Compiler\Loader\Compiler::STAT_ROUTE );
+            $this->loader->getService('sf.admin.compiler')->set( \Symforce\AdminBundle\Compiler\Loader\Compiler::STAT_ROUTE );
             
             $this->config   = array();
             if( $this->loader->hasConfig('web_page_class') ) {
@@ -355,7 +355,7 @@ class RouteCacheLoader {
             
             $class->writeCache() ;
             
-            $this->loader->getService('symforce.admin.compiler')->set( \Symforce\AdminBundle\Compiler\Loader\Compiler::STAT_OK );
+            $this->loader->getService('sf.admin.compiler')->set( \Symforce\AdminBundle\Compiler\Loader\Compiler::STAT_OK );
             
             $content_cache  = array( time(), array_keys($this->route_file_resources), $this->route_page_collection) ;
             $content   = '<' . '?php return unserialize(' . var_export(serialize($content_cache), 1) . ');' ;
@@ -393,20 +393,20 @@ class RouteCacheLoader {
         return  $this->_compile_class ;
     }
     
-    public $_compile_symforce_admin_writer = null ;
+    public $_compile_sf_admin_writer = null ;
     
     /**
      * @return \Symforce\AdminBundle\Compiler\Generator\PhpWriter
      */
     public function getCompileAppAdminWriter() {
-        if( null === $this->_compile_symforce_admin_writer ) {
+        if( null === $this->_compile_sf_admin_writer ) {
             $class  = $this->getCompileClass() ;
             $fn  = $class->addMethod('loadAppAdminRoute')
                 ->setVisibility('public')
                 ;
-            $this->_compile_symforce_admin_writer    = $fn->getWriter() ;
+            $this->_compile_sf_admin_writer    = $fn->getWriter() ;
         } 
-        return $this->_compile_symforce_admin_writer ;
+        return $this->_compile_sf_admin_writer ;
     }
     
 }

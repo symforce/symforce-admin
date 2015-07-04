@@ -42,7 +42,7 @@ class EmbedType extends AbstractType {
         parent::buildForm($builder, $options ) ;
         
         if( !$options['children_render'] ) {
-            $transformer    = new EmbedHiddenTransformer( $this->container->get('symforce.admin.loader'), $options['target_entity'] ) ;
+            $transformer    = new EmbedHiddenTransformer( $this->container->get('sf.admin.loader'), $options['target_entity'] ) ;
             $builder->addModelTransformer( $transformer ) ;
             
             $builder->addEventListener(FormEvents::PRE_SUBMIT , function(FormEvent $event) use ($options, $transformer ){
@@ -57,7 +57,7 @@ class EmbedType extends AbstractType {
                 if( !($object instanceof $options['source_entity'] ) ) {
                     throw new \Exception( sprintf("get type:%s, expect type:%s", get_class($object), $options['source_entity'] ));
                 }
-                $admin_loader   = $this->container->get('symforce.admin.loader') ;
+                $admin_loader   = $this->container->get('sf.admin.loader') ;
                 $source_admin   = $admin_loader->getAdminByClass( $options['source_entity'] ) ;
                 $target_admin   = $admin_loader->getAdminByClass( $options['target_entity'] ) ;
                 $_object   = $source_admin->getReflectionProperty( $event->getForm()->getName() )->getValue( $object ) ;
@@ -79,7 +79,7 @@ class EmbedType extends AbstractType {
             if( !($object instanceof $options['source_entity'] ) ) {
                 throw new \Exception( sprintf("get type:%s, expect type:%s", get_class($object), $options['source_entity'] ));
             }
-            $admin_loader   = $this->container->get('symforce.admin.loader') ;
+            $admin_loader   = $this->container->get('sf.admin.loader') ;
             $source_admin   = $admin_loader->getAdminByClass( $options['source_entity'] ) ;
             $target_admin   = $admin_loader->getAdminByClass( $options['target_entity'] ) ;
             if( !$options['children_render'] ) {

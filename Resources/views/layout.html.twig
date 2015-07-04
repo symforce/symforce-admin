@@ -1,6 +1,6 @@
-{% set app_domain = app_param('symforce.admin.domain') %}
+{% set app_domain = app_param('sf.admin.domain') %}
 {% set app_version = app_param('app.version') %}
-{% import "AppAdminBundle::admin_macro.html.twig" as symforce_admin_macro %}
+{% import "AppAdminBundle::admin_macro.html.twig" as sf_admin_macro %}
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -12,7 +12,7 @@
 {% block head %}
     <meta name='viewport' content='width=1190'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>{% block title %}{{ 'symforce.admin.title'|trans({},  app_domain ) }}{% endblock %}</title>
+    <title>{% block title %}{{ 'sf.admin.title'|trans({},  app_domain ) }}{% endblock %}</title>
     <link rel="icon" sizes="16x16" href="/favicon.ico" />
     {% block stylesheets %}
         {% stylesheets
@@ -118,16 +118,16 @@
     <div class="col-xs-12">
         {% block content_breadcrumb %}
             <ol class="breadcrumb">
-                <li><a href="{{ path( app_param('symforce.admin.route.dashboard_path') ) }}">{{ 'symforce.admin.dashboard'|trans({}, app_domain ) }}</a>  </li>
+                <li><a href="{{ path( app_param('sf.admin.route.dashboard_path') ) }}">{{ 'sf.admin.dashboard'|trans({}, app_domain ) }}</a>  </li>
 
                 {% if admin %}
                     {% if admin.routeparent %}
                         {% for _admin in admin.routeparents %}
-                            {{ symforce_admin_macro.breadcrumb(_admin, false ) }}
+                            {{ sf_admin_macro.breadcrumb(_admin, false ) }}
                         {% endfor %}
                     {% endif %}
                     
-                    {{ symforce_admin_macro.breadcrumb(admin, action ) }}
+                    {{ sf_admin_macro.breadcrumb(admin, action ) }}
                     
                 {% endif %}
             </ol>

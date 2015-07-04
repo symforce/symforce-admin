@@ -42,7 +42,7 @@ class Builder extends ContainerAware
                 ) ,
             )) ;
         
-        $this->loadder = $this->container->get('symforce.admin.loader') ;
+        $this->loadder = $this->container->get('sf.admin.loader') ;
         $this->translator   = $this->container->get('translator') ;
         
         $tree   = $this->loadder->getMenu() ;

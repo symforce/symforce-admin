@@ -95,7 +95,7 @@ class AdminListener implements EventSubscriber {
     public function preRemove(LifecycleEventArgs $args) {
          if( null === $this->configs ) {
              // can not load configure before loadClassMetadata
-             $this->configs  = $this->container->get('symforce.admin.loader')->getDoctrineConfig() ;
+             $this->configs  = $this->container->get('sf.admin.loader')->getDoctrineConfig() ;
          }
          $this->onEvent($args->getEntityManager() , $args->getEntity(), self::preRemove ) ;
     }
@@ -103,7 +103,7 @@ class AdminListener implements EventSubscriber {
     public function postRemove(LifecycleEventArgs $args) {
          if( null === $this->configs ) {
              // can not load configure before loadClassMetadata
-             $this->configs  = $this->container->get('symforce.admin.loader')->getDoctrineConfig() ;
+             $this->configs  = $this->container->get('sf.admin.loader')->getDoctrineConfig() ;
          }
          $this->onEvent($args->getEntityManager() , $args->getEntity(), self::postRemove ) ;
     }
@@ -111,7 +111,7 @@ class AdminListener implements EventSubscriber {
     public function prePersist(LifecycleEventArgs $args) {
          if( null === $this->configs ) {
              // can not load configure before loadClassMetadata
-             $this->configs  = $this->container->get('symforce.admin.loader')->getDoctrineConfig() ;
+             $this->configs  = $this->container->get('sf.admin.loader')->getDoctrineConfig() ;
          }
          $this->onEvent($args->getEntityManager() , $args->getEntity(), self::preUpdate ) ;
     }
@@ -119,7 +119,7 @@ class AdminListener implements EventSubscriber {
     public function postPersist(LifecycleEventArgs $args) {
          if( null === $this->configs ) {
              // can not load configure before loadClassMetadata
-             $this->configs  = $this->container->get('symforce.admin.loader')->getDoctrineConfig() ;
+             $this->configs  = $this->container->get('sf.admin.loader')->getDoctrineConfig() ;
          }
          $this->onEvent($args->getEntityManager() , $args->getEntity(), self::postUpdate ) ;
     }
@@ -127,7 +127,7 @@ class AdminListener implements EventSubscriber {
     public function preUpdate(\Doctrine\ORM\Event\PreUpdateEventArgs $args) {
          if( null === $this->configs ) {
              // can not load configure before loadClassMetadata
-             $this->configs  = $this->container->get('symforce.admin.loader')->getDoctrineConfig() ;
+             $this->configs  = $this->container->get('sf.admin.loader')->getDoctrineConfig() ;
          }
          $this->onEvent($args->getEntityManager() , $args->getEntity(), self::preUpdate ) ;
     }
@@ -135,7 +135,7 @@ class AdminListener implements EventSubscriber {
     public function postUpdate(LifecycleEventArgs $args) {
          if( null === $this->configs ) {
              // can not load configure before loadClassMetadata
-             $this->configs  = $this->container->get('symforce.admin.loader')->getDoctrineConfig() ;
+             $this->configs  = $this->container->get('sf.admin.loader')->getDoctrineConfig() ;
          }
          $this->onEvent($args->getEntityManager() , $args->getEntity(), self::postUpdate ) ;
     }
@@ -143,7 +143,7 @@ class AdminListener implements EventSubscriber {
     public function onFlush(EventArgs $args) {
          if( null === $this->configs ) {
              // can not load configure before loadClassMetadata
-            $this->configs  = $this->container->get('symforce.admin.loader')->getDoctrineConfig() ;
+            $this->configs  = $this->container->get('sf.admin.loader')->getDoctrineConfig() ;
          }
          $om    = $args->getEntityManager();
          $uow = $om->getUnitOfWork();

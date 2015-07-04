@@ -59,7 +59,7 @@ class EntityTransformer implements DataTransformerInterface {
         if( !is_object($value) ) {
             return $value ;
         }
-        $this->admin_loader = $this->container->get('symforce.admin.loader') ;
+        $this->admin_loader = $this->container->get('sf.admin.loader') ;
         $admin  = $this->admin_loader->getAdminByClass($this->entity_class) ;
         return $admin->getId($value) ;
     }
@@ -74,7 +74,7 @@ class EntityTransformer implements DataTransformerInterface {
         if( empty($value) ) {
             return null ;
         }
-        $this->admin_loader = $this->container->get('symforce.admin.loader') ;
+        $this->admin_loader = $this->container->get('sf.admin.loader') ;
         $admin  = $this->admin_loader->getAdminByClass($this->entity_class) ;
         return $admin->getRepository()->find( $value ) ;
     }

@@ -56,7 +56,7 @@ class ListActionCache extends ActionCache {
         );
         
         return $controller->render( $this->template , array(
-            'apploader' =>  $controller->get('symforce.admin.loader') , 
+            'apploader' =>  $controller->get('sf.admin.loader') , 
             'admin' => $this->admin ,
             'action' => $this ,
             'pagination' => $pagination ,

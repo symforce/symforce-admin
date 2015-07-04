@@ -50,7 +50,7 @@ class HtmlType extends TextareaType {
                 return ;
             }
             
-            $admin  = $this->container->get('symforce.admin.loader')->getAdminByClass( $options['admin_class'] ) ;
+            $admin  = $this->container->get('sf.admin.loader')->getAdminByClass( $options['admin_class'] ) ;
             $em     = $admin->getManager() ;
             $className  = $admin->getClassName() ;
             
@@ -87,7 +87,7 @@ class HtmlType extends TextareaType {
                                     }
                                     
                                     /*
-                                    $this->container->get('symforce.admin.loader')->getAdminByClass($object)->addEvent('flushed', function($object, $admin) use($file, $em ){
+                                    $this->container->get('sf.admin.loader')->getAdminByClass($object)->addEvent('flushed', function($object, $admin) use($file, $em ){
                                         \Dev::dump($file);
                                         $em->refresh($file);
                                         \Dev::dump($file);

@@ -54,7 +54,7 @@ class FileType extends AbstractType {
                 $data   = $data['url'] ;
             }
             
-            $admin  = $this->container->get('symforce.admin.loader')->getAdminByClass( $options['admin_class'] ) ;
+            $admin  = $this->container->get('sf.admin.loader')->getAdminByClass( $options['admin_class'] ) ;
             
             $oldValue = $admin->getReflectionProperty( $options['admin_property'])->getValue($object) ;
 
@@ -70,7 +70,7 @@ class FileType extends AbstractType {
                 }
                 
                 if( $crop ) {
-                    $this->container->get('symforce.admin.imagine')->resize($file, $crop, $options['img_config']);
+                    $this->container->get('sf.admin.imagine')->resize($file, $crop, $options['img_config']);
                 }
                 
                 if( $file->getSessionId() ) {

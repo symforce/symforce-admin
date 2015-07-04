@@ -16,7 +16,7 @@ class DashboardController extends Controller
      * @return \Symforce\AdminBundle\Compiler\Loader\AdminLoader
      */
     private function getLoader() {
-        return $this->get('symforce.admin.loader') ;
+        return $this->get('sf.admin.loader') ;
     }
 
     private function getDutyCount(array & $tree, array & $duty_count, \Symforce\AdminBundle\Compiler\Loader\AdminLoader $loader){
@@ -49,7 +49,7 @@ class DashboardController extends Controller
     }
 
     /**
-     * @Route("/", name="symforce_admin_dashboard")
+     * @Route("/", name="sf_admin_dashboard")
      * @Template()
      */
     public function indexAction(Request $request)
@@ -71,7 +71,7 @@ class DashboardController extends Controller
     }
     
     /**
-     * @Route("/workflow/{admin_name}/{target}/{id}", name="symforce_admin_workflow_action")
+     * @Route("/workflow/{admin_name}/{target}/{id}", name="sf_admin_workflow_action")
      */
     public function workflowAction(Request $request, $admin_name, $target, $id )
     {
@@ -129,6 +129,6 @@ class DashboardController extends Controller
      * @return \Symforce\AdminBundle\Compiler\Cache\AdminCache
      */
     private function getAdminByName( $name ) {
-        return $this->container->get('symforce.admin.loader')->getAdminByName( $name ) ;
+        return $this->container->get('sf.admin.loader')->getAdminByName( $name ) ;
     }
 }

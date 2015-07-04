@@ -52,7 +52,7 @@ class FileCommand extends ContainerAwareCommand
 
     protected function initialize(InputInterface $input, OutputInterface $output)
     {
-        $this->loader   = $this->getContainer()->get('symforce.admin.loader') ;
+        $this->loader   = $this->getContainer()->get('sf.admin.loader') ;
         $this->force    = $input->getOption('force') ;
         $this->dev      = $input->getOption('dev') ;
     }

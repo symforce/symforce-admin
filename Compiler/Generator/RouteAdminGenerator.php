@@ -153,8 +153,8 @@ class RouteAdminGenerator {
         
         $dispatcher->writeln('function(AdminLoader $loader, Request $request){')->indent();
         $dispatcher->writeln( sprintf('$loader->setRouteAdminAction("%s", "%s");', $admin_name, $action->getName() ) ) ;
-        $dispatcher->writeln('$_symforce_admin_route_parameters = array();');
-        $dispatcher->writeln('$_symforce_admin_route_parents = array();');
+        $dispatcher->writeln('$_sf_admin_route_parameters = array();');
+        $dispatcher->writeln('$_sf_admin_route_parents = array();');
         
         $path   = array() ;
     
@@ -166,8 +166,8 @@ class RouteAdminGenerator {
         }
         $dispatcher->writeln( sprintf('$%s = $loader->getAdminByClass("%s");', $admin_name , $admin_class) ) ;
         
-        $dispatcher->writeln( sprintf('$%s->setRouteParameters($_symforce_admin_route_parameters);', $admin_name) ) ;
-        $dispatcher->writeln( sprintf('$%s->setRouteParents($_symforce_admin_route_parents);', $admin_name) ) ;
+        $dispatcher->writeln( sprintf('$%s->setRouteParameters($_sf_admin_route_parameters);', $admin_name) ) ;
+        $dispatcher->writeln( sprintf('$%s->setRouteParents($_sf_admin_route_parents);', $admin_name) ) ;
         
         $route_parent = $this->admin->getRouteParent() ;
         if( $route_parent ) {
@@ -290,12 +290,12 @@ class RouteAdminGenerator {
         $admin_object_id  = $admin_name . '_id' ;
         
         $dispatcher->writeln( sprintf('$%s = $loader->getAdminByClass("%s");', $admin_name , $this->admin->getClassName() ) ) ;
-        $dispatcher->writeln( sprintf('$_symforce_admin_route_parents["%s"] = $%s;', $admin_name , $admin_name, $admin_name ) ) ;
+        $dispatcher->writeln( sprintf('$_sf_admin_route_parents["%s"] = $%s;', $admin_name , $admin_name, $admin_name ) ) ;
         
         $dispatcher->writeln( sprintf('$object_id   = $request->get("%s") ;', $admin_object_id ) ) ;
-        $dispatcher->writeln( sprintf('$_symforce_admin_route_parameters["%s"] = $object_id ;', $admin_object_id) ) ;
+        $dispatcher->writeln( sprintf('$_sf_admin_route_parameters["%s"] = $object_id ;', $admin_object_id) ) ;
         $dispatcher->writeln( sprintf('$%s->setRouteObjectId($object_id);', $admin_name , $admin_name ) ) ;
-        $dispatcher->writeln( sprintf('$%s->setRouteParameters($_symforce_admin_route_parameters);', $admin_name) ) ;
+        $dispatcher->writeln( sprintf('$%s->setRouteParameters($_sf_admin_route_parameters);', $admin_name) ) ;
         
         $route_parent = $this->admin->getRouteParent() ;
         if( $route_parent ) {
@@ -319,7 +319,7 @@ class RouteAdminGenerator {
         if( $route_parent ) {
             if( $is_first ) {
                 $generator->writeln(sprintf('$%s = $loader->getAdminByClass("%s");', $admin_name , $this->admin->getClassName() ) ) ;
-                $generator->writeln(sprintf('$_symforce_admin_route_parameters = $%s->getRouteParameters();', $admin_name));
+                $generator->writeln(sprintf('$_sf_admin_route_parameters = $%s->getRouteParameters();', $admin_name));
             }
             $route_parent_name = $route_parent->getName() ;
             $parent_property    = $this->admin->getRouteParentProperty() ;
@@ -334,9 +334,9 @@ class RouteAdminGenerator {
                             ->indent()
                             ->writeln( sprintf('$options["%s_id"] = $accessor->getValue($%s_object, "%s") ;', $route_parent_name, $route_parent_name, $route_parent->getPropertyIdName() ) ) 
                             ->outdent()
-                        ->writeln( sprintf('} else if( isset($_symforce_admin_route_parameters["%s_id"] )) {', $route_parent_name) )
+                        ->writeln( sprintf('} else if( isset($_sf_admin_route_parameters["%s_id"] )) {', $route_parent_name) )
                             ->indent()
-                            ->writeln( sprintf('$options["%s_id"] = $_symforce_admin_route_parameters["%s_id"] ;', $route_parent_name, $route_parent_name ) )
+                            ->writeln( sprintf('$options["%s_id"] = $_sf_admin_route_parameters["%s_id"] ;', $route_parent_name, $route_parent_name ) )
                             ->outdent()
                         ->writeln( '} else {' )
                             ->indent()
@@ -347,9 +347,9 @@ class RouteAdminGenerator {
                 
             } else {
                  $generator
-                        ->writeln( sprintf('if( isset($_symforce_admin_route_parameters["%s_id"] )) {', $route_parent_name) )
+                        ->writeln( sprintf('if( isset($_sf_admin_route_parameters["%s_id"] )) {', $route_parent_name) )
                             ->indent()
-                            ->writeln( sprintf(' $options["%s_id"] = $_symforce_admin_route_parameters["%s_id"] ;', $route_parent_name, $route_parent_name ) )
+                            ->writeln( sprintf(' $options["%s_id"] = $_sf_admin_route_parameters["%s_id"] ;', $route_parent_name, $route_parent_name ) )
                             ->outdent()
                         ->writeln( '} else {' )
                             ->indent()

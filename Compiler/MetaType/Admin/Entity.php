@@ -14,7 +14,7 @@ use Doctrine\Bundle\DoctrineBundle\Registry ;
 
 class Entity extends \Symforce\AdminBundle\Compiler\MetaType\Type {
     
-    const USED_NAME =  ' app tmp temp put get post file save admin loader root parent child children tree id list create update delete view action batch action property filter search cache options accessor controller request object_id _symforce_admin_route_parameters _symforce_admin_route_parents ';
+    const USED_NAME =  ' app tmp temp put get post file save admin loader root parent child children tree id list create update delete view action batch action property filter search cache options accessor controller request object_id _sf_admin_route_parameters _sf_admin_route_parents ';
     
     const ANNOT_TREE_CLASS   = 'Gedmo\Mapping\Annotation\Tree' ;
     const ANNOT_TREE_LEAF_CLASS   = 'Symforce\AdminBundle\Compiler\Annotation\TreeLeaf' ;

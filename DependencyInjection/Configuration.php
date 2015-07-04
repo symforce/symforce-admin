@@ -12,7 +12,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('symforce_admin');
+        $rootNode = $treeBuilder->root('sf_admin');
         
         $rootNode
             ->children()
@@ -54,10 +54,10 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('route')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode('login_path')->cannotBeEmpty()->defaultValue('symforce_admin_login')->end()
-                        ->scalarNode('logout_path')->cannotBeEmpty()->defaultValue('symforce_admin_logout')->end()
-                        ->scalarNode('dashboard_path')->cannotBeEmpty()->defaultValue('symforce_admin_dashboard')->end()
-                        ->scalarNode('brand_path')->cannotBeEmpty()->defaultValue('symforce_admin_dashboard')->end()
+                        ->scalarNode('login_path')->cannotBeEmpty()->defaultValue('sf_admin_login')->end()
+                        ->scalarNode('logout_path')->cannotBeEmpty()->defaultValue('sf_admin_logout')->end()
+                        ->scalarNode('dashboard_path')->cannotBeEmpty()->defaultValue('sf_admin_dashboard')->end()
+                        ->scalarNode('brand_path')->cannotBeEmpty()->defaultValue('sf_admin_dashboard')->end()
                     ->end()
                 ->end()
             ->end()

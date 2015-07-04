@@ -1,14 +1,14 @@
 parameters:
-    symforce.admin.menu_builder.class: Symforce\AdminBundle\Menu\Builder
+    sf.admin.menu_builder.class: Symforce\AdminBundle\Menu\Builder
     # knp_menu.renderer.twig.class: Symforce\AdminBundle\Menu\BootstrapRenderer
     knp_menu.renderer.twig.template: "AppAdminBundle:Menu:menu_bootstrap.html.twig"
-    # symforce.admin.cache.path: "%kernel.cache_dir%/AdminLoaderCache.php"
-    # symforce.admin.cache.expired: "%kernel.cache_dir%/AdminLoaderExpired.php"
+    # sf.admin.cache.path: "%kernel.cache_dir%/AdminLoaderCache.php"
+    # sf.admin.cache.expired: "%kernel.cache_dir%/AdminLoaderExpired.php"
     # knp_menu.renderer.list.options: { currentClass: "active" }
     
 services:
     # loader
-    symforce.admin.compiler:
+    sf.admin.compiler:
         class: Symforce\AdminBundle\Compiler\Loader\Compiler
     
     app.page.service:
@@ -24,19 +24,19 @@ services:
     app_router:
         alias: app.page.service
         
-    symforce.admin.generator:
+    sf.admin.generator:
         class: Symforce\AdminBundle\Compiler\Generator
         arguments: [ "@service_container", null , null, null, null, null ]
  
-    symforce.admin.loader:
+    sf.admin.loader:
         class: Symforce\AdminBundle\Compiler\Loader\AdminLoader
         arguments: [ "@service_container", null, null ]
     
-    symforce.admin.imagine:
+    sf.admin.imagine:
         class: Symforce\AdminBundle\Service\Imagine
         arguments: [ "@service_container" ]
     
-    symforce.admin.form.factory:
+    sf.admin.form.factory:
         class: Symforce\AdminBundle\Compiler\MetaFormFactory
         arguments: [ "@doctrine", "@annotation_reader", null ]
     
@@ -65,7 +65,7 @@ services:
     # Router
     app.route.loader:
         class: Symforce\AdminBundle\Compiler\Loader\RouteCacheLoader
-        arguments: [ "@symforce.admin.loader", null ]
+        arguments: [ "@sf.admin.loader", null ]
 
     app.routing.loader:
         class: Symforce\AdminBundle\Compiler\Loader\RoutingLoader
@@ -75,15 +75,15 @@ services:
         tags:
             - { name:"routing.loader" }
     # Menu 
-    symforce.admin.menu_builder:
-        class: "%symforce.admin.menu_builder.class%"
+    sf.admin.menu_builder:
+        class: "%sf.admin.menu_builder.class%"
         arguments: [ "@knp_menu.factory" ]
         calls:
             - [ setContainer, ["@service_container"] ]
             
-    symforce.admin.menu.admin:
-        class: "%symforce.admin.menu_builder.class%"
-        factory_service: symforce.admin.menu_builder
+    sf.admin.menu.admin:
+        class: "%sf.admin.menu_builder.class%"
+        factory_service: sf.admin.menu_builder
         factory_method: createDashboardMenu
         scope: "request"
         arguments: [ "@request" ]
@@ -91,7 +91,7 @@ services:
             - { name:"knp_menu.menu", alias:"admin"}
    
     # twig 
-    symforce.admin.twig.extension:
+    sf.admin.twig.extension:
         public: false
         class: Symforce\AdminBundle\Twig\Extension\AppAdminTwigExtension
         arguments: [ "@twig.loader" ]
@@ -103,12 +103,12 @@ services:
     app.translation.loader.yaml:
         class: Symforce\AdminBundle\Translation\Loader\AppTransLoader
         calls:
-            - [ setMetaLoader, ["@symforce.admin.loader"] ] 
+            - [ setMetaLoader, ["@sf.admin.loader"] ] 
         tags:
             - { name:"translation.loader", alias:"yaml" }
 
     # doctrine
-    symforce.admin.dbal.listener:
+    sf.admin.dbal.listener:
         class: Symforce\AdminBundle\Doctrine\DBAL\Listener\AdminListener
         public: false 
         calls:

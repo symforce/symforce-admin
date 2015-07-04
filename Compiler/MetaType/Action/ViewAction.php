@@ -108,7 +108,7 @@ class ViewAction  extends AbstractAction {
             }
             
             $admin_twig_calss   = var_export( $this->admin_object->class_name ,1) ;
-            $admin_twig_code    = sprintf('symforce_admin_class(%s)', $admin_twig_calss ) ;
+            $admin_twig_code    = sprintf('sf_admin_class(%s)', $admin_twig_calss ) ;
             
             $admin_class->addLazyArray( 'properties_label',  $property_name  ,  array(
                 $label->getPath() ,
@@ -350,7 +350,7 @@ class ViewAction  extends AbstractAction {
                             ->writeln( '<div class="control-value col-xs-9">')
                                     ->writeln( '<td>') 
                                     ->indent()
-                                        ->writeln( '{{ ' . sprintf('child_macro.%s( symforce_admin_class(%s), admin, _object)', $macro_name, var_export($child_admin->class_name,1) ). '}}' ) 
+                                        ->writeln( '{{ ' . sprintf('child_macro.%s( sf_admin_class(%s), admin, _object)', $macro_name, var_export($child_admin->class_name,1) ). '}}' ) 
                                     ->outdent()
                                     ->writeln( '</td>')
                             ->writeln( '</div>')

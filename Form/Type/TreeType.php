@@ -37,7 +37,7 @@ class TreeType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $transformer    = new TreeTransformer( $this->container->get('symforce.admin.loader'), $options['target_class'] ) ;
+        $transformer    = new TreeTransformer( $this->container->get('sf.admin.loader'), $options['target_class'] ) ;
         $builder->addViewTransformer( $transformer ) ; 
     }
     
@@ -50,7 +50,7 @@ class TreeType extends AbstractType {
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
-        $loader = $this->container->get('symforce.admin.loader') ;
+        $loader = $this->container->get('sf.admin.loader') ;
         $view->vars['admin']   = $loader->getAdminByClass( $options['admin_class'] ) ;
         $view->vars['target_admin']   =  $loader->getAdminByClass( $options['target_class'] ) ;
         if( $options['copy_property'] && isset($view->vars['form']->parent[ $options['copy_property'] ]) ) {

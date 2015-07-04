@@ -49,7 +49,7 @@ class DateTimeType extends TextType {
                 
                 $parent = $form->getParent() ;
                 $object = $parent->getData() ;
-                $admin  = $this->container->get('symforce.admin.loader')->getAdminByClass( $object ) ;
+                $admin  = $this->container->get('sf.admin.loader')->getAdminByClass( $object ) ;
                 
                 if( $options['greater_than'] ) {
                     if( property_exists($object, $options['greater_than']) ) {

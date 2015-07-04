@@ -55,7 +55,7 @@ class AdminLoaderPass implements CompilerPassInterface
             }
         }
         
-        $generator  = $container->getDefinition('symforce.admin.generator') ;
+        $generator  = $container->getDefinition('sf.admin.generator') ;
         $generator->replaceArgument(1, $classes ) ; 
     }
     

@@ -50,7 +50,7 @@ abstract class WebPageCache {
     
     public function setContainer(ContainerInterface $app){
         $this->container = $app ;
-        $app->get('symforce.admin.compiler')->set( \Symforce\AdminBundle\Compiler\Loader\Compiler::STAT_PASS );
+        $app->get('sf.admin.compiler')->set( \Symforce\AdminBundle\Compiler\Loader\Compiler::STAT_PASS );
     }
     
     public function getOption( $name ) {
@@ -91,7 +91,7 @@ abstract class WebPageCache {
 
     public function path( $action, $object = null , array $option = array() ){
         if( null === $this->loader ) {
-            $this->loader = $this->container->get('symforce.admin.loader') ;
+            $this->loader = $this->container->get('sf.admin.loader') ;
             $this->router = $this->container->get('router') ;
             $this->access = \Symfony\Component\PropertyAccess\PropertyAccess::createPropertyAccessor() ;
         }
@@ -125,7 +125,7 @@ abstract class WebPageCache {
     
     public function appPathWithObject($name, $object, array $options = array() ){
         if( null === $this->loader ) {
-            $this->loader = $this->container->get('symforce.admin.loader') ;
+            $this->loader = $this->container->get('sf.admin.loader') ;
             $this->router = $this->container->get('router') ;
             $this->access = \Symfony\Component\PropertyAccess\PropertyAccess::createPropertyAccessor() ;
         }
@@ -139,7 +139,7 @@ abstract class WebPageCache {
     
     public function appPathWithoutObject($name, array $options = array() ){
         if( null === $this->loader ) {
-            $this->loader = $this->container->get('symforce.admin.loader') ;
+            $this->loader = $this->container->get('sf.admin.loader') ;
             $this->router = $this->container->get('router') ;
             $this->access = \Symfony\Component\PropertyAccess\PropertyAccess::createPropertyAccessor() ;
         }

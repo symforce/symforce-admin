@@ -14,14 +14,14 @@ use Symfony\Component\Validator\Constraints as Asset ;
 class SecuredController extends Controller
 {
     /**
-     * @Route("/login", name="symforce_admin_login")
+     * @Route("/login", name="sf_admin_login")
      * @Template()
      */
     public function loginAction(Request $request)
     {
         
         $form   = $this->crateForm($request) ;
-        // $form   = $this->container->get('symforce.admin.loader')->getAdminByName('app_user')->getLoginForm( $request ) ;
+        // $form   = $this->container->get('sf.admin.loader')->getAdminByName('app_user')->getLoginForm( $request ) ;
         
         $dispatcher = $this->container->get('event_dispatcher');
         $event = new \Symforce\AdminBundle\Event\FormEvent($form, $request);
@@ -36,7 +36,7 @@ class SecuredController extends Controller
     }
 
     /**
-     * @Route("/login_check", name="symforce_admin_check")
+     * @Route("/login_check", name="sf_admin_check")
      */
     public function securityCheckAction()
     {
@@ -44,7 +44,7 @@ class SecuredController extends Controller
     }
 
     /**
-     * @Route("/logout", name="symforce_admin_logout")
+     * @Route("/logout", name="sf_admin_logout")
      */
     public function logoutAction()
     {
@@ -63,7 +63,7 @@ class SecuredController extends Controller
         }
         
         $tr = $this->container->get('translator') ;
-        $app_domain  = $this->container->getParameter('symforce.admin.domain') ;
+        $app_domain  = $this->container->getParameter('sf.admin.domain') ;
       
         $builder = $this->container->get('form.factory')->createNamedBuilder('login', 'form', array(
             'label'  => 'app.login.label' ,

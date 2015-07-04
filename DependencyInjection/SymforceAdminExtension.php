@@ -43,7 +43,7 @@ class AppAdminExtension extends Extension
 
         $this->setParameters($container, 'symforce_routing', $configs['routing'] );
 
-        $this->setParameters($container, 'symforce.admin.route', $configs['admin']['route'] );
+        $this->setParameters($container, 'sf.admin.route', $configs['admin']['route'] );
         unset($configs['admin']['route'] ) ;
         $this->setParameters($container, 'symforce.admin', $configs['admin'] );
 
@@ -66,7 +66,7 @@ class AppAdminExtension extends Extension
     
     private function setEntityLoader(array & $configs, ContainerBuilder $container){
 
-         $generator  = $container->getDefinition('symforce.admin.generator') ;
+         $generator  = $container->getDefinition('sf.admin.generator') ;
          
          if( isset($configs['admin']['menu']) ) {
              $generator->replaceArgument(2, $configs['admin']['menu'] ) ;
@@ -78,7 +78,7 @@ class AppAdminExtension extends Extension
              unset($configs['admin']['dashboard']) ;
          }
          
-         $admin_loader   = $container->getDefinition('symforce.admin.loader') ;
+         $admin_loader   = $container->getDefinition('sf.admin.loader') ;
          $route_loader   = $container->getDefinition('symforce.route.loader') ;
          
          $cache_dir = $container->getParameter('kernel.cache_dir') ;
@@ -99,7 +99,7 @@ class AppAdminExtension extends Extension
          
          $locale = $container->getParameter('locale') ;
          if(  !isset($configs['language'][ $locale ] ) ) {
-             throw new \Exception(sprintf("default locale `%s` is not find in symforce.admin.language: %s", $locale, json_encode( $configs['language'] ) ) );
+             throw new \Exception(sprintf("default locale `%s` is not find in sf.admin.language: %s", $locale, json_encode( $configs['language'] ) ) );
          }
          $locale_listener = $container->getDefinition('symforce.locale.listener') ;
          $locale_listener->replaceArgument(1, $locale ) ;
@@ -111,7 +111,7 @@ class AppAdminExtension extends Extension
         $config   = $this->yamlParser->parse(file_get_contents( __DIR__.'/../Resources/config/form.yml' )) ;
         $this->merge_recursive($config, $configs['form'] );  
         
-        $form_factory  = $container->getDefinition('symforce.admin.form.factory') ;
+        $form_factory  = $container->getDefinition('sf.admin.form.factory') ;
         $form_factory->replaceArgument(2, $config['type'] ) ;
         
         $ignored    = array() ;
@@ -167,6 +167,6 @@ class AppAdminExtension extends Extension
 
     public function getAlias()
     {
-        return 'symforce_admin';
+        return 'sf_admin';
     }
 }

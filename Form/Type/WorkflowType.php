@@ -50,7 +50,7 @@ class WorkflowType extends ChoiceType {
             if( !is_object($object) ) {
                 throw new \Exception("form data must be object");
             }
-            $admin_loader   = $this->container->get('symforce.admin.loader') ;
+            $admin_loader   = $this->container->get('sf.admin.loader') ;
             $admin      = $admin_loader->getAdminByClass( $object ) ;
             $new_data   = $event->getForm()->getData() ;
             $property   = $event->getForm()->getName() ;

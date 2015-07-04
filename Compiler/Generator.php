@@ -89,18 +89,18 @@ class Generator {
     
     public function __construct( ContainerInterface $app, array $resources , array $menu_config , array $dashboard_config, $admin_cache_path, $admin_expired_file ){
         $this->app  = $app ;
-        $app->get('symforce.admin.compiler')->set( \Symforce\AdminBundle\Compiler\Loader\Compiler::STAT_ADMIN );
+        $app->get('sf.admin.compiler')->set( \Symforce\AdminBundle\Compiler\Loader\Compiler::STAT_ADMIN );
         
-        $this->app_domain = $app->getParameter('symforce.admin.domain') ;
-        $this->form_factory   = $app->get('symforce.admin.form.factory') ;
+        $this->app_domain = $app->getParameter('sf.admin.domain') ;
+        $this->form_factory   = $app->get('sf.admin.form.factory') ;
         $this->form_factory->setGenerator( $this ) ;
         
         // echo "\n",__FILE__, ":", __LINE__, "\n";  exit;
         
         $this->trans_app_node = $this->getTransNodeByPath( $this->app_domain , 'app') ;
-        $this->trans_app_node->set('admin.brand', $this->app->getParameter('symforce.admin.brand') ) ;
-        if( $this->app->hasParameter('symforce.admin.title') ) {
-            $this->trans_app_node->set('admin.title', $this->app->getParameter('symforce.admin.title') ) ;
+        $this->trans_app_node->set('admin.brand', $this->app->getParameter('sf.admin.brand') ) ;
+        if( $this->app->hasParameter('sf.admin.title') ) {
+            $this->trans_app_node->set('admin.title', $this->app->getParameter('sf.admin.title') ) ;
         } 
         
         $doctrine  = $app->get('doctrine') ;
@@ -208,7 +208,7 @@ class Generator {
              } 
         }, $tr_cache ); 
         
-        $app->get('symforce.admin.compiler')->set( \Symforce\AdminBundle\Compiler\Loader\Compiler::STAT_OK );
+        $app->get('sf.admin.compiler')->set( \Symforce\AdminBundle\Compiler\Loader\Compiler::STAT_OK );
     }
     
     private function sortAdminTree( $parent, array & $node ,  array & $attached, $check_inversed ){
@@ -543,7 +543,7 @@ class Generator {
     
     public function trans( $path , $options = array(), $domain = null ){
         if( !$domain ) {
-            $domain = $this->app->getParameter('symforce.admin.domain') ;
+            $domain = $this->app->getParameter('sf.admin.domain') ;
         }
         $locale =  $this->app->getParameter('locale') ;
         $tr = $this->app->get('translator') ;

@@ -226,7 +226,7 @@ class ListAction  extends AbstractAction {
                         ->writeln('{% ' . sprintf('if twig_macro_exists(child_macro, "%s") ', $macro_name ). ' %}' ) 
                             ->writeln( '<td>') 
                             ->indent()
-                                ->writeln( '{{ ' . sprintf('child_macro.%s(symforce_admin_class(%s), admin, _object)', $macro_name, var_export($child_admin->class_name,1) ). '}}' ) 
+                                ->writeln( '{{ ' . sprintf('child_macro.%s(sf_admin_class(%s), admin, _object)', $macro_name, var_export($child_admin->class_name,1) ). '}}' ) 
                             ->outdent()
                             ->writeln( '</td>') 
                         ->writeln( '{% endif %}') ;

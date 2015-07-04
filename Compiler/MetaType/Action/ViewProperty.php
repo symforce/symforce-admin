@@ -287,10 +287,10 @@ class ViewProperty extends ActionProperty {
             $admin_object    = $this->admin_object->generator->getAdminByClass( $target_class ) ;
             
             $text   = $admin_object->label->getTwigCode() ;
-            $admin_code = 'symforce_admin_class(' . var_export($target_class, 1) .')' ;
+            $admin_code = 'sf_admin_class(' . var_export($target_class, 1) .')' ;
             $view_code = $admin_code . '.string(' .  $property_code . ') ';
             
-            $url    = sprintf('{{ symforce_admin_path("%s", "%s", %s ) }}', $admin_object->name, $action, $property_code ) ;
+            $url    = sprintf('{{ sf_admin_path("%s", "%s", %s ) }}', $admin_object->name, $action, $property_code ) ;
 
             $code   = '{% if ' . $property_code . ' %}' ;
                 $code   .= '{% if ' . sprintf('app_auth("%s", "%s", %s )', $admin_object->name, $action, $property_code ). ' %}' ;

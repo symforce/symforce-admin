@@ -11,7 +11,7 @@ class LocaleController extends Controller
 {
 
    /**
-     * @Route("/locale/{inline}", name="symforce_admin_locale", requirements={"inline"="(0|1)"})
+     * @Route("/locale/{inline}", name="sf_admin_locale", requirements={"inline"="(0|1)"})
      * @Template()
      */
     public function localeAction(Request $request, $inline = 0 )

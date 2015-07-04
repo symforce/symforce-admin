@@ -27,7 +27,7 @@ class AppAdminTwigExtension extends \Twig_Extension
     
     public function setContainer(ContainerInterface $container ){
         $this->container    = $container ;
-        $this->admin_loader = $container->get('symforce.admin.loader') ;
+        $this->admin_loader = $container->get('sf.admin.loader') ;
     }
 
     /**
@@ -45,9 +45,9 @@ class AppAdminTwigExtension extends \Twig_Extension
             
             'app_locale_form'   => new \Twig_Function_Method($this, 'app_locale_form') ,
             'app_auth'   => new \Twig_Function_Method($this, 'app_auth') ,
-            'symforce_admin_class'   => new \Twig_Function_Method($this, 'app_class') ,
+            'sf_admin_class'   => new \Twig_Function_Method($this, 'app_class') ,
             'app_admin'   => new \Twig_Function_Method($this, 'app_admin') ,
-            'symforce_admin_path'   => new \Twig_Function_Method($this, 'symforce_admin_path') ,
+            'sf_admin_path'   => new \Twig_Function_Method($this, 'sf_admin_path') ,
             'app_path'   => new \Twig_Function_Method($this, 'app_page_path') ,
             'app_now'   => new \Twig_Function_Method($this, 'app_now') ,
             'twig_macro_exists'  => new \Twig_Function_Method($this, 'twig_macro_exists') ,
@@ -107,7 +107,7 @@ class AppAdminTwigExtension extends \Twig_Extension
         return $this->admin_loader->getAdminByClass($admin_class); 
     }
     
-    public function symforce_admin_path( $admin, $action, $object = null , $options = array() ) {
+    public function sf_admin_path( $admin, $action, $object = null , $options = array() ) {
         $admin  = $this->admin_loader->getAdminByName($admin) ;
         return $admin->path($action, $object, $options ) ;
     }
