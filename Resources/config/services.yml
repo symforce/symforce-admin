@@ -15,15 +15,15 @@ services:
         class: Symforce\AdminCache\SymforcePageService
         calls:
             - [ setContainer, ["@service_container"] ]
-            
+
+    sf_router:
+        alias: sf.page.service
+
     sf.page.menu:
         class: Symforce\AdminBundle\Service\MenuService
         calls:
             - [ setContainer, ["@service_container"] ]
-    
-    sf_router:
-        alias: sf.page.service
-        
+
     sf.admin.generator:
         class: Symforce\AdminBundle\Compiler\Generator
         arguments: [ "@service_container", null , null, null, null, null ]

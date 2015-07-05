@@ -22,7 +22,7 @@ class RoutingLoader extends \Symfony\Component\Config\Loader\Loader {
      * @return Boolean true if this class supports the given resource, false otherwise
      */
     public function supports($resource, $type = null){
-        return 'sf.admin' === $type;
+        return 'sf_route_resource' === $type ;
     }
 
     /**

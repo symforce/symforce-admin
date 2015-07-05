@@ -248,6 +248,6 @@ class SymforceAdminTwigExtension extends \Twig_Extension
      */
     public function getName()
     {
-        return 'sf.admin';
+        return 'sf_admin_twig' ;
     }
 }

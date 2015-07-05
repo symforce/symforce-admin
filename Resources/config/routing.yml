@@ -36,4 +36,4 @@ _sf_admin_form_secured:
 
 _sf_admin:
     resource: "."
-    type: "sf.admin"
+    type: "sf_route_resource"
