@@ -41,7 +41,7 @@ class SymforceAdminExtension extends Extension
         $this->setForm($configs, $container);
         $this->setEntityLoader($configs, $container ) ;
 
-        $this->setParameters($container, 'symforce_routing', $configs['routing'] );
+        $this->setParameters($container, 'sf_routing', $configs['routing'] );
 
         $this->setParameters($container, 'sf.admin.route', $configs['admin']['route'] );
         unset($configs['admin']['route'] ) ;
@@ -167,6 +167,6 @@ class SymforceAdminExtension extends Extension
 
     public function getAlias()
     {
-        return 'sf_admin';
+        return 'symforce_admin';
     }
 }

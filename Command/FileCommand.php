@@ -43,7 +43,7 @@ class FileCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('symforce:files:clear')
+            ->setName('sf:files:clear')
             ->setDescription('Clear unused file cache')
             ->addOption('force', null, InputOption::VALUE_NONE, 'run the sql')
             ->addOption('dev', null, InputOption::VALUE_NONE, 'debug')

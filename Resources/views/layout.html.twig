@@ -34,7 +34,7 @@
 
             debug=false 
             filter='lessphp'
-            output='bundles/css/general_admin.css'
+            output='css/general_admin.css'
         %}
             <link href="{{ asset_url }}?{{ sf_version }}" rel="stylesheet" media="screen" />
         {% endstylesheets %}
@@ -44,7 +44,7 @@
                 '@SymforceAdminBundle/Resources/public/admin/css/admin.less'
                 '@SymforceAdminBundle/Resources/public/admin/css/form.less'
                 filter='lessphp,?yui_css'
-                output='bundles/css/public_admin.css'
+                output='css/public_admin.css'
             %}
                 <link href="{{ asset_url }}?{{ sf_version }}" rel="stylesheet" media="screen" />
             {% endstylesheets %}
@@ -81,7 +81,7 @@
             '@SymforceAdminBundle/Resources/public/tinymce/tinymce.min.js'
 
             debug=false 
-            output='bundles/js/admin_public.min.js'
+            output='js/admin_public.min.js'
     %}
         <script type="text/javascript" src="{{ asset_url }}?{{ sf_version }}"></script>
     {% endjavascripts %}
@@ -94,9 +94,9 @@
             '@SymforceAdminBundle/Resources/public/js/form.js'
             '@SymforceAdminBundle/Resources/public/js/tree.js'
             '@SymforceAdminBundle/Resources/public/admin/js/admin.js'
-            output='bundles/js/admin.js'
+            output='js/admin.js'
     %}
-        <script type="text/javascript" src="{{ asset_url }}?{{ sf_version }}"></script>
+        <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
     
 {% endblock %}
@@ -168,7 +168,7 @@
         '@SymforceAdminBundle/Resources/public/ie/respond/respond.min.js'
         '@SymforceAdminBundle/Resources/public/ie/fixie8.js'
         debug=false
-        output='bundles/js/public_fixie8.js'
+        output='js/public_fixie8.js'
     %}<script type="text/javascript" src="{{ asset_url }}?{{ sf_version }}"></script>{% endjavascripts %}
     <link href="{{ asset('/bundles/symforceadmin/ie/bootstrap-pie.css') }}"  rel="stylesheet" media="screen" />
 <![endif]-->

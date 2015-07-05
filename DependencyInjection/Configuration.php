@@ -12,7 +12,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('sf_admin');
+        $rootNode = $treeBuilder->root('symforce_admin');
         
         $rootNode
             ->children()

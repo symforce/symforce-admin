@@ -47,14 +47,13 @@ EOT
 
         $source_dir = realpath($source_dir) ;
 
-        $target_dir    =  $root_dir . '/web' . $this->getContainer()->getParameter('sf.web_assets_dir')  . '/bundles'  ;
+        $target_dir    =  $root_dir . '/web' . $this->getContainer()->getParameter('sf.web_assets_dir')  ;
 
         $this->ensureDirectoryExists( $target_dir . '/js'  );
         $this->ensureDirectoryExists( $target_dir . '/css' );
 
         $this->ensureDirectoryExists( $target_dir . '/img' );
         $this->ensureDirectoryExists( $target_dir . '/fonts' );
-        $this->ensureDirectoryExists( $target_dir . '/font' );
 
         $this->linkDir( $source_dir. '/bootstrap-colorpicker/img', $target_dir . '/img'  );
         $this->linkDir( $source_dir. '/bootstrap/fonts', $target_dir . '/fonts' );
@@ -74,7 +73,7 @@ EOT
         $filesystem = $this->getContainer()->get('filesystem');
 
         // Create the bundles directory otherwise symlink will fail.
-        $bundlesDir = $target_dir .'/' ;
+        $bundlesDir = $target_dir .'/bundles/' ;
         $filesystem->mkdir($bundlesDir, 0777);
 
         $output->writeln(sprintf('Installing assets as <comment>%s</comment>', !$input->getOption('nosymlink') ? 'symlinks' : 'hard copies'));

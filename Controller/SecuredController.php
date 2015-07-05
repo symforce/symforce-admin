@@ -21,7 +21,6 @@ class SecuredController extends Controller
     {
         
         $form   = $this->crateForm($request) ;
-        // $form   = $this->container->get('sf.admin.loader')->getAdminByName('sf_user')->getLoginForm( $request ) ;
         
         $dispatcher = $this->container->get('event_dispatcher');
         $event = new \Symforce\AdminBundle\Event\FormEvent($form, $request);

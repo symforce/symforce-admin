@@ -3,7 +3,7 @@
 namespace Symforce\AdminBundle\Compiler\Generator;
 
 class PhpClass extends \CG\Generator\PhpClass {
-    
+
     /**
      * @var \Symforce\AdminBundle\Compiler\Generator\PhpWriter
      */
@@ -108,11 +108,14 @@ class PhpClass extends \CG\Generator\PhpClass {
 
     public function writeCache() {
         
-        static $root_dir    = null ;
-        if( null == $root_dir ) {
-            $root_dir   = realpath( str_replace(str_replace('\\', '/', __NAMESPACE__) , '', __DIR__) . '/../app/Resources/SymforceAdminBundle/src' ) . '/' ;
+        static $_root_dir    = null ;
+        if( null == $_root_dir ) {
+            $rc = new \ReflectionClass('Symforce\\AdminBundle\\SymforceAdminBundle');
+            $_root_dir   =  dirname(dirname(dirname(dirname($rc->getFileName())))) ;
+               // str_replace(str_replace('\\', '/', __NAMESPACE__) , '', __DIR__) . '/app/Resources/SymforceAdminCache' ;
         }
-        
+
+
         $writer = new \Symforce\AdminBundle\Compiler\Generator\PhpWriter();
         
         $parts = explode("\\", $this->getName() );
@@ -121,8 +124,8 @@ class PhpClass extends \CG\Generator\PhpClass {
             throw new \Exception('not class name') ;
         }
         
-        $cache_path    = $root_dir . join('/', $parts ) . '.php' ;
-        
+        $cache_path    = $_root_dir . '/app/Resources/' . join('/', $parts ) . '.php' ;
+
         $shortName = array_pop($parts);
         
         $writer
@@ -268,7 +271,9 @@ class PhpClass extends \CG\Generator\PhpClass {
          
         $cache_dir  = dirname($cache_path) ;
         if( !file_exists( $cache_dir) ) {
-            mkdir( $cache_dir, 0755) ;
+            if( !@mkdir( $cache_dir, 0755) ) {
+                throw new \Exception( sprintf("mkdir(%s) error!", $cache_dir));
+            }
         }
         
         \Dev::write_file( $cache_path, $content ) ;

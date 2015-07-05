@@ -45,7 +45,7 @@ class WorkflowCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('symforce:workflow:status')
+            ->setName('sf:workflow:status')
             ->setDescription('Dumps all assets to the filesystem')
             ->addOption('admin', null, InputOption::VALUE_OPTIONAL, 'for admin')
             ->addOption('convert', null, InputOption::VALUE_OPTIONAL, 'for admin status change')

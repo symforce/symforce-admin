@@ -27,6 +27,7 @@ class AdminController extends Controller
         if( !$this->loader->auth( $action->getAdmin()->getName(), $action->getName()) ) {
             throw new AccessDeniedException();
         }
+
         return $action->onController( $this, $request );
     }
     
