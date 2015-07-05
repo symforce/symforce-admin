@@ -62,8 +62,8 @@ class DeleteActionCache extends ActionCache {
             'label' => $this->admin->getFormLabel() ,
 
             'constraints'   => array(
-                new \Symfony\Component\Validator\Constraints\Callback(function($object, \Symfony\Component\Validator\ExecutionContext $context ) use($controller, $admin_children ){
-                    
+                new \Symfony\Component\Validator\Constraints\Callback(function($object, \Symfony\Component\Validator\Context\ExecutionContext $context ) use($controller, $admin_children ){
+
                     foreach($admin_children as $child_admin_name => $list ) {
                         $child_admin    = $this->admin->getAdminLoader()->getAdminByName( $child_admin_name ) ;
                         foreach($list  as $count ) {
