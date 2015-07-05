@@ -203,12 +203,12 @@ trait AdminForm {
             $requirments[$property_name]    = $value ;
         }
 
-        $builder->add('sf_admin_form_dynamic_values', 'hidden', array(
+        $builder->add('sf_form_dynamic_values', 'hidden', array(
             'mapped'   => false ,
             'data'  => json_encode($requirments) ,
         ));
 
-        $builder->add('sf_admin_form_dynamic_deps', 'hidden', array(
+        $builder->add('sf_form_dynamic_deps', 'hidden', array(
             'mapped'   => false ,
             'data'  => json_encode($elements) ,
         ));
@@ -230,13 +230,13 @@ trait AdminForm {
         }
 
         $options    = $builder->getOptions() ;
-        if( isset($options['dynamic_show_on']) ) {
-            foreach($options['dynamic_show_on'] as $and ) {
+        if( isset($options['sf_form_dynamic']) ) {
+            foreach($options['sf_form_dynamic'] as $and ) {
                 foreach($and as $_name => $values) {
                     $requirments[$_name]  = true ;
                 }
             }
-            $elements[ $builder->getName() ] = $options['dynamic_show_on'] ;
+            $elements[ $builder->getName() ] = $options['sf_form_dynamic'] ;
         }
     }
 

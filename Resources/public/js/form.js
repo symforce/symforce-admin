@@ -325,7 +325,7 @@ var SymforceFormDynamic = (function(){
                     return  jQuery.parseJSON(val) ;
                 }
                 return {} ;
-            })( this.dom.find('input[type="hidden"][id$="_sf_admin_form_dynamic_values"]')  );
+            })( this.dom.find('input[type="hidden"][id$="_sf_form_dynamic_values"]')  );
 
             var dynamic_deps   = (function(input){
                 if( input.get(0) ) {
@@ -333,7 +333,7 @@ var SymforceFormDynamic = (function(){
                     return  jQuery.parseJSON(val) ;
                 }
                 return {} ;
-            })( this.dom.find('input[type="hidden"][id$="_sf_admin_form_dynamic_deps"]')  ) ;
+            })( this.dom.find('input[type="hidden"][id$="_sf_form_dynamic_deps"]')  ) ;
 
             console.log('dynamic value:', dynamic_values );
             console.log('dynamic deps:', dynamic_deps );

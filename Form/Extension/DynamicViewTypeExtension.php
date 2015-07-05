@@ -64,6 +64,7 @@ class DynamicViewTypeExtension extends AbstractTypeExtension
 
             $view->vars['widget_form_group_attr']['sf_form_name'] = $form->getName() ;
             $view->vars['widget_form_group_attr']['sf_form_type'] = $options['sf_form_type'] ;
+
             /*
             $view->vars['widget_form_group_attr']['sf_form_meta'] = $options['sf_form_meta'] ;
             */
@@ -72,8 +73,12 @@ class DynamicViewTypeExtension extends AbstractTypeExtension
                 if( !isset($view->vars['widget_form_group_attr']) ) {
                     throw new \Exception("big error, mopa code must changed");
                 }
+                $view->vars['widget_form_group_attr']['class'] .= ' form-group-hide' ;
+
+                /*
+                 * remove because we put all value in hidden input
+                 *
                 $show_on    = $options['sf_form_dynamic'] ;
-                
                 if( !is_array($show_on) ) {
                     $show_on = array( $show_on ) ;
                 }
@@ -88,9 +93,8 @@ class DynamicViewTypeExtension extends AbstractTypeExtension
                         $show_on[$and_i][$when_i] = $values ;
                     }
                 }
-                
-                $view->vars['widget_form_group_attr']['class'] .= ' form-group-hide' ;
                 $view->vars['widget_form_group_attr']['sf_form_dynamic'] = json_encode( $show_on ) ;
+                */
             }
         }
     }
