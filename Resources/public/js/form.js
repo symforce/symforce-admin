@@ -572,6 +572,14 @@ var SymforceFormValidator   = (function(){
             if( this.form.validate_cache.hasOwnProperty(name) && validate_data === this.form.validate_cache[name] ) {
                 return ;
             }
+			
+			var _input	= input.get(0) ;
+			if( 'checkValidity' in _input ) {
+				if( !_input.checkValidity() ) {
+					return ;
+				}
+			}
+			
             
             this.form.validate_cache[name]  = validate_data ;
             
