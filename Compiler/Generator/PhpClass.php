@@ -110,9 +110,7 @@ class PhpClass extends \CG\Generator\PhpClass {
 
         static $_psr4_map   = null ;
         if( null === $_psr4_map ) {
-            $_rc = new \ReflectionClass('Symforce\\AdminBundle\\SymforceAdminBundle');
-            $_root_dir  =  dirname(dirname(dirname(dirname($_rc->getFileName())))) ;
-            $_psr4_file = $_root_dir . '/vendor/composer/autoload_psr4.php' ;
+            $_psr4_file = dirname( (new \ReflectionClass('Composer\\Autoload\\ClassLoader'))->getFileName() ) . '/autoload_psr4.php' ;
             if( !file_exists($_psr4_file) ) {
                 throw new \Exception(sprintf("psr4 file(%s) not exits!", $_psr4_file)) ;
             }
