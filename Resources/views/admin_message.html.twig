@@ -7,7 +7,7 @@
         {% set flashes = {} %}
 
         {% for type in types %}
-            {% set flashes = flashes | merge({ (type) : sf.versionsession.flashbag.get(type) }) %}
+            {% set flashes = flashes | merge({ (type) : app.session.flashbag.get(type) }) %}
         {% endfor %}
 
         {% for type, messages in flashes %}

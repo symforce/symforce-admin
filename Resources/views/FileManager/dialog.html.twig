@@ -3,7 +3,7 @@
 {% form_theme form 'form_div_layout.html.twig' %}
 
 {% block title %}
-    {{ 'sf.versionfilemanager.title' | trans({}, sf_domain ) }}
+    {{ 'sf.filemanager.title' | trans({}, sf_domain ) }}
 {% endblock %}
     
 {% block header_css %}
@@ -76,7 +76,7 @@
             <img src="{{ web_assets_dir }}{{ it }}" alt="{{ it.name }}" class="img-rounded" />
         </div>
     {% else %}
-        {{ 'sf.versionfilemanager.empty' | trans({}, sf_domain ) }}
+        {{ 'sf.filemanager.empty' | trans({}, sf_domain ) }}
     {% endfor %}
 </div>
     

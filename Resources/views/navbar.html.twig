@@ -16,9 +16,9 @@
         {% block profile %}
           <ul class="nav navbar-nav pull-right"> 
             {% if app.user %}
-                <li class="first"><p class="navbar-text" style="padding-right: 10px;">{{ 'sf.versionprofile.welcome'|trans({'%username%': app.user.username }, sf_domain  )|raw }}</li>
+                <li class="first"><p class="navbar-text" style="padding-right: 10px;">{{ 'sf.profile.welcome'|trans({'%username%': app.user.username }, sf_domain  )|raw }}</li>
            
-                <li><a href="{{ path( sf_param('sf.admin.route.logout_path') ) }}"><i class="icon-off"></i> {{ 'sf.versionprofile.logout'|trans({}, sf_domain ) }}</a></li>
+                <li><a href="{{ path( sf_param('sf.admin.route.logout_path') ) }}"><i class="icon-off"></i> {{ 'sf.profile.logout'|trans({}, sf_domain ) }}</a></li>
             {% endif %}
             <li class="last">
                 <p>

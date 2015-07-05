@@ -166,8 +166,8 @@
         max: {{ max_file_size }} ,
         id: '{{ attribute(form.parent.vars.value, sf_admin_id )  | number_format  }}' ,
         url: '{{ path( 'sf_upload_save', { "admin_name": sf_admin_name , "field_name": name }) }}' ,
-        type_error: '{{ 'sf.versionform.file.error.type' | trans({}, sf_param('sf.admin.domain') ) }}' ,
-        size_error: '{{ 'sf.versionform.file.error.size' | trans({}, sf_param('sf.admin.domain') ) }}' ,
+        type_error: '{{ 'sf.form.file.error.type' | trans({}, sf_param('sf.admin.domain') ) }}' ,
+        size_error: '{{ 'sf.form.file.error.size' | trans({}, sf_param('sf.admin.domain') ) }}' ,
         config: {{ img | json_encode | raw }} ,
         is_image: true 
     });
@@ -197,8 +197,8 @@
                 max: {{ max_file_size }} ,
                 id: '{{ attribute(form.parent.vars.value, admin_id )  | number_format  }}' ,
                 url: '{{ path( 'sf_upload_save', { "admin_name": admin_name , "field_name": name }) }}' ,
-                type_error: '{{ 'sf.versionform.file.error.type' | trans({}, sf_param('sf.admin.domain') ) }}' ,
-                size_error: '{{ 'sf.versionform.file.error.size' | trans({}, sf_param('sf.admin.domain') ) }}' 
+                type_error: '{{ 'sf.form.file.error.type' | trans({}, sf_param('sf.admin.domain') ) }}' ,
+                size_error: '{{ 'sf.form.file.error.size' | trans({}, sf_param('sf.admin.domain') ) }}' 
             });
         </script>
     {% endblock %}
@@ -215,7 +215,7 @@
                 var options = {
                     menubar : "edit insert format table tools view" ,
                     filemanager: {
-                        title: '{{ 'sf.versionfilemanager.title' | trans({}, sf_param('sf.admin.domain') ) }}' ,
+                        title: '{{ 'sf.filemanager.title' | trans({}, sf_param('sf.admin.domain') ) }}' ,
                         url: '{{ path( 'sf_filemanager', { "admin_name": sf_admin_name , "field_name": name, "entity_id": attribute(form.parent.vars.value, sf_admin_id ) | number_format }) }}'
                     } ,
                     external_plugins: {
@@ -329,7 +329,7 @@
                 img.src = '{{ captcha_code }}?n=' + (new Date()).getTime();
             }
         </script>
-        <a class="captcha_reload" href="javascript:reload_{{ image_id }}();">{{ 'sf.versionform.captcha.reload'|trans({}, translation_domain) }}</a>
+        <a class="captcha_reload" href="javascript:reload_{{ image_id }}();">{{ 'sf.form.captcha.reload'|trans({}, translation_domain) }}</a>
     {% endif %}
     
     {% if horizontal %}
