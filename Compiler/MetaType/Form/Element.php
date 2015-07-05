@@ -307,7 +307,7 @@ abstract class Element extends \Symforce\AdminBundle\Compiler\MetaType\PropertyA
             /**
              * @todo add php code handle
              */
-            $options['sf_dynamic'] = $this->show_on ;
+            $options['sf_form_dynamic'] = $this->show_on ;
         }
         return $options ;
     }

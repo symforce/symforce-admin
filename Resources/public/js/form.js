@@ -52,7 +52,7 @@ var SymforceFormDynamic = (function(){
                                 if( _this.form.cancelSubmit() ) {
                                     input.focus() ;
                                     setTimeout(function(){
-                                        el.trigger('app_validate') ;
+                                        el.trigger('sf_validate') ;
                                     }, 100);
                                 }
                             }
@@ -128,7 +128,7 @@ var SymforceFormDynamic = (function(){
                                 if( _this.form.cancelSubmit() ) {
                                     es.focus() ;
                                     setTimeout(function(){
-                                        es.trigger('app_validate') ;
+                                        es.trigger('sf_validate') ;
                                     }, 100);
                                 }
                             }
@@ -335,6 +335,9 @@ var SymforceFormDynamic = (function(){
                 return {} ;
             })( this.dom.find('input[type="hidden"][id$="_sf_admin_form_dynamic_deps"]')  ) ;
 
+            console.log('dynamic value:', dynamic_values );
+            console.log('dynamic deps:', dynamic_deps );
+
             var show_on = {} ;
             Klass.each(dynamic_deps, function( configs , element_name ){
                 var removed = [] ;
@@ -459,7 +462,7 @@ var SymforceFormDynamic = (function(){
 })();
 
 $(function(){
-   $.each($('form.form-dynamic'), function(){
+   $.each($('form.sf-form-dynamic'), function(){
        var form = new SymforceFormDynamic(this) ; 
        var validator = new SymforceFormValidator(this, {
            
@@ -521,7 +524,7 @@ var SymforceFormValidator   = (function(){
                     klass.validate(evt, _this);
                 });
                 
-                _this.on("app_validate",  function(evt){
+                _this.on("sf_validate",  function(evt){
                    if( iTimer ) {
                        clearTimeout(iTimer) ;
                        iTimer   = null ;
@@ -563,7 +566,7 @@ var SymforceFormValidator   = (function(){
         validate: function(evt, input) {
             var data    = this.form.getJsonData() ;
             var name    = input.attr('name') ;
-            data['app_validate_element'] =  name ;
+            data['sf_validate_element'] =  name ;
             
             var validate_data  = $.param( data ) ;
             if( this.form.validate_cache.hasOwnProperty(name) && validate_data === this.form.validate_cache[name] ) {

@@ -2,7 +2,7 @@
 {% macro session_flash(close, use_raw, class, domain) %}
     {% import 'MopaBootstrapBundle::flash.html.twig' as flash_messages %}
 
-    {% if sf.versionsession.flashbag.peekAll|length > 0 %}
+    {% if app.session.flashbag.peekAll|length > 0 %}
         {% set types   = ['danger', 'success', 'info', 'warning', 'fos_user_success' ] %}
         {% set flashes = {} %}
 
@@ -23,7 +23,7 @@
 {% endmacro %}
 
 {% block flashes %}
-         {% if sf.versionsession.flashbag.peekAll|length > 0 %}
+         {% if app.session.flashbag.peekAll|length > 0 %}
          <div class="row">
              <div class="col-xs-12">
              {{ _self.session_flash(true, true) }}

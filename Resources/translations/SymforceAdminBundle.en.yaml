@@ -1,5 +1,4 @@
 
-
 sf:
     admin:
         brand: Brand
@@ -30,9 +29,3 @@ sf:
     profile:
         welcome: Welcome %username%
         logout: Logout
-
-    login:
-        label:  Please Sign In
-        username:  Username
-        password:  Password
-        signin: Sign In

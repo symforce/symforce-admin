@@ -96,7 +96,7 @@ class Group extends \Symforce\AdminBundle\Compiler\MetaType\Type {
                 if( !\Dev::isSimpleArray($this->show_on) ) {
                     $_or   = array( $_or ) ;
                 }
-                $options['sf_dynamic'] = $_or ;
+                $options['sf_form_dynamic'] = $_or ;
             }
             
             $writer->write(  $this_builder  . ' = $builder->create("sf_form_group_' . $this->id . '", "sf_group", ')

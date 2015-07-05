@@ -124,7 +124,7 @@
                 for(var ev in events) if ( events.hasOwnProperty(ev) ) {
                     obj.on(ev, events[ev]);
                 }
-            })('#{{ id }}', '{{ datetime_picker }}', "{{ sf_picker_format(datetime_format, datetime_picker )  }}", '{{ sf.versionrequest.locale }}' );
+            })('#{{ id }}', '{{ datetime_picker }}', "{{ sf_picker_format(datetime_format, datetime_picker )  }}", '{{ app.request.locale }}' );
             
         </script>
     {% endblock %}
@@ -164,8 +164,8 @@
         value: {{ value | json_encode | raw }} ,
         types: '{{ accept_file_type }}',
         max: {{ max_file_size }} ,
-        id: '{{ attribute(form.parent.vars.value, admin_id )  | number_format  }}' ,
-        url: '{{ path( 'sf_upload_save', { "admin_name": admin_name , "field_name": name }) }}' ,
+        id: '{{ attribute(form.parent.vars.value, sf_admin_id )  | number_format  }}' ,
+        url: '{{ path( 'sf_upload_save', { "admin_name": sf_admin_name , "field_name": name }) }}' ,
         type_error: '{{ 'sf.versionform.file.error.type' | trans({}, sf_param('sf.admin.domain') ) }}' ,
         size_error: '{{ 'sf.versionform.file.error.size' | trans({}, sf_param('sf.admin.domain') ) }}' ,
         config: {{ img | json_encode | raw }} ,
@@ -216,13 +216,13 @@
                     menubar : "edit insert format table tools view" ,
                     filemanager: {
                         title: '{{ 'sf.versionfilemanager.title' | trans({}, sf_param('sf.admin.domain') ) }}' ,
-                        url: '{{ path( 'sf_filemanager', { "admin_name": admin_name , "field_name": name, "entity_id": attribute(form.parent.vars.value, admin_id ) | number_format }) }}' 
+                        url: '{{ path( 'sf_filemanager', { "admin_name": sf_admin_name , "field_name": name, "entity_id": attribute(form.parent.vars.value, sf_admin_id ) | number_format }) }}'
                     } ,
                     external_plugins: {
                         {# "advtextcolor": "{{ asset('/bundles/symforceadmin/tinymce_plugins/advtextcolor/plugin.min.js') }}", #}
                         "filemanager": "{{ asset('/bundles/symforceadmin/tinymce_plugins/filemanager/plugin.min.js') }}"
                     } ,
-                    language: '{{ sf.versionrequest.locale }}' ,
+                    language: '{{ app.request.locale }}' ,
                     selector:'#{{ id }}' ,
                     plugins: 'advlist paste searchreplace link anchor autolink image lists table charmap fullscreen code textcolor ',
                     //  toolbar: 'undo redo | searchreplace | bold italic underline strikethrough remove | bullist numlist outdent indent blockquote hr | link unlink anchor  | forecolor backcolor',

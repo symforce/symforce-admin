@@ -12,7 +12,7 @@
 {% block head %}
     <meta name='viewport' content='width=1190'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>{% block title %}{{ 'sf.admin.title'|trans({},  sf_domain ) }}{% endblock %}</title>
+    <title>{% block title %}{{ 'sf.admin.title'|trans({},  sf_domain ) }}{% endblock %} {{ sf_domain }} </title>
     <link rel="icon" sizes="16x16" href="/favicon.ico" />
     {% block stylesheets %}
         {% stylesheets
@@ -102,7 +102,7 @@
 {% endblock %}
 </head>
 
-<body data-spy="scroll" data-target=".subnav" data-offset="50" {% if sf.user and sf.user.usergroup and  is_granted("ROLE_ADMIN") %}class="sf_user_group_{{ sf.user.usergroup.slug }}"{% endif %}>
+<body data-spy="scroll" data-target=".subnav" data-offset="50" {% if app.user and app.user.usergroup and  is_granted("ROLE_ADMIN") %}class="sf_user_group_{{ app.user.usergroup.slug }}"{% endif %}>
 {% block html_body %}
 
 {% block navbar %}

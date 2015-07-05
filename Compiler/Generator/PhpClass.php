@@ -107,33 +107,39 @@ class PhpClass extends \CG\Generator\PhpClass {
     }
 
     public function writeCache() {
-        
-        static $_root_dir    = null ;
-        if( null == $_root_dir ) {
-            $rc = new \ReflectionClass('Symforce\\AdminBundle\\SymforceAdminBundle');
-            $_root_dir   =  dirname(dirname(dirname(dirname($rc->getFileName())))) ;
-               // str_replace(str_replace('\\', '/', __NAMESPACE__) , '', __DIR__) . '/app/Resources/SymforceAdminCache' ;
+
+        static $_psr4_map   = null ;
+        if( null === $_psr4_map ) {
+            $_rc = new \ReflectionClass('Symforce\\AdminBundle\\SymforceAdminBundle');
+            $_root_dir  =  dirname(dirname(dirname(dirname($_rc->getFileName())))) ;
+            $_psr4_file = $_root_dir . '/vendor/composer/autoload_psr4.php' ;
+            if( !file_exists($_psr4_file) ) {
+                throw new \Exception(sprintf("psr4 file(%s) not exits!", $_psr4_file)) ;
+            }
+            $_psr4_map   = include( $_psr4_file ) ;
         }
 
+        $_class_file = null ;
+        foreach($_psr4_map as $_namespace => $_namespace_dir ) if( !empty($_namespace_dir) ) {
+            $_pos = strpos($this->getName(), $_namespace) ;
+            if( 0 === $_pos ) {
+                $_class_file = $_namespace_dir[0] . '/' . str_replace('\\', '/', substr( $this->getName(), strlen($_namespace) ) ) . '.php' ;
+            }
+        }
+        if( !$_class_file ) {
+            throw new \Exception(sprintf("can not resolve file for class(%s) by psr4 rule!", $this->getName())) ;
+        }
+
+        $shortName = pathinfo($_class_file, \PATHINFO_FILENAME );
+        $namespace = $this->getNamespace() ;
 
         $writer = new \Symforce\AdminBundle\Compiler\Generator\PhpWriter();
-        
-        $parts = explode("\\", $this->getName() );
-        
-        if( empty($parts) ) {
-            throw new \Exception('not class name') ;
-        }
-        
-        $cache_path    = $_root_dir . '/app/Resources/' . join('/', $parts ) . '.php' ;
-
-        $shortName = array_pop($parts);
-        
         $writer
             ->writeln("<?php\n")
         ;
 
-        if ($parts) { 
-            $writer->writeln("namespace ".implode("\\", $parts).";\n");
+        if ( !empty($namespace) ) {
+            $writer->writeln("namespace " . $namespace . ";\n") ;
         }
         
         $imports    = $this->getUseStatements() ; 
@@ -262,23 +268,24 @@ class PhpClass extends \CG\Generator\PhpClass {
                 ->writeln('}') ;
         
         $content    = $writer->getContent() ;
-         
-        // '#php{% $this->admin->trans("test.form.enabled.choices.no") %}'
-        
+
+        /**
+         * convert the fake php code
+         * '#php{% $this->admin->trans("test.form.enabled.choices.no") %}'
+         */
         $content    = preg_replace_callback( self::PHP_CODE , function($m){
             return stripslashes($m[1]) ;
-        } , $content ) ; 
-         
-        $cache_dir  = dirname($cache_path) ;
-        if( !file_exists( $cache_dir) ) {
-            if( !@mkdir( $cache_dir, 0755) ) {
-                throw new \Exception( sprintf("mkdir(%s) error!", $cache_dir));
+        } , $content ) ;
+
+        $_class_dir  = dirname($_class_file) ;
+        if( !file_exists( $_class_dir) ) {
+            if( !@mkdir( $_class_dir, 0755) ) {
+                throw new \Exception( sprintf("mkdir(%s) error!", $_class_dir));
             }
         }
         
-        \Dev::write_file( $cache_path, $content ) ;
-        
-        return $cache_path ;
+        \Dev::write_file( $_class_file, $content ) ;
+        return $_class_file ;
     }
     
     

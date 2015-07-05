@@ -380,8 +380,8 @@ class RouteCacheLoader {
         if( null === $this->_compile_class ) {
             $class = new \Symforce\AdminBundle\Compiler\Generator\PhpClass() ;
             $class
-                ->setName( 'SymforceAdminCache\WebPageService' )
-                ->setParentClassName( '\Symforce\AdminBundle\Compiler\Cache\WebPageCache' )
+                ->setName( 'Symforce\AdminCache\SymforcePageService' )
+                ->setParentClassName( '\Symforce\AdminBundle\Compiler\Cache\SymforcePageServiceCache' )
                 ->addUseStatement('Symfony\Component\PropertyAccess\PropertyAccessorInterface')
                 ->addUseStatement('Symfony\Component\HttpFoundation\Request')
                 ->addUseStatement('Symforce\AdminBundle\Compiler\Loader\AdminLoader')

@@ -42,10 +42,3 @@ sf:
     profile:
         welcome: 你好, %username%
         logout: 退出
-
-    login:
-        label:  请您登陆系统
-        username:  用户名
-        password:  密码
-        signin: 登录
-        

@@ -7,7 +7,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface ;
 /**
  * @author loong
  */
-abstract class WebPageCache {
+abstract class SymforcePageServiceCache {
     
      /** @var array */
     protected $admin ;

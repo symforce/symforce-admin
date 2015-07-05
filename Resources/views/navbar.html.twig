@@ -15,20 +15,20 @@
       <div class="collapse navbar-collapse navbar-responsive-collapse">
         {% block profile %}
           <ul class="nav navbar-nav pull-right"> 
-            {% if sf.user %}
-                <li class="first"><p class="navbar-text" style="padding-right: 10px;">{{ 'sf.versionprofile.welcome'|trans({'%username%': sf.user.username }, sf_domain  )|raw }}</li>
+            {% if app.user %}
+                <li class="first"><p class="navbar-text" style="padding-right: 10px;">{{ 'sf.versionprofile.welcome'|trans({'%username%': app.user.username }, sf_domain  )|raw }}</li>
            
                 <li><a href="{{ path( sf_param('sf.admin.route.logout_path') ) }}"><i class="icon-off"></i> {{ 'sf.versionprofile.logout'|trans({}, sf_domain ) }}</a></li>
             {% endif %}
             <li class="last">
                 <p>
-                    {% include "SymforceAdminBundle:Locale:locale.html.twig" with {'form': sf_locale_form(sf.versionrequest) } %}
+                    {% include "SymforceAdminBundle:Locale:locale.html.twig" with {'form': sf_locale_form(app.request) } %}
                 </p>
             </li>
           </ul>
         {% endblock %}
         
-        {% if sf.user %}
+        {% if app.user %}
             {% block menu %}
               {{ knp_menu_render( 'admin', { 'currentClass': 'active' } ) }}
             {% endblock %}

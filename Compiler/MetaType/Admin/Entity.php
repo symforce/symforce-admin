@@ -215,7 +215,7 @@ class Entity extends \Symforce\AdminBundle\Compiler\MetaType\Type {
         }
         
         $compile_class_name   = ucfirst( $this->camelize( $this->name ) ) ;
-        $this->_compile_class_name = 'SymforceAdminCache\\' . $compile_class_name . '\\Admin' . $compile_class_name ;
+        $this->_compile_class_name = 'Symforce\\AdminCache\\' . $compile_class_name . '\\Admin' . $compile_class_name ;
 
         if( null === $this->tr_domain ) {
              $this->tr_domain    = $this->bundle_name ;

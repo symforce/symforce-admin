@@ -60,19 +60,19 @@ class DynamicViewTypeExtension extends AbstractTypeExtension
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
-        if( isset( $options['sf_type'] ) ) {
-            
-            $view->vars['widget_form_group_attr']['sf_name'] = $form->getName() ;
-            $view->vars['widget_form_group_attr']['sf_type'] = $options['sf_type'] ;
+        if( isset( $options['sf_form_type'] ) ) {
+
+            $view->vars['widget_form_group_attr']['sf_form_name'] = $form->getName() ;
+            $view->vars['widget_form_group_attr']['sf_form_type'] = $options['sf_form_type'] ;
             /*
             $view->vars['widget_form_group_attr']['sf_form_meta'] = $options['sf_form_meta'] ;
             */
 
-            if( isset($options['sf_dynamic']) ) {
+            if( isset($options['sf_form_dynamic']) ) {
                 if( !isset($view->vars['widget_form_group_attr']) ) {
                     throw new \Exception("big error, mopa code must changed");
                 }
-                $show_on    = $options['sf_dynamic'] ;
+                $show_on    = $options['sf_form_dynamic'] ;
                 
                 if( !is_array($show_on) ) {
                     $show_on = array( $show_on ) ;
@@ -90,7 +90,7 @@ class DynamicViewTypeExtension extends AbstractTypeExtension
                 }
                 
                 $view->vars['widget_form_group_attr']['class'] .= ' form-group-hide' ;
-                $view->vars['widget_form_group_attr']['sf_dynamic'] = json_encode( $show_on ) ;
+                $view->vars['widget_form_group_attr']['sf_form_dynamic'] = json_encode( $show_on ) ;
             }
         }
     }
@@ -101,9 +101,9 @@ class DynamicViewTypeExtension extends AbstractTypeExtension
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setOptional(array(
-            'sf_type' ,
-            'sf_meta' ,
-            'sf_dynamic' ,
+            'sf_form_type' ,
+            'sf_form_meta' ,
+            'sf_form_dynamic' ,
         ));
     }
 
